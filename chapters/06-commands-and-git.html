@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 6: Running Commands &amp; Git | Command the Future</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-base="../">
+
+<header class="topbar">
+  <div class="topbar-left">
+    <button class="hamburger" id="hamburger" aria-label="Toggle sidebar">&#9776;</button>
+    <a href="../index.html" class="topbar-title">Command the Future</a>
+  </div>
+  <div class="topbar-right">
+    <button class="topbar-btn search-btn" aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6.5" cy="6.5" r="5"/><line x1="10.5" y1="10.5" x2="15" y2="15"/></svg><kbd>Ctrl+K</kbd></button>
+    <button class="topbar-btn" id="theme-toggle" aria-label="Toggle theme"></button>
+  </div>
+</header>
+
+<div class="progress-bar"><div class="progress-fill"></div></div>
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+<aside class="sidebar" id="sidebar">
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Getting Started</div>
+  <div class="sidebar-chapters">
+    <a href="00-preface.html" class="sidebar-link" title="Preface">Preface</a>
+    <a href="01-meet-neamcode.html" class="sidebar-link" title="Meet NeamCode">Meet NeamCode</a>
+    <a href="02-install-first-conversation.html" class="sidebar-link" title="Install & First Conversation">Install & First Conversation</a>
+    <a href="03-art-of-prompting.html" class="sidebar-link" title="The Art of Prompting">The Art of Prompting</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Core Skills</div>
+  <div class="sidebar-chapters">
+    <a href="04-working-with-files.html" class="sidebar-link" title="Working with Files">Working with Files</a>
+    <a href="05-finding-things.html" class="sidebar-link" title="Finding Things in Code">Finding Things in Code</a>
+    <a href="06-commands-and-git.html" class="sidebar-link active" title="Running Commands & Git">Running Commands & Git</a>
+    <a href="07-web-research.html" class="sidebar-link" title="Researching from the Terminal">Researching from the Terminal</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Workflow & Configuration</div>
+  <div class="sidebar-chapters">
+    <a href="08-slash-commands.html" class="sidebar-link" title="Slash Commands">Slash Commands</a>
+    <a href="09-modes.html" class="sidebar-link" title="Modes">Modes</a>
+    <a href="10-sessions-context.html" class="sidebar-link" title="Sessions & Context">Sessions & Context</a>
+    <a href="11-auto-memory.html" class="sidebar-link" title="Auto Memory">Auto Memory</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Providers & Cost</div>
+  <div class="sidebar-chapters">
+    <a href="12-choosing-providers.html" class="sidebar-link" title="Choosing Your AI Provider">Choosing Your AI Provider</a>
+    <a href="13-offline-mode.html" class="sidebar-link" title="Offline Mode">Offline Mode</a>
+    <a href="14-zero-cost-setup.html" class="sidebar-link" title="The $0 AI Setup">The $0 AI Setup</a>
+    <a href="15-budget-cost.html" class="sidebar-link" title="Budget & Cost Tracking">Budget & Cost Tracking</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Advanced Features</div>
+  <div class="sidebar-chapters">
+    <a href="16-agents.html" class="sidebar-link" title="Agents & Delegation">Agents & Delegation</a>
+    <a href="17-mcp-servers.html" class="sidebar-link" title="MCP Servers">MCP Servers</a>
+    <a href="18-neam-language.html" class="sidebar-link" title="Neam Language Integration">Neam Language Integration</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Audience Guides</div>
+  <div class="sidebar-chapters">
+    <a href="19-for-students.html" class="sidebar-link" title="For Students">For Students</a>
+    <a href="20-for-researchers.html" class="sidebar-link" title="For Researchers">For Researchers</a>
+    <a href="21-for-professionals.html" class="sidebar-link" title="For Professionals">For Professionals</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Walkthroughs</div>
+  <div class="sidebar-chapters">
+    <a href="22-walkthrough-build-project.html" class="sidebar-link" title="Walkthrough: Build a Project">Walkthrough: Build a Project</a>
+    <a href="23-walkthrough-fix-bug.html" class="sidebar-link" title="Walkthrough: Fix a Real Bug">Walkthrough: Fix a Real Bug</a>
+    <a href="24-making-it-yours.html" class="sidebar-link" title="Making NeamCode Yours">Making NeamCode Yours</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Closing</div>
+  <div class="sidebar-chapters">
+    <a href="25-road-ahead.html" class="sidebar-link" title="The Road Ahead">The Road Ahead</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Appendices</div>
+  <div class="sidebar-chapters">
+    <a href="../appendices/A-slash-commands.html" class="sidebar-link" title="All Slash Commands">All Slash Commands</a>
+    <a href="../appendices/B-skills-reference.html" class="sidebar-link" title="All Skills Reference">All Skills Reference</a>
+    <a href="../appendices/C-configuration.html" class="sidebar-link" title="Configuration Reference">Configuration Reference</a>
+    <a href="../appendices/D-troubleshooting.html" class="sidebar-link" title="Troubleshooting & FAQ">Troubleshooting & FAQ</a>
+    <a href="../appendices/E-glossary.html" class="sidebar-link" title="Glossary">Glossary</a>
+  </div>
+</div>
+</aside>
+
+<main class="main">
+  <article class="content">
+<h1 id="chapter-6-running-commands-git">Chapter 6: Running Commands &amp; Git <a href="#chapter-6-running-commands-git" class="heading-anchor">#</a></h1>
+<blockquote><p><em>"The terminal is where plans become reality. Git is where reality becomes history."</em><br>— The NeamCode Handbook</p></blockquote>
+<p>📖 <strong>Estimated read time:</strong> 22 minutes</p>
+<hr />
+<h2 id="what-youll-learn">What You'll Learn <a href="#what-youll-learn" class="heading-anchor">#</a></h2>
+<ul>
+<li>How to run shell commands through NeamCode with <code>bash</code></li>
+<li>How to manage long-running processes with <code>background_shell</code></li>
+<li>Git fundamentals: status, diff, add, commit — all through natural language</li>
+<li>Advanced Git workflows: branches, merging, stashing, rebasing</li>
+<li>Using <code>/review</code> to get AI-powered code reviews</li>
+<li>Creating pull requests without leaving the terminal</li>
+<li>How the permission system protects you during command execution</li>
+</ul>
+<hr />
+<h2 id="61-running-shell-commands-bash">6.1 Running Shell Commands (bash) <a href="#61-running-shell-commands-bash" class="heading-anchor">#</a></h2>
+<p>The <code>bash</code> skill lets NeamCode execute any shell command on your behalf. This is one of its most powerful — and most carefully guarded — capabilities.</p>
+<h3 id="basic-command-execution">Basic Command Execution <a href="#basic-command-execution" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: What version of Node do I have?
+
+NeamCode:
+  [bash] node --version (awaiting approval)
+
+  ⟹ Allow this command? (y/n): y
+
+  v20.11.0</code></pre>
+<h3 id="running-build-commands">Running Build Commands <a href="#running-build-commands" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Install the dependencies and run the tests
+
+NeamCode:
+  [bash] npm install (awaiting approval)
+  ⟹ Allow? (y/n): y
+
+  added 847 packages in 12s
+
+  [bash] npm test (awaiting approval)
+  ⟹ Allow? (y/n): y
+
+  PASS tests/unit/user.test.ts (3 tests)
+  PASS tests/unit/post.test.ts (5 tests)
+  PASS tests/integration/api.test.ts (8 tests)
+
+  Test Suites: 3 passed, 3 total
+  Tests:       16 passed, 16 total</code></pre>
+<h3 id="command-output-analysis">Command Output Analysis <a href="#command-output-analysis" class="heading-anchor">#</a></h3>
+<p>NeamCode doesn't just run commands — it understands the output:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Run the tests and tell me what&#x27;s failing
+
+NeamCode:
+  [bash] npm test (awaiting approval)
+  ⟹ Allow? (y/n): y
+
+  PASS tests/unit/user.test.ts
+  FAIL tests/unit/post.test.ts
+    ✕ should create a post with valid data (12ms)
+    ✕ should reject posts without a title (8ms)
+  PASS tests/integration/api.test.ts
+
+  Two tests are failing in post.test.ts:
+
+  1. &quot;should create a post with valid data&quot; — expects status 201
+     but gets 500. The Post model&#x27;s `create` method is throwing
+     because `authorId` is required but not provided in the test.
+
+  2. &quot;should reject posts without a title&quot; — expects status 400
+     but gets 500. The validation middleware isn&#x27;t catching the
+     missing title before it hits the database.
+
+  Want me to fix these?</code></pre>
+<h3 id="chaining-commands">Chaining Commands <a href="#chaining-commands" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Build the project, run lint, and run tests
+
+NeamCode:
+  [bash] npm run build (awaiting approval)
+  ⟹ Allow? (y/n): y
+  ✓ Build successful
+
+  [bash] npm run lint (awaiting approval)
+  ⟹ Allow? (y/n): y
+
+  3 warnings:
+  src/utils/helpers.ts:12 — unused variable &#x27;temp&#x27;
+  src/services/api.ts:45  — prefer const over let
+  src/routes/posts.ts:8   — missing return type
+
+  [bash] npm test (awaiting approval)
+  ⟹ Allow? (y/n): y
+  ✓ All 16 tests passing
+
+  Summary: Build passed, 3 lint warnings (non-blocking),
+  all tests green. Ready to commit.</code></pre>
+<div class="callout callout-warning"><div class="callout-title"><span class="callout-icon">&#9888;&#65039;</span> Warning</div><p>⚠️ <strong>Warning:</strong> Every <code>bash</code> command requires approval. This is a critical safety feature. NeamCode will never run <code>rm -rf /</code> or destructive commands without your explicit consent. Always read the command before approving.</p></div>
+<h3 id="working-with-environment-variables">Working with Environment Variables <a href="#working-with-environment-variables" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Set up the environment and start the dev server
+
+NeamCode:
+  Let me check if you have a .env file first.
+
+  [file_read] .env.example
+
+  You have an .env.example but no .env file. I&#x27;ll create one
+  from the template.
+
+  [bash] cp .env.example .env (awaiting approval)
+  ⟹ Allow? (y/n): y
+  ✓ Created .env
+
+  Now you&#x27;ll need to fill in the actual values. The file needs:
+  - DATABASE_URL (your PostgreSQL connection string)
+  - JWT_SECRET (any random string, I can generate one)
+  - STRIPE_KEY (from your Stripe dashboard)
+
+  Want me to generate a JWT_SECRET for you?</code></pre>
+<hr />
+<h2 id="62-background-tasks-background_shell">6.2 Background Tasks (background_shell) <a href="#62-background-tasks-background_shell" class="heading-anchor">#</a></h2>
+<p>Some commands take a long time — dev servers, watch modes, long builds. The <code>background_shell</code> skill runs these without blocking your conversation.</p>
+<h3 id="starting-a-dev-server">Starting a Dev Server <a href="#starting-a-dev-server" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Start the dev server in the background
+
+NeamCode:
+  [background_shell] npm run dev (awaiting approval)
+  ⟹ Allow? (y/n): y
+
+  ✓ Started in background (PID: 42381)
+
+  Server is starting up. You can continue working while it runs.
+  The dev server will be available at http://localhost:3000.</code></pre>
+<h3 id="running-watch-mode">Running Watch Mode <a href="#running-watch-mode" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Start the test watcher in the background
+
+NeamCode:
+  [background_shell] npm test -- --watch (awaiting approval)
+  ⟹ Allow? (y/n): y
+
+  ✓ Started in background (PID: 42399)
+
+  Tests are running in watch mode. They&#x27;ll re-run automatically
+  when files change. You can keep coding and I&#x27;ll keep editing —
+  the watcher runs independently.</code></pre>
+<h3 id="managing-background-tasks">Managing Background Tasks <a href="#managing-background-tasks" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: What&#x27;s running in the background?
+
+NeamCode: You have 2 background processes:
+
+  PID 42381 — npm run dev (running, port 3000)
+  PID 42399 — npm test --watch (running)
+
+You: Stop the test watcher
+
+NeamCode:
+  [bash] kill 42399 (awaiting approval)
+  ⟹ Allow? (y/n): y
+
+  ✓ Test watcher stopped.</code></pre>
+<div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip:</strong> Use <code>background_shell</code> for anything that runs indefinitely: dev servers, file watchers, database instances, log tailing. Use regular <code>bash</code> for commands that complete and return output.</p></div>
+<div class="comparison-grid">
+  <div class="info-box">
+    <div class="info-box-header blue">bash</div>
+    <div class="info-box-body">
+      <ul>
+        <li>Runs command, waits for it to finish</li>
+        <li>Returns the output</li>
+        <li>Good for: builds, tests, scripts, git</li>
+      </ul>
+    </div>
+  </div>
+  <div class="info-box">
+    <div class="info-box-header green">background_shell</div>
+    <div class="info-box-body">
+      <ul>
+        <li>Starts command and returns immediately</li>
+        <li>Process runs in the background</li>
+        <li>Good for: dev servers, watchers, long tasks</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<hr />
+<h2 id="63-git-basics">6.3 Git Basics <a href="#63-git-basics" class="heading-anchor">#</a></h2>
+<p>NeamCode speaks Git fluently. You can manage your entire Git workflow through natural language.</p>
+<h3 id="checking-status">Checking Status <a href="#checking-status" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: What&#x27;s the git status?
+
+NeamCode:
+  [bash] git status
+
+  On branch feature/add-auth
+  Changes not staged for commit:
+    modified:   src/middleware/auth.ts
+    modified:   src/routes/users.ts
+
+  Untracked files:
+    src/middleware/rateLimit.ts
+    tests/unit/auth.test.ts
+
+  You have 2 modified files and 2 new files.</code></pre>
+<h3 id="viewing-changes">Viewing Changes <a href="#viewing-changes" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Show me what I changed
+
+NeamCode:
+  [bash] git diff
+
+  Here&#x27;s a summary of your changes:
+
+  src/middleware/auth.ts:
+  - Added token refresh logic (lines 45-62)
+  - Added role-based access check (lines 70-85)
+
+  src/routes/users.ts:
+  - Added GET /users/me endpoint (lines 28-40)
+  - Protected route with auth middleware</code></pre>
+<h3 id="staging-and-committing">Staging and Committing <a href="#staging-and-committing" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Stage everything and commit with a message about adding auth
+
+NeamCode:
+  [bash] git add -A (awaiting approval)
+  ⟹ Allow? (y/n): y
+
+  [bash] git commit -m &quot;feat: Add JWT authentication with token refresh and role-based access&quot; (awaiting approval)
+  ⟹ Allow? (y/n): y
+
+  [feature/add-auth 3a7b2c1] feat: Add JWT authentication with
+  token refresh and role-based access
+   4 files changed, 142 insertions(+), 3 deletions(-)
+   create mode 100644 src/middleware/rateLimit.ts
+   create mode 100644 tests/unit/auth.test.ts</code></pre>
+<h3 id="smart-commit-messages">Smart Commit Messages <a href="#smart-commit-messages" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Commit these changes with an appropriate message
+
+NeamCode:
+  [bash] git diff --staged
+
+  Based on the staged changes, here&#x27;s my suggested commit:
+
+  [bash] git commit -m &quot;fix: Resolve race condition in checkout stock validation
+
+  - Add database transaction around stock check and decrement
+  - Return 409 Conflict when stock is insufficient
+  - Add retry logic for transaction deadlocks&quot; (awaiting approval)
+
+  ⟹ Allow? (y/n): y
+  ✓ Committed</code></pre>
+<div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip:</strong> NeamCode reads your diff to generate meaningful commit messages. It follows conventional commit format (<code>feat:</code>, <code>fix:</code>, <code>refactor:</code>, etc.) automatically.</p></div>
+<h3 id="viewing-history">Viewing History <a href="#viewing-history" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Show me the last 5 commits
+
+NeamCode:
+  [bash] git log --oneline -5
+
+  3a7b2c1 feat: Add JWT authentication with token refresh
+  f1e2d3c fix: Resolve N+1 query in product listing
+  a4b5c6d refactor: Extract validation into middleware
+  8e9f0a1 feat: Add product search with pagination
+  2c3d4e5 chore: Update dependencies to latest versions</code></pre>
+<hr />
+<h2 id="64-advanced-git">6.4 Advanced Git <a href="#64-advanced-git" class="heading-anchor">#</a></h2>
+<h3 id="working-with-branches">Working with Branches <a href="#working-with-branches" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Create a new branch for the payment feature
+
+NeamCode:
+  [bash] git checkout -b feature/payment-integration (awaiting approval)
+  ⟹ Allow? (y/n): y
+
+  Switched to a new branch &#x27;feature/payment-integration&#x27;</code></pre>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: What branches exist?
+
+NeamCode:
+  [bash] git branch -a
+
+  Local branches:
+  * feature/payment-integration
+    feature/add-auth
+    main
+
+  Remote branches:
+    origin/main
+    origin/feature/add-auth
+    origin/fix/mobile-layout</code></pre>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Switch back to main
+
+NeamCode:
+  [bash] git checkout main (awaiting approval)
+  ⟹ Allow? (y/n): y
+
+  Switched to branch &#x27;main&#x27;
+  Your branch is up to date with &#x27;origin/main&#x27;.</code></pre>
+<h3 id="merging">Merging <a href="#merging" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Merge the auth feature into main
+
+NeamCode:
+  [bash] git merge feature/add-auth (awaiting approval)
+  ⟹ Allow? (y/n): y
+
+  Merge made by the &#x27;ort&#x27; strategy.
+   4 files changed, 142 insertions(+), 3 deletions(-)
+
+  ✓ Merged feature/add-auth into main with no conflicts.</code></pre>
+<h3 id="handling-merge-conflicts">Handling Merge Conflicts <a href="#handling-merge-conflicts" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Merge feature/payment-integration
+
+NeamCode:
+  [bash] git merge feature/payment-integration (awaiting approval)
+  ⟹ Allow? (y/n): y
+
+  Auto-merging src/routes/index.ts
+  CONFLICT (content): Merge conflict in src/routes/index.ts
+
+  There&#x27;s a merge conflict in src/routes/index.ts. Let me look at it.
+
+  [file_read] src/routes/index.ts
+
+  The conflict is in the route registration section:
+
+  &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+  router.use(&#x27;/auth&#x27;, authRoutes);
+  =======
+  router.use(&#x27;/payments&#x27;, paymentRoutes);
+  &gt;&gt;&gt;&gt;&gt;&gt;&gt; feature/payment-integration
+
+  Both branches added a new route in the same location. The fix is
+  simple — we need both routes.
+
+  [file_edit] src/routes/index.ts (awaiting approval)
+
+  old_string:
+    &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+    router.use(&#x27;/auth&#x27;, authRoutes);
+    =======
+    router.use(&#x27;/payments&#x27;, paymentRoutes);
+    &gt;&gt;&gt;&gt;&gt;&gt;&gt; feature/payment-integration
+
+  new_string:
+    router.use(&#x27;/auth&#x27;, authRoutes);
+    router.use(&#x27;/payments&#x27;, paymentRoutes);
+
+  ⟹ Allow? (y/n): y
+  ✓ Conflict resolved
+
+  [bash] git add src/routes/index.ts &amp;&amp; git commit -m &quot;merge: Resolve conflict in route registration&quot; (awaiting approval)
+  ⟹ Allow? (y/n): y
+  ✓ Merge complete</code></pre>
+<h3 id="stashing-work">Stashing Work <a href="#stashing-work" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: I need to switch branches but I have uncommitted work.
+     Stash it for me.
+
+NeamCode:
+  [bash] git stash push -m &quot;WIP: payment form validation&quot; (awaiting approval)
+  ⟹ Allow? (y/n): y
+
+  Saved working directory and index state
+  On feature/payment-integration: WIP: payment form validation
+
+You: (later) Pop the stash
+
+NeamCode:
+  [bash] git stash pop (awaiting approval)
+  ⟹ Allow? (y/n): y
+
+  Restored changes from &quot;WIP: payment form validation&quot;</code></pre>
+<h3 id="interactive-rebase">Interactive Rebase <a href="#interactive-rebase" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Squash my last 3 commits into one
+
+NeamCode:
+  [bash] git log --oneline -3
+
+  a1b2c3d fix: typo in payment route
+  d4e5f6g fix: payment amount calculation
+  g7h8i9j feat: Add payment processing
+
+  I&#x27;ll squash these into a single commit.
+
+  [bash] git reset --soft HEAD~3 (awaiting approval)
+  ⟹ Allow? (y/n): y
+
+  [bash] git commit -m &quot;feat: Add payment processing with Stripe integration&quot; (awaiting approval)
+  ⟹ Allow? (y/n): y
+
+  ✓ Squashed 3 commits into one.</code></pre>
+<hr />
+<h2 id="65-code-review-with-review">6.5 Code Review with /review <a href="#65-code-review-with-review" class="heading-anchor">#</a></h2>
+<p>The <code>/review</code> command triggers an AI-powered code review of your changes.</p>
+<h3 id="reviewing-your-changes">Reviewing Your Changes <a href="#reviewing-your-changes" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: /review
+
+NeamCode:
+  Reviewing changes on branch feature/payment-integration
+  compared to main...
+
+  [bash] git diff main...HEAD
+  [file_read] (7 changed files)
+
+  Code Review: feature/payment-integration
+  Overall: Good — 2 suggestions, 1 issue</code></pre>
+
+<div class="info-box">
+  <div class="info-box-header red">Issue — src/services/payment.ts:34</div>
+  <div class="info-box-body">
+    <p>The Stripe secret key is hardcoded. Move to environment variable.</p>
+    <pre><code>- const stripe = new Stripe('sk_test_xxx');
++ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);</code></pre>
+  </div>
+</div>
+
+<div class="info-box">
+  <div class="info-box-header amber">Suggestion — src/routes/payments.ts:18</div>
+  <div class="info-box-body">
+    <p>Consider adding request body validation with zod or joi before processing payment.</p>
+  </div>
+</div>
+
+<div class="info-box">
+  <div class="info-box-header amber">Suggestion — src/services/payment.ts:52</div>
+  <div class="info-box-body">
+    <p>The error handling catches all errors generically. Consider specific handling for StripeCardError vs StripeInvalidRequestError.</p>
+  </div>
+</div>
+
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">  Want me to fix any of these?</code></pre>
+<h3 id="reviewing-specific-files">Reviewing Specific Files <a href="#reviewing-specific-files" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: /review src/services/payment.ts
+
+NeamCode: Focusing review on payment.ts only...
+  (detailed review of that single file)</code></pre>
+<hr />
+<h2 id="66-creating-pull-requests">6.6 Creating Pull Requests <a href="#66-creating-pull-requests" class="heading-anchor">#</a></h2>
+<p>The <code>git_pr</code> skill lets you create pull requests directly from the terminal.</p>
+<h3 id="creating-a-pr">Creating a PR <a href="#creating-a-pr" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Create a pull request for this branch
+
+NeamCode:
+  [bash] git log main..HEAD --oneline
+
+  You have 4 commits on feature/payment-integration.
+
+  Let me push the branch and create the PR.
+
+  [bash] git push -u origin feature/payment-integration (awaiting approval)
+  ⟹ Allow? (y/n): y
+
+  [git_pr] Creating pull request (awaiting approval)
+
+  Title: feat: Add Stripe payment integration
+  Base: main
+  Head: feature/payment-integration
+
+  Description:
+  ## Changes
+  - Add Stripe payment processing service
+  - Add /payments API routes (create, confirm, refund)
+  - Add payment webhook handler
+  - Add input validation for payment requests
+
+  ## Testing
+  - Unit tests for PaymentService
+  - Integration tests for payment API routes
+  - Manual testing with Stripe test mode
+
+  ⟹ Allow PR creation? (y/n): y
+
+  ✓ Pull request #42 created
+  https://github.com/yourorg/yourrepo/pull/42</code></pre>
+<h3 id="creating-a-pr-with-review-request">Creating a PR with Review Request <a href="#creating-a-pr-with-review-request" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Create a PR and request review from the backend team
+
+NeamCode:
+  [git_pr] Creating pull request (awaiting approval)
+
+  Title: feat: Add Stripe payment integration
+  Reviewers: @backend-team
+  Labels: feature, needs-review
+
+  ⟹ Allow? (y/n): y
+
+  ✓ PR #42 created and review requested from @backend-team</code></pre>
+<hr />
+<h2 id="67-the-permission-system-in-practice">6.7 The Permission System in Practice <a href="#67-the-permission-system-in-practice" class="heading-anchor">#</a></h2>
+<p>Understanding the permission system is essential when running commands and Git operations. Here's how it works in practice:</p>
+<div class="comparison-grid">
+  <div class="info-box">
+    <div class="info-box-header green">AUTO-APPROVED (no prompt)</div>
+    <div class="info-box-body">
+      <ul>
+        <li><code>file_read</code> — Reading files is always safe</li>
+        <li><code>glob</code> — Searching filenames is safe</li>
+        <li><code>grep</code> — Searching file contents is safe</li>
+        <li><code>dir_tree</code> — Viewing structure is safe</li>
+        <li><code>code_structure</code> — Analyzing code is safe</li>
+      </ul>
+    </div>
+  </div>
+  <div class="info-box">
+    <div class="info-box-header red">REQUIRES APPROVAL (you see a prompt)</div>
+    <div class="info-box-body">
+      <ul>
+        <li><code>file_write</code> — Creating/overwriting files</li>
+        <li><code>file_edit</code> — Modifying existing files</li>
+        <li><code>bash</code> — Running ANY shell command</li>
+        <li><code>background_shell</code> — Starting background processes</li>
+        <li><code>git_pr</code> — Creating pull requests</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="callout callout-note"><div class="callout-title"><span class="callout-icon">&#128221;</span> Note</div><p><strong>The principle:</strong> READ freely, WRITE with permission.</p></div>
+<h3 id="what-approval-looks-like">What Approval Looks Like <a href="#what-approval-looks-like" class="heading-anchor">#</a></h3>
+<p>Every time NeamCode wants to execute something that could change your system, you'll see:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">  [bash] npm install express cors helmet (awaiting approval)
+
+  ⟹ Allow this command? (y/n): y</code></pre>
+<p>You have three options:</p>
+<ul>
+<li><strong>y</strong> — approve and execute</li>
+<li><strong>n</strong> — reject the command (NeamCode will ask what you'd prefer instead)</li>
+<li><strong>Read the command first</strong> — take your time, there's no rush</li>
+</ul>
+<h3 id="rejecting-commands">Rejecting Commands <a href="#rejecting-commands" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">NeamCode:
+  [bash] rm -rf node_modules &amp;&amp; npm install (awaiting approval)
+  ⟹ Allow? (y/n): n
+
+  Understood. Would you prefer I just run `npm install` without
+  deleting node_modules first? That&#x27;s usually sufficient unless
+  you&#x27;re having dependency resolution issues.</code></pre>
+<div class="callout callout-warning"><div class="callout-title"><span class="callout-icon">&#9888;&#65039;</span> Warning</div><p>⚠️ <strong>Warning:</strong> Always read the command before approving. NeamCode is careful, but you are the final authority. If a command looks wrong or too destructive, reject it and explain what you actually want.</p></div>
+<hr />
+<h2 id="68-pro-tips">6.8 Pro Tips <a href="#68-pro-tips" class="heading-anchor">#</a></h2>
+<h3 id="1-let-neamcode-write-your-commit-messages">1. Let NeamCode Write Your Commit Messages <a href="#1-let-neamcode-write-your-commit-messages" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Commit with an appropriate message
+
+# NeamCode will read the diff and write a meaningful conventional
+# commit message. This is consistently better than quick human
+# messages like &quot;fix stuff&quot; or &quot;update code.&quot;</code></pre>
+<h3 id="2-use-background-shell-for-dev-workflows">2. Use Background Shell for Dev Workflows <a href="#2-use-background-shell-for-dev-workflows" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Start the database, then the API server, then the frontend
+
+NeamCode:
+  [background_shell] docker compose up -d postgres
+  [background_shell] npm run api:dev
+  [background_shell] npm run frontend:dev
+
+  # All three running — you can start coding immediately.</code></pre>
+<h3 id="3-git-workflows-in-plain-english">3. Git Workflows in Plain English <a href="#3-git-workflows-in-plain-english" class="heading-anchor">#</a></h3>
+<p>You don't need to remember Git syntax:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Undo my last commit but keep the changes
+# git reset --soft HEAD~1
+
+You: Show me what changed in the last week
+# git log --since=&quot;1 week ago&quot; --oneline
+
+You: Who wrote this function?
+# git blame on the relevant file
+
+You: What did this file look like 3 commits ago?
+# git show HEAD~3:path/to/file</code></pre>
+<h3 id="4-chain-analysis-with-execution">4. Chain Analysis with Execution <a href="#4-chain-analysis-with-execution" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Run the tests, and if any fail, read the failing test
+     file and the source file it&#x27;s testing, then fix the issue.
+
+# NeamCode will:
+# 1. Run tests (bash)
+# 2. Parse the output for failures
+# 3. Read relevant files (file_read)
+# 4. Edit the fix (file_edit)
+# 5. Re-run tests to verify (bash)</code></pre>
+<h3 id="5-use-review-before-every-pr">5. Use /review Before Every PR <a href="#5-use-review-before-every-pr" class="heading-anchor">#</a></h3>
+<p>Make it a habit:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: /review
+You: Fix the issues found
+You: /review
+You: Looks good. Create the PR.</code></pre>
+<p>This review-fix-review cycle catches issues before your teammates see them.</p>
+<h3 id="6-understand-what-commands-do-before-approving">6. Understand What Commands Do Before Approving <a href="#6-understand-what-commands-do-before-approving" class="heading-anchor">#</a></h3>
+<p>If you're not sure what a command does:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">NeamCode:
+  [bash] find . -name &quot;*.pyc&quot; -delete (awaiting approval)
+
+You: What does this command do exactly?
+
+NeamCode: This command finds all files ending in .pyc (Python
+  bytecode cache files) in the current directory and all
+  subdirectories, then deletes them. These are safe to delete —
+  Python regenerates them automatically. Want me to proceed?
+
+  ⟹ Allow? (y/n): y</code></pre>
+<hr />
+<h2 id="exercises">Exercises <a href="#exercises" class="heading-anchor">#</a></h2>
+<div class="callout callout-try-it-yourself"><p>🎯 <strong>Exercise 6.1:</strong> Ask NeamCode to check the versions of your key development tools (Node, Python, Git, Docker — whatever you use). Notice how each <code>bash</code> command requires approval.</p></div>
+<div class="callout callout-try-it-yourself"><p>🎯 <strong>Exercise 6.2:</strong> In any project, ask NeamCode to start a dev server in the background, make a change to a file, then verify the change is reflected (if it's a hot-reloading server).</p></div>
+<div class="callout callout-try-it-yourself"><p>🎯 <strong>Exercise 6.3:</strong> Create a new Git branch, make a few file changes through NeamCode, commit them with auto-generated messages, then view the log.</p></div>
+<div class="callout callout-try-it-yourself"><p>🎯 <strong>Exercise 6.4:</strong> Intentionally create a merge conflict (edit the same line on two branches), then ask NeamCode to help you resolve it.</p></div>
+<div class="callout callout-try-it-yourself"><p>🎯 <strong>Exercise 6.5:</strong> Use <code>/review</code> on a branch with real changes. Read through the feedback and ask NeamCode to fix at least one issue it identified.</p></div>
+<div class="callout callout-try-it-yourself"><p>🎯 <strong>Exercise 6.6:</strong> Create a complete PR workflow: branch, code, test, review, fix, push, and create the PR — all through NeamCode.</p></div>
+<hr />
+<div class="table-wrap"><table>
+<thead><tr>
+<th><a href="05-finding-things.md">← Chapter 5: Finding Things in Code</a></th>
+<th><a href="07-web-research.md">Chapter 7: Researching from the Terminal →</a></th>
+</tr></thead><tbody>
+</tbody></table></div>
+    <nav class="chapter-nav"><a href="05-finding-things.html" class="nav-prev"><span class="nav-label">&larr; Previous</span><span class="nav-title">Finding Things in Code</span></a><a href="07-web-research.html" class="nav-next"><span class="nav-label">Next &rarr;</span><span class="nav-title">Researching from the Terminal</span></a></nav>
+  </article>
+</main>
+
+<button class="back-to-top" id="back-to-top" aria-label="Back to top">&#8593;</button>
+
+<div class="search-overlay" id="search-overlay">
+  <div class="search-modal">
+    <div class="search-input-wrap">
+      <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6.5" cy="6.5" r="5"/><line x1="10.5" y1="10.5" x2="15" y2="15"/></svg>
+      <input type="text" class="search-input" id="search-input" placeholder="Search chapters, topics...">
+    </div>
+    <div class="search-results" id="search-results">
+      <div class="search-empty">Start typing to search...</div>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/script.js"></script>
+</body>
+</html>

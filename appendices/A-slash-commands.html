@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Appendix A: All Slash Commands | Command the Future</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-base="../">
+
+<header class="topbar">
+  <div class="topbar-left">
+    <button class="hamburger" id="hamburger" aria-label="Toggle sidebar">&#9776;</button>
+    <a href="../index.html" class="topbar-title">Command the Future</a>
+  </div>
+  <div class="topbar-right">
+    <button class="topbar-btn search-btn" aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6.5" cy="6.5" r="5"/><line x1="10.5" y1="10.5" x2="15" y2="15"/></svg><kbd>Ctrl+K</kbd></button>
+    <button class="topbar-btn" id="theme-toggle" aria-label="Toggle theme"></button>
+  </div>
+</header>
+
+<div class="progress-bar"><div class="progress-fill"></div></div>
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+<aside class="sidebar" id="sidebar">
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Getting Started</div>
+  <div class="sidebar-chapters">
+    <a href="../chapters/00-preface.html" class="sidebar-link" title="Preface">Preface</a>
+    <a href="../chapters/01-meet-neamcode.html" class="sidebar-link" title="Meet NeamCode">Meet NeamCode</a>
+    <a href="../chapters/02-install-first-conversation.html" class="sidebar-link" title="Install & First Conversation">Install & First Conversation</a>
+    <a href="../chapters/03-art-of-prompting.html" class="sidebar-link" title="The Art of Prompting">The Art of Prompting</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Core Skills</div>
+  <div class="sidebar-chapters">
+    <a href="../chapters/04-working-with-files.html" class="sidebar-link" title="Working with Files">Working with Files</a>
+    <a href="../chapters/05-finding-things.html" class="sidebar-link" title="Finding Things in Code">Finding Things in Code</a>
+    <a href="../chapters/06-commands-and-git.html" class="sidebar-link" title="Running Commands & Git">Running Commands & Git</a>
+    <a href="../chapters/07-web-research.html" class="sidebar-link" title="Researching from the Terminal">Researching from the Terminal</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Workflow & Configuration</div>
+  <div class="sidebar-chapters">
+    <a href="../chapters/08-slash-commands.html" class="sidebar-link" title="Slash Commands">Slash Commands</a>
+    <a href="../chapters/09-modes.html" class="sidebar-link" title="Modes">Modes</a>
+    <a href="../chapters/10-sessions-context.html" class="sidebar-link" title="Sessions & Context">Sessions & Context</a>
+    <a href="../chapters/11-auto-memory.html" class="sidebar-link" title="Auto Memory">Auto Memory</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Providers & Cost</div>
+  <div class="sidebar-chapters">
+    <a href="../chapters/12-choosing-providers.html" class="sidebar-link" title="Choosing Your AI Provider">Choosing Your AI Provider</a>
+    <a href="../chapters/13-offline-mode.html" class="sidebar-link" title="Offline Mode">Offline Mode</a>
+    <a href="../chapters/14-zero-cost-setup.html" class="sidebar-link" title="The $0 AI Setup">The $0 AI Setup</a>
+    <a href="../chapters/15-budget-cost.html" class="sidebar-link" title="Budget & Cost Tracking">Budget & Cost Tracking</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Advanced Features</div>
+  <div class="sidebar-chapters">
+    <a href="../chapters/16-agents.html" class="sidebar-link" title="Agents & Delegation">Agents & Delegation</a>
+    <a href="../chapters/17-mcp-servers.html" class="sidebar-link" title="MCP Servers">MCP Servers</a>
+    <a href="../chapters/18-neam-language.html" class="sidebar-link" title="Neam Language Integration">Neam Language Integration</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Audience Guides</div>
+  <div class="sidebar-chapters">
+    <a href="../chapters/19-for-students.html" class="sidebar-link" title="For Students">For Students</a>
+    <a href="../chapters/20-for-researchers.html" class="sidebar-link" title="For Researchers">For Researchers</a>
+    <a href="../chapters/21-for-professionals.html" class="sidebar-link" title="For Professionals">For Professionals</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Walkthroughs</div>
+  <div class="sidebar-chapters">
+    <a href="../chapters/22-walkthrough-build-project.html" class="sidebar-link" title="Walkthrough: Build a Project">Walkthrough: Build a Project</a>
+    <a href="../chapters/23-walkthrough-fix-bug.html" class="sidebar-link" title="Walkthrough: Fix a Real Bug">Walkthrough: Fix a Real Bug</a>
+    <a href="../chapters/24-making-it-yours.html" class="sidebar-link" title="Making NeamCode Yours">Making NeamCode Yours</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Closing</div>
+  <div class="sidebar-chapters">
+    <a href="../chapters/25-road-ahead.html" class="sidebar-link" title="The Road Ahead">The Road Ahead</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Appendices</div>
+  <div class="sidebar-chapters">
+    <a href="A-slash-commands.html" class="sidebar-link active" title="All Slash Commands">All Slash Commands</a>
+    <a href="B-skills-reference.html" class="sidebar-link" title="All Skills Reference">All Skills Reference</a>
+    <a href="C-configuration.html" class="sidebar-link" title="Configuration Reference">Configuration Reference</a>
+    <a href="D-troubleshooting.html" class="sidebar-link" title="Troubleshooting & FAQ">Troubleshooting & FAQ</a>
+    <a href="E-glossary.html" class="sidebar-link" title="Glossary">Glossary</a>
+  </div>
+</div>
+</aside>
+
+<main class="main">
+  <article class="content">
+<h1 id="appendix-a-all-slash-commands">Appendix A: All Slash Commands <a href="#appendix-a-all-slash-commands" class="heading-anchor">#</a></h1>
+<p>📖 <strong>10 min read</strong></p>
+<p>A complete reference of every slash command available in NeamCode v0.3.5.</p>
+<div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p><strong>💡 Tip</strong> — Type <code>/help</code> inside NeamCode to see this list at any time.</p></div>
+<hr />
+<h2 id="help-information">Help &amp; Information <a href="#help-information" class="heading-anchor">#</a></h2>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Command</th>
+<th>Description</th>
+<th>Example</th>
+</tr></thead><tbody>
+<tr>
+<td><code>/help</code></td>
+<td>List all available commands</td>
+<td><code>/help</code></td>
+</tr>
+<tr>
+<td><code>/help &lt;command&gt;</code></td>
+<td>Show detailed help for a command</td>
+<td><code>/help rewind</code></td>
+</tr>
+<tr>
+<td><code>/doctor</code></td>
+<td>Run system health checks</td>
+<td><code>/doctor</code></td>
+</tr>
+<tr>
+<td><code>/version</code></td>
+<td>Show NeamCode version</td>
+<td><code>/version</code></td>
+</tr>
+</tbody></table></div>
+<h2 id="session-management">Session Management <a href="#session-management" class="heading-anchor">#</a></h2>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Command</th>
+<th>Description</th>
+<th>Example</th>
+</tr></thead><tbody>
+<tr>
+<td><code>/sessions</code></td>
+<td>List saved sessions</td>
+<td><code>/sessions</code></td>
+</tr>
+<tr>
+<td>`/resume &lt;id\</td>
+<td>name&gt;`</td>
+<td>Resume a saved session</td>
+<td><code>/resume my-project</code></td>
+</tr>
+<tr>
+<td><code>/rename &lt;name&gt;</code></td>
+<td>Name the current session</td>
+<td><code>/rename auth-refactor</code></td>
+</tr>
+<tr>
+<td><code>/clear</code></td>
+<td>Clear the conversation</td>
+<td><code>/clear</code></td>
+</tr>
+<tr>
+<td><code>/export &lt;file&gt;</code></td>
+<td>Export conversation to file</td>
+<td><code>/export chat.md</code></td>
+</tr>
+<tr>
+<td><code>/copy</code></td>
+<td>Copy last response to clipboard</td>
+<td><code>/copy</code></td>
+</tr>
+</tbody></table></div>
+<h2 id="context-memory">Context &amp; Memory <a href="#context-memory" class="heading-anchor">#</a></h2>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Command</th>
+<th>Description</th>
+<th>Example</th>
+</tr></thead><tbody>
+<tr>
+<td><code>/context</code></td>
+<td>Show context window usage</td>
+<td><code>/context</code></td>
+</tr>
+<tr>
+<td><code>/compact</code></td>
+<td>Manually trigger context compaction</td>
+<td><code>/compact</code></td>
+</tr>
+<tr>
+<td><code>/memory list</code></td>
+<td>List all memory entries</td>
+<td><code>/memory list</code></td>
+</tr>
+<tr>
+<td><code>/memory search &lt;q&gt;</code></td>
+<td>Search memories</td>
+<td><code>/memory search jwt</code></td>
+</tr>
+<tr>
+<td><code>/memory clear</code></td>
+<td>Clear all memory entries</td>
+<td><code>/memory clear</code></td>
+</tr>
+<tr>
+<td><code>/memory export</code></td>
+<td>Export memory to JSON</td>
+<td><code>/memory export</code></td>
+</tr>
+<tr>
+<td><code>/memory auto</code></td>
+<td>Show auto memory status (v0.3.5)</td>
+<td><code>/memory auto</code></td>
+</tr>
+<tr>
+<td><code>/memory auto show</code></td>
+<td>Display MEMORY.md contents (v0.3.5)</td>
+<td><code>/memory auto show</code></td>
+</tr>
+<tr>
+<td><code>/memory auto clear</code></td>
+<td>Clear auto memory for project (v0.3.5)</td>
+<td><code>/memory auto clear</code></td>
+</tr>
+<tr>
+<td><code>/memory auto topics</code></td>
+<td>List topic overflow files (v0.3.5)</td>
+<td><code>/memory auto topics</code></td>
+</tr>
+<tr>
+<td><code>/memory auto migrate</code></td>
+<td>Migrate legacy auto.json (v0.3.5)</td>
+<td><code>/memory auto migrate</code></td>
+</tr>
+</tbody></table></div>
+<h2 id="modes">Modes <a href="#modes" class="heading-anchor">#</a></h2>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Command</th>
+<th>Description</th>
+<th>Example</th>
+</tr></thead><tbody>
+<tr>
+<td><code>/mode</code></td>
+<td>Show current mode</td>
+<td><code>/mode</code></td>
+</tr>
+<tr>
+<td><code>/mode &lt;name&gt;</code></td>
+<td>Switch to a mode</td>
+<td><code>/mode explore</code></td>
+</tr>
+<tr>
+<td><code>/mode off</code></td>
+<td>Return to default mode</td>
+<td><code>/mode off</code></td>
+</tr>
+</tbody></table></div>
+<p>Available modes: <code>explore</code>, <code>debug</code>, <code>test</code>, <code>analyze</code>, <code>deploy</code>, <code>ideate</code></p>
+<h2 id="code-git">Code &amp; Git <a href="#code-git" class="heading-anchor">#</a></h2>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Command</th>
+<th>Description</th>
+<th>Example</th>
+</tr></thead><tbody>
+<tr>
+<td><code>/diff</code></td>
+<td>Show git changes</td>
+<td><code>/diff</code></td>
+</tr>
+<tr>
+<td><code>/review</code></td>
+<td>Automated code review</td>
+<td><code>/review</code></td>
+</tr>
+<tr>
+<td><code>/rewind</code></td>
+<td>List available checkpoints</td>
+<td><code>/rewind</code></td>
+</tr>
+<tr>
+<td><code>/rewind &lt;n&gt;</code></td>
+<td>Revert to checkpoint #n</td>
+<td><code>/rewind 3</code></td>
+</tr>
+<tr>
+<td><code>/rewind last</code></td>
+<td>Revert to the most recent checkpoint</td>
+<td><code>/rewind last</code></td>
+</tr>
+</tbody></table></div>
+<h2 id="provider-model">Provider &amp; Model <a href="#provider-model" class="heading-anchor">#</a></h2>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Command</th>
+<th>Description</th>
+<th>Example</th>
+</tr></thead><tbody>
+<tr>
+<td><code>/models</code></td>
+<td>List available models</td>
+<td><code>/models</code></td>
+</tr>
+<tr>
+<td><code>/cost</code></td>
+<td>Show session costs</td>
+<td><code>/cost</code></td>
+</tr>
+<tr>
+<td><code>/offline</code></td>
+<td>Switch to local Ollama (v0.3.4)</td>
+<td><code>/offline</code></td>
+</tr>
+<tr>
+<td><code>/offline models</code></td>
+<td>List available Ollama models (v0.3.4)</td>
+<td><code>/offline models</code></td>
+</tr>
+<tr>
+<td><code>/online</code></td>
+<td>Switch back to cloud (v0.3.4)</td>
+<td><code>/online</code></td>
+</tr>
+<tr>
+<td><code>/status</code></td>
+<td>Show connectivity and stats (v0.3.4)</td>
+<td><code>/status</code></td>
+</tr>
+</tbody></table></div>
+<h2 id="skills-agents">Skills &amp; Agents <a href="#skills-agents" class="heading-anchor">#</a></h2>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Command</th>
+<th>Description</th>
+<th>Example</th>
+</tr></thead><tbody>
+<tr>
+<td><code>/skill list</code></td>
+<td>List all skills</td>
+<td><code>/skill list</code></td>
+</tr>
+<tr>
+<td><code>/skill info &lt;name&gt;</code></td>
+<td>Show skill details</td>
+<td><code>/skill info file_edit</code></td>
+</tr>
+<tr>
+<td><code>/agents</code></td>
+<td>List available agents</td>
+<td><code>/agents</code></td>
+</tr>
+</tbody></table></div>
+<h2 id="mcp-servers">MCP Servers <a href="#mcp-servers" class="heading-anchor">#</a></h2>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Command</th>
+<th>Description</th>
+<th>Example</th>
+</tr></thead><tbody>
+<tr>
+<td><code>/mcp list</code></td>
+<td>List connected MCP servers</td>
+<td><code>/mcp list</code></td>
+</tr>
+<tr>
+<td><code>/mcp start &lt;name&gt;</code></td>
+<td>Start an MCP server</td>
+<td><code>/mcp start github</code></td>
+</tr>
+<tr>
+<td><code>/mcp tools &lt;name&gt;</code></td>
+<td>List tools from a server</td>
+<td><code>/mcp tools filesystem</code></td>
+</tr>
+<tr>
+<td><code>/mcp test &lt;name&gt;</code></td>
+<td>Test MCP server connection</td>
+<td><code>/mcp test github</code></td>
+</tr>
+</tbody></table></div>
+<h2 id="neam-language">Neam Language <a href="#neam-language" class="heading-anchor">#</a></h2>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Command</th>
+<th>Description</th>
+<th>Example</th>
+</tr></thead><tbody>
+<tr>
+<td><code>/neam info</code></td>
+<td>Show Neam project info</td>
+<td><code>/neam info</code></td>
+</tr>
+<tr>
+<td><code>/neam compile &lt;file&gt;</code></td>
+<td>Compile a .neam file</td>
+<td><code>/neam compile main.neam</code></td>
+</tr>
+<tr>
+<td><code>/neam run &lt;file&gt;</code></td>
+<td>Compile and run</td>
+<td><code>/neam run hello.neam</code></td>
+</tr>
+<tr>
+<td><code>/neam build</code></td>
+<td>Build entire project</td>
+<td><code>/neam build</code></td>
+</tr>
+<tr>
+<td><code>/neam files</code></td>
+<td>List .neam files</td>
+<td><code>/neam files</code></td>
+</tr>
+<tr>
+<td><code>/neam repl</code></td>
+<td>Start interactive REPL</td>
+<td><code>/neam repl</code></td>
+</tr>
+<tr>
+<td><code>/pkg list</code></td>
+<td>List installed packages</td>
+<td><code>/pkg list</code></td>
+</tr>
+<tr>
+<td><code>/pkg search &lt;name&gt;</code></td>
+<td>Search package registry</td>
+<td><code>/pkg search http</code></td>
+</tr>
+<tr>
+<td><code>/pkg install &lt;name&gt;</code></td>
+<td>Install a package</td>
+<td><code>/pkg install std.http</code></td>
+</tr>
+<tr>
+<td><code>/eval &lt;expr&gt;</code></td>
+<td>Evaluate a Neam expression</td>
+<td><code>/eval 2 + 2</code></td>
+</tr>
+<tr>
+<td><code>/eval run &lt;dataset&gt;</code></td>
+<td>Run evaluation suite</td>
+<td><code>/eval run accuracy</code></td>
+</tr>
+<tr>
+<td><code>/debug-neam &lt;file&gt;</code></td>
+<td>Start DAP debugger</td>
+<td><code>/debug-neam main.neam</code></td>
+</tr>
+</tbody></table></div>
+<h2 id="background-tasks">Background Tasks <a href="#background-tasks" class="heading-anchor">#</a></h2>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Command</th>
+<th>Description</th>
+<th>Example</th>
+</tr></thead><tbody>
+<tr>
+<td><code>/tasks</code></td>
+<td>List background tasks</td>
+<td><code>/tasks</code></td>
+</tr>
+<tr>
+<td><code>/tasks cancel &lt;id&gt;</code></td>
+<td>Cancel a background task</td>
+<td><code>/tasks cancel 3</code></td>
+</tr>
+</tbody></table></div>
+<h2 id="ui-preferences">UI &amp; Preferences <a href="#ui-preferences" class="heading-anchor">#</a></h2>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Command</th>
+<th>Description</th>
+<th>Example</th>
+</tr></thead><tbody>
+<tr>
+<td><code>/theme</code></td>
+<td>List available themes</td>
+<td><code>/theme</code></td>
+</tr>
+<tr>
+<td><code>/theme &lt;name&gt;</code></td>
+<td>Switch theme</td>
+<td><code>/theme dark</code></td>
+</tr>
+</tbody></table></div>
+<hr />
+<blockquote><p><strong>Next:</strong> <a href="B-skills-reference.md">Appendix B — All Skills</a></p></blockquote>
+    <nav class="chapter-nav"><a href="B-skills-reference.html" class="nav-next"><span class="nav-label">Next &rarr;</span><span class="nav-title">All Skills Reference</span></a></nav>
+  </article>
+</main>
+
+<button class="back-to-top" id="back-to-top" aria-label="Back to top">&#8593;</button>
+
+<div class="search-overlay" id="search-overlay">
+  <div class="search-modal">
+    <div class="search-input-wrap">
+      <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6.5" cy="6.5" r="5"/><line x1="10.5" y1="10.5" x2="15" y2="15"/></svg>
+      <input type="text" class="search-input" id="search-input" placeholder="Search chapters, topics...">
+    </div>
+    <div class="search-results" id="search-results">
+      <div class="search-empty">Start typing to search...</div>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 8: Slash Commands | Command the Future</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-base="../">
+
+<header class="topbar">
+  <div class="topbar-left">
+    <button class="hamburger" id="hamburger" aria-label="Toggle sidebar">&#9776;</button>
+    <a href="../index.html" class="topbar-title">Command the Future</a>
+  </div>
+  <div class="topbar-right">
+    <button class="topbar-btn search-btn" aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6.5" cy="6.5" r="5"/><line x1="10.5" y1="10.5" x2="15" y2="15"/></svg><kbd>Ctrl+K</kbd></button>
+    <button class="topbar-btn" id="theme-toggle" aria-label="Toggle theme"></button>
+  </div>
+</header>
+
+<div class="progress-bar"><div class="progress-fill"></div></div>
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+<aside class="sidebar" id="sidebar">
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Getting Started</div>
+  <div class="sidebar-chapters">
+    <a href="00-preface.html" class="sidebar-link" title="Preface">Preface</a>
+    <a href="01-meet-neamcode.html" class="sidebar-link" title="Meet NeamCode">Meet NeamCode</a>
+    <a href="02-install-first-conversation.html" class="sidebar-link" title="Install & First Conversation">Install & First Conversation</a>
+    <a href="03-art-of-prompting.html" class="sidebar-link" title="The Art of Prompting">The Art of Prompting</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Core Skills</div>
+  <div class="sidebar-chapters">
+    <a href="04-working-with-files.html" class="sidebar-link" title="Working with Files">Working with Files</a>
+    <a href="05-finding-things.html" class="sidebar-link" title="Finding Things in Code">Finding Things in Code</a>
+    <a href="06-commands-and-git.html" class="sidebar-link" title="Running Commands & Git">Running Commands & Git</a>
+    <a href="07-web-research.html" class="sidebar-link" title="Researching from the Terminal">Researching from the Terminal</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Workflow & Configuration</div>
+  <div class="sidebar-chapters">
+    <a href="08-slash-commands.html" class="sidebar-link active" title="Slash Commands">Slash Commands</a>
+    <a href="09-modes.html" class="sidebar-link" title="Modes">Modes</a>
+    <a href="10-sessions-context.html" class="sidebar-link" title="Sessions & Context">Sessions & Context</a>
+    <a href="11-auto-memory.html" class="sidebar-link" title="Auto Memory">Auto Memory</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Providers & Cost</div>
+  <div class="sidebar-chapters">
+    <a href="12-choosing-providers.html" class="sidebar-link" title="Choosing Your AI Provider">Choosing Your AI Provider</a>
+    <a href="13-offline-mode.html" class="sidebar-link" title="Offline Mode">Offline Mode</a>
+    <a href="14-zero-cost-setup.html" class="sidebar-link" title="The $0 AI Setup">The $0 AI Setup</a>
+    <a href="15-budget-cost.html" class="sidebar-link" title="Budget & Cost Tracking">Budget & Cost Tracking</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Advanced Features</div>
+  <div class="sidebar-chapters">
+    <a href="16-agents.html" class="sidebar-link" title="Agents & Delegation">Agents & Delegation</a>
+    <a href="17-mcp-servers.html" class="sidebar-link" title="MCP Servers">MCP Servers</a>
+    <a href="18-neam-language.html" class="sidebar-link" title="Neam Language Integration">Neam Language Integration</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Audience Guides</div>
+  <div class="sidebar-chapters">
+    <a href="19-for-students.html" class="sidebar-link" title="For Students">For Students</a>
+    <a href="20-for-researchers.html" class="sidebar-link" title="For Researchers">For Researchers</a>
+    <a href="21-for-professionals.html" class="sidebar-link" title="For Professionals">For Professionals</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Walkthroughs</div>
+  <div class="sidebar-chapters">
+    <a href="22-walkthrough-build-project.html" class="sidebar-link" title="Walkthrough: Build a Project">Walkthrough: Build a Project</a>
+    <a href="23-walkthrough-fix-bug.html" class="sidebar-link" title="Walkthrough: Fix a Real Bug">Walkthrough: Fix a Real Bug</a>
+    <a href="24-making-it-yours.html" class="sidebar-link" title="Making NeamCode Yours">Making NeamCode Yours</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Closing</div>
+  <div class="sidebar-chapters">
+    <a href="25-road-ahead.html" class="sidebar-link" title="The Road Ahead">The Road Ahead</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Appendices</div>
+  <div class="sidebar-chapters">
+    <a href="../appendices/A-slash-commands.html" class="sidebar-link" title="All Slash Commands">All Slash Commands</a>
+    <a href="../appendices/B-skills-reference.html" class="sidebar-link" title="All Skills Reference">All Skills Reference</a>
+    <a href="../appendices/C-configuration.html" class="sidebar-link" title="Configuration Reference">Configuration Reference</a>
+    <a href="../appendices/D-troubleshooting.html" class="sidebar-link" title="Troubleshooting & FAQ">Troubleshooting & FAQ</a>
+    <a href="../appendices/E-glossary.html" class="sidebar-link" title="Glossary">Glossary</a>
+  </div>
+</div>
+</aside>
+
+<main class="main">
+  <article class="content">
+<h1 id="chapter-8-slash-commands-your-quick-reference">Chapter 8: Slash Commands — Your Quick Reference <a href="#chapter-8-slash-commands-your-quick-reference" class="heading-anchor">#</a></h1>
+<blockquote><p><em>"Give me a lever long enough and a fulcrum on which to place it, and I shall move the world."</em><br>— Archimedes</p></blockquote>
+<p><strong>📖 Estimated read time: 18 minutes</strong></p>
+<hr />
+<h2 id="what-youll-learn">What You'll Learn <a href="#what-youll-learn" class="heading-anchor">#</a></h2>
+<ul>
+<li>How to access NeamCode's 40+ slash commands</li>
+<li>Session management commands for organizing your work</li>
+<li>Context and memory commands that keep NeamCode sharp</li>
+<li>Mode-switching commands for different workflows</li>
+<li>Code, Git, provider, and MCP commands</li>
+<li>UI customization and preference commands</li>
+<li>Power-user tips to chain commands effectively</li>
+</ul>
+<hr />
+<h2 id="81-getting-help">8.1 Getting Help <a href="#81-getting-help" class="heading-anchor">#</a></h2>
+<p>Every journey starts with <code>/help</code>. When you're lost, unsure, or just curious what's available, this is your compass.</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; /help
+
+  NeamCode Slash Commands
+  ═══════════════════════
+
+  Session &amp; Context
+    /sessions        List saved sessions
+    /resume          Resume a previous session
+    /rename          Rename the current session
+    /clear           Clear the conversation
+    /compact         Compress context to save tokens
+    /export          Export conversation to a file
+    /context         Show current context usage
+    /rewind          Revert to a previous checkpoint
+
+  Modes
+    /mode            Switch operating mode
+    /mode explore    Understand codebases
+    /mode debug      Find and fix bugs
+    /mode test       Write and run tests
+    /mode analyze    Data analysis tasks
+    /mode deploy     Infrastructure &amp; deployment
+    /mode ideate     Brainstorm ideas
+
+  Memory &amp; Rules
+    /memory          Manage auto memory
+    /cost            Show token/cost usage
+
+  Code &amp; Git
+    /review          Code review current changes
+    /diff            Show current git diff
+    /eval            Evaluate a Neam expression
+    /debug-neam      Debug a Neam program
+
+  Tools &amp; Providers
+    /models          List or switch AI models
+    /mcp             Manage MCP servers
+    /neam            Run Neam compiler commands
+    /pkg             Manage Neam packages
+    /skill           Manage skills
+    /tasks           View background tasks
+
+  Preferences
+    /theme           Change UI theme
+    /copy            Copy last response
+    /doctor          Diagnose environment issues
+    /status          Show system status
+    /online          Switch to online mode
+    /offline         Switch to offline mode
+
+  Type /help &lt;command&gt; for details on any command.</code></pre>
+<p>You can also get help on a specific command:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; /help rewind
+
+  /rewind — Revert to a Previous Checkpoint
+  ══════════════════════════════════════════
+
+  Usage:
+    /rewind              Show available checkpoints
+    /rewind &lt;n&gt;          Revert to checkpoint #n
+    /rewind last         Revert to the most recent checkpoint
+
+  Checkpoints are created automatically before destructive
+  operations (file edits, deletes, git commands). Use /rewind
+  to undo mistakes safely.</code></pre>
+<div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip:</strong> You don't need to memorize every command. Type <code>/</code> and pause — NeamCode will show autocomplete suggestions as you type.</p></div>
+<hr />
+<h2 id="82-session-management">8.2 Session Management <a href="#82-session-management" class="heading-anchor">#</a></h2>
+<p>Sessions are the backbone of your workflow continuity. These commands let you organize, name, resume, and clean up your work.</p>
+<h3 id="sessions-list-your-saved-sessions">/sessions — List Your Saved Sessions <a href="#sessions-list-your-saved-sessions" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; /sessions
+
+  Saved Sessions
+  ══════════════
+  #   Name                    Last Active         Messages
+  1   api-refactor            2 hours ago         47
+  2   fix-auth-bug            Yesterday           23
+  3   unnamed-session-0412    3 days ago          12
+  4   deploy-staging          1 week ago          89
+  5   database-migration      2 weeks ago         34</code></pre>
+<h3 id="resume-pick-up-where-you-left-off">/resume — Pick Up Where You Left Off <a href="#resume-pick-up-where-you-left-off" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; /resume
+
+  Select a session to resume:
+  ──────────────────────────
+  1. api-refactor (2 hours ago)
+  2. fix-auth-bug (Yesterday)
+  3. unnamed-session-0412 (3 days ago)
+  &gt; 1
+
+  ✓ Resumed session &quot;api-refactor&quot; (47 messages)
+  Last context: Refactoring the /users endpoint to use
+  the new pagination middleware...</code></pre>
+<p>You can also resume by name:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; /resume api-refactor
+
+  ✓ Resumed session &quot;api-refactor&quot; (47 messages)</code></pre>
+<h3 id="rename-give-your-session-a-name">/rename — Give Your Session a Name <a href="#rename-give-your-session-a-name" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; /rename auth-overhaul
+
+  ✓ Session renamed to &quot;auth-overhaul&quot;</code></pre>
+<h3 id="clear-start-fresh">/clear — Start Fresh <a href="#clear-start-fresh" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; /clear
+
+  ⚠ This will clear the current conversation.
+  A checkpoint will be created first.
+  Continue? (y/n) y
+
+  ✓ Checkpoint created: #7
+  ✓ Conversation cleared</code></pre>
+<div class="callout callout-note"><div class="callout-title"><span class="callout-icon">&#128221;</span> Note</div><p>📝 <strong>Note:</strong> <code>/clear</code> creates a checkpoint before clearing, so you can always <code>/rewind</code> if you clear by accident.</p></div>
+<h3 id="export-save-your-conversation">/export — Save Your Conversation <a href="#export-save-your-conversation" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; /export
+
+  Export format:
+  1. Markdown (.md)
+  2. JSON (.json)
+  3. Plain text (.txt)
+  &gt; 1
+
+  ✓ Exported to ./neamcode-export-2026-03-07.md</code></pre>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; /export conversation.json
+
+  ✓ Exported to ./conversation.json</code></pre>
+<hr />
+<h2 id="83-context-memory-commands">8.3 Context &amp; Memory Commands <a href="#83-context-memory-commands" class="heading-anchor">#</a></h2>
+<p>These commands help you manage NeamCode's working memory — what it currently knows and what it remembers long-term.</p>
+<h3 id="context-see-what-neamcode-is-thinking-about">/context — See What NeamCode Is Thinking About <a href="#context-see-what-neamcode-is-thinking-about" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; /context
+
+  Context Usage
+  ═════════════
+  Tokens used:    42,380 / 200,000  (21.2%)
+  Files loaded:   7
+  ──────────────────────────────────
+  src/api/routes.ts          3,200 tokens
+  src/api/middleware.ts       1,800 tokens
+  src/models/user.ts          2,100 tokens
+  package.json                  420 tokens
+  NEAMCODE.md                   380 tokens
+  MEMORY.md                     290 tokens
+  Conversation history       34,190 tokens</code></pre>
+<h3 id="compact-compress-when-things-get-long">/compact — Compress When Things Get Long <a href="#compact-compress-when-things-get-long" class="heading-anchor">#</a></h3>
+<p>When your conversation grows long, <code>/compact</code> summarizes older messages to free up context space:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; /compact
+
+  Compacting conversation...
+  ──────────────────────────
+  Before:  142,800 tokens (71.4%)
+  After:    38,200 tokens (19.1%)
+
+  ✓ Compressed 89 messages into a summary
+  ✓ Recent 12 messages preserved in full</code></pre>
+<div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip:</strong> NeamCode auto-compacts at 85% context usage, but you can trigger it manually anytime you feel the conversation is getting unwieldy.</p></div>
+<h3 id="cost-track-your-spending">/cost — Track Your Spending <a href="#cost-track-your-spending" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; /cost
+
+  Session Cost Summary
+  ════════════════════
+  Provider:       OpenAI (gpt-4o)
+  Input tokens:   84,200    ($0.42)
+  Output tokens:  12,600    ($0.63)
+  Total cost:     $1.05
+  Session time:   47 minutes</code></pre>
+<h3 id="memory-manage-long-term-memory">/memory — Manage Long-Term Memory <a href="#memory-manage-long-term-memory" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; /memory auto
+
+  Auto Memory: enabled
+  Location: ~/.neamcode/memory/a3f8b2c1/MEMORY.md
+  Entries: 14 (of 200 line cap)
+  Topics: 3 overflow files
+
+neamcode&gt; /memory auto show
+
+  MEMORY.md Contents
+  ═══════════════════
+  - Project uses PostgreSQL 15 with pgvector extension
+  - Auth is handled by Clerk (clerk.com)
+  - API follows REST conventions, not GraphQL
+  - Deploy target is AWS ECS Fargate
+  - Testing framework is Vitest, not Jest
+  - Team prefers explicit error handling over try/catch
+  ...
+
+neamcode&gt; /memory auto topics
+
+  Topic Overflow Files
+  ════════════════════
+  1. deployment.md      (42 lines)
+  2. database.md        (28 lines)
+  3. api-conventions.md (35 lines)</code></pre>
+<p>We'll cover the memory system in depth in Chapters 10 and 11.</p>
+<hr />
+<h2 id="84-mode-commands">8.4 Mode Commands <a href="#84-mode-commands" class="heading-anchor">#</a></h2>
+<p>Modes change how NeamCode thinks and responds. Each mode optimizes for a different kind of task.</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; /mode
+
+  Current mode: Explore
+  Available modes:
+  ────────────────
+  explore    Understand codebases — reads, explains, maps
+  debug      Find and fix bugs — traces, diagnoses, patches
+  test       Write and run tests — generates, executes, covers
+  analyze    Data analysis — queries, transforms, visualizes
+  deploy     Infrastructure — builds, ships, monitors
+  ideate     Brainstorm — generates ideas, alternatives, designs</code></pre>
+<p>Switching is instant:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; /mode debug
+
+  ✓ Switched to Debug mode
+  Debug mode active — I&#x27;ll focus on finding and fixing bugs.
+  Paste an error message or describe the issue.</code></pre>
+<div class="callout callout-note"><div class="callout-title"><span class="callout-icon">&#128221;</span> Note</div><p>📝 <strong>Note:</strong> Modes are covered in full detail in Chapter 9.</p></div>
+<hr />
+<h2 id="85-code-git-commands">8.5 Code &amp; Git Commands <a href="#85-code-git-commands" class="heading-anchor">#</a></h2>
+<h3 id="review-code-review-your-changes">/review — Code Review Your Changes <a href="#review-code-review-your-changes" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; /review
+
+  Reviewing staged and unstaged changes...
+  ═══════════════════════════════════════
+
+  src/api/routes.ts
+  ─────────────────
+  ⚠ Line 42: The `userId` parameter is not validated before
+    being used in the database query. Consider adding input
+    validation to prevent injection.
+
+  ✓ Line 78: Good use of the pagination middleware.
+
+  src/models/user.ts
+  ──────────────────
+  ⚠ Line 15: The `email` field lacks a uniqueness constraint
+    in the type definition, but the database schema enforces it.
+    Consider adding a comment or validation.
+
+  Overall: 2 warnings, 0 errors</code></pre>
+<h3 id="diff-quick-git-diff">/diff — Quick Git Diff <a href="#diff-quick-git-diff" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; /diff
+
+  Showing unstaged changes (git diff)
+  ════════════════════════════════════
+
+  src/api/routes.ts | 12 ++++++---
+  src/models/user.ts |  3 ++-
+  2 files changed, 10 insertions(+), 5 deletions(-)</code></pre>
+<h3 id="eval-run-a-neam-expression">/eval — Run a Neam Expression <a href="#eval-run-a-neam-expression" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; /eval 2 + 2
+
+  Result: 4
+
+neamcode&gt; /eval agent.status()
+
+  Result: &quot;idle&quot;</code></pre>
+<h3 id="debug-neam-debug-a-neam-program">/debug-neam — Debug a Neam Program <a href="#debug-neam-debug-a-neam-program" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; /debug-neam src/agents/assistant.neam
+
+  Loading assistant.neam...
+  Setting breakpoint at entry...
+  ─────────────────────────────
+  → Line 1: agent Assistant {
+    Breakpoint hit. Type &#x27;next&#x27;, &#x27;step&#x27;, &#x27;continue&#x27;, or &#x27;inspect &lt;var&gt;&#x27;</code></pre>
+<h3 id="tasks-view-background-tasks">/tasks — View Background Tasks <a href="#tasks-view-background-tasks" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; /tasks
+
+  Background Tasks
+  ════════════════
+  #1  Running tests...          ██████░░░░  60%
+  #2  Indexing codebase          ✓ Complete
+  #3  Building Docker image      Queued</code></pre>
+<hr />
+<h2 id="86-provider-model-commands">8.6 Provider &amp; Model Commands <a href="#86-provider-model-commands" class="heading-anchor">#</a></h2>
+<h3 id="models-list-or-switch-models">/models — List or Switch Models <a href="#models-list-or-switch-models" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; /models
+
+  Available Models
+  ════════════════
+  Provider     Model               Status
+  ────────────────────────────────────────
+  openai       gpt-4o           ✓ Active
+  openai       gpt-4o-mini        Available
+  anthropic    claude-sonnet-4    Available
+  ollama       llama3.1:8b        Available (local)
+  aws          claude-sonnet-4  Available
+
+  Switch with: /models &lt;provider&gt;/&lt;model&gt;</code></pre>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; /models ollama/llama3.1:8b
+
+  ✓ Switched to ollama/llama3.1:8b (local)
+  Note: Running locally — no API costs will be incurred.</code></pre>
+<h3 id="online-and-offline-control-connectivity">/online and /offline — Control Connectivity <a href="#online-and-offline-control-connectivity" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; /offline
+
+  ✓ Switched to offline mode
+  Using local model: ollama/llama3.1:8b
+  Cloud features disabled.
+
+neamcode&gt; /online
+
+  ✓ Switched to online mode
+  Using cloud model: openai/gpt-4o
+  All features restored.</code></pre>
+<h3 id="doctor-check-your-environment">/doctor — Check Your Environment <a href="#doctor-check-your-environment" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; /doctor
+
+  NeamCode Environment Check
+  ══════════════════════════
+  ✓ NeamCode version:     0.3.5
+  ✓ Neam compiler:        0.2.8 (neam-release)
+  ✓ Node.js:              v20.11.0
+  ✓ Git:                  2.43.0
+  ✓ OpenAI API key:       configured
+  ✓ Ollama:               running (localhost:11434)
+  ⚠ AWS credentials:      not configured
+  ✓ NEAMCODE.md:          found (project-level)
+  ✓ MEMORY.md:            found (14 entries)
+  ✓ Disk space:           42 GB available</code></pre>
+<h3 id="status-quick-system-status">/status — Quick System Status <a href="#status-quick-system-status" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; /status
+
+  Status
+  ══════
+  Mode:     Explore
+  Model:    openai/gpt-4o
+  Session:  api-refactor (47 msgs)
+  Context:  42,380 / 200,000 tokens (21.2%)
+  Cost:     $1.05 this session
+  Memory:   14 entries loaded</code></pre>
+<hr />
+<h2 id="87-mcp-neam-commands">8.7 MCP &amp; Neam Commands <a href="#87-mcp-neam-commands" class="heading-anchor">#</a></h2>
+<h3 id="mcp-manage-mcp-servers">/mcp — Manage MCP Servers <a href="#mcp-manage-mcp-servers" class="heading-anchor">#</a></h3>
+<p>MCP (Model Context Protocol) servers extend NeamCode with external tool integrations:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; /mcp
+
+  MCP Servers
+  ═══════════
+  Name               Status      Tools
+  ──────────────────────────────────────
+  filesystem         ✓ Running   8 tools
+  postgres           ✓ Running   5 tools
+  github             ○ Stopped   —
+
+neamcode&gt; /mcp start github
+
+  ✓ Started MCP server: github
+  Available tools: create_issue, list_repos, create_pr,
+                   get_file, search_code</code></pre>
+<h3 id="neam-neam-compiler-commands">/neam — Neam Compiler Commands <a href="#neam-neam-compiler-commands" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; /neam compile src/agents/assistant.neam
+
+  Compiling assistant.neam...
+  ✓ Output: build/assistant.neamb (bytecode)
+
+neamcode&gt; /neam run build/assistant.neamb
+
+  Running assistant agent...
+  Agent &quot;Assistant&quot; is now active.</code></pre>
+<h3 id="pkg-package-management">/pkg — Package Management <a href="#pkg-package-management" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; /pkg search rag
+
+  Neam Packages matching &quot;rag&quot;
+  ════════════════════════════
+  neam-rag-utils     v1.2.0   RAG pipeline helpers
+  neam-chunker       v0.8.3   Smart document chunking
+  neam-embeddings    v2.0.1   Embedding model wrappers
+
+neamcode&gt; /pkg install neam-rag-utils
+
+  ✓ Installed neam-rag-utils@1.2.0</code></pre>
+<h3 id="skill-manage-skills">/skill — Manage Skills <a href="#skill-manage-skills" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; /skill list
+
+  Available Skills
+  ════════════════
+  calculator      Built-in    Arithmetic operations
+  web-search      Built-in    Search the web
+  file-reader     MCP         Read files via MCP
+  db-query        Custom      Query PostgreSQL</code></pre>
+<hr />
+<h2 id="88-ui-preferences">8.8 UI &amp; Preferences <a href="#88-ui-preferences" class="heading-anchor">#</a></h2>
+<h3 id="theme-change-the-look">/theme — Change the Look <a href="#theme-change-the-look" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; /theme
+
+  Available Themes
+  ════════════════
+  1. neam-dark (current)
+  2. neam-light
+  3. dracula
+  4. monokai
+  5. solarized
+
+neamcode&gt; /theme dracula
+
+  ✓ Theme changed to dracula</code></pre>
+<h3 id="copy-copy-the-last-response">/copy — Copy the Last Response <a href="#copy-copy-the-last-response" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; /copy
+
+  ✓ Last response copied to clipboard</code></pre>
+<div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip:</strong> <code>/copy</code> is invaluable when NeamCode generates a long code block you want to paste into your editor.</p></div>
+<hr />
+<h2 id="89-pro-tips">8.9 Pro Tips <a href="#89-pro-tips" class="heading-anchor">#</a></h2>
+<h3 id="the-complete-command-reference">The Complete Command Reference <a href="#the-complete-command-reference" class="heading-anchor">#</a></h3>
+<p>Here is every slash command organized by category:</p>
+<div class="info-box">
+  <div class="info-box-header red">NEAMCODE SLASH COMMANDS</div>
+  <div class="info-box-body">
+    <h4>Help &amp; Status</h4>
+    <div class="table-wrap"><table>
+      <tbody>
+        <tr><td><code>/help</code></td><td>Show all commands or help on one</td></tr>
+        <tr><td><code>/doctor</code></td><td>Diagnose environment issues</td></tr>
+        <tr><td><code>/status</code></td><td>Show system status summary</td></tr>
+      </tbody>
+    </table></div>
+    <h4>Session Management</h4>
+    <div class="table-wrap"><table>
+      <tbody>
+        <tr><td><code>/sessions</code></td><td>List saved sessions</td></tr>
+        <tr><td><code>/resume</code></td><td>Resume a previous session</td></tr>
+        <tr><td><code>/rename</code></td><td>Rename the current session</td></tr>
+        <tr><td><code>/clear</code></td><td>Clear the conversation</td></tr>
+        <tr><td><code>/export</code></td><td>Export conversation to file</td></tr>
+      </tbody>
+    </table></div>
+    <h4>Context &amp; Memory</h4>
+    <div class="table-wrap"><table>
+      <tbody>
+        <tr><td><code>/context</code></td><td>Show context token usage</td></tr>
+        <tr><td><code>/compact</code></td><td>Compress context to save tokens</td></tr>
+        <tr><td><code>/memory</code></td><td>Manage auto memory (MEMORY.md)</td></tr>
+        <tr><td><code>/cost</code></td><td>Show token and cost usage</td></tr>
+        <tr><td><code>/rewind</code></td><td>Revert to a previous checkpoint</td></tr>
+      </tbody>
+    </table></div>
+    <h4>Modes</h4>
+    <div class="table-wrap"><table>
+      <tbody>
+        <tr><td><code>/mode</code></td><td>Show or switch operating mode</td></tr>
+        <tr><td><code>/mode explore</code></td><td>Understand codebases</td></tr>
+        <tr><td><code>/mode debug</code></td><td>Find and fix bugs</td></tr>
+        <tr><td><code>/mode test</code></td><td>Write and run tests</td></tr>
+        <tr><td><code>/mode analyze</code></td><td>Data analysis work</td></tr>
+        <tr><td><code>/mode deploy</code></td><td>Infrastructure &amp; deployment</td></tr>
+        <tr><td><code>/mode ideate</code></td><td>Brainstorm and design</td></tr>
+      </tbody>
+    </table></div>
+    <h4>Code &amp; Git</h4>
+    <div class="table-wrap"><table>
+      <tbody>
+        <tr><td><code>/review</code></td><td>Code review current changes</td></tr>
+        <tr><td><code>/diff</code></td><td>Show git diff</td></tr>
+        <tr><td><code>/eval</code></td><td>Evaluate a Neam expression</td></tr>
+        <tr><td><code>/debug-neam</code></td><td>Debug a Neam program</td></tr>
+        <tr><td><code>/tasks</code></td><td>View background tasks</td></tr>
+      </tbody>
+    </table></div>
+    <h4>Providers &amp; Models</h4>
+    <div class="table-wrap"><table>
+      <tbody>
+        <tr><td><code>/models</code></td><td>List or switch AI models</td></tr>
+        <tr><td><code>/online</code></td><td>Switch to online (cloud) mode</td></tr>
+        <tr><td><code>/offline</code></td><td>Switch to offline (local) mode</td></tr>
+      </tbody>
+    </table></div>
+    <h4>MCP &amp; Neam Tools</h4>
+    <div class="table-wrap"><table>
+      <tbody>
+        <tr><td><code>/mcp</code></td><td>Manage MCP servers</td></tr>
+        <tr><td><code>/neam</code></td><td>Run Neam compiler commands</td></tr>
+        <tr><td><code>/pkg</code></td><td>Manage Neam packages</td></tr>
+        <tr><td><code>/skill</code></td><td>Manage skills</td></tr>
+      </tbody>
+    </table></div>
+    <h4>UI &amp; Preferences</h4>
+    <div class="table-wrap"><table>
+      <tbody>
+        <tr><td><code>/theme</code></td><td>Change UI theme</td></tr>
+        <tr><td><code>/copy</code></td><td>Copy last response to clipboard</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</div>
+<h3 id="command-shortcuts">Command Shortcuts <a href="#command-shortcuts" class="heading-anchor">#</a></h3>
+<p>Many commands accept arguments directly, saving you an interactive menu:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">/resume api-refactor       # Resume by name, skip the menu
+/mode debug                # Switch directly, no prompt
+/models ollama/llama3.1    # Switch model in one step
+/export notes.md           # Export to specific file
+/rewind last               # Undo the last checkpoint</code></pre>
+<h3 id="chaining-your-workflow">Chaining Your Workflow <a href="#chaining-your-workflow" class="heading-anchor">#</a></h3>
+<p>A typical debugging workflow might look like:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; /mode debug
+neamcode&gt; /diff
+neamcode&gt; Explain why the auth middleware is failing
+neamcode&gt; /review
+neamcode&gt; /cost</code></pre>
+<h3 id="commands-youll-use-every-day">Commands You'll Use Every Day <a href="#commands-youll-use-every-day" class="heading-anchor">#</a></h3>
+<p>If you're just getting started, focus on these five:</p>
+<ol>
+<li><strong><code>/help</code></strong> — When you forget anything</li>
+<li><strong><code>/mode</code></strong> — Match your tool to your task</li>
+<li><strong><code>/context</code></strong> — Know how much room you have</li>
+<li><strong><code>/cost</code></strong> — Keep an eye on spending</li>
+<li><strong><code>/status</code></strong> — Quick sanity check</li>
+</ol>
+<div class="callout callout-warning"><div class="callout-title"><span class="callout-icon">&#9888;&#65039;</span> Warning</div><p>⚠️ <strong>Warning:</strong> Some commands like <code>/clear</code> are destructive. NeamCode creates checkpoints before these operations, but it's good practice to <code>/export</code> important conversations before clearing them.</p></div>
+<hr />
+<h2 id="exercises">Exercises <a href="#exercises" class="heading-anchor">#</a></h2>
+<p><strong>🎯 Exercise 8.1:</strong> Open NeamCode and type <code>/help</code>. Read through the full list. Pick three commands you haven't used before and try each one.</p>
+<p><strong>🎯 Exercise 8.2:</strong> Start a conversation about any topic. After a few exchanges, run <code>/context</code> to see your token usage. Then run <code>/compact</code> and check <code>/context</code> again. How much did it save?</p>
+<p><strong>🎯 Exercise 8.3:</strong> Run <code>/doctor</code> and check your environment. If anything shows a warning, investigate and fix it.</p>
+<p><strong>🎯 Exercise 8.4:</strong> Practice the session workflow: have a conversation, <code>/rename</code> it to something meaningful, <code>/export</code> it, then <code>/clear</code>. Start fresh, then use <code>/resume</code> to get back to where you were.</p>
+<p><strong>🎯 Exercise 8.5:</strong> Switch between at least 3 different modes using <code>/mode</code>. Ask the same question in each mode (e.g., "Tell me about this project's structure") and observe how the responses differ.</p>
+<hr />
+    <nav class="chapter-nav"><a href="07-web-research.html" class="nav-prev"><span class="nav-label">&larr; Previous</span><span class="nav-title">Researching from the Terminal</span></a><a href="09-modes.html" class="nav-next"><span class="nav-label">Next &rarr;</span><span class="nav-title">Modes</span></a></nav>
+  </article>
+</main>
+
+<button class="back-to-top" id="back-to-top" aria-label="Back to top">&#8593;</button>
+
+<div class="search-overlay" id="search-overlay">
+  <div class="search-modal">
+    <div class="search-input-wrap">
+      <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6.5" cy="6.5" r="5"/><line x1="10.5" y1="10.5" x2="15" y2="15"/></svg>
+      <input type="text" class="search-input" id="search-input" placeholder="Search chapters, topics...">
+    </div>
+    <div class="search-results" id="search-results">
+      <div class="search-empty">Start typing to search...</div>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/script.js"></script>
+</body>
+</html>

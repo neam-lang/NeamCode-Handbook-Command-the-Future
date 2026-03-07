@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 820 380">
+  <defs>
+    <marker id="arr13" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#24292f"/>
+    </marker>
+    <marker id="arr13g" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#1a7f37"/>
+    </marker>
+    <marker id="arr13r" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#BE0027"/>
+    </marker>
+  </defs>
+
+  <!-- ONLINE state -->
+  <rect x="40" y="80" width="130" height="60" rx="10" fill="#1a7f37" stroke="#14622c" stroke-width="2"/>
+  <text x="105" y="106" text-anchor="middle" font-family="'Inter', Arial, sans-serif" font-size="15" fill="white" font-weight="700">ONLINE</text>
+  <text x="105" y="125" text-anchor="middle" font-family="'Inter', Arial, sans-serif" font-size="10" fill="#b3f0c2">Cloud Provider</text>
+
+  <!-- Arrow: Online -> TCP Probe -->
+  <line x1="170" y1="110" x2="215" y2="110" stroke="#24292f" stroke-width="2" marker-end="url(#arr13)"/>
+
+  <!-- TCP Probe -->
+  <rect x="225" y="80" width="120" height="60" rx="8" fill="none" stroke="#0060B6" stroke-width="2"/>
+  <text x="285" y="106" text-anchor="middle" font-family="'Inter', Arial, sans-serif" font-size="12" fill="#0060B6" font-weight="600">TCP Probe</text>
+  <text x="285" y="124" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" fill="#666">every 30s</text>
+
+  <!-- Success loop back -->
+  <path d="M285 80 Q285 50 175 50 Q105 50 105 78" fill="none" stroke="#1a7f37" stroke-width="1.5" marker-end="url(#arr13g)" stroke-dasharray="5,3"/>
+  <text x="200" y="44" text-anchor="middle" font-family="'Inter', Arial, sans-serif" font-size="10" fill="#1a7f37" font-weight="600">Success: stay online</text>
+
+  <!-- Arrow: Probe -> Failure count -->
+  <line x1="345" y1="110" x2="395" y2="110" stroke="#BE0027" stroke-width="2" marker-end="url(#arr13r)"/>
+  <text x="370" y="100" text-anchor="middle" font-family="'Inter', Arial, sans-serif" font-size="9" fill="#BE0027">Fail</text>
+
+  <!-- Failure counter -->
+  <rect x="405" y="80" width="110" height="60" rx="8" fill="#BE0027" opacity="0.1" stroke="#BE0027" stroke-width="2"/>
+  <text x="460" y="106" text-anchor="middle" font-family="'Inter', Arial, sans-serif" font-size="12" fill="#BE0027" font-weight="600">Failure Count</text>
+  <text x="460" y="124" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="10" fill="#BE0027">+1</text>
+
+  <!-- Arrow: 2 failures -> SWITCH OFFLINE -->
+  <line x1="515" y1="110" x2="565" y2="110" stroke="#BE0027" stroke-width="2" marker-end="url(#arr13r)"/>
+  <text x="540" y="100" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" fill="#BE0027">&gt;=2</text>
+
+  <!-- SWITCH OFFLINE -->
+  <rect x="575" y="70" width="190" height="80" rx="10" fill="#BE0027" stroke="#960020" stroke-width="2"/>
+  <text x="670" y="100" text-anchor="middle" font-family="'Inter', Arial, sans-serif" font-size="15" fill="white" font-weight="700">OFFLINE</text>
+  <text x="670" y="120" text-anchor="middle" font-family="'Inter', Arial, sans-serif" font-size="11" fill="#ffb3c1">Route to Ollama</text>
+  <text x="670" y="138" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" fill="#ffb3c1">localhost:11434</text>
+
+  <!-- Arrow down: Continue probing while offline -->
+  <line x1="670" y1="150" x2="670" y2="200" stroke="#24292f" stroke-width="2" marker-end="url(#arr13)"/>
+  <text x="695" y="180" font-family="'Inter', Arial, sans-serif" font-size="9" fill="#666">keep probing</text>
+
+  <!-- Recovery probe -->
+  <rect x="600" y="210" width="140" height="55" rx="8" fill="none" stroke="#0060B6" stroke-width="2"/>
+  <text x="670" y="233" text-anchor="middle" font-family="'Inter', Arial, sans-serif" font-size="12" fill="#0060B6" font-weight="600">Recovery Probe</text>
+  <text x="670" y="251" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" fill="#666">TCP check</text>
+
+  <!-- Arrow: Recovery -> success counter -->
+  <line x1="600" y1="237" x2="480" y2="237" stroke="#1a7f37" stroke-width="2" marker-end="url(#arr13g)"/>
+  <text x="540" y="228" text-anchor="middle" font-family="'Inter', Arial, sans-serif" font-size="9" fill="#1a7f37">Success</text>
+
+  <!-- Success counter -->
+  <rect x="340" y="210" width="130" height="55" rx="8" fill="#1a7f37" opacity="0.1" stroke="#1a7f37" stroke-width="2"/>
+  <text x="405" y="233" text-anchor="middle" font-family="'Inter', Arial, sans-serif" font-size="12" fill="#1a7f37" font-weight="600">Success Count</text>
+  <text x="405" y="251" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" fill="#1a7f37">+1</text>
+
+  <!-- Arrow: 3 successes + dwell -> SWITCH ONLINE -->
+  <line x1="340" y1="237" x2="215" y2="237" stroke="#1a7f37" stroke-width="2" marker-end="url(#arr13g)"/>
+  <text x="275" y="228" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" fill="#1a7f37">&gt;=3 + 60s dwell</text>
+
+  <!-- SWITCH ONLINE -->
+  <rect x="60" y="210" width="145" height="55" rx="10" fill="#1a7f37" stroke="#14622c" stroke-width="2"/>
+  <text x="132" y="234" text-anchor="middle" font-family="'Inter', Arial, sans-serif" font-size="14" fill="white" font-weight="700">BACK ONLINE</text>
+  <text x="132" y="253" text-anchor="middle" font-family="'Inter', Arial, sans-serif" font-size="10" fill="#b3f0c2">Cloud restored</text>
+
+  <!-- Curved arrow back up to Online state -->
+  <path d="M80 210 Q40 170 70 148 Q80 140 90 140" fill="none" stroke="#1a7f37" stroke-width="1.5" marker-end="url(#arr13g)"/>
+
+  <!-- Chapter label -->
+  <text x="400" y="340" text-anchor="middle" font-family="'Inter', Arial, sans-serif" font-size="11" fill="#999">Chapter 13 — Offline Recovery Pipeline</text>
+</svg>

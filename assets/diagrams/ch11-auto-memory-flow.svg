@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 950 350">
+  <defs>
+    <marker id="arrowM" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#0060B6"/>
+    </marker>
+    <marker id="arrowMg" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#1a7f37"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="475" y="35" text-anchor="middle" font-family="'Inter', Arial, sans-serif" font-size="20" font-weight="700" fill="#24292f">Auto Memory Extraction Flow</text>
+
+  <!-- Step 1: Conversation -->
+  <rect x="20" y="100" width="140" height="70" rx="8" fill="#e8f4fd" stroke="#0060B6" stroke-width="2"/>
+  <text x="90" y="130" text-anchor="middle" font-family="'Inter', Arial, sans-serif" font-size="14" font-weight="600" fill="#0060B6">Conversation</text>
+  <text x="90" y="150" text-anchor="middle" font-family="'Inter', Arial, sans-serif" font-size="11" fill="#24292f">Chat with AI</text>
+
+  <!-- Arrow -->
+  <line x1="160" y1="135" x2="195" y2="135" stroke="#0060B6" stroke-width="2" marker-end="url(#arrowM)"/>
+
+  <!-- Step 2: Session End -->
+  <rect x="205" y="100" width="140" height="70" rx="8" fill="#f0e6fa" stroke="#8250df" stroke-width="2"/>
+  <text x="275" y="130" text-anchor="middle" font-family="'Inter', Arial, sans-serif" font-size="14" font-weight="600" fill="#8250df">Session End</text>
+  <text x="275" y="150" text-anchor="middle" font-family="'Inter', Arial, sans-serif" font-size="11" fill="#24292f">Ctrl+C or /exit</text>
+
+  <!-- Arrow -->
+  <line x1="345" y1="135" x2="380" y2="135" stroke="#0060B6" stroke-width="2" marker-end="url(#arrowM)"/>
+
+  <!-- Step 3: Extract Knowledge -->
+  <rect x="390" y="90" width="160" height="90" rx="8" fill="#fff8e1" stroke="#9a6700" stroke-width="2"/>
+  <text x="470" y="120" text-anchor="middle" font-family="'Inter', Arial, sans-serif" font-size="14" font-weight="600" fill="#9a6700">Extract</text>
+  <text x="470" y="138" text-anchor="middle" font-family="'Inter', Arial, sans-serif" font-size="14" font-weight="600" fill="#9a6700">Knowledge</text>
+  <text x="470" y="162" text-anchor="middle" font-family="'Inter', Arial, sans-serif" font-size="11" fill="#24292f">Patterns, decisions,</text>
+  <text x="470" y="175" text-anchor="middle" font-family="'Inter', Arial, sans-serif" font-size="11" fill="#24292f">preferences</text>
+
+  <!-- Arrow -->
+  <line x1="550" y1="135" x2="585" y2="135" stroke="#0060B6" stroke-width="2" marker-end="url(#arrowM)"/>
+
+  <!-- Step 4: MEMORY.md -->
+  <rect x="595" y="85" width="150" height="100" rx="8" fill="#e6f4ea" stroke="#1a7f37" stroke-width="2"/>
+  <text x="670" y="115" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="14" font-weight="600" fill="#1a7f37">MEMORY.md</text>
+  <line x1="615" y1="125" x2="725" y2="125" stroke="#1a7f37" stroke-width="1" opacity="0.3"/>
+  <text x="670" y="145" text-anchor="middle" font-family="'Inter', Arial, sans-serif" font-size="12" fill="#24292f">Primary store</text>
+  <rect x="625" y="155" width="90" height="22" rx="11" fill="#fde8ec" stroke="#BE0027" stroke-width="1"/>
+  <text x="670" y="170" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600" fill="#BE0027">200 line cap</text>
+
+  <!-- Arrow down to overflow -->
+  <line x1="670" y1="185" x2="670" y2="220" stroke="#BE0027" stroke-width="2" marker-end="url(#arrowM)"/>
+  <text x="700" y="210" font-family="'Inter', Arial, sans-serif" font-size="11" fill="#BE0027">Overflow</text>
+
+  <!-- Step 5: Topic Files -->
+  <rect x="580" y="230" width="180" height="100" rx="8" fill="#f0e6fa" stroke="#8250df" stroke-width="2"/>
+  <text x="670" y="255" text-anchor="middle" font-family="'Inter', Arial, sans-serif" font-size="14" font-weight="600" fill="#8250df">Topic Files</text>
+  <line x1="600" y1="265" x2="740" y2="265" stroke="#8250df" stroke-width="1" opacity="0.3"/>
+  <text x="670" y="285" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="11" fill="#24292f">debugging.md</text>
+  <text x="670" y="300" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="11" fill="#24292f">architecture.md</text>
+  <text x="670" y="315" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="11" fill="#24292f">preferences.md</text>
+
+  <!-- Arrow from topic files back to next session -->
+  <path d="M 580 280 Q 470 280 470 310 Q 470 340 90 340 Q 40 340 40 280 Q 40 200 40 170" fill="none" stroke="#1a7f37" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#arrowMg)"/>
+  <text x="280" y="335" text-anchor="middle" font-family="'Inter', Arial, sans-serif" font-size="11" font-style="italic" fill="#1a7f37">Loaded into next session automatically</text>
+</svg>

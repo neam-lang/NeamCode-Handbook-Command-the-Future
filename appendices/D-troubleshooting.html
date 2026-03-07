@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Appendix D: Troubleshooting &amp; FAQ | Command the Future</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-base="../">
+
+<header class="topbar">
+  <div class="topbar-left">
+    <button class="hamburger" id="hamburger" aria-label="Toggle sidebar">&#9776;</button>
+    <a href="../index.html" class="topbar-title">Command the Future</a>
+  </div>
+  <div class="topbar-right">
+    <button class="topbar-btn search-btn" aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6.5" cy="6.5" r="5"/><line x1="10.5" y1="10.5" x2="15" y2="15"/></svg><kbd>Ctrl+K</kbd></button>
+    <button class="topbar-btn" id="theme-toggle" aria-label="Toggle theme"></button>
+  </div>
+</header>
+
+<div class="progress-bar"><div class="progress-fill"></div></div>
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+<aside class="sidebar" id="sidebar">
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Getting Started</div>
+  <div class="sidebar-chapters">
+    <a href="../chapters/00-preface.html" class="sidebar-link" title="Preface">Preface</a>
+    <a href="../chapters/01-meet-neamcode.html" class="sidebar-link" title="Meet NeamCode">Meet NeamCode</a>
+    <a href="../chapters/02-install-first-conversation.html" class="sidebar-link" title="Install & First Conversation">Install & First Conversation</a>
+    <a href="../chapters/03-art-of-prompting.html" class="sidebar-link" title="The Art of Prompting">The Art of Prompting</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Core Skills</div>
+  <div class="sidebar-chapters">
+    <a href="../chapters/04-working-with-files.html" class="sidebar-link" title="Working with Files">Working with Files</a>
+    <a href="../chapters/05-finding-things.html" class="sidebar-link" title="Finding Things in Code">Finding Things in Code</a>
+    <a href="../chapters/06-commands-and-git.html" class="sidebar-link" title="Running Commands & Git">Running Commands & Git</a>
+    <a href="../chapters/07-web-research.html" class="sidebar-link" title="Researching from the Terminal">Researching from the Terminal</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Workflow & Configuration</div>
+  <div class="sidebar-chapters">
+    <a href="../chapters/08-slash-commands.html" class="sidebar-link" title="Slash Commands">Slash Commands</a>
+    <a href="../chapters/09-modes.html" class="sidebar-link" title="Modes">Modes</a>
+    <a href="../chapters/10-sessions-context.html" class="sidebar-link" title="Sessions & Context">Sessions & Context</a>
+    <a href="../chapters/11-auto-memory.html" class="sidebar-link" title="Auto Memory">Auto Memory</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Providers & Cost</div>
+  <div class="sidebar-chapters">
+    <a href="../chapters/12-choosing-providers.html" class="sidebar-link" title="Choosing Your AI Provider">Choosing Your AI Provider</a>
+    <a href="../chapters/13-offline-mode.html" class="sidebar-link" title="Offline Mode">Offline Mode</a>
+    <a href="../chapters/14-zero-cost-setup.html" class="sidebar-link" title="The $0 AI Setup">The $0 AI Setup</a>
+    <a href="../chapters/15-budget-cost.html" class="sidebar-link" title="Budget & Cost Tracking">Budget & Cost Tracking</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Advanced Features</div>
+  <div class="sidebar-chapters">
+    <a href="../chapters/16-agents.html" class="sidebar-link" title="Agents & Delegation">Agents & Delegation</a>
+    <a href="../chapters/17-mcp-servers.html" class="sidebar-link" title="MCP Servers">MCP Servers</a>
+    <a href="../chapters/18-neam-language.html" class="sidebar-link" title="Neam Language Integration">Neam Language Integration</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Audience Guides</div>
+  <div class="sidebar-chapters">
+    <a href="../chapters/19-for-students.html" class="sidebar-link" title="For Students">For Students</a>
+    <a href="../chapters/20-for-researchers.html" class="sidebar-link" title="For Researchers">For Researchers</a>
+    <a href="../chapters/21-for-professionals.html" class="sidebar-link" title="For Professionals">For Professionals</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Walkthroughs</div>
+  <div class="sidebar-chapters">
+    <a href="../chapters/22-walkthrough-build-project.html" class="sidebar-link" title="Walkthrough: Build a Project">Walkthrough: Build a Project</a>
+    <a href="../chapters/23-walkthrough-fix-bug.html" class="sidebar-link" title="Walkthrough: Fix a Real Bug">Walkthrough: Fix a Real Bug</a>
+    <a href="../chapters/24-making-it-yours.html" class="sidebar-link" title="Making NeamCode Yours">Making NeamCode Yours</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Closing</div>
+  <div class="sidebar-chapters">
+    <a href="../chapters/25-road-ahead.html" class="sidebar-link" title="The Road Ahead">The Road Ahead</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Appendices</div>
+  <div class="sidebar-chapters">
+    <a href="A-slash-commands.html" class="sidebar-link" title="All Slash Commands">All Slash Commands</a>
+    <a href="B-skills-reference.html" class="sidebar-link" title="All Skills Reference">All Skills Reference</a>
+    <a href="C-configuration.html" class="sidebar-link" title="Configuration Reference">Configuration Reference</a>
+    <a href="D-troubleshooting.html" class="sidebar-link active" title="Troubleshooting & FAQ">Troubleshooting & FAQ</a>
+    <a href="E-glossary.html" class="sidebar-link" title="Glossary">Glossary</a>
+  </div>
+</div>
+</aside>
+
+<main class="main">
+  <article class="content">
+<h1 id="appendix-d-troubleshooting-faq">Appendix D: Troubleshooting &amp; FAQ <a href="#appendix-d-troubleshooting-faq" class="heading-anchor">#</a></h1>
+<p>📖 <strong>10 min read</strong></p>
+<hr />
+<h2 id="common-issues">Common Issues <a href="#common-issues" class="heading-anchor">#</a></h2>
+<h3 id="installation-problems">Installation Problems <a href="#installation-problems" class="heading-anchor">#</a></h3>
+<p><strong>"Command not found: neamcode"</strong></p>
+<p>Your shell can't find the NeamCode binary. Fix:</p>
+<div class="code-header"><span class="code-lang">bash</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-bash"># Add to PATH
+$ echo &#x27;export PATH=&quot;$HOME/.neamcode/bin:$PATH&quot;&#x27; &gt;&gt; ~/.zshrc
+$ source ~/.zshrc
+
+# Or for bash:
+$ echo &#x27;export PATH=&quot;$HOME/.neamcode/bin:$PATH&quot;&#x27; &gt;&gt; ~/.bashrc
+$ source ~/.bashrc</code></pre>
+<p><strong>"Error: Node.js version X is not supported"</strong></p>
+<p>NeamCode requires Node.js 18.0 or later:</p>
+<div class="code-header"><span class="code-lang">bash</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-bash"># Check your version
+$ node --version
+
+# Update via nvm
+$ nvm install 20
+$ nvm use 20
+
+# Or via brew (macOS)
+$ brew upgrade node</code></pre>
+<p><strong>"EACCES: permission denied"</strong></p>
+<div class="code-header"><span class="code-lang">bash</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-bash">$ sudo chown -R $(whoami) ~/.neamcode</code></pre>
+<hr />
+<h3 id="provider-problems">Provider Problems <a href="#provider-problems" class="heading-anchor">#</a></h3>
+<p><strong>"No providers available"</strong></p>
+<p>You need at least one AI provider configured. Quickest fix:</p>
+<div class="code-header"><span class="code-lang">bash</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-bash"># Install Ollama (free, local)
+$ brew install ollama    # macOS
+$ ollama serve &amp;
+$ ollama pull llama3.2:3b</code></pre>
+<p><strong>"Missing API key for X"</strong></p>
+<p>Set the environment variable:</p>
+<div class="code-header"><span class="code-lang">bash</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-bash">$ export ANTHROPIC_API_KEY=&quot;sk-ant-...&quot;
+$ export OPENAI_API_KEY=&quot;sk-...&quot;
+$ export GEMINI_API_KEY=&quot;AI...&quot;</code></pre>
+<p><strong>"Rate limited by provider"</strong></p>
+<ul>
+<li>Wait a minute and try again</li>
+<li>Switch to a different provider: configure a fallback in <code>neamcode.config.yml</code></li>
+<li>Use Ollama for non-critical tasks to reduce API calls</li>
+</ul>
+<p><strong>"Context window exceeded"</strong></p>
+<p>Your conversation is too long for the provider's limit:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: /compact</code></pre>
+<p>This summarizes older messages and frees up space.</p>
+<hr />
+<h3 id="memory-problems-v035">Memory Problems (v0.3.5) <a href="#memory-problems-v035" class="heading-anchor">#</a></h3>
+<p><strong>"MEMORY.md is not loading"</strong></p>
+<p>Check the file exists:</p>
+<div class="code-header"><span class="code-lang">bash</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-bash">$ ls ~/.neamcode/memory/</code></pre>
+<p>Each project has a subdirectory named by its SHA-256 hash. Run <code>/memory auto</code> in NeamCode to see the status.</p>
+<p><strong>"Auto memory isn't saving anything"</strong></p>
+<p>Auto memory extracts knowledge at session shutdown. Make sure you're:</p>
+<ol>
+<li>Having conversations with useful information</li>
+<li>Exiting cleanly (Ctrl+C or Ctrl+D, not killing the process)</li>
+<li>Have <code>memory.autoMemory.enabled: true</code> in config (default is true)</li>
+</ol>
+<p><strong>"MEMORY.md is getting too large"</strong></p>
+<p>The 200-line cap handles this automatically. Overflow goes to topic files. You can also:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: /memory auto clear</code></pre>
+<p><strong>"Old auto.json still present"</strong></p>
+<p>Migrate it:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: /memory auto migrate</code></pre>
+<hr />
+<h3 id="neamcodemd-problems-v035">NEAMCODE.md Problems (v0.3.5) <a href="#neamcodemd-problems-v035" class="heading-anchor">#</a></h3>
+<p><strong>"My NEAMCODE.md isn't being picked up"</strong></p>
+<p>Check:</p>
+<ol>
+<li>File is named exactly <code>NEAMCODE.md</code> (case-sensitive)</li>
+<li>File is in the project root or a parent directory</li>
+<li>Higher-tier files may override (see 7-tier hierarchy in Chapter 11)</li>
+</ol>
+<p><strong>"@path import isn't working"</strong></p>
+<p>Check:</p>
+<ol>
+<li>The referenced file exists at the relative path</li>
+<li>Max import depth hasn't been exceeded (default: 5)</li>
+<li>Total import size hasn't been exceeded (default: 50KB)</li>
+<li>No circular imports (A imports B imports A)</li>
+</ol>
+<p><strong>"Rules in .neamcode/rules/ aren't applying"</strong></p>
+<p>Check:</p>
+<ol>
+<li>Rule files have <code>.md</code> extension</li>
+<li>They're in <code>.neamcode/rules/</code> directory</li>
+<li>If using path-scoped rules, the YAML frontmatter <code>paths:</code> array matches your files</li>
+<li>Rules without <code>paths:</code> apply to all files (unconditional)</li>
+</ol>
+<hr />
+<h3 id="offline-mode-problems-v034">Offline Mode Problems (v0.3.4) <a href="#offline-mode-problems-v034" class="heading-anchor">#</a></h3>
+<p><strong>"Offline mode isn't switching automatically"</strong></p>
+<p>Check:</p>
+<ol>
+<li>Ollama is installed and running: <code>ollama list</code></li>
+<li>At least one model is downloaded: <code>ollama pull llama3.2:3b</code></li>
+<li>Offline is enabled in config: <code>offline.enabled: true</code></li>
+</ol>
+<p><strong>"Quality drops significantly when offline"</strong></p>
+<p>This is expected — local models are smaller than cloud models. Tips:</p>
+<ul>
+<li>Use a larger model if your machine supports it (see Chapter 14)</li>
+<li>Keep simpler tasks for offline, save complex ones for when you're online</li>
+<li>Try <code>qwen2.5-coder:7b</code> for better coding quality</li>
+</ul>
+<hr />
+<h3 id="performance-tips">Performance Tips <a href="#performance-tips" class="heading-anchor">#</a></h3>
+<ol>
+<li><strong>Use <code>/compact</code> proactively</strong> — Don't wait for the 85% threshold. Compact when you've finished a subtask.</li>
+</ol>
+<ol>
+<li><strong>Start new sessions for new tasks</strong> — Don't keep one session running forever. Each new task benefits from a fresh context.</li>
+</ol>
+<ol>
+<li><strong>Use appropriate models</strong> — Don't use GPT-4o for simple file reads. Configure routing to use cheaper models for simple tasks.</li>
+</ol>
+<ol>
+<li><strong>Background long-running tasks</strong> — Use <code>background_shell</code> for builds, tests, and servers so your conversation isn't blocked.</li>
+</ol>
+<ol>
+<li><strong>Use Ollama for exploration</strong> — When you're just browsing code or asking questions, local models work great and save money.</li>
+</ol>
+<hr />
+<h2 id="frequently-asked-questions">Frequently Asked Questions <a href="#frequently-asked-questions" class="heading-anchor">#</a></h2>
+<p><strong>Q: Is my code sent to the AI?</strong> A: Only the files that NeamCode (or you) explicitly reads are sent. NeamCode doesn't upload your entire codebase. Use sandbox deny patterns to protect sensitive files like <code>.env</code> or <code>~/.ssh</code>.</p>
+<p><strong>Q: Can I use NeamCode without internet?</strong> A: Yes! Install Ollama and download a model. NeamCode works fully offline. See Chapter 13.</p>
+<p><strong>Q: Can I use NeamCode in CI/CD pipelines?</strong> A: Yes. Use <code>neamcode --prompt "..." --output json</code> for headless mode. Set <code>permissions.mode: yolo</code> in CI environments. See Chapter 24.</p>
+<p><strong>Q: How much does it cost?</strong> A: It depends on your provider. Ollama is free. Cloud providers charge per token. Use <code>/cost</code> to track spending. See Chapter 15.</p>
+<p><strong>Q: Can multiple people share a NeamCode session?</strong> A: Sessions are local to each user's machine. Export with <code>/export</code> to share conversation logs.</p>
+<p><strong>Q: How do I add a new AI provider?</strong> A: Add it to the <code>providers</code> array in <code>neamcode.config.yml</code>. Use <code>type: openai-compatible</code> for any OpenAI-compatible endpoint.</p>
+<p><strong>Q: What programming languages does NeamCode support?</strong> A: All of them. NeamCode works with any language. Code search and analysis features work with anything that's in a text file.</p>
+<p><strong>Q: How do I update NeamCode?</strong> A: Run <code>neamcode update</code> or reinstall from <a href="https://github.com/neam-lang/NeamCode/releases">GitHub Releases</a>.</p>
+<p><strong>Q: Where does auto memory store data?</strong> A: In <code>~/.neamcode/memory/&lt;project-hash&gt;/MEMORY.md</code>. Each project gets isolated memory based on a SHA-256 hash of its git root path.</p>
+<p><strong>Q: How do I stop NeamCode from remembering something?</strong> A: Say "forget that X" in the chat, or run <code>/memory auto clear</code> to wipe all auto memory for the project.</p>
+<p><strong>Q: My NEAMCODE.md isn't being picked up. Why?</strong> A: Check the 7-tier hierarchy (Chapter 11). A higher-tier file may be overriding yours. The file must be named exactly <code>NEAMCODE.md</code> (case-sensitive).</p>
+<p><strong>Q: I upgraded from v0.3.4 — what about my old auto.json?</strong> A: Legacy <code>auto.json</code> files are auto-migrated on first startup. Run <code>/memory auto migrate</code> to trigger it manually.</p>
+<hr />
+<blockquote><p><strong>Previous:</strong> <a href="C-configuration.md">Appendix C — Configuration Reference</a><br><strong>Next:</strong> <a href="E-glossary.md">Appendix E — Glossary</a></p></blockquote>
+    <nav class="chapter-nav"><a href="C-configuration.html" class="nav-prev"><span class="nav-label">&larr; Previous</span><span class="nav-title">Configuration Reference</span></a><a href="E-glossary.html" class="nav-next"><span class="nav-label">Next &rarr;</span><span class="nav-title">Glossary</span></a></nav>
+  </article>
+</main>
+
+<button class="back-to-top" id="back-to-top" aria-label="Back to top">&#8593;</button>
+
+<div class="search-overlay" id="search-overlay">
+  <div class="search-modal">
+    <div class="search-input-wrap">
+      <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6.5" cy="6.5" r="5"/><line x1="10.5" y1="10.5" x2="15" y2="15"/></svg>
+      <input type="text" class="search-input" id="search-input" placeholder="Search chapters, topics...">
+    </div>
+    <div class="search-results" id="search-results">
+      <div class="search-empty">Start typing to search...</div>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/script.js"></script>
+</body>
+</html>

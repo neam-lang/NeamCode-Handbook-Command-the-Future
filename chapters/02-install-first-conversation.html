@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 2: Install &amp; First Conversation | Command the Future</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-base="../">
+
+<header class="topbar">
+  <div class="topbar-left">
+    <button class="hamburger" id="hamburger" aria-label="Toggle sidebar">&#9776;</button>
+    <a href="../index.html" class="topbar-title">Command the Future</a>
+  </div>
+  <div class="topbar-right">
+    <button class="topbar-btn search-btn" aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6.5" cy="6.5" r="5"/><line x1="10.5" y1="10.5" x2="15" y2="15"/></svg><kbd>Ctrl+K</kbd></button>
+    <button class="topbar-btn" id="theme-toggle" aria-label="Toggle theme"></button>
+  </div>
+</header>
+
+<div class="progress-bar"><div class="progress-fill"></div></div>
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+<aside class="sidebar" id="sidebar">
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Getting Started</div>
+  <div class="sidebar-chapters">
+    <a href="00-preface.html" class="sidebar-link" title="Preface">Preface</a>
+    <a href="01-meet-neamcode.html" class="sidebar-link" title="Meet NeamCode">Meet NeamCode</a>
+    <a href="02-install-first-conversation.html" class="sidebar-link active" title="Install & First Conversation">Install & First Conversation</a>
+    <a href="03-art-of-prompting.html" class="sidebar-link" title="The Art of Prompting">The Art of Prompting</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Core Skills</div>
+  <div class="sidebar-chapters">
+    <a href="04-working-with-files.html" class="sidebar-link" title="Working with Files">Working with Files</a>
+    <a href="05-finding-things.html" class="sidebar-link" title="Finding Things in Code">Finding Things in Code</a>
+    <a href="06-commands-and-git.html" class="sidebar-link" title="Running Commands & Git">Running Commands & Git</a>
+    <a href="07-web-research.html" class="sidebar-link" title="Researching from the Terminal">Researching from the Terminal</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Workflow & Configuration</div>
+  <div class="sidebar-chapters">
+    <a href="08-slash-commands.html" class="sidebar-link" title="Slash Commands">Slash Commands</a>
+    <a href="09-modes.html" class="sidebar-link" title="Modes">Modes</a>
+    <a href="10-sessions-context.html" class="sidebar-link" title="Sessions & Context">Sessions & Context</a>
+    <a href="11-auto-memory.html" class="sidebar-link" title="Auto Memory">Auto Memory</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Providers & Cost</div>
+  <div class="sidebar-chapters">
+    <a href="12-choosing-providers.html" class="sidebar-link" title="Choosing Your AI Provider">Choosing Your AI Provider</a>
+    <a href="13-offline-mode.html" class="sidebar-link" title="Offline Mode">Offline Mode</a>
+    <a href="14-zero-cost-setup.html" class="sidebar-link" title="The $0 AI Setup">The $0 AI Setup</a>
+    <a href="15-budget-cost.html" class="sidebar-link" title="Budget & Cost Tracking">Budget & Cost Tracking</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Advanced Features</div>
+  <div class="sidebar-chapters">
+    <a href="16-agents.html" class="sidebar-link" title="Agents & Delegation">Agents & Delegation</a>
+    <a href="17-mcp-servers.html" class="sidebar-link" title="MCP Servers">MCP Servers</a>
+    <a href="18-neam-language.html" class="sidebar-link" title="Neam Language Integration">Neam Language Integration</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Audience Guides</div>
+  <div class="sidebar-chapters">
+    <a href="19-for-students.html" class="sidebar-link" title="For Students">For Students</a>
+    <a href="20-for-researchers.html" class="sidebar-link" title="For Researchers">For Researchers</a>
+    <a href="21-for-professionals.html" class="sidebar-link" title="For Professionals">For Professionals</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Walkthroughs</div>
+  <div class="sidebar-chapters">
+    <a href="22-walkthrough-build-project.html" class="sidebar-link" title="Walkthrough: Build a Project">Walkthrough: Build a Project</a>
+    <a href="23-walkthrough-fix-bug.html" class="sidebar-link" title="Walkthrough: Fix a Real Bug">Walkthrough: Fix a Real Bug</a>
+    <a href="24-making-it-yours.html" class="sidebar-link" title="Making NeamCode Yours">Making NeamCode Yours</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Closing</div>
+  <div class="sidebar-chapters">
+    <a href="25-road-ahead.html" class="sidebar-link" title="The Road Ahead">The Road Ahead</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Appendices</div>
+  <div class="sidebar-chapters">
+    <a href="../appendices/A-slash-commands.html" class="sidebar-link" title="All Slash Commands">All Slash Commands</a>
+    <a href="../appendices/B-skills-reference.html" class="sidebar-link" title="All Skills Reference">All Skills Reference</a>
+    <a href="../appendices/C-configuration.html" class="sidebar-link" title="Configuration Reference">Configuration Reference</a>
+    <a href="../appendices/D-troubleshooting.html" class="sidebar-link" title="Troubleshooting & FAQ">Troubleshooting & FAQ</a>
+    <a href="../appendices/E-glossary.html" class="sidebar-link" title="Glossary">Glossary</a>
+  </div>
+</div>
+</aside>
+
+<main class="main">
+  <article class="content">
+<h1 id="chapter-2-install-your-first-conversation">Chapter 2: Install &amp; Your First Conversation <a href="#chapter-2-install-your-first-conversation" class="heading-anchor">#</a></h1>
+<blockquote><p><em>"A journey of a thousand commits begins with a single install."</em></p></blockquote>
+<hr />
+<p>📖 <strong>15 min read</strong></p>
+<p><strong>What you'll learn:</strong></p>
+<ul>
+<li>How to install NeamCode on macOS, Linux, or Windows</li>
+<li>Setting up your first AI provider</li>
+<li>Running the health check</li>
+<li>Having your very first AI-powered conversation</li>
+<li>Understanding the permission prompts</li>
+</ul>
+<hr />
+<h2 id="21-prerequisites">2.1 Prerequisites <a href="#21-prerequisites" class="heading-anchor">#</a></h2>
+<p>Before installing NeamCode, make sure you have:</p>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Requirement</th>
+<th>Minimum Version</th>
+<th>Check With</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Node.js</strong></td>
+<td>18.0.0</td>
+<td><code>node --version</code></td>
+</tr>
+<tr>
+<td><strong>npm</strong></td>
+<td>9.0.0</td>
+<td><code>npm --version</code></td>
+</tr>
+<tr>
+<td><strong>git</strong></td>
+<td>2.30.0</td>
+<td><code>git --version</code></td>
+</tr>
+<tr>
+<td><strong>Disk space</strong></td>
+<td>200 MB free</td>
+<td>—</td>
+</tr>
+</tbody></table></div>
+<div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p><strong>💡 Tip</strong> — Don't have Node.js? The fastest way:<br>- <strong>macOS:</strong> <code>brew install node</code><br>- <strong>Linux:</strong> <code>curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash - &amp;&amp; sudo apt install -y nodejs</code><br>- <strong>Windows:</strong> Download from <a href="https://nodejs.org">nodejs.org</a></p></div>
+<hr />
+<h2 id="22-installation">2.2 Installation <a href="#22-installation" class="heading-anchor">#</a></h2>
+<h3 id="quick-install-recommended">Quick Install (Recommended) <a href="#quick-install-recommended" class="heading-anchor">#</a></h3>
+<p><strong>macOS / Linux:</strong></p>
+<div class="code-header"><span class="code-lang">bash</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-bash">$ curl -fsSL https://neamcode.com/install.sh | sh</code></pre>
+<p><strong>Windows (PowerShell):</strong></p>
+<div class="code-header"><span class="code-lang">powershell</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-powershell">&gt; irm https://neamcode.com/install.ps1 | iex</code></pre>
+<h3 id="npm-global-install">npm Global Install <a href="#npm-global-install" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">bash</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-bash">$ npm install -g neamcode</code></pre>
+<h3 id="manual-download">Manual Download <a href="#manual-download" class="heading-anchor">#</a></h3>
+<p>Download the platform-specific package from <a href="https://github.com/neam-lang/NeamCode/releases">GitHub Releases</a>:</p>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Platform</th>
+<th>Architecture</th>
+<th>Package</th>
+</tr></thead><tbody>
+<tr>
+<td>macOS</td>
+<td>Apple Silicon (arm64)</td>
+<td><code>neamcode-v0.3.5-macos-arm64.tar.gz</code></td>
+</tr>
+<tr>
+<td>macOS</td>
+<td>Intel (x86_64)</td>
+<td><code>neamcode-v0.3.5-macos-x64.tar.gz</code></td>
+</tr>
+<tr>
+<td>Linux</td>
+<td>x86_64</td>
+<td><code>neamcode-v0.3.5-linux-x64.tar.gz</code></td>
+</tr>
+<tr>
+<td>Linux</td>
+<td>arm64</td>
+<td><code>neamcode-v0.3.5-linux-arm64.tar.gz</code></td>
+</tr>
+<tr>
+<td>Windows</td>
+<td>x86_64</td>
+<td><code>neamcode-v0.3.5-windows-x64.zip</code></td>
+</tr>
+</tbody></table></div>
+<p>Then extract and install:</p>
+<div class="code-header"><span class="code-lang">bash</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-bash"># macOS / Linux
+$ tar xzf neamcode-v0.3.5-&lt;platform&gt;-&lt;arch&gt;.tar.gz
+$ cd neamcode-v0.3.5-&lt;platform&gt;-&lt;arch&gt;
+$ ./install.sh
+
+# Windows — extract zip, then run in PowerShell:
+&gt; .\install.ps1</code></pre>
+<h3 id="verify-installation">Verify Installation <a href="#verify-installation" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">bash</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-bash">$ neamcode --version
+0.3.5</code></pre>
+<p>If you see the version number, you're ready to go.</p>
+<hr />
+<h2 id="23-setting-up-an-ai-provider">2.3 Setting Up an AI Provider <a href="#23-setting-up-an-ai-provider" class="heading-anchor">#</a></h2>
+<p>NeamCode needs at least one AI provider to work. You have several options:</p>
+<h3 id="option-a-ollama-free-local-offline">Option A: Ollama (Free, Local, Offline) <a href="#option-a-ollama-free-local-offline" class="heading-anchor">#</a></h3>
+<p>This is the easiest way to start — completely free, runs on your machine.</p>
+<ol>
+<li><strong>Install Ollama:</strong></li>
+</ol>
+<div class="code-header"><span class="code-lang">bash</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-bash">   # macOS
+   $ brew install ollama
+
+   # Linux
+   $ curl -fsSL https://ollama.ai/install.sh | sh
+
+   # Windows — download from https://ollama.ai</code></pre>
+<ol>
+<li><strong>Start Ollama and download a model:</strong></li>
+</ol>
+<div class="code-header"><span class="code-lang">bash</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-bash">   $ ollama serve &amp;
+   $ ollama pull llama3.2:3b</code></pre>
+<ol>
+<li><strong>That's it.</strong> NeamCode auto-detects Ollama. No API key needed.</li>
+</ol>
+<div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p><strong>💡 Tip</strong> — For machines with 16GB+ RAM, use <code>ollama pull qwen2.5-coder:7b</code> for better coding quality. See Chapter 14 for the complete model guide.</p></div>
+<h3 id="option-b-anthropic-claude">Option B: Anthropic (Claude) <a href="#option-b-anthropic-claude" class="heading-anchor">#</a></h3>
+<ol>
+<li>Get an API key from <a href="https://console.anthropic.com">console.anthropic.com</a></li>
+<li>Set the environment variable:</li>
+</ol>
+<div class="code-header"><span class="code-lang">bash</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-bash">   $ export ANTHROPIC_API_KEY=&quot;sk-ant-...&quot;
+
+   # To persist across sessions, add to your shell profile:
+   $ echo &#x27;export ANTHROPIC_API_KEY=&quot;sk-ant-...&quot;&#x27; &gt;&gt; ~/.zshrc</code></pre>
+<h3 id="option-c-openai">Option C: OpenAI <a href="#option-c-openai" class="heading-anchor">#</a></h3>
+<ol>
+<li>Get an API key from <a href="https://platform.openai.com">platform.openai.com</a></li>
+<li>Set the environment variable:</li>
+</ol>
+<div class="code-header"><span class="code-lang">bash</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-bash">   $ export OPENAI_API_KEY=&quot;sk-...&quot;</code></pre>
+<h3 id="option-d-google-gemini">Option D: Google Gemini <a href="#option-d-google-gemini" class="heading-anchor">#</a></h3>
+<ol>
+<li>Get an API key from <a href="https://aistudio.google.com">aistudio.google.com</a></li>
+<li>Set the environment variable:</li>
+</ol>
+<div class="code-header"><span class="code-lang">bash</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-bash">   $ export GEMINI_API_KEY=&quot;AI...&quot;</code></pre>
+<h3 id="interactive-setup">Interactive Setup <a href="#interactive-setup" class="heading-anchor">#</a></h3>
+<p>Don't want to set environment variables manually? Use the setup wizard:</p>
+<div class="code-header"><span class="code-lang">bash</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-bash">$ neamcode setup</code></pre>
+<p>This walks you through configuring providers interactively.</p>
+<hr />
+<h2 id="24-health-check-make-sure-everything-works">2.4 Health Check — Make Sure Everything Works <a href="#24-health-check-make-sure-everything-works" class="heading-anchor">#</a></h2>
+<p>Before your first session, run the health check:</p>
+<div class="code-header"><span class="code-lang">bash</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-bash">$ neamcode probe
+OK ollama-local: Connected to Ollama at http://127.0.0.1:11434
+FAIL gemini-default: Missing GEMINI_API_KEY
+FAIL openai-default: Missing OPENAI_API_KEY
+OK mock-offline: Mock provider is always ready (offline safe).
+OK mesh: Mesh disabled; skipped registration.</code></pre>
+<p>This shows you which providers are available. In the example above, Ollama is ready and the cloud providers need API keys. <strong>You only need one green provider to get started.</strong></p>
+<blockquote><p><strong>📝 Note</strong> — The <code>mock-offline</code> and <code>mesh</code> entries are internal providers. Don't worry about them for now.</p></blockquote>
+<hr />
+<h2 id="25-your-first-conversation">2.5 Your First Conversation <a href="#25-your-first-conversation" class="heading-anchor">#</a></h2>
+<p>This is the moment. Let's talk to NeamCode.</p>
+<h3 id="start-neamcode">Start NeamCode <a href="#start-neamcode" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">bash</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-bash">$ neamcode</code></pre>
+<p>You'll see the NeamCode banner:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-"> ███╗   ██╗███████╗ █████╗ ███╗   ███╗ ██████╗ ██████╗ ██████╗ ███████╗
+ ████╗  ██║██╔════╝██╔══██╗████╗ ████║██╔════╝██╔═══██╗██╔══██╗██╔════╝
+ ██╔██╗ ██║█████╗  ███████║██╔████╔██║██║     ██║   ██║██║  ██║█████╗
+ ██║╚██╗██║██╔══╝  ██╔══██║██║╚██╔╝██║██║     ██║   ██║██║  ██║██╔══╝
+ ██║ ╚████║███████╗██║  ██║██║ ╚═╝ ██║╚██████╗╚██████╔╝██████╔╝███████╗
+ ╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝ ╚═════╝ ╚═════╝ ╚═════╝ ╚══════╝
+  v0.3.5</code></pre>
+<p>Now type your first prompt:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Hello! Create a simple Python script that prints
+     &quot;Hello from NeamCode!&quot; and saves it as hello.py</code></pre>
+<h3 id="what-happens-next">What Happens Next <a href="#what-happens-next" class="heading-anchor">#</a></h3>
+<p>NeamCode does several things:</p>
+<ol>
+<li><strong>Reads your prompt</strong> and determines it needs to create a file</li>
+<li><strong>Asks for permission</strong> (if in standard mode):</li>
+</ol>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">   NeamCode wants to create file: hello.py
+   Allow? (y/n/always)</code></pre>
+<ol>
+<li><strong>Creates the file</strong> once you approve</li>
+<li><strong>Confirms</strong> the action</li>
+</ol>
+<p>Let's verify it worked:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Run hello.py
+
+NeamCode: I&#x27;ll run the Python script for you.
+$ python3 hello.py
+Hello from NeamCode!</code></pre>
+<p>🎉 <strong>Congratulations!</strong> You've just had your first AI-assisted coding conversation.</p>
+<hr />
+<h2 id="26-understanding-permission-prompts">2.6 Understanding Permission Prompts <a href="#26-understanding-permission-prompts" class="heading-anchor">#</a></h2>
+<p>When NeamCode wants to do something beyond just reading files, it asks your permission. This is a key part of how NeamCode keeps you in control.</p>
+<figure class="diagram-figure">
+  <img src="../assets/diagrams/ch02-permission-levels.svg" alt="NeamCode Permission Levels" />
+  <figcaption>Figure 2.1 — NeamCode Permission Levels</figcaption>
+</figure>
+<div class="ascii-fallback">
+<div class="code-header ascii-fallback"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre class="ascii-fallback"><code class="language-">Permission Types:
+┌──────────────┬──────────────────────────────────┐
+│ Action       │ What it means                    │
+├──────────────┼──────────────────────────────────┤
+│ Read file    │ Look at a file (auto-approved)   │
+│ Write file   │ Create or overwrite a file       │
+│ Edit file    │ Modify part of an existing file  │
+│ Execute      │ Run a shell command              │
+│ Destructive  │ Delete files, force push, etc.   │
+└──────────────┴──────────────────────────────────┘</code></pre>
+</div>
+<p>When prompted, you can respond:</p>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Response</th>
+<th>Meaning</th>
+</tr></thead><tbody>
+<tr>
+<td><code>y</code></td>
+<td>Yes, do it this time</td>
+</tr>
+<tr>
+<td><code>n</code></td>
+<td>No, don't do it</td>
+</tr>
+<tr>
+<td><code>always</code></td>
+<td>Yes, and don't ask again for this type</td>
+</tr>
+</tbody></table></div>
+<div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p><strong>💡 Tip</strong> — NeamCode has four permission modes: <strong>safe</strong> (read-only), <strong>standard</strong> (asks before writes), <strong>power</strong> (asks only for destructive ops), and <strong>yolo</strong> (fully automatic, for CI/CD). Chapter 18 covers these in detail. Start with <strong>standard</strong> — it's the default for a reason.</p></div>
+<hr />
+<h2 id="27-essential-first-commands">2.7 Essential First Commands <a href="#27-essential-first-commands" class="heading-anchor">#</a></h2>
+<p>Here are a few commands to try in your first session:</p>
+<h3 id="get-help">Get Help <a href="#get-help" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: /help</code></pre>
+<p>Shows all available slash commands.</p>
+<h3 id="check-what-neamcode-can-do">Check What NeamCode Can Do <a href="#check-what-neamcode-can-do" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: What skills do you have?</code></pre>
+<p>NeamCode will list its built-in tools — file operations, code search, git, web, and more.</p>
+<h3 id="ask-about-your-project">Ask About Your Project <a href="#ask-about-your-project" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: What files are in this directory?</code></pre>
+<p>NeamCode uses <code>glob</code> and <code>dir_tree</code> to explore your project.</p>
+<h3 id="end-your-session">End Your Session <a href="#end-your-session" class="heading-anchor">#</a></h3>
+<p>Press <code>Ctrl+C</code> or <code>Ctrl+D</code> to exit. Your session is automatically saved.</p>
+<hr />
+<h2 id="28-configuration-file-optional">2.8 Configuration File (Optional) <a href="#28-configuration-file-optional" class="heading-anchor">#</a></h2>
+<p>NeamCode works out of the box, but you can customize it with a configuration file:</p>
+<div class="code-header"><span class="code-lang">bash</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-bash">$ neamcode init</code></pre>
+<p>This creates <code>neamcode.config.yml</code> in your current directory. You can configure:</p>
+<ul>
+<li>Which providers to use and in what order</li>
+<li>Token budgets and cost limits</li>
+<li>Permission mode</li>
+<li>Theme and UI preferences</li>
+<li>MCP server connections</li>
+</ul>
+<p>We'll explore configuration in depth in Chapter 8, but here's a minimal example:</p>
+<div class="code-header"><span class="code-lang">yaml</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-yaml"># neamcode.config.yml
+providers:
+  - name: ollama-local
+    type: ollama
+    host: http://127.0.0.1:11434
+    model: llama3.2:3b
+    role: primary
+
+tokens:
+  sessionBudget: 100000
+  warningThreshold: 0.8
+
+permissions:
+  mode: standard</code></pre>
+<blockquote><p><strong>📝 Note</strong> — You don't need a config file to get started. NeamCode's defaults are sensible. Create one when you want to customize.</p></blockquote>
+<hr />
+<h2 id="29-directory-structure-after-install">2.9 Directory Structure After Install <a href="#29-directory-structure-after-install" class="heading-anchor">#</a></h2>
+<p>After installing NeamCode, here's what lives on your system:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">~/.neamcode/
+├── bin/
+│   └── neamcode          ← CLI wrapper script
+├── lib/
+│   ├── dist/
+│   │   └── index.js      ← Main application (built)
+│   ├── node_modules/     ← Dependencies
+│   └── package.json      ← Version manifest
+├── config/
+│   └── config.yaml       ← User configuration
+├── memory/               ← Auto memory (Chapter 11)
+│   └── &lt;project-hash&gt;/
+│       └── MEMORY.md
+└── VERSION               ← Installed version</code></pre>
+<div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p><strong>💡 Tip</strong> — The <code>~/.neamcode/config/</code> directory is preserved during uninstalls and updates. Your settings are safe.</p></div>
+<hr />
+<h2 id="210-uninstalling">2.10 Uninstalling <a href="#210-uninstalling" class="heading-anchor">#</a></h2>
+<p>If you ever need to remove NeamCode:</p>
+<div class="code-header"><span class="code-lang">bash</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-bash"># Via installer
+$ curl -fsSL https://neamcode.com/install.sh | sh -s -- --uninstall
+
+# Or directly
+$ ~/.neamcode/bin/neamcode uninstall
+
+# Windows (PowerShell)
+&gt; irm https://neamcode.com/install.ps1 | iex -Uninstall</code></pre>
+<p>Your configuration in <code>~/.neamcode/config/</code> is preserved.</p>
+<hr />
+<h2 id="211-troubleshooting">2.11 Troubleshooting <a href="#211-troubleshooting" class="heading-anchor">#</a></h2>
+<p><strong>"Command not found: neamcode"</strong> Your PATH might not include <code>~/.neamcode/bin</code>. Add it:</p>
+<div class="code-header"><span class="code-lang">bash</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-bash">$ echo &#x27;export PATH=&quot;$HOME/.neamcode/bin:$PATH&quot;&#x27; &gt;&gt; ~/.zshrc
+$ source ~/.zshrc</code></pre>
+<p><strong>"No providers available"</strong> You need at least one provider. The easiest fix: install Ollama (Section 2.3, Option A).</p>
+<p><strong>"EACCES: permission denied"</strong> On macOS/Linux, try:</p>
+<div class="code-header"><span class="code-lang">bash</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-bash">$ sudo chown -R $(whoami) ~/.neamcode</code></pre>
+<p><strong>Probe shows all FAIL</strong> Check your internet connection and API keys. Or install Ollama for offline use.</p>
+<hr />
+<h2 id="exercises">Exercises <a href="#exercises" class="heading-anchor">#</a></h2>
+<p><strong>🎯 Exercise 2.1</strong> — Install NeamCode and run <code>neamcode --version</code>. Verify it shows <code>0.3.5</code>.</p>
+<p><strong>🎯 Exercise 2.2</strong> — Set up at least one provider (Ollama recommended for beginners). Run <code>neamcode probe</code> and confirm at least one <code>OK</code> result.</p>
+<p><strong>🎯 Exercise 2.3</strong> — Start NeamCode and ask it to create a file. Watch the permission prompt. Try responding with <code>y</code>, then try <code>always</code>. Notice the difference.</p>
+<p><strong>🎯 Exercise 2.4</strong> — Ask NeamCode: "What directory am I in? List the files here." Observe which skills it uses to answer.</p>
+<p><strong>🎯 Exercise 2.5</strong> — Type <code>/help</code> in your NeamCode session. Scan the list of commands. Don't memorize them — just get a feel for what's available. We'll cover all of them in Chapter 8.</p>
+<hr />
+<blockquote><p><strong>Previous:</strong> <a href="01-meet-neamcode.md">Chapter 1 — Meet NeamCode</a><br><strong>Next:</strong> <a href="03-art-of-prompting.md">Chapter 3 — The Art of Prompting</a></p></blockquote>
+    <nav class="chapter-nav"><a href="01-meet-neamcode.html" class="nav-prev"><span class="nav-label">&larr; Previous</span><span class="nav-title">Meet NeamCode</span></a><a href="03-art-of-prompting.html" class="nav-next"><span class="nav-label">Next &rarr;</span><span class="nav-title">The Art of Prompting</span></a></nav>
+  </article>
+</main>
+
+<button class="back-to-top" id="back-to-top" aria-label="Back to top">&#8593;</button>
+
+<div class="search-overlay" id="search-overlay">
+  <div class="search-modal">
+    <div class="search-input-wrap">
+      <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6.5" cy="6.5" r="5"/><line x1="10.5" y1="10.5" x2="15" y2="15"/></svg>
+      <input type="text" class="search-input" id="search-input" placeholder="Search chapters, topics...">
+    </div>
+    <div class="search-results" id="search-results">
+      <div class="search-empty">Start typing to search...</div>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/script.js"></script>
+</body>
+</html>

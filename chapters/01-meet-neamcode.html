@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 1: Meet NeamCode | Command the Future</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-base="../">
+
+<header class="topbar">
+  <div class="topbar-left">
+    <button class="hamburger" id="hamburger" aria-label="Toggle sidebar">&#9776;</button>
+    <a href="../index.html" class="topbar-title">Command the Future</a>
+  </div>
+  <div class="topbar-right">
+    <button class="topbar-btn search-btn" aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6.5" cy="6.5" r="5"/><line x1="10.5" y1="10.5" x2="15" y2="15"/></svg><kbd>Ctrl+K</kbd></button>
+    <button class="topbar-btn" id="theme-toggle" aria-label="Toggle theme"></button>
+  </div>
+</header>
+
+<div class="progress-bar"><div class="progress-fill"></div></div>
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+<aside class="sidebar" id="sidebar">
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Getting Started</div>
+  <div class="sidebar-chapters">
+    <a href="00-preface.html" class="sidebar-link" title="Preface">Preface</a>
+    <a href="01-meet-neamcode.html" class="sidebar-link active" title="Meet NeamCode">Meet NeamCode</a>
+    <a href="02-install-first-conversation.html" class="sidebar-link" title="Install & First Conversation">Install & First Conversation</a>
+    <a href="03-art-of-prompting.html" class="sidebar-link" title="The Art of Prompting">The Art of Prompting</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Core Skills</div>
+  <div class="sidebar-chapters">
+    <a href="04-working-with-files.html" class="sidebar-link" title="Working with Files">Working with Files</a>
+    <a href="05-finding-things.html" class="sidebar-link" title="Finding Things in Code">Finding Things in Code</a>
+    <a href="06-commands-and-git.html" class="sidebar-link" title="Running Commands & Git">Running Commands & Git</a>
+    <a href="07-web-research.html" class="sidebar-link" title="Researching from the Terminal">Researching from the Terminal</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Workflow & Configuration</div>
+  <div class="sidebar-chapters">
+    <a href="08-slash-commands.html" class="sidebar-link" title="Slash Commands">Slash Commands</a>
+    <a href="09-modes.html" class="sidebar-link" title="Modes">Modes</a>
+    <a href="10-sessions-context.html" class="sidebar-link" title="Sessions & Context">Sessions & Context</a>
+    <a href="11-auto-memory.html" class="sidebar-link" title="Auto Memory">Auto Memory</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Providers & Cost</div>
+  <div class="sidebar-chapters">
+    <a href="12-choosing-providers.html" class="sidebar-link" title="Choosing Your AI Provider">Choosing Your AI Provider</a>
+    <a href="13-offline-mode.html" class="sidebar-link" title="Offline Mode">Offline Mode</a>
+    <a href="14-zero-cost-setup.html" class="sidebar-link" title="The $0 AI Setup">The $0 AI Setup</a>
+    <a href="15-budget-cost.html" class="sidebar-link" title="Budget & Cost Tracking">Budget & Cost Tracking</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Advanced Features</div>
+  <div class="sidebar-chapters">
+    <a href="16-agents.html" class="sidebar-link" title="Agents & Delegation">Agents & Delegation</a>
+    <a href="17-mcp-servers.html" class="sidebar-link" title="MCP Servers">MCP Servers</a>
+    <a href="18-neam-language.html" class="sidebar-link" title="Neam Language Integration">Neam Language Integration</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Audience Guides</div>
+  <div class="sidebar-chapters">
+    <a href="19-for-students.html" class="sidebar-link" title="For Students">For Students</a>
+    <a href="20-for-researchers.html" class="sidebar-link" title="For Researchers">For Researchers</a>
+    <a href="21-for-professionals.html" class="sidebar-link" title="For Professionals">For Professionals</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Walkthroughs</div>
+  <div class="sidebar-chapters">
+    <a href="22-walkthrough-build-project.html" class="sidebar-link" title="Walkthrough: Build a Project">Walkthrough: Build a Project</a>
+    <a href="23-walkthrough-fix-bug.html" class="sidebar-link" title="Walkthrough: Fix a Real Bug">Walkthrough: Fix a Real Bug</a>
+    <a href="24-making-it-yours.html" class="sidebar-link" title="Making NeamCode Yours">Making NeamCode Yours</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Closing</div>
+  <div class="sidebar-chapters">
+    <a href="25-road-ahead.html" class="sidebar-link" title="The Road Ahead">The Road Ahead</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Appendices</div>
+  <div class="sidebar-chapters">
+    <a href="../appendices/A-slash-commands.html" class="sidebar-link" title="All Slash Commands">All Slash Commands</a>
+    <a href="../appendices/B-skills-reference.html" class="sidebar-link" title="All Skills Reference">All Skills Reference</a>
+    <a href="../appendices/C-configuration.html" class="sidebar-link" title="Configuration Reference">Configuration Reference</a>
+    <a href="../appendices/D-troubleshooting.html" class="sidebar-link" title="Troubleshooting & FAQ">Troubleshooting & FAQ</a>
+    <a href="../appendices/E-glossary.html" class="sidebar-link" title="Glossary">Glossary</a>
+  </div>
+</div>
+</aside>
+
+<main class="main">
+  <article class="content">
+<h1 id="chapter-1-meet-neamcode">Chapter 1: Meet NeamCode <a href="#chapter-1-meet-neamcode" class="heading-anchor">#</a></h1>
+<blockquote><p><em>"Any sufficiently advanced tool is indistinguishable from a teammate."</em></p></blockquote>
+<hr />
+<p>📖 <strong>15 min read</strong></p>
+<p><strong>What you'll learn:</strong></p>
+<ul>
+<li>What NeamCode actually does (and doesn't do)</li>
+<li>How it's different from ChatGPT, Copilot, and other AI tools</li>
+<li>The five things that make NeamCode unique</li>
+<li>What a real NeamCode session looks like</li>
+</ul>
+<hr />
+<h2 id="11-your-ai-pair-programmer">1.1 Your AI Pair-Programmer <a href="#11-your-ai-pair-programmer" class="heading-anchor">#</a></h2>
+<p>NeamCode is an <strong>agentic AI terminal client</strong>. Let's break that down:</p>
+<ul>
+<li><strong>Terminal</strong> — It lives in your terminal. No browser. No IDE plugin. Just you and the command line.</li>
+<li><strong>AI</strong> — It's powered by large language models (LLMs) from providers like Anthropic, OpenAI, Google Gemini, or even local models running on your laptop via Ollama.</li>
+<li><strong>Agentic</strong> — This is the key word. NeamCode doesn't just <em>answer questions</em>. It takes <em>actions</em>. It reads files. It writes code. It runs commands. It searches the web. It creates commits. It remembers what you told it yesterday.</li>
+<li><strong>Client</strong> — It connects to multiple AI providers, giving you the flexibility to choose quality, speed, cost — or all three.</li>
+</ul>
+<p>Think of it as a colleague who:</p>
+<ul>
+<li>Sits in your terminal</li>
+<li>Has read every file in your project</li>
+<li>Can run any command you'd run</li>
+<li>Never forgets what you've discussed</li>
+<li>Works offline too</li>
+</ul>
+<hr />
+<h2 id="12-what-neamcode-is-not">1.2 What NeamCode Is <em>Not</em> <a href="#12-what-neamcode-is-not" class="heading-anchor">#</a></h2>
+<p>Let's clear up common misconceptions:</p>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>NeamCode is NOT...</th>
+<th>NeamCode IS...</th>
+</tr></thead><tbody>
+<tr>
+<td>A chatbot you paste code into</td>
+<td>A tool that reads your code directly from disk</td>
+</tr>
+<tr>
+<td>An autocomplete engine</td>
+<td>A full agent that plans, executes, and verifies</td>
+</tr>
+<tr>
+<td>A browser-based AI</td>
+<td>A terminal-native application</td>
+</tr>
+<tr>
+<td>Locked to one AI provider</td>
+<td>Connected to 11+ providers simultaneously</td>
+</tr>
+<tr>
+<td>A cloud-only tool</td>
+<td>Fully functional offline with local models</td>
+</tr>
+<tr>
+<td>A black box</td>
+<td>Transparent — it tells you what it's doing and asks permission</td>
+</tr>
+</tbody></table></div>
+<hr />
+<h2 id="13-how-its-different">1.3 How It's Different <a href="#13-how-its-different" class="heading-anchor">#</a></h2>
+<h3 id="compared-to-chatgpt-claudeai-browser">Compared to ChatGPT / Claude.ai (Browser) <a href="#compared-to-chatgpt-claudeai-browser" class="heading-anchor">#</a></h3>
+<figure class="diagram-figure">
+  <img src="../assets/diagrams/ch01-neamcode-overview.svg" alt="NeamCode Overview: How it connects you to AI and your codebase" />
+  <figcaption>Figure 1.1 — NeamCode Overview: How it connects you to AI and your codebase</figcaption>
+</figure>
+<div class="ascii-fallback">
+<div class="code-header ascii-fallback"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre class="ascii-fallback"><code class="language-">┌─────────────────────────────────────────────┐
+│         Browser AI (ChatGPT, etc.)          │
+├─────────────────────────────────────────────┤
+│                                             │
+│  You: [paste 200 lines of code]             │
+│  AI:  &quot;Here&#x27;s the fix: [shows code]&quot;        │
+│  You: [copy code, switch to editor, paste]  │
+│  You: [run tests, see error]                │
+│  You: [switch back, paste error]            │
+│  AI:  &quot;Try this instead...&quot;                 │
+│  You: [copy, switch, paste, run, repeat...] │
+│                                             │
+│  Context lost. Files outdated. Tedious.     │
+└─────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────┐
+│              NeamCode                       │
+├─────────────────────────────────────────────┤
+│                                             │
+│  You: &quot;Fix the login bug in auth.ts&quot;        │
+│  NeamCode:                                  │
+│    → reads auth.ts (and related files)      │
+│    → identifies the bug                     │
+│    → edits the file directly                │
+│    → runs the tests                         │
+│    → shows you the result                   │
+│    → commits if you approve                 │
+│                                             │
+│  One prompt. Done.                          │
+└─────────────────────────────────────────────┘</code></pre>
+</div>
+<h3 id="compared-to-github-copilot">Compared to GitHub Copilot <a href="#compared-to-github-copilot" class="heading-anchor">#</a></h3>
+<p>Copilot completes the <em>next line</em>. NeamCode completes the <em>next task</em>. Copilot works inside your editor. NeamCode works alongside it — or instead of it.</p>
+<h3 id="compared-to-other-cli-ai-tools">Compared to Other CLI AI Tools <a href="#compared-to-other-cli-ai-tools" class="heading-anchor">#</a></h3>
+<p>NeamCode stands out in several ways:</p>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Feature</th>
+<th>NeamCode</th>
+<th>Others</th>
+</tr></thead><tbody>
+<tr>
+<td>Providers</td>
+<td>11+ (Anthropic, OpenAI, Gemini, Ollama, DeepSeek, Mistral, etc.)</td>
+<td>Usually 1-2</td>
+</tr>
+<tr>
+<td>Offline mode</td>
+<td>Auto-failover to Ollama</td>
+<td>Manual setup or none</td>
+</tr>
+<tr>
+<td>Memory</td>
+<td>Auto-learns from conversations</td>
+<td>Manual or none</td>
+</tr>
+<tr>
+<td>Context files</td>
+<td>7-tier NEAMCODE.md hierarchy</td>
+<td>Single file or none</td>
+</tr>
+<tr>
+<td>Modes</td>
+<td>6 specialized modes</td>
+<td>Generic</td>
+</tr>
+<tr>
+<td>Budget tracking</td>
+<td>Built-in per-session cost management</td>
+<td>External</td>
+</tr>
+<tr>
+<td>Neam integration</td>
+<td>Native compiler/LSP/DAP support</td>
+<td>None</td>
+</tr>
+<tr>
+<td>i18n</td>
+<td>7 languages</td>
+<td>English only</td>
+</tr>
+</tbody></table></div>
+<hr />
+<h2 id="14-the-five-things-that-make-neamcode-unique">1.4 The Five Things That Make NeamCode Unique <a href="#14-the-five-things-that-make-neamcode-unique" class="heading-anchor">#</a></h2>
+<h3 id="1-it-takes-action">1. It Takes Action <a href="#1-it-takes-action" class="heading-anchor">#</a></h3>
+<p>When you say "create a REST API with Express," NeamCode doesn't just <em>tell</em> you how — it creates the files, installs dependencies, and writes the code. When you say "find the bug," it reads your code, traces the issue, and fixes it.</p>
+<p>These actions are powered by <strong>25+ built-in skills</strong> — tools like file reading, code search, shell execution, git operations, and web intelligence. You don't call these skills directly. You just describe what you want, and NeamCode figures out which skills to use.</p>
+<h3 id="2-it-remembers">2. It Remembers <a href="#2-it-remembers" class="heading-anchor">#</a></h3>
+<p>NeamCode has two memory systems:</p>
+<ul>
+<li><strong>Session memory</strong> — Your conversation persists. Close the terminal, come back tomorrow, type <code>neamcode --continue</code>, and pick up exactly where you left off.</li>
+<li><strong>Auto memory</strong> — NeamCode automatically learns stable patterns from your conversations and saves them to a <code>MEMORY.md</code> file. Next session, it already knows your project uses PostgreSQL, prefers tabs over spaces, and deploys to AWS.</li>
+</ul>
+<h3 id="3-it-works-offline">3. It Works Offline <a href="#3-it-works-offline" class="heading-anchor">#</a></h3>
+<p>Internet goes down? NeamCode seamlessly switches to a local AI model running on your machine via <a href="https://ollama.ai">Ollama</a>. No configuration needed. When you're back online, it switches back. Your conversation continues uninterrupted.</p>
+<h3 id="4-it-respects-boundaries">4. It Respects Boundaries <a href="#4-it-respects-boundaries" class="heading-anchor">#</a></h3>
+<p>NeamCode operates with a <strong>permission system</strong>. Before it writes a file, runs a destructive command, or makes a network request, it asks you. You control how much autonomy it gets — from cautious (ask before every write) to fully autonomous (for CI/CD pipelines).</p>
+<h3 id="5-it-speaks-your-language">5. It Speaks Your Language <a href="#5-it-speaks-your-language" class="heading-anchor">#</a></h3>
+<p>NeamCode works with <strong>any</strong> programming language. TypeScript, Python, Java, Go, Rust, C++, Ruby, PHP — if it's in a file, NeamCode can read it, understand it, and modify it. It even has first-class support for the <a href="https://github.com/neam-lang/Neam">Neam language</a>, with built-in compilation, debugging, and package management.</p>
+<hr />
+<h2 id="15-what-a-real-session-looks-like">1.5 What a Real Session Looks Like <a href="#15-what-a-real-session-looks-like" class="heading-anchor">#</a></h2>
+<p>Here's an actual NeamCode session. A developer has just cloned an unfamiliar project and wants to understand it:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">$ neamcode
+
+ ███╗   ██╗███████╗ █████╗ ███╗   ███╗ ██████╗ ██████╗ ██████╗ ███████╗
+ ████╗  ██║██╔════╝██╔══██╗████╗ ████║██╔════╝██╔═══██╗██╔══██╗██╔════╝
+ ██╔██╗ ██║█████╗  ███████║██╔████╔██║██║     ██║   ██║██║  ██║█████╗
+ ██║╚██╗██║██╔══╝  ██╔══██║██║╚██╔╝██║██║     ██║   ██║██║  ██║██╔══╝
+ ██║ ╚████║███████╗██║  ██║██║ ╚═╝ ██║╚██████╗╚██████╔╝██████╔╝███████╗
+ ╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝ ╚═════╝ ╚═════╝ ╚═════╝ ╚══════╝
+  v0.3.5
+
+You: What does this project do? Give me a high-level overview.</code></pre>
+<p>NeamCode immediately starts working:</p>
+<ol>
+<li><strong>Reads</strong> <code>package.json</code>, <code>README.md</code>, and configuration files</li>
+<li><strong>Scans</strong> the directory structure to understand the project layout</li>
+<li><strong>Reads</strong> key source files to understand the codebase</li>
+<li><strong>Responds</strong> with a clear, structured summary</li>
+</ol>
+<p>The developer doesn't copy-paste anything. They don't tell NeamCode which files to look at. They just ask, and NeamCode figures it out.</p>
+<p>Then they continue:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Is there an authentication system? Show me how it works.
+
+You: Add rate limiting to the login endpoint.
+
+You: Write tests for the rate limiter.
+
+You: Run the tests.
+
+You: Commit everything with a good message.</code></pre>
+<p>Each prompt builds on the last. NeamCode remembers the context. It reads files, writes code, runs tests, and commits — all in one fluid conversation.</p>
+<hr />
+<h2 id="16-how-neamcode-fits-into-your-workflow">1.6 How NeamCode Fits Into Your Workflow <a href="#16-how-neamcode-fits-into-your-workflow" class="heading-anchor">#</a></h2>
+<p>NeamCode doesn't replace your editor. It doesn't replace your terminal. It enhances both.</p>
+<figure class="diagram-figure">
+  <img src="../assets/diagrams/ch01-session-flow.svg" alt="NeamCode Session Flow: From prompt to result" />
+  <figcaption>Figure 1.2 — NeamCode Session Flow: From prompt to result</figcaption>
+</figure>
+<div class="ascii-fallback">
+<div class="code-header ascii-fallback"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre class="ascii-fallback"><code class="language-">Your Workflow Today:
+┌──────┐  ┌──────┐  ┌──────┐  ┌──────┐
+│Editor│→ │ Term │→ │Browser│→ │ Git  │
+│      │  │inal │  │(docs) │  │      │
+└──────┘  └──────┘  └──────┘  └──────┘
+  (4 separate tools, constant switching)
+
+Your Workflow with NeamCode:
+┌──────┐  ┌──────────────────────────┐
+│Editor│  │     NeamCode Terminal    │
+│(opt) │  │  files + commands + git  │
+│      │  │  + search + AI + memory  │
+└──────┘  └──────────────────────────┘
+  (everything in one place)</code></pre>
+</div>
+<p>Some people use NeamCode alongside VS Code. Some use it as their primary development environment. Both work. The key is that NeamCode gives you a <strong>single interface</strong> for AI-powered development.</p>
+<hr />
+<h2 id="17-supported-providers">1.7 Supported Providers <a href="#17-supported-providers" class="heading-anchor">#</a></h2>
+<p>NeamCode connects to multiple AI providers. You can use one, several, or all of them:</p>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Provider</th>
+<th>Models</th>
+<th>Context Window</th>
+<th>Cost</th>
+<th>Best For</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Anthropic</strong></td>
+<td>Claude Opus, Sonnet, Haiku</td>
+<td>Up to 200K tokens</td>
+<td>Paid</td>
+<td>Quality reasoning</td>
+</tr>
+<tr>
+<td><strong>OpenAI</strong></td>
+<td>GPT-4o, GPT-4o-mini</td>
+<td>Up to 128K tokens</td>
+<td>Paid</td>
+<td>General purpose</td>
+</tr>
+<tr>
+<td><strong>Google Gemini</strong></td>
+<td>Gemini Pro, Flash</td>
+<td>Up to 1M+ tokens</td>
+<td>Free tier available</td>
+<td>Large context</td>
+</tr>
+<tr>
+<td><strong>Ollama</strong> (local)</td>
+<td>Llama, Qwen, Phi, etc.</td>
+<td>Varies</td>
+<td>Free</td>
+<td>Offline, privacy</td>
+</tr>
+<tr>
+<td><strong>DeepSeek</strong></td>
+<td>DeepSeek V3</td>
+<td>64K tokens</td>
+<td>Paid</td>
+<td>Cost-effective</td>
+</tr>
+<tr>
+<td><strong>Mistral</strong></td>
+<td>Mistral Large, Small</td>
+<td>128K tokens</td>
+<td>Paid</td>
+<td>European hosting</td>
+</tr>
+<tr>
+<td><strong>+ more</strong></td>
+<td>MiniMax, Kimi, Qwen, OpenAI-compatible</td>
+<td>Varies</td>
+<td>Varies</td>
+<td>Specialized needs</td>
+</tr>
+</tbody></table></div>
+<div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p><strong>💡 Tip</strong> — You don't need all of these. Start with <strong>one</strong> provider. Ollama is free and works offline. Anthropic or OpenAI are great cloud options. You can add more later.</p></div>
+<hr />
+<h2 id="18-what-youll-build-in-this-book">1.8 What You'll Build in This Book <a href="#18-what-youll-build-in-this-book" class="heading-anchor">#</a></h2>
+<p>As you work through the chapters, you'll complete these real-world tasks:</p>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Chapter</th>
+<th>What You'll Do</th>
+</tr></thead><tbody>
+<tr>
+<td>2</td>
+<td>Install NeamCode and have your first AI conversation</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Build a Node.js project from scratch using natural language</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Explore and understand an unfamiliar open-source project</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Complete a full git workflow — branch, code, test, review, commit, PR</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Use each of the six specialized modes on a real codebase</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Set up auto memory and project-specific rules</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Configure a fully offline, zero-cost AI coding environment</td>
+</tr>
+<tr>
+<td>19</td>
+<td>Complete a student scenario: learn a new language with AI help</td>
+</tr>
+<tr>
+<td>22</td>
+<td>Build a complete REST API from idea to deployment</td>
+</tr>
+<tr>
+<td>23</td>
+<td>Debug a simulated production incident from investigation to fix</td>
+</tr>
+</tbody></table></div>
+<hr />
+<h2 id="19-a-quick-taste">1.9 A Quick Taste <a href="#19-a-quick-taste" class="heading-anchor">#</a></h2>
+<p>Before we install anything, here's a preview of what's possible. These are real NeamCode capabilities you'll master in this book:</p>
+<p><strong>Ask a question:</strong></p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: What does the handleWebSocket function do in server.ts?</code></pre>
+<p><strong>Fix a bug:</strong></p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: The users endpoint returns 500 when the email field is missing.
+     Find and fix the issue.</code></pre>
+<p><strong>Refactor code:</strong></p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Convert all the callback-based functions in utils/ to async/await.</code></pre>
+<p><strong>Research while coding:</strong></p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Search for the best way to implement rate limiting in Express.js,
+     then add it to our API.</code></pre>
+<p><strong>Work across files:</strong></p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: This React component fetches data in useEffect. Refactor it to use
+     React Query and update the types in types.ts to match.</code></pre>
+<p><strong>Go offline:</strong></p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: /offline
+NeamCode: Switched to Ollama (llama3.1:8b). Working offline.</code></pre>
+<hr />
+<h2 id="exercises">Exercises <a href="#exercises" class="heading-anchor">#</a></h2>
+<p><strong>Exercise 1.1</strong> — Write down three tasks from your current project (or a recent project) that you think NeamCode could help with. Keep this list — you'll try them by Chapter 6.</p>
+<p><strong>Exercise 1.2</strong> — Visit the <a href="https://github.com/neam-lang/NeamCode/releases">NeamCode releases page</a> and note the current version. Read the release notes for the latest version to see what's new.</p>
+<p><strong>Exercise 1.3</strong> — If you use AI coding tools today (ChatGPT, Copilot, Cursor, etc.), write down the biggest friction points. How much time do you spend copying, pasting, and switching windows? This book will show you a different way.</p>
+<hr />
+<blockquote><p><strong>Previous:</strong> <a href="00-preface.md">Preface</a><br><strong>Next:</strong> <a href="02-install-first-conversation.md">Chapter 2 — Install &amp; First Conversation</a></p></blockquote>
+    <nav class="chapter-nav"><a href="00-preface.html" class="nav-prev"><span class="nav-label">&larr; Previous</span><span class="nav-title">Preface</span></a><a href="02-install-first-conversation.html" class="nav-next"><span class="nav-label">Next &rarr;</span><span class="nav-title">Install & First Conversation</span></a></nav>
+  </article>
+</main>
+
+<button class="back-to-top" id="back-to-top" aria-label="Back to top">&#8593;</button>
+
+<div class="search-overlay" id="search-overlay">
+  <div class="search-modal">
+    <div class="search-input-wrap">
+      <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6.5" cy="6.5" r="5"/><line x1="10.5" y1="10.5" x2="15" y2="15"/></svg>
+      <input type="text" class="search-input" id="search-input" placeholder="Search chapters, topics...">
+    </div>
+    <div class="search-results" id="search-results">
+      <div class="search-empty">Start typing to search...</div>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/script.js"></script>
+</body>
+</html>

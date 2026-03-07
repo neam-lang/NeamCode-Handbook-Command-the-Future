@@ -1,0 +1,188 @@
+[
+  {
+    "title": "Preface",
+    "chapter": "Part: Getting Started",
+    "url": "chapters/00-preface.html",
+    "preview": "Picture this: you're staring at a codebase you've never seen before. Thousands of files. No documentation. A deadline looming. You need to understand it, fix a bug in it, and ship a PR \u2014 by tomorrow."
+  },
+  {
+    "title": "Chapter 1: Meet NeamCode",
+    "chapter": "Part: Getting Started",
+    "url": "chapters/01-meet-neamcode.html",
+    "preview": "**What you'll learn:**"
+  },
+  {
+    "title": "Chapter 2: Install & First Conversation",
+    "chapter": "Part: Getting Started",
+    "url": "chapters/02-install-first-conversation.html",
+    "preview": "**What you'll learn:**"
+  },
+  {
+    "title": "Chapter 3: The Art of Prompting",
+    "chapter": "Part: Getting Started",
+    "url": "chapters/03-art-of-prompting.html",
+    "preview": "**What you'll learn:**"
+  },
+  {
+    "title": "Chapter 4: Working with Files",
+    "chapter": "Part: Core Skills",
+    "url": "chapters/04-working-with-files.html",
+    "preview": "- How to read files of any type with `file_read`"
+  },
+  {
+    "title": "Chapter 5: Finding Things in Code",
+    "chapter": "Part: Core Skills",
+    "url": "chapters/05-finding-things.html",
+    "preview": "- How to find files by name using `glob` patterns"
+  },
+  {
+    "title": "Chapter 6: Running Commands & Git",
+    "chapter": "Part: Core Skills",
+    "url": "chapters/06-commands-and-git.html",
+    "preview": "- How to run shell commands through NeamCode with `bash`"
+  },
+  {
+    "title": "Chapter 7: Researching from the Terminal",
+    "chapter": "Part: Core Skills",
+    "url": "chapters/07-web-research.html",
+    "preview": "- How to search the web for documentation, solutions, and references with `web_search`"
+  },
+  {
+    "title": "Chapter 8: Slash Commands",
+    "chapter": "Part: Workflow & Configuration",
+    "url": "chapters/08-slash-commands.html",
+    "preview": "**\ud83d\udcd6 Estimated read time: 18 minutes**"
+  },
+  {
+    "title": "Chapter 9: Modes",
+    "chapter": "Part: Workflow & Configuration",
+    "url": "chapters/09-modes.html",
+    "preview": "**\ud83d\udcd6 Estimated read time: 22 minutes**"
+  },
+  {
+    "title": "Chapter 10: Sessions & Context",
+    "chapter": "Part: Workflow & Configuration",
+    "url": "chapters/10-sessions-context.html",
+    "preview": "**\ud83d\udcd6 Estimated read time: 20 minutes**"
+  },
+  {
+    "title": "Chapter 11: Auto Memory",
+    "chapter": "Part: Workflow & Configuration",
+    "url": "chapters/11-auto-memory.html",
+    "preview": "**\ud83d\udcd6 Estimated read time: 22 minutes**"
+  },
+  {
+    "title": "Chapter 12: Choosing Your AI Provider",
+    "chapter": "Part: Providers & Cost",
+    "url": "chapters/12-choosing-providers.html",
+    "preview": "- The 11 AI providers NeamCode supports and what each excels at"
+  },
+  {
+    "title": "Chapter 13: Offline Mode",
+    "chapter": "Part: Providers & Cost",
+    "url": "chapters/13-offline-mode.html",
+    "preview": "- How NeamCode's zero-config offline auto-recovery works under the hood"
+  },
+  {
+    "title": "Chapter 14: The $0 AI Setup",
+    "chapter": "Part: Providers & Cost",
+    "url": "chapters/14-zero-cost-setup.html",
+    "preview": "- Why running AI locally is worth the setup effort"
+  },
+  {
+    "title": "Chapter 15: Budget & Cost Tracking",
+    "chapter": "Part: Providers & Cost",
+    "url": "chapters/15-budget-cost.html",
+    "preview": "- How to set session and monthly budgets in NeamCode"
+  },
+  {
+    "title": "Chapter 16: Agents & Delegation",
+    "chapter": "Part: Advanced Features",
+    "url": "chapters/16-agents.html",
+    "preview": "- What agents are and how they differ from regular NeamCode interactions"
+  },
+  {
+    "title": "Chapter 17: MCP Servers",
+    "chapter": "Part: Advanced Features",
+    "url": "chapters/17-mcp-servers.html",
+    "preview": "- What the Model Context Protocol (MCP) is and why it matters"
+  },
+  {
+    "title": "Chapter 18: Neam Language Integration",
+    "chapter": "Part: Advanced Features",
+    "url": "chapters/18-neam-language.html",
+    "preview": "- What the Neam programming language is and what it's designed for"
+  },
+  {
+    "title": "Chapter 19: For Students",
+    "chapter": "Part: Audience Guides",
+    "url": "chapters/19-for-students.html",
+    "preview": "- How to learn a new programming language with NeamCode as your tutor"
+  },
+  {
+    "title": "Chapter 20: For Researchers",
+    "chapter": "Part: Audience Guides",
+    "url": "chapters/20-for-researchers.html",
+    "preview": "- How to build data analysis pipelines with NeamCode assistance"
+  },
+  {
+    "title": "Chapter 21: For Professionals",
+    "chapter": "Part: Audience Guides",
+    "url": "chapters/21-for-professionals.html",
+    "preview": "- How to integrate NeamCode into professional code review workflows"
+  },
+  {
+    "title": "Chapter 22: Walkthrough: Build a Project",
+    "chapter": "Part: Walkthroughs",
+    "url": "chapters/22-walkthrough-build-project.html",
+    "preview": "- How to build a complete REST API from zero using NeamCode"
+  },
+  {
+    "title": "Chapter 23: Walkthrough: Fix a Real Bug",
+    "chapter": "Part: Walkthroughs",
+    "url": "chapters/23-walkthrough-fix-bug.html",
+    "preview": "- How to use NeamCode to investigate a bug from report to fix"
+  },
+  {
+    "title": "Chapter 24: Making NeamCode Yours",
+    "chapter": "Part: Walkthroughs",
+    "url": "chapters/24-making-it-yours.html",
+    "preview": "- How to customize NeamCode's visual appearance with themes"
+  },
+  {
+    "title": "Chapter 25: The Road Ahead",
+    "chapter": "Part: Closing",
+    "url": "chapters/25-road-ahead.html",
+    "preview": "**What you'll learn:**"
+  },
+  {
+    "title": "Appendix A: All Slash Commands",
+    "chapter": "Appendices",
+    "url": "appendices/A-slash-commands.html",
+    "preview": "\ud83d\udcd6 **10 min read**"
+  },
+  {
+    "title": "Appendix B: All Skills Reference",
+    "chapter": "Appendices",
+    "url": "appendices/B-skills-reference.html",
+    "preview": "\ud83d\udcd6 **12 min read**"
+  },
+  {
+    "title": "Appendix C: Configuration Reference",
+    "chapter": "Appendices",
+    "url": "appendices/C-configuration.html",
+    "preview": "\ud83d\udcd6 **8 min read**"
+  },
+  {
+    "title": "Appendix D: Troubleshooting & FAQ",
+    "chapter": "Appendices",
+    "url": "appendices/D-troubleshooting.html",
+    "preview": "\ud83d\udcd6 **10 min read**"
+  },
+  {
+    "title": "Appendix E: Glossary",
+    "chapter": "Appendices",
+    "url": "appendices/E-glossary.html",
+    "preview": "\ud83d\udcd6 **8 min read**"
+  }
+]

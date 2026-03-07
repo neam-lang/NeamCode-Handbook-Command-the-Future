@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="480" viewBox="0 0 800 480">
+  <defs>
+    <style>
+      text { font-family: 'Segoe UI', Arial, Helvetica, sans-serif; }
+      .title { font-size: 18px; font-weight: 700; fill: #1a1a1a; }
+      .label { font-size: 14px; font-weight: 600; fill: #ffffff; }
+      .label-dark { font-size: 14px; font-weight: 600; fill: #1a1a1a; }
+      .sublabel { font-size: 12px; fill: #666666; }
+      .tool-icon { font-size: 11px; fill: #444444; font-weight: 500; }
+    </style>
+    <marker id="arr-r" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#0060B6"/>
+    </marker>
+    <marker id="arr-l" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+      <polygon points="10 0, 0 3.5, 10 7" fill="#0060B6"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="480" rx="8" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1"/>
+
+  <!-- Title -->
+  <text x="400" y="35" text-anchor="middle" class="title">MCP Architecture and Tool Ecosystem</text>
+
+  <!-- NeamCode CLI (left) -->
+  <rect x="40" y="130" width="180" height="200" rx="14" fill="#BE0027"/>
+  <text x="130" y="170" text-anchor="middle" class="label" font-size="17">NeamCode</text>
+  <text x="130" y="192" text-anchor="middle" font-size="13" fill="#f8d7da">CLI</text>
+
+  <!-- CLI features -->
+  <rect x="55" y="210" width="150" height="28" rx="6" fill="#a00020"/>
+  <text x="130" y="229" text-anchor="middle" font-size="11" fill="#ffffff">Agent Runtime</text>
+  <rect x="55" y="245" width="150" height="28" rx="6" fill="#a00020"/>
+  <text x="130" y="264" text-anchor="middle" font-size="11" fill="#ffffff">Tool Discovery</text>
+  <rect x="55" y="280" width="150" height="28" rx="6" fill="#a00020"/>
+  <text x="130" y="299" text-anchor="middle" font-size="11" fill="#ffffff">Permission Manager</text>
+
+  <!-- MCP Protocol (middle) -->
+  <rect x="295" y="110" width="210" height="240" rx="14" fill="#0060B6"/>
+  <text x="400" y="145" text-anchor="middle" class="label" font-size="17">MCP Protocol</text>
+  <line x1="315" y1="155" x2="485" y2="155" stroke="#ffffff" stroke-opacity="0.3" stroke-width="1"/>
+
+  <!-- Protocol details -->
+  <rect x="310" y="168" width="180" height="30" rx="6" fill="#004e94"/>
+  <text x="400" y="188" text-anchor="middle" font-size="12" fill="#ffffff">JSON-RPC 2.0</text>
+  <rect x="310" y="206" width="180" height="30" rx="6" fill="#004e94"/>
+  <text x="400" y="226" text-anchor="middle" font-size="12" fill="#ffffff">stdio / HTTP Transport</text>
+  <rect x="310" y="244" width="180" height="30" rx="6" fill="#004e94"/>
+  <text x="400" y="264" text-anchor="middle" font-size="12" fill="#ffffff">Tool Schemas</text>
+  <rect x="310" y="282" width="180" height="30" rx="6" fill="#004e94"/>
+  <text x="400" y="302" text-anchor="middle" font-size="12" fill="#ffffff">Capability Negotiation</text>
+
+  <!-- Bidirectional arrows: CLI to Protocol -->
+  <line x1="220" y1="215" x2="290" y2="215" stroke="#0060B6" stroke-width="2.5" marker-end="url(#arr-r)"/>
+  <line x1="290" y1="240" x2="220" y2="240" stroke="#0060B6" stroke-width="2.5" marker-end="url(#arr-l)"/>
+  <text x="255" y="208" text-anchor="middle" font-size="10" fill="#0060B6" font-weight="600">JSON-RPC</text>
+  <text x="255" y="260" text-anchor="middle" font-size="10" fill="#0060B6" font-weight="600">Response</text>
+
+  <!-- Bidirectional arrows: Protocol to Servers -->
+  <line x1="505" y1="215" x2="565" y2="215" stroke="#0060B6" stroke-width="2.5" marker-end="url(#arr-r)"/>
+  <line x1="565" y1="240" x2="505" y2="240" stroke="#0060B6" stroke-width="2.5" marker-end="url(#arr-l)"/>
+  <text x="535" y="208" text-anchor="middle" font-size="10" fill="#0060B6" font-weight="600">JSON-RPC</text>
+  <text x="535" y="260" text-anchor="middle" font-size="10" fill="#0060B6" font-weight="600">Response</text>
+
+  <!-- MCP Servers (right) -->
+  <!-- Server 1: Filesystem -->
+  <rect x="570" y="80" width="200" height="90" rx="10" fill="#27ae60"/>
+  <text x="670" y="108" text-anchor="middle" class="label" font-size="14">Filesystem Server</text>
+  <rect x="585" y="118" width="55" height="20" rx="4" fill="#219a52"/>
+  <text x="612" y="132" text-anchor="middle" font-size="10" fill="#ffffff">read</text>
+  <rect x="648" y="118" width="55" height="20" rx="4" fill="#219a52"/>
+  <text x="675" y="132" text-anchor="middle" font-size="10" fill="#ffffff">write</text>
+  <rect x="710" y="118" width="50" height="20" rx="4" fill="#219a52"/>
+  <text x="735" y="132" text-anchor="middle" font-size="10" fill="#ffffff">list</text>
+  <rect x="585" y="144" width="65" height="20" rx="4" fill="#219a52"/>
+  <text x="617" y="158" text-anchor="middle" font-size="10" fill="#ffffff">search</text>
+
+  <!-- Server 2: Database -->
+  <rect x="570" y="185" width="200" height="90" rx="10" fill="#0060B6"/>
+  <text x="670" y="213" text-anchor="middle" class="label" font-size="14">Database Server</text>
+  <rect x="585" y="223" width="55" height="20" rx="4" fill="#004e94"/>
+  <text x="612" y="237" text-anchor="middle" font-size="10" fill="#ffffff">query</text>
+  <rect x="648" y="223" width="55" height="20" rx="4" fill="#004e94"/>
+  <text x="675" y="237" text-anchor="middle" font-size="10" fill="#ffffff">insert</text>
+  <rect x="710" y="223" width="50" height="20" rx="4" fill="#004e94"/>
+  <text x="735" y="237" text-anchor="middle" font-size="10" fill="#ffffff">schema</text>
+  <rect x="585" y="249" width="65" height="20" rx="4" fill="#004e94"/>
+  <text x="617" y="263" text-anchor="middle" font-size="10" fill="#ffffff">migrate</text>
+
+  <!-- Server 3: Custom API -->
+  <rect x="570" y="290" width="200" height="90" rx="10" fill="#6c757d"/>
+  <text x="670" y="318" text-anchor="middle" class="label" font-size="14">Custom API Server</text>
+  <rect x="585" y="328" width="50" height="20" rx="4" fill="#5a6268"/>
+  <text x="610" y="342" text-anchor="middle" font-size="10" fill="#ffffff">GET</text>
+  <rect x="643" y="328" width="50" height="20" rx="4" fill="#5a6268"/>
+  <text x="668" y="342" text-anchor="middle" font-size="10" fill="#ffffff">POST</text>
+  <rect x="700" y="328" width="60" height="20" rx="4" fill="#5a6268"/>
+  <text x="730" y="342" text-anchor="middle" font-size="10" fill="#ffffff">webhook</text>
+  <rect x="585" y="354" width="60" height="20" rx="4" fill="#5a6268"/>
+  <text x="615" y="368" text-anchor="middle" font-size="10" fill="#ffffff">auth</text>
+
+  <!-- Bottom info bar -->
+  <rect x="80" y="410" width="640" height="50" rx="10" fill="#ffffff" stroke="#dee2e6" stroke-width="1"/>
+  <text x="400" y="432" text-anchor="middle" font-size="12" fill="#555555" font-weight="600">Model Context Protocol (MCP) provides a standardized interface</text>
+  <text x="400" y="448" text-anchor="middle" font-size="12" fill="#555555">for AI agents to discover, negotiate, and invoke external tools securely.</text>
+</svg>

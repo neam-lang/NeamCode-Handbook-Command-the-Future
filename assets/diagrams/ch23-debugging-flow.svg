@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="920" viewBox="0 0 800 920">
+  <defs>
+    <style>
+      text { font-family: 'Segoe UI', Arial, Helvetica, sans-serif; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#666" />
+    </marker>
+    <marker id="arrowhead-red" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#BE0027" />
+    </marker>
+    <filter id="shadow" x="-4%" y="-4%" width="108%" height="108%">
+      <feDropShadow dx="1" dy="2" stdDeviation="2" flood-opacity="0.12" />
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="920" rx="12" fill="#f9fafb" />
+
+  <!-- Title -->
+  <text x="400" y="40" text-anchor="middle" font-size="20" font-weight="bold" fill="#333">Chapter 23 &#x2014; Debugging Workflow</text>
+
+  <!-- Step 1: Bug Report (red) -->
+  <rect x="300" y="65" width="200" height="50" rx="12" fill="#BE0027" filter="url(#shadow)" />
+  <text x="400" y="95" text-anchor="middle" font-size="14" fill="#fff" font-weight="600">Bug Report</text>
+
+  <!-- Arrow -->
+  <line x1="400" y1="115" x2="400" y2="155" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)" />
+
+  <!-- Step 2: Reproduce Issue (blue) -->
+  <rect x="300" y="160" width="200" height="50" rx="12" fill="#0060B6" filter="url(#shadow)" />
+  <text x="400" y="190" text-anchor="middle" font-size="14" fill="#fff" font-weight="600">Reproduce Issue</text>
+
+  <!-- Arrow -->
+  <line x1="400" y1="210" x2="400" y2="250" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)" />
+
+  <!-- Step 3: Read Error Logs (blue) -->
+  <rect x="300" y="255" width="200" height="50" rx="12" fill="#0060B6" filter="url(#shadow)" />
+  <text x="400" y="285" text-anchor="middle" font-size="14" fill="#fff" font-weight="600">Read Error Logs</text>
+
+  <!-- Arrow -->
+  <line x1="400" y1="305" x2="400" y2="345" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)" />
+
+  <!-- Step 4: Identify Root Cause (blue) -->
+  <rect x="280" y="350" width="240" height="50" rx="12" fill="#0060B6" filter="url(#shadow)" />
+  <text x="400" y="380" text-anchor="middle" font-size="14" fill="#fff" font-weight="600">Identify Root Cause</text>
+
+  <!-- Arrow -->
+  <line x1="400" y1="400" x2="400" y2="440" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)" />
+
+  <!-- Step 5: Apply Fix (green) -->
+  <rect x="300" y="445" width="200" height="50" rx="12" fill="#27ae60" filter="url(#shadow)" />
+  <text x="400" y="475" text-anchor="middle" font-size="14" fill="#fff" font-weight="600">Apply Fix</text>
+
+  <!-- Arrow -->
+  <line x1="400" y1="495" x2="400" y2="535" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)" />
+
+  <!-- Step 6: Run Tests (green) -->
+  <rect x="300" y="540" width="200" height="50" rx="12" fill="#27ae60" filter="url(#shadow)" />
+  <text x="400" y="570" text-anchor="middle" font-size="14" fill="#fff" font-weight="600">Run Tests</text>
+
+  <!-- Arrow to diamond -->
+  <line x1="400" y1="590" x2="400" y2="640" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)" />
+
+  <!-- Decision Diamond: Tests Pass? -->
+  <polygon points="400,645 480,700 400,755 320,700" fill="#fff" stroke="#333" stroke-width="2.5" filter="url(#shadow)" />
+  <text x="400" y="704" text-anchor="middle" font-size="13" fill="#333" font-weight="600">Tests Pass?</text>
+
+  <!-- Yes arrow (down) -->
+  <line x1="400" y1="755" x2="400" y2="810" stroke="#27ae60" stroke-width="2.5" marker-end="url(#arrowhead)" />
+  <text x="418" y="788" font-size="12" fill="#27ae60" font-weight="bold">Yes</text>
+
+  <!-- Commit Fix (green) -->
+  <rect x="300" y="815" width="200" height="50" rx="12" fill="#27ae60" filter="url(#shadow)" />
+  <text x="400" y="845" text-anchor="middle" font-size="14" fill="#fff" font-weight="600">Commit Fix</text>
+
+  <!-- No arrow (right then up, loops back to Apply Fix) -->
+  <line x1="480" y1="700" x2="620" y2="700" stroke="#BE0027" stroke-width="2.5" />
+  <text x="540" y="690" font-size="12" fill="#BE0027" font-weight="bold">No</text>
+  <line x1="620" y1="700" x2="620" y2="470" stroke="#BE0027" stroke-width="2.5" />
+  <line x1="620" y1="470" x2="505" y2="470" stroke="#BE0027" stroke-width="2.5" marker-end="url(#arrowhead-red)" />
+
+  <!-- Legend -->
+  <rect x="40" y="885" width="16" height="16" rx="3" fill="#BE0027" />
+  <text x="62" y="899" font-size="12" fill="#555">Bug / Failure</text>
+  <rect x="170" y="885" width="16" height="16" rx="3" fill="#0060B6" />
+  <text x="192" y="899" font-size="12" fill="#555">Investigation</text>
+  <rect x="310" y="885" width="16" height="16" rx="3" fill="#27ae60" />
+  <text x="332" y="899" font-size="12" fill="#555">Resolution</text>
+</svg>

@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 3: The Art of Prompting | Command the Future</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-base="../">
+
+<header class="topbar">
+  <div class="topbar-left">
+    <button class="hamburger" id="hamburger" aria-label="Toggle sidebar">&#9776;</button>
+    <a href="../index.html" class="topbar-title">Command the Future</a>
+  </div>
+  <div class="topbar-right">
+    <button class="topbar-btn search-btn" aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6.5" cy="6.5" r="5"/><line x1="10.5" y1="10.5" x2="15" y2="15"/></svg><kbd>Ctrl+K</kbd></button>
+    <button class="topbar-btn" id="theme-toggle" aria-label="Toggle theme"></button>
+  </div>
+</header>
+
+<div class="progress-bar"><div class="progress-fill"></div></div>
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+<aside class="sidebar" id="sidebar">
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Getting Started</div>
+  <div class="sidebar-chapters">
+    <a href="00-preface.html" class="sidebar-link" title="Preface">Preface</a>
+    <a href="01-meet-neamcode.html" class="sidebar-link" title="Meet NeamCode">Meet NeamCode</a>
+    <a href="02-install-first-conversation.html" class="sidebar-link" title="Install & First Conversation">Install & First Conversation</a>
+    <a href="03-art-of-prompting.html" class="sidebar-link active" title="The Art of Prompting">The Art of Prompting</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Core Skills</div>
+  <div class="sidebar-chapters">
+    <a href="04-working-with-files.html" class="sidebar-link" title="Working with Files">Working with Files</a>
+    <a href="05-finding-things.html" class="sidebar-link" title="Finding Things in Code">Finding Things in Code</a>
+    <a href="06-commands-and-git.html" class="sidebar-link" title="Running Commands & Git">Running Commands & Git</a>
+    <a href="07-web-research.html" class="sidebar-link" title="Researching from the Terminal">Researching from the Terminal</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Workflow & Configuration</div>
+  <div class="sidebar-chapters">
+    <a href="08-slash-commands.html" class="sidebar-link" title="Slash Commands">Slash Commands</a>
+    <a href="09-modes.html" class="sidebar-link" title="Modes">Modes</a>
+    <a href="10-sessions-context.html" class="sidebar-link" title="Sessions & Context">Sessions & Context</a>
+    <a href="11-auto-memory.html" class="sidebar-link" title="Auto Memory">Auto Memory</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Providers & Cost</div>
+  <div class="sidebar-chapters">
+    <a href="12-choosing-providers.html" class="sidebar-link" title="Choosing Your AI Provider">Choosing Your AI Provider</a>
+    <a href="13-offline-mode.html" class="sidebar-link" title="Offline Mode">Offline Mode</a>
+    <a href="14-zero-cost-setup.html" class="sidebar-link" title="The $0 AI Setup">The $0 AI Setup</a>
+    <a href="15-budget-cost.html" class="sidebar-link" title="Budget & Cost Tracking">Budget & Cost Tracking</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Advanced Features</div>
+  <div class="sidebar-chapters">
+    <a href="16-agents.html" class="sidebar-link" title="Agents & Delegation">Agents & Delegation</a>
+    <a href="17-mcp-servers.html" class="sidebar-link" title="MCP Servers">MCP Servers</a>
+    <a href="18-neam-language.html" class="sidebar-link" title="Neam Language Integration">Neam Language Integration</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Audience Guides</div>
+  <div class="sidebar-chapters">
+    <a href="19-for-students.html" class="sidebar-link" title="For Students">For Students</a>
+    <a href="20-for-researchers.html" class="sidebar-link" title="For Researchers">For Researchers</a>
+    <a href="21-for-professionals.html" class="sidebar-link" title="For Professionals">For Professionals</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Walkthroughs</div>
+  <div class="sidebar-chapters">
+    <a href="22-walkthrough-build-project.html" class="sidebar-link" title="Walkthrough: Build a Project">Walkthrough: Build a Project</a>
+    <a href="23-walkthrough-fix-bug.html" class="sidebar-link" title="Walkthrough: Fix a Real Bug">Walkthrough: Fix a Real Bug</a>
+    <a href="24-making-it-yours.html" class="sidebar-link" title="Making NeamCode Yours">Making NeamCode Yours</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Closing</div>
+  <div class="sidebar-chapters">
+    <a href="25-road-ahead.html" class="sidebar-link" title="The Road Ahead">The Road Ahead</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Appendices</div>
+  <div class="sidebar-chapters">
+    <a href="../appendices/A-slash-commands.html" class="sidebar-link" title="All Slash Commands">All Slash Commands</a>
+    <a href="../appendices/B-skills-reference.html" class="sidebar-link" title="All Skills Reference">All Skills Reference</a>
+    <a href="../appendices/C-configuration.html" class="sidebar-link" title="Configuration Reference">Configuration Reference</a>
+    <a href="../appendices/D-troubleshooting.html" class="sidebar-link" title="Troubleshooting & FAQ">Troubleshooting & FAQ</a>
+    <a href="../appendices/E-glossary.html" class="sidebar-link" title="Glossary">Glossary</a>
+  </div>
+</div>
+</aside>
+
+<main class="main">
+  <article class="content">
+<h1 id="chapter-3-talking-to-neamcode-the-art-of-prompting">Chapter 3: Talking to NeamCode — The Art of Prompting <a href="#chapter-3-talking-to-neamcode-the-art-of-prompting" class="heading-anchor">#</a></h1>
+<blockquote><p><em>"The quality of an answer is determined by the quality of the question."</em></p></blockquote>
+<hr />
+<p>📖 <strong>20 min read</strong></p>
+<p><strong>What you'll learn:</strong></p>
+<ul>
+<li>How to write prompts that get great results</li>
+<li>The difference between vague and specific requests</li>
+<li>Multi-step prompting strategies</li>
+<li>When to give context vs. when to let NeamCode explore</li>
+<li>Common prompting mistakes and how to avoid them</li>
+</ul>
+<hr />
+<h2 id="31-neamcode-isnt-a-search-engine">3.1 NeamCode Isn't a Search Engine <a href="#31-neamcode-isnt-a-search-engine" class="heading-anchor">#</a></h2>
+<p>The biggest mistake new users make is treating NeamCode like Google. They type short, vague queries and expect magic:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">❌ Bad:  &quot;fix bug&quot;
+❌ Bad:  &quot;make it work&quot;
+❌ Bad:  &quot;help&quot;</code></pre>
+<p>NeamCode is an <em>agent</em>. It takes <em>actions</em>. The better you describe what you want, the better it performs. Think of it like talking to a skilled colleague who just joined your team — they're brilliant, but they don't know your project yet.</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">✅ Good: &quot;The /api/users endpoint returns 500 when the email field
+         is missing from the request body. Find and fix the issue.&quot;
+
+✅ Good: &quot;Create a React component called UserCard that shows the
+         user&#x27;s name, avatar, and role. Use Tailwind CSS for styling.&quot;
+
+✅ Good: &quot;I just cloned this repo. Give me a high-level overview of
+         the project structure, the main entry points, and how data
+         flows through the system.&quot;</code></pre>
+<hr />
+<h2 id="32-the-prompting-spectrum">3.2 The Prompting Spectrum <a href="#32-the-prompting-spectrum" class="heading-anchor">#</a></h2>
+<p>Think of prompts on a spectrum from <strong>open</strong> to <strong>specific</strong>:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">Open ◄──────────────────────────────────► Specific
+
+&quot;Explore this      &quot;What does the        &quot;In auth.ts line 42,
+ codebase&quot;          login function        change the bcrypt
+                    do?&quot;                  salt rounds from
+                                          10 to 12&quot;</code></pre>
+<p>Both ends of the spectrum are valid. Use them for different situations:</p>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Situation</th>
+<th>Prompt Style</th>
+<th>Example</th>
+</tr></thead><tbody>
+<tr>
+<td>You don't know the codebase</td>
+<td>Open</td>
+<td>"Help me understand this project"</td>
+</tr>
+<tr>
+<td>You know what's wrong but not where</td>
+<td>Medium</td>
+<td>"Find where user sessions expire"</td>
+</tr>
+<tr>
+<td>You know exactly what to change</td>
+<td>Specific</td>
+<td>"In config.ts, change the timeout from 30 to 60 seconds"</td>
+</tr>
+<tr>
+<td>You want ideas</td>
+<td>Open</td>
+<td>"How could we improve the error handling here?"</td>
+</tr>
+<tr>
+<td>You want implementation</td>
+<td>Specific</td>
+<td>"Add try-catch blocks to all the async functions in api/"</td>
+</tr>
+</tbody></table></div>
+<div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p><strong>💡 Tip</strong> — When in doubt, start <strong>open</strong> and narrow down. NeamCode can explore, and you can guide it based on what it finds.</p></div>
+<hr />
+<h2 id="33-six-prompt-patterns-that-work">3.3 Six Prompt Patterns That Work <a href="#33-six-prompt-patterns-that-work" class="heading-anchor">#</a></h2>
+<h3 id="pattern-1-describe-the-problem-not-the-solution">Pattern 1: Describe the Problem, Not the Solution <a href="#pattern-1-describe-the-problem-not-the-solution" class="heading-anchor">#</a></h3>
+<p>Instead of telling NeamCode <em>how</em> to fix something, describe <em>what's wrong</em>:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">❌ &quot;Add a null check on line 47 of user-service.ts&quot;
+
+✅ &quot;The app crashes when a user has no profile picture.
+    Find where the crash happens and fix it.&quot;</code></pre>
+<p>The second version lets NeamCode investigate. It might find that the issue is actually on line 52, or in a different file entirely.</p>
+<h3 id="pattern-2-give-the-why-along-with-the-what">Pattern 2: Give the "Why" Along with the "What" <a href="#pattern-2-give-the-why-along-with-the-what" class="heading-anchor">#</a></h3>
+<p>Context makes NeamCode smarter:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">❌ &quot;Convert this function to TypeScript&quot;
+
+✅ &quot;Convert this function to TypeScript. We&#x27;re migrating from
+    JavaScript and want strict types. Follow the patterns used
+    in the rest of the src/services/ directory.&quot;</code></pre>
+<h3 id="pattern-3-use-examples-for-style">Pattern 3: Use Examples for Style <a href="#pattern-3-use-examples-for-style" class="heading-anchor">#</a></h3>
+<p>If you want output in a particular style, show an example:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Write unit tests for the calculateTotal function.
+     Follow this pattern from our existing tests:
+
+     test(&#x27;returns 0 for empty cart&#x27;, () =&gt; {
+       expect(calculateTotal([])).toBe(0);
+     });</code></pre>
+<h3 id="pattern-4-step-by-step-for-complex-tasks">Pattern 4: Step-by-Step for Complex Tasks <a href="#pattern-4-step-by-step-for-complex-tasks" class="heading-anchor">#</a></h3>
+<p>For large tasks, break them into steps — or ask NeamCode to plan first:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: I want to add Google OAuth to this Express app.
+     Before writing any code, outline the steps you&#x27;d take.
+     Then implement them one at a time.</code></pre>
+<h3 id="pattern-5-constrain-the-scope">Pattern 5: Constrain the Scope <a href="#pattern-5-constrain-the-scope" class="heading-anchor">#</a></h3>
+<p>Prevent NeamCode from going too far:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Refactor the database queries in user-repo.ts to use
+     parameterized queries. Only change that file — don&#x27;t
+     touch anything else.</code></pre>
+<h3 id="pattern-6-ask-for-verification">Pattern 6: Ask for Verification <a href="#pattern-6-ask-for-verification" class="heading-anchor">#</a></h3>
+<p>Tell NeamCode to check its own work:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Fix the failing test in auth.test.ts. After fixing it,
+     run the test suite to make sure everything passes.</code></pre>
+<hr />
+<h2 id="34-multi-turn-conversations">3.4 Multi-Turn Conversations <a href="#34-multi-turn-conversations" class="heading-anchor">#</a></h2>
+<p>NeamCode remembers everything in your session. Use this to build up complex work:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">Turn 1: &quot;Show me the project structure&quot;
+         → NeamCode explores and describes the codebase
+
+Turn 2: &quot;Which files handle authentication?&quot;
+         → NeamCode searches and identifies the auth files
+
+Turn 3: &quot;The JWT token expiry is too short. Find where it&#x27;s set.&quot;
+         → NeamCode reads the auth files and finds the config
+
+Turn 4: &quot;Change it from 1 hour to 24 hours&quot;
+         → NeamCode edits the exact line
+
+Turn 5: &quot;Are there any tests for this? Run them.&quot;
+         → NeamCode finds and runs the relevant tests</code></pre>
+<p>Each turn builds on the last. You don't need to re-explain the context.</p>
+<blockquote><p><strong>⚠️ Warning</strong> — Very long conversations (100+ turns) can slow down NeamCode as the context window fills up. If things get sluggish, use <code>/compact</code> to summarize the conversation, or start a new session and use <code>/memory</code> to carry forward what matters. See Chapter 10 for details.</p></blockquote>
+<hr />
+<h2 id="35-when-to-give-context-vs-when-to-let-it-explore">3.5 When to Give Context vs. When to Let It Explore <a href="#35-when-to-give-context-vs-when-to-let-it-explore" class="heading-anchor">#</a></h2>
+<h3 id="let-neamcode-explore-when">Let NeamCode Explore When: <a href="#let-neamcode-explore-when" class="heading-anchor">#</a></h3>
+<ul>
+<li>You're new to the codebase</li>
+<li>You're not sure where a bug is</li>
+<li>You want a fresh perspective</li>
+<li>The task involves multiple files</li>
+</ul>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: I&#x27;m getting &quot;Cannot read property &#x27;id&#x27; of undefined&quot;
+     somewhere in the checkout flow. Find it.</code></pre>
+<p>NeamCode will search for the error, trace the data flow, and find the root cause — often discovering things you wouldn't have found manually.</p>
+<h3 id="give-context-when">Give Context When: <a href="#give-context-when" class="heading-anchor">#</a></h3>
+<ul>
+<li>You know exactly which file to change</li>
+<li>You have specific requirements (framework, style, patterns)</li>
+<li>You want to prevent unnecessary exploration</li>
+<li>You're doing something unusual</li>
+</ul>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: In src/middleware/auth.ts, the verifyToken function uses
+     the jsonwebtoken library. Replace it with jose because
+     we&#x27;re moving to edge runtime which doesn&#x27;t support
+     jsonwebtoken&#x27;s native bindings.</code></pre>
+<hr />
+<h2 id="36-prompting-for-different-tasks">3.6 Prompting for Different Tasks <a href="#36-prompting-for-different-tasks" class="heading-anchor">#</a></h2>
+<h3 id="understanding-code">Understanding Code <a href="#understanding-code" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Explain the data flow from when a user clicks &quot;Submit Order&quot;
+     to when the order appears in the database. Trace through
+     every function call.</code></pre>
+<h3 id="writing-new-code">Writing New Code <a href="#writing-new-code" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Create a REST API endpoint POST /api/notes that accepts
+     { title: string, content: string } and saves it to the
+     notes table. Include input validation and error handling.
+     Follow the patterns in the existing endpoints.</code></pre>
+<h3 id="debugging">Debugging <a href="#debugging" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: The test in payment.test.ts on line 45 is failing with
+     &quot;expected 99.99 but received 100&quot;. Help me understand
+     why and fix it.</code></pre>
+<h3 id="refactoring">Refactoring <a href="#refactoring" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: The UserService class in user-service.ts has grown to
+     400 lines. Split it into smaller, focused modules while
+     keeping the public API the same. Don&#x27;t break any tests.</code></pre>
+<h3 id="learning">Learning <a href="#learning" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: I&#x27;m not familiar with React hooks. Explain how useEffect
+     works and show me examples from this project&#x27;s codebase.</code></pre>
+<hr />
+<h2 id="37-common-mistakes">3.7 Common Mistakes <a href="#37-common-mistakes" class="heading-anchor">#</a></h2>
+<h3 id="mistake-1-being-too-vague">Mistake 1: Being Too Vague <a href="#mistake-1-being-too-vague" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">❌ &quot;Make the app better&quot;
+✅ &quot;Improve the error messages in the validation layer so users
+    know exactly which field is invalid and why&quot;</code></pre>
+<h3 id="mistake-2-giving-too-many-instructions-at-once">Mistake 2: Giving Too Many Instructions at Once <a href="#mistake-2-giving-too-many-instructions-at-once" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">❌ &quot;Add authentication, set up a database, write tests, create
+    a CI pipeline, deploy to AWS, and add monitoring&quot;
+
+✅ &quot;Let&#x27;s add authentication. Start by setting up JWT-based
+    auth with a login endpoint.&quot;
+(Then continue with more requests in subsequent turns)</code></pre>
+<h3 id="mistake-3-not-reading-what-neamcode-says">Mistake 3: Not Reading What NeamCode Says <a href="#mistake-3-not-reading-what-neamcode-says" class="heading-anchor">#</a></h3>
+<p>NeamCode often explains what it found, asks clarifying questions, or warns about potential issues. Read its responses — they contain valuable information.</p>
+<h3 id="mistake-4-fighting-the-permission-system">Mistake 4: Fighting the Permission System <a href="#mistake-4-fighting-the-permission-system" class="heading-anchor">#</a></h3>
+<p>If NeamCode asks permission to do something and you keep denying it, it can't help you. Either approve the action or explain what you want differently:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">NeamCode: I&#x27;d like to run: npm install express
+Allow? (y/n)
+
+❌ n (then wondering why it doesn&#x27;t work)
+✅ y (let it install the dependency)
+✅ &quot;Don&#x27;t install anything. Just show me the code and I&#x27;ll
+    install manually.&quot; (give clear alternative instructions)</code></pre>
+<hr />
+<h2 id="38-pro-tips">3.8 Pro Tips <a href="#38-pro-tips" class="heading-anchor">#</a></h2>
+<h3 id="tip-1-use-natural-language-first">Tip 1: Use Natural Language First <a href="#tip-1-use-natural-language-first" class="heading-anchor">#</a></h3>
+<p>Don't try to speak in commands or code. NeamCode understands natural language best:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">❌ &quot;grep -r &#x27;TODO&#x27; src/ | wc -l&quot;
+✅ &quot;How many TODO comments are in the src directory?&quot;</code></pre>
+<h3 id="tip-2-reference-files-by-name">Tip 2: Reference Files by Name <a href="#tip-2-reference-files-by-name" class="heading-anchor">#</a></h3>
+<p>If you know the file, mention it. NeamCode will read it immediately:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">&quot;Look at package.json and tell me which dependencies
+ are outdated.&quot;</code></pre>
+<h3 id="tip-3-say-dont-when-needed">Tip 3: Say "Don't" When Needed <a href="#tip-3-say-dont-when-needed" class="heading-anchor">#</a></h3>
+<p>If you want to prevent certain actions:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">&quot;Refactor the API routes but don&#x27;t change any test files.&quot;
+&quot;Fix the CSS but don&#x27;t use inline styles.&quot;
+&quot;Add error handling but don&#x27;t catch and silently ignore errors.&quot;</code></pre>
+<h3 id="tip-4-ask-neamcode-to-think-first">Tip 4: Ask NeamCode to Think First <a href="#tip-4-ask-neamcode-to-think-first" class="heading-anchor">#</a></h3>
+<p>For complex tasks, ask it to plan before acting:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">&quot;Before making any changes, analyze the current architecture
+ and propose your approach. I&#x27;ll confirm before you proceed.&quot;</code></pre>
+<hr />
+<h2 id="exercises">Exercises <a href="#exercises" class="heading-anchor">#</a></h2>
+<p><strong>🎯 Exercise 3.1</strong> — Open NeamCode in any project directory. Try these three prompts and compare the results:</p>
+<ol>
+<li>"Tell me about this project"</li>
+<li>"What does this project do, what technologies does it use, and what's the directory structure?"</li>
+<li>"Read the README and package.json, then give me a 5-bullet summary of this project's purpose, tech stack, and entry points."</li>
+</ol>
+<p><strong>🎯 Exercise 3.2</strong> — Think of a bug you recently fixed. Write a prompt describing the <em>symptoms</em> (not the solution) and see if NeamCode can find and fix it.</p>
+<p><strong>🎯 Exercise 3.3</strong> — Ask NeamCode to create a small project (e.g., a Python CLI tool, a Node.js web server, or a bash utility script). Start with an open prompt, then refine with follow-up turns.</p>
+<p><strong>🎯 Exercise 3.4</strong> — Practice the "plan first" pattern: ask NeamCode to outline its approach for adding a feature, then approve or modify the plan before it starts coding.</p>
+<hr />
+<blockquote><p><strong>Previous:</strong> <a href="02-install-first-conversation.md">Chapter 2 — Install &amp; First Conversation</a><br><strong>Next:</strong> <a href="04-working-with-files.md">Chapter 4 — Working with Files</a></p></blockquote>
+    <nav class="chapter-nav"><a href="02-install-first-conversation.html" class="nav-prev"><span class="nav-label">&larr; Previous</span><span class="nav-title">Install & First Conversation</span></a><a href="04-working-with-files.html" class="nav-next"><span class="nav-label">Next &rarr;</span><span class="nav-title">Working with Files</span></a></nav>
+  </article>
+</main>
+
+<button class="back-to-top" id="back-to-top" aria-label="Back to top">&#8593;</button>
+
+<div class="search-overlay" id="search-overlay">
+  <div class="search-modal">
+    <div class="search-input-wrap">
+      <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6.5" cy="6.5" r="5"/><line x1="10.5" y1="10.5" x2="15" y2="15"/></svg>
+      <input type="text" class="search-input" id="search-input" placeholder="Search chapters, topics...">
+    </div>
+    <div class="search-results" id="search-results">
+      <div class="search-empty">Start typing to search...</div>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/script.js"></script>
+</body>
+</html>

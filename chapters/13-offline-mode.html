@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 13: Offline Mode | Command the Future</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-base="../">
+
+<header class="topbar">
+  <div class="topbar-left">
+    <button class="hamburger" id="hamburger" aria-label="Toggle sidebar">&#9776;</button>
+    <a href="../index.html" class="topbar-title">Command the Future</a>
+  </div>
+  <div class="topbar-right">
+    <button class="topbar-btn search-btn" aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6.5" cy="6.5" r="5"/><line x1="10.5" y1="10.5" x2="15" y2="15"/></svg><kbd>Ctrl+K</kbd></button>
+    <button class="topbar-btn" id="theme-toggle" aria-label="Toggle theme"></button>
+  </div>
+</header>
+
+<div class="progress-bar"><div class="progress-fill"></div></div>
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+<aside class="sidebar" id="sidebar">
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Getting Started</div>
+  <div class="sidebar-chapters">
+    <a href="00-preface.html" class="sidebar-link" title="Preface">Preface</a>
+    <a href="01-meet-neamcode.html" class="sidebar-link" title="Meet NeamCode">Meet NeamCode</a>
+    <a href="02-install-first-conversation.html" class="sidebar-link" title="Install & First Conversation">Install & First Conversation</a>
+    <a href="03-art-of-prompting.html" class="sidebar-link" title="The Art of Prompting">The Art of Prompting</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Core Skills</div>
+  <div class="sidebar-chapters">
+    <a href="04-working-with-files.html" class="sidebar-link" title="Working with Files">Working with Files</a>
+    <a href="05-finding-things.html" class="sidebar-link" title="Finding Things in Code">Finding Things in Code</a>
+    <a href="06-commands-and-git.html" class="sidebar-link" title="Running Commands & Git">Running Commands & Git</a>
+    <a href="07-web-research.html" class="sidebar-link" title="Researching from the Terminal">Researching from the Terminal</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Workflow & Configuration</div>
+  <div class="sidebar-chapters">
+    <a href="08-slash-commands.html" class="sidebar-link" title="Slash Commands">Slash Commands</a>
+    <a href="09-modes.html" class="sidebar-link" title="Modes">Modes</a>
+    <a href="10-sessions-context.html" class="sidebar-link" title="Sessions & Context">Sessions & Context</a>
+    <a href="11-auto-memory.html" class="sidebar-link" title="Auto Memory">Auto Memory</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Providers & Cost</div>
+  <div class="sidebar-chapters">
+    <a href="12-choosing-providers.html" class="sidebar-link" title="Choosing Your AI Provider">Choosing Your AI Provider</a>
+    <a href="13-offline-mode.html" class="sidebar-link active" title="Offline Mode">Offline Mode</a>
+    <a href="14-zero-cost-setup.html" class="sidebar-link" title="The $0 AI Setup">The $0 AI Setup</a>
+    <a href="15-budget-cost.html" class="sidebar-link" title="Budget & Cost Tracking">Budget & Cost Tracking</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Advanced Features</div>
+  <div class="sidebar-chapters">
+    <a href="16-agents.html" class="sidebar-link" title="Agents & Delegation">Agents & Delegation</a>
+    <a href="17-mcp-servers.html" class="sidebar-link" title="MCP Servers">MCP Servers</a>
+    <a href="18-neam-language.html" class="sidebar-link" title="Neam Language Integration">Neam Language Integration</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Audience Guides</div>
+  <div class="sidebar-chapters">
+    <a href="19-for-students.html" class="sidebar-link" title="For Students">For Students</a>
+    <a href="20-for-researchers.html" class="sidebar-link" title="For Researchers">For Researchers</a>
+    <a href="21-for-professionals.html" class="sidebar-link" title="For Professionals">For Professionals</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Walkthroughs</div>
+  <div class="sidebar-chapters">
+    <a href="22-walkthrough-build-project.html" class="sidebar-link" title="Walkthrough: Build a Project">Walkthrough: Build a Project</a>
+    <a href="23-walkthrough-fix-bug.html" class="sidebar-link" title="Walkthrough: Fix a Real Bug">Walkthrough: Fix a Real Bug</a>
+    <a href="24-making-it-yours.html" class="sidebar-link" title="Making NeamCode Yours">Making NeamCode Yours</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Closing</div>
+  <div class="sidebar-chapters">
+    <a href="25-road-ahead.html" class="sidebar-link" title="The Road Ahead">The Road Ahead</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Appendices</div>
+  <div class="sidebar-chapters">
+    <a href="../appendices/A-slash-commands.html" class="sidebar-link" title="All Slash Commands">All Slash Commands</a>
+    <a href="../appendices/B-skills-reference.html" class="sidebar-link" title="All Skills Reference">All Skills Reference</a>
+    <a href="../appendices/C-configuration.html" class="sidebar-link" title="Configuration Reference">Configuration Reference</a>
+    <a href="../appendices/D-troubleshooting.html" class="sidebar-link" title="Troubleshooting & FAQ">Troubleshooting & FAQ</a>
+    <a href="../appendices/E-glossary.html" class="sidebar-link" title="Glossary">Glossary</a>
+  </div>
+</div>
+</aside>
+
+<main class="main">
+  <article class="content">
+<h1 id="chapter-13-offline-mode-ai-without-internet">Chapter 13: Offline Mode — AI Without Internet <a href="#chapter-13-offline-mode-ai-without-internet" class="heading-anchor">#</a></h1>
+<blockquote><p><em>"The network is unreliable. Your coding assistant shouldn't be."</em><br>— NeamCode Design Principle</p></blockquote>
+<p>📖 <strong>Estimated read time:</strong> 18 minutes</p>
+<hr />
+<h2 id="what-youll-learn">What You'll Learn <a href="#what-youll-learn" class="heading-anchor">#</a></h2>
+<ul>
+<li>How NeamCode's zero-config offline auto-recovery works under the hood</li>
+<li>How to install and configure Ollama for local AI</li>
+<li>What changes (and what stays the same) when you go offline</li>
+<li>How to read the status bar indicators</li>
+<li>Manual control with <code>/offline</code>, <code>/online</code>, and <code>/status</code></li>
+<li>A full walkthrough of a session that transitions between online and offline seamlessly</li>
+</ul>
+<hr />
+<h2 id="131-how-offline-recovery-works">13.1 How Offline Recovery Works <a href="#131-how-offline-recovery-works" class="heading-anchor">#</a></h2>
+<p>Starting with v0.3.4, NeamCode includes <strong>zero-config offline auto-recovery</strong>. This means you don't have to do anything — if your internet drops, NeamCode detects it and switches to local models automatically.</p>
+<p>Here's what happens behind the scenes:</p>
+<figure class="diagram-figure">
+  <img src="../assets/diagrams/ch13-offline-pipeline.svg" alt="Offline Mode Pipeline showing TCP health probing, flap protection, and automatic switching between cloud and local Ollama providers" />
+  <figcaption>Figure 13.1 — Offline Mode Pipeline</figcaption>
+</figure>
+<div class="ascii-fallback">
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">┌─────────────────────────────────────────────────────────────┐
+│                  Offline Recovery Pipeline                    │
+│                                                             │
+│  Normal operation (online)                                  │
+│       │                                                     │
+│       ▼                                                     │
+│  TCP health probe ────── every 30 seconds ──────┐           │
+│       │                                          │           │
+│       ├── Success? → stay online                 │           │
+│       │                                          │           │
+│       └── Failure? → increment fail count        │           │
+│              │                                   │           │
+│              ▼                                   │           │
+│     2 consecutive failures                       │           │
+│              │                                   │           │
+│              ▼                                   │           │
+│     ┌─────────────────┐                          │           │
+│     │  SWITCH OFFLINE  │ → Route to Ollama       │           │
+│     └─────────────────┘                          │           │
+│              │                                   │           │
+│              ▼                                   │           │
+│     Continue probing...                          │           │
+│              │                                   │           │
+│     3 consecutive successes + 60s dwell time     │           │
+│              │                                   │           │
+│              ▼                                   │           │
+│     ┌─────────────────┐                          │           │
+│     │  SWITCH ONLINE   │ → Restore cloud provider│           │
+│     └─────────────────┘                          │           │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘</code></pre>
+</div>
+<h3 id="key-concepts">Key Concepts <a href="#key-concepts" class="heading-anchor">#</a></h3>
+<p><strong>TCP Health Probing</strong> — Every 30 seconds, NeamCode sends a lightweight TCP probe to your configured cloud provider. This is not a full API call — it costs nothing and adds no latency to your work.</p>
+<p><strong>Flap Protection</strong> — Networks can be unstable. A single failed probe doesn't trigger offline mode. NeamCode requires <strong>2 consecutive failures</strong> before switching offline. Similarly, it requires <strong>3 consecutive successes plus 60 seconds of stable connectivity</strong> before switching back online. This prevents rapid back-and-forth switching (flapping) on unstable connections.</p>
+<p><strong>Zero-Config</strong> — You don't need to enable this, configure thresholds, or set up any triggers. If Ollama is installed and running, offline recovery works automatically.</p>
+<div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip:</strong> The only prerequisite is having Ollama installed with at least one model pulled. See section 13.2 for setup.</p></div>
+<hr />
+<h2 id="132-setting-up-ollama">13.2 Setting Up Ollama <a href="#132-setting-up-ollama" class="heading-anchor">#</a></h2>
+<p>Ollama is the local AI runtime that powers NeamCode's offline mode. You need it installed with at least one model pulled for offline recovery to work.</p>
+<h3 id="quick-install-and-model-pull">Quick Install and Model Pull <a href="#quick-install-and-model-pull" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">bash</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-bash"># macOS
+brew install ollama
+
+# Linux
+curl -fsSL https://ollama.com/install.sh | sh
+
+# Start the service and pull a model
+ollama serve &amp;
+ollama pull qwen2.5-coder:7b</code></pre>
+<blockquote><p><strong>See Chapter 14</strong> for detailed guidance on model selection by hardware tier (8GB / 16GB / 32GB), the hybrid 80/15/5 cost strategy, full model tier rankings, and cost comparisons between local and cloud providers.</p></blockquote>
+<h3 id="verify-the-setup">Verify the Setup <a href="#verify-the-setup" class="heading-anchor">#</a></h3>
+<p>Once Ollama is running with a model pulled, confirm NeamCode detects it:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode $ /status
+
+Provider Status:
+  ● Anthropic    — connected (claude-sonnet)
+  ● Ollama       — connected (qwen2.5-coder:7b, local)
+
+Offline Recovery: enabled
+  Local models: qwen2.5-coder:7b
+  Health probe: every 30s</code></pre>
+<hr />
+<h2 id="133-what-changes-when-youre-offline">13.3 What Changes When You're Offline <a href="#133-what-changes-when-youre-offline" class="heading-anchor">#</a></h2>
+<p>When NeamCode switches to offline mode, most things work the same. Here's what changes and what doesn't:</p>
+<div class="comparison-grid">
+  <div class="info-box">
+    <div class="info-box-header green">Online</div>
+    <div class="info-box-body">
+      <ul>
+        <li>Code generation: Yes</li>
+        <li>Code explanation: Yes</li>
+        <li>File editing: Yes</li>
+        <li>Terminal commands: Yes</li>
+        <li>Git operations: Yes</li>
+        <li>Context window: 128K-1M+</li>
+        <li>Response quality: Premium</li>
+        <li>Response speed: Depends</li>
+        <li>Cost: Per-token</li>
+        <li>Privacy: Data sent to provider</li>
+        <li>Web search: Yes</li>
+        <li>External APIs: Yes</li>
+      </ul>
+    </div>
+  </div>
+  <div class="info-box">
+    <div class="info-box-header blue">Offline</div>
+    <div class="info-box-body">
+      <ul>
+        <li>Code generation: Yes (local model)</li>
+        <li>Code explanation: Yes</li>
+        <li>File editing: Yes</li>
+        <li>Terminal commands: Yes</li>
+        <li>Git operations: Yes</li>
+        <li>Context window: 4K-32K (varies)</li>
+        <li>Response quality: Good</li>
+        <li>Response speed: Depends on HW</li>
+        <li>Cost: Free</li>
+        <li>Privacy: Fully local</li>
+        <li>Web search: No</li>
+        <li>External APIs: No</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<h3 id="what-gets-better-offline">What Gets Better Offline <a href="#what-gets-better-offline" class="heading-anchor">#</a></h3>
+<ul>
+<li><strong>Cost:</strong> Zero. Every token is free.</li>
+<li><strong>Privacy:</strong> Nothing leaves your machine. No data sent anywhere.</li>
+<li><strong>Latency:</strong> On good hardware, local models can be faster than cloud round-trips.</li>
+</ul>
+<h3 id="what-gets-worse-offline">What Gets Worse Offline <a href="#what-gets-worse-offline" class="heading-anchor">#</a></h3>
+<ul>
+<li><strong>Context window:</strong> Local models typically support 4K-32K tokens vs. 128K-1M+ for cloud.</li>
+<li><strong>Complex reasoning:</strong> Premium cloud models (Claude Opus, GPT-4o) outperform local models on difficult tasks.</li>
+<li><strong>Web access:</strong> No web search or external API calls.</li>
+</ul>
+<div class="callout callout-note"><div class="callout-title"><span class="callout-icon">&#128221;</span> Note</div><p>📝 <strong>Note:</strong> NeamCode does not notify you disruptively when switching modes. You'll see the status bar change color (see 13.4) and a brief inline note, but your workflow continues uninterrupted.</p></div>
+<hr />
+<h2 id="134-the-status-bar">13.4 The Status Bar <a href="#134-the-status-bar" class="heading-anchor">#</a></h2>
+<p>The status bar at the bottom of your NeamCode terminal shows your connectivity state at a glance:</p>
+<div class="info-box">
+  <div class="info-box-header gray">Terminal Layout</div>
+  <div class="info-box-body">
+    <p style="text-align:center; padding: 1.5em 0; opacity: 0.6;">(your working area)</p>
+    <hr />
+    <p><strong>Status bar:</strong> <code>● claude-sonnet │ tokens: 1.2K/200K │ cost: $0.04 │ ↑</code></p>
+  </div>
+</div>
+<h3 id="status-indicator-colors">Status Indicator Colors <a href="#status-indicator-colors" class="heading-anchor">#</a></h3>
+<p><strong>● Green (Online)</strong> — Connected to cloud provider. Everything working normally.</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">● claude-sonnet │ tokens: 1.2K/200K │ cost: $0.04</code></pre>
+<p><strong>● Yellow (Degraded)</strong> — Connection is unstable. NeamCode detected a failure but hasn't switched offline yet (1 failure, waiting for the second to confirm).</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">● claude-sonnet │ tokens: 1.2K/200K │ cost: $0.04 │ ⚠ unstable</code></pre>
+<p><strong>● Red (Offline)</strong> — No internet connection. Running on local Ollama models.</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">● qwen2.5-coder:7b (local) │ tokens: 856/8K │ cost: $0.00</code></pre>
+<p>The transition looks like this in practice:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">Before:   ● claude-sonnet │ tokens: 1.2K/200K │ cost: $0.04
+                ↓ (network drops)
+During:   ● claude-sonnet │ ... │ ⚠ unstable
+                ↓ (2nd failure confirmed)
+After:    ● qwen2.5-coder:7b (local) │ tokens: 0/8K │ cost: $0.00</code></pre>
+<p>And when connectivity returns:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">Before:   ● qwen2.5-coder:7b (local) │ tokens: 2.1K/8K │ cost: $0.00
+                ↓ (3 successes + 60s dwell)
+After:    ● claude-sonnet │ tokens: 1.2K/200K │ cost: $0.04</code></pre>
+<div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip:</strong> The status bar is always visible. A quick glance tells you whether you're burning cloud tokens or running for free locally.</p></div>
+<hr />
+<h2 id="135-manual-control-offline-online-status">13.5 Manual Control (/offline, /online, /status) <a href="#135-manual-control-offline-online-status" class="heading-anchor">#</a></h2>
+<p>While auto-recovery handles most situations, sometimes you want explicit control.</p>
+<h3 id="offline-force-offline-mode">/offline — Force Offline Mode <a href="#offline-force-offline-mode" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode $ /offline
+
+Switched to offline mode.
+  Provider: Ollama (qwen2.5-coder:7b)
+  Auto-recovery: paused (use /online to resume)
+
+● qwen2.5-coder:7b (local) │ cost: $0.00</code></pre>
+<p>Use this when:</p>
+<ul>
+<li>You're about to board a flight and want to ensure no cloud calls are attempted</li>
+<li>You're working with sensitive code and want guaranteed local processing</li>
+<li>You want to save money during a long session of simple tasks</li>
+</ul>
+<h3 id="online-force-online-mode">/online — Force Online Mode <a href="#online-force-online-mode" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode $ /online
+
+Switching to online mode...
+  Checking Anthropic... connected ✓
+  Provider: Anthropic (claude-sonnet)
+  Auto-recovery: resumed
+
+● claude-sonnet │ cost: $0.04</code></pre>
+<h3 id="status-full-status-report">/status — Full Status Report <a href="#status-full-status-report" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode $ /status
+
+Connection Status: ONLINE
+─────────────────────────────────────
+Network:
+  Cloud connectivity:  ● connected
+  Last health probe:   2s ago (success)
+  Probe interval:      30s
+  Flap protection:     0 failures / 0 of 2 threshold
+
+Active Provider:
+  Provider:            Anthropic
+  Model:               claude-sonnet
+  Context window:      200K tokens
+
+Local Fallback:
+  Ollama:              ● running
+  Available models:    qwen2.5-coder:7b, phi3
+  Best available:      qwen2.5-coder:7b (tier 2)
+
+Session:
+  Mode:                auto (online)
+  Tokens used:         1,247 / 200,000
+  Cost this session:   $0.04
+  Uptime:              45m 12s
+  Offline episodes:    0</code></pre>
+<div class="callout callout-note"><div class="callout-title"><span class="callout-icon">&#128221;</span> Note</div><p>📝 <strong>Note:</strong> When you use <code>/offline</code> manually, auto-recovery is paused. NeamCode won't switch back to cloud on its own — you must explicitly run <code>/online</code> to re-enable automatic switching.</p></div>
+<hr />
+<h2 id="136-seamless-session-example">13.6 Seamless Session Example <a href="#136-seamless-session-example" class="heading-anchor">#</a></h2>
+<p>Here's a realistic scenario showing how offline recovery works during a coding session. You're on a train, working on a Python project.</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode $ ● claude-sonnet │ online
+
+You: Add error handling to the database connection in db.py
+
+NeamCode: I&#x27;ll add proper error handling with retry logic...
+  [edits db.py with try/except, exponential backoff, logging]
+
+You: Good. Now add unit tests for the error cases.
+
+NeamCode: I&#x27;ll create tests for each error scenario...
+  [creates test_db.py with 6 test cases]
+
+                    ─── Train enters a tunnel ───
+
+  ● claude-sonnet │ ⚠ unstable
+
+  ● qwen2.5-coder:7b (local) │ $0.00
+  ℹ Switched to local model (network unavailable)
+
+You: Run the tests and fix any failures.
+
+NeamCode: Running the tests locally...
+  $ python -m pytest test_db.py -v
+
+  3 passed, 3 failed. Let me fix the failures...
+  [edits test_db.py — fixes mock setup issues]
+
+  $ python -m pytest test_db.py -v
+  6 passed ✓
+
+You: Add a connection pool with max 10 connections.
+
+NeamCode: I&#x27;ll add connection pooling to db.py...
+  [edits db.py with connection pool implementation]
+
+                    ─── Train exits the tunnel ───
+
+  ● claude-sonnet │ online
+  ℹ Cloud connectivity restored
+
+You: Review the connection pool implementation for thread safety issues.
+
+NeamCode: Looking at the implementation with fresh eyes...
+  I see two potential thread safety issues:
+  1. The pool counter isn&#x27;t atomic...
+  2. The connection dict needs a lock...
+  [suggests fixes with threading.Lock]</code></pre>
+<p>Notice what happened:</p>
+<ol>
+<li>You never had to stop working</li>
+<li>The switch to local was automatic (after 2 failed probes)</li>
+<li>The switch back was automatic (after 3 successes + 60s dwell time)</li>
+<li>Your conversation context was preserved throughout</li>
+<li>The complex review task naturally ran on the cloud model (higher quality for analysis)</li>
+</ol>
+<div class="callout callout-warning"><div class="callout-title"><span class="callout-icon">&#9888;&#65039;</span> Warning</div><p>⚠️ <strong>Warning:</strong> Conversation history is preserved when switching modes, but the local model has a smaller context window. If your conversation is very long, the local model may truncate earlier messages. Keep important context in recent messages.</p></div>
+<hr />
+<h2 id="137-pro-tips">13.7 Pro Tips <a href="#137-pro-tips" class="heading-anchor">#</a></h2>
+<div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip: Pre-pull models before traveling.</strong> If you know you'll be offline, pull multiple Ollama models in advance. NeamCode will automatically select the best available one.</p></div>
+<div class="code-header"><span class="code-lang">bash</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-bash"># Before your flight
+ollama pull qwen2.5-coder:7b
+ollama pull llama3.1:8b
+ollama pull phi3</code></pre>
+<div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip: Use <code>/offline</code> proactively for privacy.</strong> Working on sensitive code? Force offline mode with <code>/offline</code> and no data leaves your machine — guaranteed.</p></div>
+<div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip: Monitor with <code>/status</code> after reconnecting.</strong> After a period offline, run <code>/status</code> to confirm the cloud provider reconnected successfully and check if any failures occurred during the transition.</p></div>
+<div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip: The 60-second dwell time is your friend.</strong> The dwell time prevents NeamCode from switching back to cloud on a brief WiFi blip. If you see the yellow indicator, don't worry — it means the system is working as designed, waiting to confirm stable connectivity.</p></div>
+<div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip: Ollama startup time matters.</strong> If Ollama isn't already running when you go offline, there will be a delay while it loads the model into memory. Keep <code>ollama serve</code> running in the background for instant failover.</p></div>
+<div class="code-header"><span class="code-lang">bash</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-bash"># Run Ollama as a background service (macOS)
+brew services start ollama
+
+# Or on Linux with systemd
+sudo systemctl enable ollama
+sudo systemctl start ollama</code></pre>
+<div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip: Check model tier ranking.</strong> Not all local models are equal. Run <code>/status</code> to see which tier your best available model is. Tier 1-3 models handle most coding tasks well. Tier 6-8 models are better suited for simple questions and completions.</p></div>
+<div class="callout callout-warning"><div class="callout-title"><span class="callout-icon">&#9888;&#65039;</span> Warning</div><p>⚠️ <strong>Warning:</strong> Offline mode only works for AI-powered features. If your task requires actual internet access (cloning a repo, installing packages, accessing a remote API), you still need connectivity for those operations.</p></div>
+<hr />
+<h2 id="exercises">Exercises <a href="#exercises" class="heading-anchor">#</a></h2>
+<div class="callout callout-try-it-yourself"><p>🎯 <strong>Exercise 13.1</strong> — Install Ollama and pull at least one model. Verify it's detected by running <code>/status</code> in NeamCode.</p></div>
+<div class="callout callout-try-it-yourself"><p>🎯 <strong>Exercise 13.2</strong> — While connected to the internet, run <code>/offline</code> to force offline mode. Ask NeamCode to write a simple function. Note the response quality and speed. Then run <code>/online</code> and ask the same question to compare.</p></div>
+<div class="callout callout-try-it-yourself"><p>🎯 <strong>Exercise 13.3</strong> — Disconnect your WiFi (or use airplane mode). Watch the status bar transition from green to yellow to red. Verify that NeamCode continues to respond using the local model. Reconnect and watch it transition back.</p></div>
+<div class="callout callout-try-it-yourself"><p>🎯 <strong>Exercise 13.4</strong> — Run <code>/status</code> and identify: (a) your best available local model and its tier, (b) the health probe interval, (c) your current flap protection counters.</p></div>
+<div class="callout callout-try-it-yourself"><p>🎯 <strong>Exercise 13.5</strong> — Set up Ollama as a background service so it starts automatically with your system. Verify that offline recovery works immediately after a reboot without manually starting Ollama.</p></div>
+<hr />
+    <nav class="chapter-nav"><a href="12-choosing-providers.html" class="nav-prev"><span class="nav-label">&larr; Previous</span><span class="nav-title">Choosing Your AI Provider</span></a><a href="14-zero-cost-setup.html" class="nav-next"><span class="nav-label">Next &rarr;</span><span class="nav-title">The $0 AI Setup</span></a></nav>
+  </article>
+</main>
+
+<button class="back-to-top" id="back-to-top" aria-label="Back to top">&#8593;</button>
+
+<div class="search-overlay" id="search-overlay">
+  <div class="search-modal">
+    <div class="search-input-wrap">
+      <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6.5" cy="6.5" r="5"/><line x1="10.5" y1="10.5" x2="15" y2="15"/></svg>
+      <input type="text" class="search-input" id="search-input" placeholder="Search chapters, topics...">
+    </div>
+    <div class="search-results" id="search-results">
+      <div class="search-empty">Start typing to search...</div>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/script.js"></script>
+</body>
+</html>

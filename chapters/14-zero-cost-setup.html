@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 14: The $0 AI Setup | Command the Future</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-base="../">
+
+<header class="topbar">
+  <div class="topbar-left">
+    <button class="hamburger" id="hamburger" aria-label="Toggle sidebar">&#9776;</button>
+    <a href="../index.html" class="topbar-title">Command the Future</a>
+  </div>
+  <div class="topbar-right">
+    <button class="topbar-btn search-btn" aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6.5" cy="6.5" r="5"/><line x1="10.5" y1="10.5" x2="15" y2="15"/></svg><kbd>Ctrl+K</kbd></button>
+    <button class="topbar-btn" id="theme-toggle" aria-label="Toggle theme"></button>
+  </div>
+</header>
+
+<div class="progress-bar"><div class="progress-fill"></div></div>
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+<aside class="sidebar" id="sidebar">
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Getting Started</div>
+  <div class="sidebar-chapters">
+    <a href="00-preface.html" class="sidebar-link" title="Preface">Preface</a>
+    <a href="01-meet-neamcode.html" class="sidebar-link" title="Meet NeamCode">Meet NeamCode</a>
+    <a href="02-install-first-conversation.html" class="sidebar-link" title="Install & First Conversation">Install & First Conversation</a>
+    <a href="03-art-of-prompting.html" class="sidebar-link" title="The Art of Prompting">The Art of Prompting</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Core Skills</div>
+  <div class="sidebar-chapters">
+    <a href="04-working-with-files.html" class="sidebar-link" title="Working with Files">Working with Files</a>
+    <a href="05-finding-things.html" class="sidebar-link" title="Finding Things in Code">Finding Things in Code</a>
+    <a href="06-commands-and-git.html" class="sidebar-link" title="Running Commands & Git">Running Commands & Git</a>
+    <a href="07-web-research.html" class="sidebar-link" title="Researching from the Terminal">Researching from the Terminal</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Workflow & Configuration</div>
+  <div class="sidebar-chapters">
+    <a href="08-slash-commands.html" class="sidebar-link" title="Slash Commands">Slash Commands</a>
+    <a href="09-modes.html" class="sidebar-link" title="Modes">Modes</a>
+    <a href="10-sessions-context.html" class="sidebar-link" title="Sessions & Context">Sessions & Context</a>
+    <a href="11-auto-memory.html" class="sidebar-link" title="Auto Memory">Auto Memory</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Providers & Cost</div>
+  <div class="sidebar-chapters">
+    <a href="12-choosing-providers.html" class="sidebar-link" title="Choosing Your AI Provider">Choosing Your AI Provider</a>
+    <a href="13-offline-mode.html" class="sidebar-link" title="Offline Mode">Offline Mode</a>
+    <a href="14-zero-cost-setup.html" class="sidebar-link active" title="The $0 AI Setup">The $0 AI Setup</a>
+    <a href="15-budget-cost.html" class="sidebar-link" title="Budget & Cost Tracking">Budget & Cost Tracking</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Advanced Features</div>
+  <div class="sidebar-chapters">
+    <a href="16-agents.html" class="sidebar-link" title="Agents & Delegation">Agents & Delegation</a>
+    <a href="17-mcp-servers.html" class="sidebar-link" title="MCP Servers">MCP Servers</a>
+    <a href="18-neam-language.html" class="sidebar-link" title="Neam Language Integration">Neam Language Integration</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Audience Guides</div>
+  <div class="sidebar-chapters">
+    <a href="19-for-students.html" class="sidebar-link" title="For Students">For Students</a>
+    <a href="20-for-researchers.html" class="sidebar-link" title="For Researchers">For Researchers</a>
+    <a href="21-for-professionals.html" class="sidebar-link" title="For Professionals">For Professionals</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Walkthroughs</div>
+  <div class="sidebar-chapters">
+    <a href="22-walkthrough-build-project.html" class="sidebar-link" title="Walkthrough: Build a Project">Walkthrough: Build a Project</a>
+    <a href="23-walkthrough-fix-bug.html" class="sidebar-link" title="Walkthrough: Fix a Real Bug">Walkthrough: Fix a Real Bug</a>
+    <a href="24-making-it-yours.html" class="sidebar-link" title="Making NeamCode Yours">Making NeamCode Yours</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Closing</div>
+  <div class="sidebar-chapters">
+    <a href="25-road-ahead.html" class="sidebar-link" title="The Road Ahead">The Road Ahead</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Appendices</div>
+  <div class="sidebar-chapters">
+    <a href="../appendices/A-slash-commands.html" class="sidebar-link" title="All Slash Commands">All Slash Commands</a>
+    <a href="../appendices/B-skills-reference.html" class="sidebar-link" title="All Skills Reference">All Skills Reference</a>
+    <a href="../appendices/C-configuration.html" class="sidebar-link" title="Configuration Reference">Configuration Reference</a>
+    <a href="../appendices/D-troubleshooting.html" class="sidebar-link" title="Troubleshooting & FAQ">Troubleshooting & FAQ</a>
+    <a href="../appendices/E-glossary.html" class="sidebar-link" title="Glossary">Glossary</a>
+  </div>
+</div>
+</aside>
+
+<main class="main">
+  <article class="content">
+<h1 id="chapter-14-the-0-ai-setup-running-locally">Chapter 14: The $0 AI Setup — Running Locally <a href="#chapter-14-the-0-ai-setup-running-locally" class="heading-anchor">#</a></h1>
+<blockquote><p><em>"The most expensive AI is the one you can't afford to use freely. The cheapest AI is the one running on your own machine."</em><br>— NeamCode Community Proverb</p></blockquote>
+<p>📖 <strong>Estimated read time:</strong> 20 minutes</p>
+<hr />
+<h2 id="what-youll-learn">What You'll Learn <a href="#what-youll-learn" class="heading-anchor">#</a></h2>
+<ul>
+<li>Why running AI locally is worth the setup effort</li>
+<li>How to install and configure Ollama step by step</li>
+<li>Which model to choose based on your hardware (8GB, 16GB, 32GB)</li>
+<li>How to configure NeamCode for local-first operation</li>
+<li>The 80/15/5 hybrid approach that balances cost and quality</li>
+<li>Real cost comparisons between local and cloud setups</li>
+<li>What to expect in terms of quality from local models</li>
+</ul>
+<hr />
+<h2 id="141-why-run-locally">14.1 Why Run Locally? <a href="#141-why-run-locally" class="heading-anchor">#</a></h2>
+<p>Before diving into setup, let's be clear about why you'd want this.</p>
+<p><strong>Cost: $0.00.</strong> Every token generated by a local model is free. No API keys, no billing accounts, no surprise invoices.</p>
+<p><strong>Privacy: Total.</strong> Your code, prompts, and conversations never leave your machine. No data is sent to any server. This matters for proprietary code, client projects, and regulated industries.</p>
+<p><strong>Speed: No network round-trip.</strong> On capable hardware, local inference can match or beat cloud latency, especially when factoring in network overhead.</p>
+<p><strong>Availability: Always on.</strong> No outages, no rate limits, no API deprecations. Your AI assistant works on airplanes, in basements, and during cloud provider incidents.</p>
+<p><strong>The trade-off?</strong> Local models are smaller and less capable than frontier cloud models. A 7B parameter model running on your laptop won't match Claude Opus or GPT-4o on complex reasoning tasks. But for 80% of everyday coding tasks — completions, refactoring, test generation, explanations — local models are surprisingly capable.</p>
+<figure class="diagram-figure">
+  <img src="../assets/diagrams/ch14-hybrid-strategy.svg" alt="Hybrid Local/Cloud Strategy" />
+  <figcaption>Figure 14.1 — Hybrid Local/Cloud Strategy</figcaption>
+</figure>
+<div class="ascii-fallback">
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">┌─────────────────────────────────────────────────────────┐
+│           The Local AI Value Proposition                  │
+│                                                         │
+│  Cloud Premium    ████████████████████████████  Quality  │
+│  Cloud Budget     █████████████████████         Quality  │
+│  Local (7B)       █████████████████             Quality  │
+│  Local (3B)       ████████████                  Quality  │
+│                                                         │
+│  Cloud Premium    $$$$$$$$$$                    Cost     │
+│  Cloud Budget     $$$                           Cost     │
+│  Local (7B)       (free)                        Cost     │
+│  Local (3B)       (free)                        Cost     │
+│                                                         │
+│  Cloud Premium    ████████                      Privacy  │
+│  Cloud Budget     ████████                      Privacy  │
+│  Local (any)      ████████████████████████████  Privacy  │
+└─────────────────────────────────────────────────────────┘</code></pre>
+</div>
+<hr />
+<h2 id="142-installing-ollama">14.2 Installing Ollama <a href="#142-installing-ollama" class="heading-anchor">#</a></h2>
+<p>Ollama is the local AI runtime that NeamCode uses. Installation is straightforward.</p>
+<h3 id="macos">macOS <a href="#macos" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">bash</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-bash"># Install via Homebrew
+brew install ollama
+
+# Start the service
+ollama serve</code></pre>
+<p>Or download the desktop app from <a href="https://ollama.com">ollama.com</a> which includes a menu bar icon and auto-start.</p>
+<h3 id="linux">Linux <a href="#linux" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">bash</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-bash"># One-line install
+curl -fsSL https://ollama.com/install.sh | sh
+
+# Start the service
+sudo systemctl start ollama
+sudo systemctl enable ollama   # auto-start on boot</code></pre>
+<h3 id="verify-installation">Verify Installation <a href="#verify-installation" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">bash</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-bash"># Check Ollama is running
+ollama --version
+# ollama version 0.3.x
+
+# Check the API endpoint
+curl http://localhost:11434/api/version
+# {&quot;version&quot;:&quot;0.3.x&quot;}</code></pre>
+<h3 id="pull-your-first-model">Pull Your First Model <a href="#pull-your-first-model" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">bash</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-bash"># A good starting model for most machines
+ollama pull qwen2.5-coder:7b
+
+# Test it works
+ollama run qwen2.5-coder:7b &quot;Write a Python hello world&quot;</code></pre>
+<div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip:</strong> The first time you pull a model, it downloads several gigabytes. Do this on a good connection before you need offline capability.</p></div>
+<hr />
+<h2 id="143-choosing-the-right-model-for-your-machine">14.3 Choosing the Right Model for Your Machine <a href="#143-choosing-the-right-model-for-your-machine" class="heading-anchor">#</a></h2>
+<p>This is the most important decision in your local setup. Choosing a model too large for your hardware leads to painfully slow responses. Choosing one too small sacrifices quality unnecessarily.</p>
+<h3 id="hardware-aware-model-selection">Hardware-Aware Model Selection <a href="#hardware-aware-model-selection" class="heading-anchor">#</a></h3>
+<p>NeamCode automatically selects the best model for your hardware, but understanding the recommendations helps you make informed choices.</p>
+<h4 id="8gb-ram-systems">8GB RAM Systems <a href="#8gb-ram-systems" class="heading-anchor">#</a></h4>
+<div class="info-box">
+  <div class="info-box-header amber">8GB RAM Recommendation</div>
+  <div class="info-box-body">
+    <table>
+      <thead>
+        <tr><th>Model</th><th>Size</th><th>Quality</th><th>Speed</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Qwen3 1.7B</td><td>~1.2 GB</td><td>★★☆☆☆</td><td>Very Fast</td></tr>
+        <tr><td>phi3</td><td>~2.0 GB</td><td>★★★☆☆</td><td>Fast</td></tr>
+        <tr><td>llama3.2:3b</td><td>~2.0 GB</td><td>★★★☆☆</td><td>Fast</td></tr>
+        <tr><td>gemma</td><td>~5.0 GB</td><td>★★★☆☆</td><td>Moderate</td></tr>
+      </tbody>
+    </table>
+    <p><strong>Best pick:</strong> Qwen3 1.7B (fast, leaves RAM for your IDE and browser)<br />
+    <strong>Runner-up:</strong> phi3 (slightly better quality, still lightweight)</p>
+  </div>
+</div>
+<div class="code-header"><span class="code-lang">bash</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-bash"># 8GB setup
+ollama pull qwen3:1.7b
+ollama pull phi3          # backup model</code></pre>
+<div class="callout callout-note"><div class="callout-title"><span class="callout-icon">&#128221;</span> Note</div><p>📝 <strong>Note:</strong> On 8GB machines, keep an eye on memory pressure. If your system starts swapping, close other applications or switch to the smaller model.</p></div>
+<h4 id="16gb-ram-systems">16GB RAM Systems <a href="#16gb-ram-systems" class="heading-anchor">#</a></h4>
+<div class="info-box">
+  <div class="info-box-header green">16GB RAM Recommendation</div>
+  <div class="info-box-body">
+    <table>
+      <thead>
+        <tr><th>Model</th><th>Size</th><th>Quality</th><th>Speed</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>qwen2.5-coder:7b</td><td>~4.0 GB</td><td>★★★★☆</td><td>Fast</td></tr>
+        <tr><td>llama3.1:8b</td><td>~5.0 GB</td><td>★★★★☆</td><td>Fast</td></tr>
+        <tr><td>mistral</td><td>~4.0 GB</td><td>★★★★☆</td><td>Fast</td></tr>
+        <tr><td>qwen2.5:7b</td><td>~4.0 GB</td><td>★★★★☆</td><td>Fast</td></tr>
+      </tbody>
+    </table>
+    <p><strong>Best pick:</strong> Qwen 2.5 Coder 7B (optimized for coding tasks)<br />
+    <strong>Runner-up:</strong> llama3.1:8b (strong general-purpose model)</p>
+  </div>
+</div>
+<div class="code-header"><span class="code-lang">bash</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-bash"># 16GB setup
+ollama pull qwen2.5-coder:7b
+ollama pull llama3.1:8b       # backup model</code></pre>
+<div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip:</strong> The <code>qwen2.5-coder:7b</code> model is specifically trained on code. For a coding assistant like NeamCode, it significantly outperforms general-purpose models of the same size.</p></div>
+<h4 id="32gb-ram-systems">32GB+ RAM Systems <a href="#32gb-ram-systems" class="heading-anchor">#</a></h4>
+<div class="info-box">
+  <div class="info-box-header blue">32GB+ RAM Recommendation</div>
+  <div class="info-box-body">
+    <table>
+      <thead>
+        <tr><th>Model</th><th>Size</th><th>Quality</th><th>Speed</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>llama3.1:70b</td><td>~40 GB</td><td>★★★★★</td><td>Slow</td></tr>
+        <tr><td>MoE models</td><td>Varies</td><td>★★★★★</td><td>Moderate</td></tr>
+        <tr><td>qwen2.5-coder:7b</td><td>~4.0 GB</td><td>★★★★☆</td><td>Very Fast</td></tr>
+        <tr><td>llama3.1:8b</td><td>~5.0 GB</td><td>★★★★☆</td><td>Very Fast</td></tr>
+      </tbody>
+    </table>
+    <p><strong>Best pick:</strong> MoE models (Mixture of Experts — best quality-to-speed ratio)<br />
+    <strong>Maximum quality:</strong> llama3.1:70b (closest to cloud quality, but slow)<br />
+    <strong>Daily driver:</strong> qwen2.5-coder:7b (fast enough for interactive use)</p>
+  </div>
+</div>
+<div class="code-header"><span class="code-lang">bash</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-bash"># 32GB setup
+ollama pull llama3.1:70b          # premium local model
+ollama pull qwen2.5-coder:7b     # fast daily driver
+ollama pull phi3                   # ultra-fast for simple tasks</code></pre>
+<div class="callout callout-note"><div class="callout-title"><span class="callout-icon">&#128221;</span> Note</div><p>📝 <strong>Note:</strong> The 70B model is powerful but takes time to load and generates tokens more slowly. Many 32GB users keep it available for complex tasks while using 7B models for day-to-day work.</p></div>
+<h3 id="check-your-hardware">Check Your Hardware <a href="#check-your-hardware" class="heading-anchor">#</a></h3>
+<p>Not sure what you have? NeamCode detects it for you:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode $ /status
+
+System:
+  RAM:              16 GB
+  Available RAM:    11.2 GB
+  Recommended tier: qwen2.5-coder:7b (Tier 2)
+
+Ollama Models:
+  qwen2.5-coder:7b  — loaded, 4.1 GB
+  phi3               — available, not loaded</code></pre>
+<hr />
+<h2 id="144-configuring-neamcode-for-local-first">14.4 Configuring NeamCode for Local-First <a href="#144-configuring-neamcode-for-local-first" class="heading-anchor">#</a></h2>
+<p>To make NeamCode default to local models, configure it as your primary provider:</p>
+<div class="code-header"><span class="code-lang">yaml</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-yaml"># neamcode.config.yml — Local-first configuration
+
+providers:
+  ollama:
+    endpoint: &quot;http://localhost:11434&quot;
+    enabled: true
+    default_model: &quot;qwen2.5-coder:7b&quot;
+
+routing:
+  strategy: &quot;cost&quot;          # prefers free/cheap options
+  fallback_chain:
+    - ollama                # local first</code></pre>
+<p>That's the minimal "pure local" setup. No API keys needed. No accounts. No billing.</p>
+<p>Verify it's working:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode $ /status
+
+Provider Status:
+  ● Ollama       — connected (qwen2.5-coder:7b, local)
+
+Routing:
+  Strategy:        cost
+  Active provider: Ollama (local)
+  Session cost:    $0.00
+
+neamcode $ Write a function that reverses a linked list in Python
+
+Using Ollama (qwen2.5-coder:7b) — local, $0.00
+
+Here&#x27;s an implementation of linked list reversal:
+
+def reverse_linked_list(head):
+    prev = None
+    current = head
+    while current:
+        next_node = current.next
+        current.next = prev
+        prev = current
+        current = next_node
+    return prev
+...
+
+● qwen2.5-coder:7b (local) │ tokens: 234/8K │ cost: $0.00</code></pre>
+<hr />
+<h2 id="145-the-hybrid-approach-80155">14.5 The Hybrid Approach (80/15/5) <a href="#145-the-hybrid-approach-80155" class="heading-anchor">#</a></h2>
+<p>Pure local is great for cost and privacy, but sometimes you need cloud-tier quality. The <strong>SLM (Small Language Model) Strategy</strong> gives you the best of both worlds:</p>
+<div class="info-box">
+  <div class="info-box-header red">The 80/15/5 Tri-Tier Strategy</div>
+  <div class="info-box-body">
+    <div class="info-box" style="margin-bottom: 0;">
+      <div class="info-box-header green">80% LOCAL (Ollama — free)</div>
+      <div class="info-box-body">
+        <p>Completions, refactoring, simple questions, test generation, docs</p>
+      </div>
+    </div>
+    <div class="info-box" style="margin-bottom: 0;">
+      <div class="info-box-header amber">15% SMALL CLOUD (Claude Haiku, GPT-4o-mini — cheap)</div>
+      <div class="info-box-body">
+        <p>Medium tasks, better reasoning</p>
+      </div>
+    </div>
+    <div class="info-box" style="margin-bottom: 0;">
+      <div class="info-box-header purple">5% PREMIUM CLOUD (Claude Opus, GPT-4o — expensive)</div>
+      <div class="info-box-body">
+        <p>Architecture, complex bugs, reviews</p>
+      </div>
+    </div>
+    <p><strong>Monthly cost estimate:</strong> $5-15 (vs. $50-200 all-cloud)</p>
+  </div>
+</div>
+<h3 id="configure-the-hybrid-setup">Configure the Hybrid Setup <a href="#configure-the-hybrid-setup" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">yaml</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-yaml"># neamcode.config.yml — Hybrid 80/15/5 configuration
+
+providers:
+  ollama:
+    endpoint: &quot;http://localhost:11434&quot;
+    enabled: true
+    default_model: &quot;qwen2.5-coder:7b&quot;
+
+  anthropic:
+    api_key: &quot;${ANTHROPIC_API_KEY}&quot;
+    enabled: true
+    default_model: &quot;claude-haiku&quot;       # cheap cloud tier
+
+  openai:
+    api_key: &quot;${OPENAI_API_KEY}&quot;
+    enabled: true
+    default_model: &quot;gpt-4o&quot;            # premium tier
+
+routing:
+  strategy: &quot;balanced&quot;
+  fallback_chain:
+    - ollama          # free, always first
+    - anthropic       # cheap cloud fallback
+    - openai          # premium when needed
+
+tokens:
+  max_output: 8192
+  warning_threshold: 0.8</code></pre>
+<h3 id="how-it-works-in-practice">How It Works in Practice <a href="#how-it-works-in-practice" class="heading-anchor">#</a></h3>
+<p>NeamCode's routing engine assesses each task and routes accordingly:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode $ What&#x27;s the syntax for a Python list comprehension?
+
+Using Ollama (qwen2.5-coder:7b) — local, $0.00
+  [simple factual question → local model handles it fine]
+
+neamcode $ Explain why this async code is deadlocking
+
+Using Anthropic (claude-haiku) — $0.002
+  [medium complexity → small cloud model for better reasoning]
+
+neamcode $ /provider anthropic claude-opus
+neamcode $ Review this authentication system for security vulnerabilities
+
+Using Anthropic (claude-opus) — $0.18
+  [critical task → manually selected premium model]
+
+neamcode $ /routing balanced
+  [back to auto-routing]</code></pre>
+<div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip:</strong> You don't have to manually route every request. The <code>balanced</code> strategy handles most routing decisions well. Only override manually for critical tasks where you specifically want premium quality.</p></div>
+<hr />
+<h2 id="146-real-cost-comparisons">14.6 Real Cost Comparisons <a href="#146-real-cost-comparisons" class="heading-anchor">#</a></h2>
+<p>Let's compare monthly costs for a typical developer using NeamCode 4 hours per day, 22 working days per month.</p>
+<h3 id="scenario-full-time-developer">Scenario: Full-time Developer <a href="#scenario-full-time-developer" class="heading-anchor">#</a></h3>
+<div class="info-box">
+  <div class="info-box-header blue">Monthly Cost Comparison</div>
+  <div class="info-box-body">
+    <table>
+      <thead>
+        <tr><th>Setup</th><th>Monthly Cost</th><th>Quality</th><th>Privacy</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>All Cloud Premium (Claude Opus/GPT-4o)</td><td>$80 - $200</td><td>★★★★★</td><td>Low</td></tr>
+        <tr><td>All Cloud Budget (Haiku/GPT-4o-mini)</td><td>$15 - $40</td><td>★★★★☆</td><td>Low</td></tr>
+        <tr><td>Hybrid (80/15/5)</td><td>$5 - $15</td><td>★★★★☆ (★★★★★ when needed)</td><td>High (80% local)</td></tr>
+        <tr><td>All Local (Ollama only)</td><td>$0</td><td>★★★☆☆</td><td>Total</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<h3 id="breakdown-hybrid-setup-in-detail">Breakdown: Hybrid Setup in Detail <a href="#breakdown-hybrid-setup-in-detail" class="heading-anchor">#</a></h3>
+<p>Assuming 88 hours of use per month (~1,000 requests):</p>
+<div class="info-box">
+  <div class="info-box-header green">Hybrid Setup Breakdown</div>
+  <div class="info-box-body">
+    <table>
+      <thead>
+        <tr><th>Tier</th><th>Requests</th><th>Avg Cost/Request</th><th>Monthly Cost</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Local</td><td>800</td><td>$0.000</td><td>$0.00</td></tr>
+        <tr><td>Small Cloud</td><td>150</td><td>$0.003</td><td>$0.45</td></tr>
+        <tr><td>Premium</td><td>50</td><td>$0.150</td><td>$7.50</td></tr>
+        <tr><td><strong>Total</strong></td><td><strong>1,000</strong></td><td></td><td><strong>$7.95</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<p>Compare to all-cloud premium:</p>
+<div class="info-box">
+  <div class="info-box-header red">All-Cloud Premium Breakdown</div>
+  <div class="info-box-body">
+    <table>
+      <thead>
+        <tr><th>Tier</th><th>Requests</th><th>Avg Cost/Request</th><th>Monthly Cost</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Premium</td><td>1,000</td><td>$0.120</td><td>$120.00</td></tr>
+        <tr><td><strong>Total</strong></td><td><strong>1,000</strong></td><td></td><td><strong>$120.00</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<p>That's a <strong>93% reduction</strong> with the hybrid approach, while still having access to premium models for the tasks that truly need them.</p>
+<h3 id="cost-per-task-type">Cost Per Task Type <a href="#cost-per-task-type" class="heading-anchor">#</a></h3>
+<div class="info-box">
+  <div class="info-box-header gray">Cost Per Task Type</div>
+  <div class="info-box-body">
+    <table>
+      <thead>
+        <tr><th>Task</th><th>Local</th><th>Cloud Budget</th><th>Cloud Premium</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>"Fix this typo"</td><td>$0.000</td><td>$0.001</td><td>$0.02</td></tr>
+        <tr><td>"Write unit tests for this file"</td><td>$0.000</td><td>$0.005</td><td>$0.08</td></tr>
+        <tr><td>"Explain this error message"</td><td>$0.000</td><td>$0.002</td><td>$0.04</td></tr>
+        <tr><td>"Refactor to async/await"</td><td>$0.000</td><td>$0.008</td><td>$0.12</td></tr>
+        <tr><td>"Review security architecture"</td><td>$0.000</td><td>$0.015</td><td>$0.25</td></tr>
+        <tr><td>"Debug complex race condition"</td><td>$0.000</td><td>$0.020</td><td>$0.35</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="callout callout-note"><div class="callout-title"><span class="callout-icon">&#128221;</span> Note</div><p>📝 <strong>Note:</strong> These are approximate costs based on typical token usage per task. Actual costs vary with prompt length, response length, and specific model pricing.</p></div>
+<hr />
+<h2 id="147-quality-expectations">14.7 Quality Expectations <a href="#147-quality-expectations" class="heading-anchor">#</a></h2>
+<p>Let's be honest about what local models can and cannot do well.</p>
+<h3 id="tasks-local-models-handle-well-80-of-your-work">Tasks Local Models Handle Well (80% of your work) <a href="#tasks-local-models-handle-well-80-of-your-work" class="heading-anchor">#</a></h3>
+<ul>
+<li>Code completions and boilerplate generation</li>
+<li>Simple refactoring (rename, extract function, change patterns)</li>
+<li>Writing unit tests for straightforward functions</li>
+<li>Explaining error messages and stack traces</li>
+<li>Generating documentation and comments</li>
+<li>Language syntax questions</li>
+<li>Simple bug fixes</li>
+<li>File operations and git commands</li>
+</ul>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode $ Using Ollama (qwen2.5-coder:7b)
+
+You: Add type hints to this function
+
+def process_data(items, threshold, callback):
+    results = []
+    for item in items:
+        if item.value &gt; threshold:
+            results.append(callback(item))
+    return results
+
+NeamCode: Here&#x27;s the function with type hints added:
+
+from typing import List, Callable
+
+def process_data(
+    items: List[DataItem],
+    threshold: float,
+    callback: Callable[[DataItem], Result]
+) -&gt; List[Result]:
+    results: List[Result] = []
+    for item in items:
+        if item.value &gt; threshold:
+            results.append(callback(item))
+    return results
+
+  ✓ Quality: Correct and well-formatted</code></pre>
+<h3 id="tasks-where-cloud-models-shine-20-of-your-work">Tasks Where Cloud Models Shine (20% of your work) <a href="#tasks-where-cloud-models-shine-20-of-your-work" class="heading-anchor">#</a></h3>
+<ul>
+<li>Complex architectural decisions</li>
+<li>Subtle bug analysis (race conditions, memory leaks)</li>
+<li>Security vulnerability assessment</li>
+<li>Multi-file refactoring with deep understanding</li>
+<li>Nuanced code review with business context</li>
+<li>Novel algorithm design</li>
+<li>Understanding complex legacy code</li>
+</ul>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode $ Using Ollama (qwen2.5-coder:7b)
+
+You: Is there a race condition in this concurrent map implementation?
+
+NeamCode: The implementation looks correct. The mutex protects
+  the map access.
+
+neamcode $ /provider anthropic claude-opus
+
+You: Is there a race condition in this concurrent map implementation?
+
+NeamCode: Yes, there&#x27;s a subtle race condition. While the mutex
+  protects individual map operations, the read-check-write pattern
+  in the GetOrCreate method isn&#x27;t atomic:
+
+  1. Thread A reads: key not found
+  2. Thread B reads: key not found
+  3. Thread A writes: creates value
+  4. Thread B writes: overwrites with duplicate
+
+  You need to hold the lock across the entire GetOrCreate operation,
+  or use sync.Map with LoadOrStore for this pattern.
+
+  ✓ Cloud model caught the subtle issue the local model missed</code></pre>
+<h3 id="the-quality-gradient">The Quality Gradient <a href="#the-quality-gradient" class="heading-anchor">#</a></h3>
+<p>Think of it as a spectrum:</p>
+<div class="info-box">
+  <div class="info-box-header gray">Quality Gradient: Simple → Complex</div>
+  <div class="info-box-body">
+    <p><strong>Local 7B:</strong> <span style="display:inline-block; width:50%; background:linear-gradient(to right, var(--accent) 55%, var(--border) 55%); height:0.75em; border-radius:4px; vertical-align:middle;"></span> Good up to here</p>
+    <p><strong>Cloud Budget:</strong> <span style="display:inline-block; width:50%; background:linear-gradient(to right, var(--accent) 70%, var(--border) 70%); height:0.75em; border-radius:4px; vertical-align:middle;"></span> Good up to here</p>
+    <p><strong>Cloud Premium:</strong> <span style="display:inline-block; width:50%; background:var(--accent); height:0.75em; border-radius:4px; vertical-align:middle;"></span> Handles everything</p>
+  </div>
+</div>
+<p>The hybrid approach lets you get the right quality level without overpaying for simple tasks.</p>
+<div class="callout callout-warning"><div class="callout-title"><span class="callout-icon">&#9888;&#65039;</span> Warning</div><p>⚠️ <strong>Warning:</strong> Don't blindly trust local model output on security-critical or architecturally significant decisions. Use cloud premium for high-stakes tasks. The cost difference is negligible compared to the cost of a security vulnerability in production.</p></div>
+<hr />
+<h2 id="148-pro-tips">14.8 Pro Tips <a href="#148-pro-tips" class="heading-anchor">#</a></h2>
+<div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip: Pull the coding-specific model.</strong> <code>qwen2.5-coder:7b</code> consistently outperforms general-purpose models of the same size on coding tasks. It's the best bang-for-your-buck local model for NeamCode.</p></div>
+<div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip: Keep models warm.</strong> Ollama unloads models from memory after inactivity. The first request after idle requires loading the model (5-30 seconds). If you're actively coding, this rarely matters since the model stays loaded.</p></div>
+<div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip: Use the cost routing strategy as your default.</strong> With the hybrid setup, <code>cost</code> routing sends 80%+ of requests to your free local model. You'll barely notice the quality difference on routine tasks.</p></div>
+<div class="code-header"><span class="code-lang">yaml</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-yaml">routing:
+  strategy: &quot;cost&quot;       # local first, cloud when needed</code></pre>
+<div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip: Monitor your actual usage.</strong> Run <code>/cost</code> at the end of each week to see your real spending pattern. Most developers are surprised how little they actually need cloud models.</p></div>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode $ /cost
+
+Session Cost Report:
+  Total:           $2.15
+  Local requests:  847  ($0.00)
+  Cloud requests:  153  ($2.15)
+  Local ratio:     85%
+
+  At this rate: ~$9.46/month</code></pre>
+<div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip: SSD vs. HDD matters.</strong> Model loading speed depends on storage. If you're on an HDD, the initial model load will be noticeably slower. SSDs (especially NVMe) make local AI feel much more responsive.</p></div>
+<div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip: Apple Silicon users have an advantage.</strong> M-series chips have unified memory architecture, meaning GPU and CPU share the same RAM pool. A 16GB M2 MacBook runs 7B models faster than many dedicated GPU setups. NeamCode and Ollama take full advantage of this.</p></div>
+<div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip: Multiple models for different tasks.</strong> Pull a fast model (phi3) for quick questions and a capable model (qwen2.5-coder:7b) for real coding tasks. Switch with <code>/provider ollama phi3</code> when you just need a fast answer.</p></div>
+<div class="callout callout-warning"><div class="callout-title"><span class="callout-icon">&#9888;&#65039;</span> Warning</div><p>⚠️ <strong>Warning:</strong> Be realistic about 8GB machines. They can run local models, but you'll be limited to smaller models and may experience memory pressure if running an IDE, browser, and NeamCode simultaneously. Consider closing unnecessary applications during intensive local AI sessions.</p></div>
+<hr />
+<h2 id="exercises">Exercises <a href="#exercises" class="heading-anchor">#</a></h2>
+<div class="callout callout-try-it-yourself"><p>🎯 <strong>Exercise 14.1</strong> — Install Ollama and pull the recommended model for your hardware tier (8GB/16GB/32GB). Run a test prompt directly in Ollama to verify it works.</p></div>
+<div class="callout callout-try-it-yourself"><p>🎯 <strong>Exercise 14.2</strong> — Configure NeamCode for local-only operation (no cloud providers). Spend 30 minutes coding with it. Note which tasks felt smooth and which felt limited.</p></div>
+<div class="callout callout-try-it-yourself"><p>🎯 <strong>Exercise 14.3</strong> — Set up the hybrid 80/15/5 configuration with Ollama as primary and one cloud provider as fallback. Code for an hour and then check <code>/cost</code> to see how the requests were distributed.</p></div>
+<div class="callout callout-try-it-yourself"><p>🎯 <strong>Exercise 14.4</strong> — Compare the same coding question across three tiers: (a) ask with local model, (b) ask with cloud budget model (Haiku/mini), (c) ask with cloud premium (Opus/GPT-4o). Document the quality differences. Was the premium answer worth the extra cost?</p></div>
+<div class="callout callout-try-it-yourself"><p>🎯 <strong>Exercise 14.5</strong> — Calculate your projected monthly cost using the hybrid setup. Use <code>/cost</code> data from a typical session and multiply by your expected working days.</p></div>
+<div class="callout callout-try-it-yourself"><p>🎯 <strong>Exercise 14.6</strong> — Pull two Ollama models of different sizes. Use <code>/provider ollama &lt;model&gt;</code> to switch between them. Note the speed and quality difference. Find your personal sweet spot.</p></div>
+<hr />
+    <nav class="chapter-nav"><a href="13-offline-mode.html" class="nav-prev"><span class="nav-label">&larr; Previous</span><span class="nav-title">Offline Mode</span></a><a href="15-budget-cost.html" class="nav-next"><span class="nav-label">Next &rarr;</span><span class="nav-title">Budget & Cost Tracking</span></a></nav>
+  </article>
+</main>
+
+<button class="back-to-top" id="back-to-top" aria-label="Back to top">&#8593;</button>
+
+<div class="search-overlay" id="search-overlay">
+  <div class="search-modal">
+    <div class="search-input-wrap">
+      <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6.5" cy="6.5" r="5"/><line x1="10.5" y1="10.5" x2="15" y2="15"/></svg>
+      <input type="text" class="search-input" id="search-input" placeholder="Search chapters, topics...">
+    </div>
+    <div class="search-results" id="search-results">
+      <div class="search-empty">Start typing to search...</div>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/script.js"></script>
+</body>
+</html>

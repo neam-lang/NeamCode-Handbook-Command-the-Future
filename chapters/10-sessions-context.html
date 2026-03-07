@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 10: Sessions &amp; Context | Command the Future</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-base="../">
+
+<header class="topbar">
+  <div class="topbar-left">
+    <button class="hamburger" id="hamburger" aria-label="Toggle sidebar">&#9776;</button>
+    <a href="../index.html" class="topbar-title">Command the Future</a>
+  </div>
+  <div class="topbar-right">
+    <button class="topbar-btn search-btn" aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6.5" cy="6.5" r="5"/><line x1="10.5" y1="10.5" x2="15" y2="15"/></svg><kbd>Ctrl+K</kbd></button>
+    <button class="topbar-btn" id="theme-toggle" aria-label="Toggle theme"></button>
+  </div>
+</header>
+
+<div class="progress-bar"><div class="progress-fill"></div></div>
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+<aside class="sidebar" id="sidebar">
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Getting Started</div>
+  <div class="sidebar-chapters">
+    <a href="00-preface.html" class="sidebar-link" title="Preface">Preface</a>
+    <a href="01-meet-neamcode.html" class="sidebar-link" title="Meet NeamCode">Meet NeamCode</a>
+    <a href="02-install-first-conversation.html" class="sidebar-link" title="Install & First Conversation">Install & First Conversation</a>
+    <a href="03-art-of-prompting.html" class="sidebar-link" title="The Art of Prompting">The Art of Prompting</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Core Skills</div>
+  <div class="sidebar-chapters">
+    <a href="04-working-with-files.html" class="sidebar-link" title="Working with Files">Working with Files</a>
+    <a href="05-finding-things.html" class="sidebar-link" title="Finding Things in Code">Finding Things in Code</a>
+    <a href="06-commands-and-git.html" class="sidebar-link" title="Running Commands & Git">Running Commands & Git</a>
+    <a href="07-web-research.html" class="sidebar-link" title="Researching from the Terminal">Researching from the Terminal</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Workflow & Configuration</div>
+  <div class="sidebar-chapters">
+    <a href="08-slash-commands.html" class="sidebar-link" title="Slash Commands">Slash Commands</a>
+    <a href="09-modes.html" class="sidebar-link" title="Modes">Modes</a>
+    <a href="10-sessions-context.html" class="sidebar-link active" title="Sessions & Context">Sessions & Context</a>
+    <a href="11-auto-memory.html" class="sidebar-link" title="Auto Memory">Auto Memory</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Providers & Cost</div>
+  <div class="sidebar-chapters">
+    <a href="12-choosing-providers.html" class="sidebar-link" title="Choosing Your AI Provider">Choosing Your AI Provider</a>
+    <a href="13-offline-mode.html" class="sidebar-link" title="Offline Mode">Offline Mode</a>
+    <a href="14-zero-cost-setup.html" class="sidebar-link" title="The $0 AI Setup">The $0 AI Setup</a>
+    <a href="15-budget-cost.html" class="sidebar-link" title="Budget & Cost Tracking">Budget & Cost Tracking</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Advanced Features</div>
+  <div class="sidebar-chapters">
+    <a href="16-agents.html" class="sidebar-link" title="Agents & Delegation">Agents & Delegation</a>
+    <a href="17-mcp-servers.html" class="sidebar-link" title="MCP Servers">MCP Servers</a>
+    <a href="18-neam-language.html" class="sidebar-link" title="Neam Language Integration">Neam Language Integration</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Audience Guides</div>
+  <div class="sidebar-chapters">
+    <a href="19-for-students.html" class="sidebar-link" title="For Students">For Students</a>
+    <a href="20-for-researchers.html" class="sidebar-link" title="For Researchers">For Researchers</a>
+    <a href="21-for-professionals.html" class="sidebar-link" title="For Professionals">For Professionals</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Walkthroughs</div>
+  <div class="sidebar-chapters">
+    <a href="22-walkthrough-build-project.html" class="sidebar-link" title="Walkthrough: Build a Project">Walkthrough: Build a Project</a>
+    <a href="23-walkthrough-fix-bug.html" class="sidebar-link" title="Walkthrough: Fix a Real Bug">Walkthrough: Fix a Real Bug</a>
+    <a href="24-making-it-yours.html" class="sidebar-link" title="Making NeamCode Yours">Making NeamCode Yours</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Closing</div>
+  <div class="sidebar-chapters">
+    <a href="25-road-ahead.html" class="sidebar-link" title="The Road Ahead">The Road Ahead</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Appendices</div>
+  <div class="sidebar-chapters">
+    <a href="../appendices/A-slash-commands.html" class="sidebar-link" title="All Slash Commands">All Slash Commands</a>
+    <a href="../appendices/B-skills-reference.html" class="sidebar-link" title="All Skills Reference">All Skills Reference</a>
+    <a href="../appendices/C-configuration.html" class="sidebar-link" title="Configuration Reference">Configuration Reference</a>
+    <a href="../appendices/D-troubleshooting.html" class="sidebar-link" title="Troubleshooting & FAQ">Troubleshooting & FAQ</a>
+    <a href="../appendices/E-glossary.html" class="sidebar-link" title="Glossary">Glossary</a>
+  </div>
+</div>
+</aside>
+
+<main class="main">
+  <article class="content">
+<h1 id="chapter-10-sessions-memory-pick-up-where-you-left-off">Chapter 10: Sessions &amp; Memory — Pick Up Where You Left Off <a href="#chapter-10-sessions-memory-pick-up-where-you-left-off" class="heading-anchor">#</a></h1>
+<blockquote><p><em>"The palest ink is better than the best memory."</em><br>— Chinese Proverb</p></blockquote>
+<p><strong>📖 Estimated read time: 20 minutes</strong></p>
+<hr />
+<h2 id="what-youll-learn">What You'll Learn <a href="#what-youll-learn" class="heading-anchor">#</a></h2>
+<ul>
+<li>How NeamCode automatically saves your work sessions</li>
+<li>How to resume, name, and organize sessions</li>
+<li>How checkpoints protect you from mistakes</li>
+<li>How to use <code>/rewind</code> to undo destructive operations</li>
+<li>How context compaction keeps long conversations usable</li>
+<li>How to export conversations for sharing and archiving</li>
+</ul>
+<hr />
+<h2 id="101-auto-save-sessions">10.1 Auto-Save Sessions <a href="#101-auto-save-sessions" class="heading-anchor">#</a></h2>
+<p>Every conversation you have with NeamCode is automatically saved. You don't need to do anything — it just happens.</p>
+<div class="info-box">
+  <div class="info-box-header blue">SESSION AUTO-SAVE</div>
+  <div class="info-box-body">
+    <div class="flow-steps">
+      <span class="flow-step">You type</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-step">NeamCode responds</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-step highlight">Saved to disk</span>
+    </div>
+    <p>Every message, every file read, every command is recorded. Close the terminal and come back tomorrow &mdash; your work is still there.</p>
+  </div>
+</div>
+<p>Sessions capture:</p>
+<ul>
+<li>The full conversation history (your messages and NeamCode's responses)</li>
+<li>Which files were read and modified</li>
+<li>Which mode you were in</li>
+<li>Context and token usage at each point</li>
+<li>Checkpoints created during the session</li>
+<li>The working directory and project</li>
+</ul>
+<p>When you close NeamCode or start a new session, the previous one is saved automatically. No save button, no export step, no "are you sure?" dialog.</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; exit
+
+  Session saved automatically.
+  47 messages, 3 files modified.
+  Resume anytime with: neamcode --continue</code></pre>
+<div class="callout callout-note"><div class="callout-title"><span class="callout-icon">&#128221;</span> Note</div><p>📝 <strong>Note:</strong> Sessions are stored locally on your machine. They are never sent to the cloud or shared with anyone unless you explicitly export and share them.</p></div>
+<hr />
+<h2 id="102-resuming-work">10.2 Resuming Work <a href="#102-resuming-work" class="heading-anchor">#</a></h2>
+<p>There are two ways to pick up where you left off.</p>
+<h3 id="method-1-the---continue-flag">Method 1: The --continue Flag <a href="#method-1-the---continue-flag" class="heading-anchor">#</a></h3>
+<p>When you launch NeamCode, add <code>--continue</code> to resume your most recent session:</p>
+<div class="code-header"><span class="code-lang">bash</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-bash">$ neamcode --continue
+
+  ✓ Resumed session &quot;api-refactor&quot; (47 messages)
+  Last context: We were refactoring the /users endpoint to use
+  the new pagination middleware. I had just suggested changes
+  to src/api/routes.ts.
+
+neamcode&gt; Right, let&#x27;s continue with the pagination changes.</code></pre>
+<p>This is the quickest way to resume. It grabs the last session you were working in, regardless of project.</p>
+<h3 id="method-2-the-resume-command">Method 2: The /resume Command <a href="#method-2-the-resume-command" class="heading-anchor">#</a></h3>
+<p>For more control, use <code>/resume</code> inside NeamCode to browse and select from all saved sessions:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; /resume
+
+  Saved Sessions
+  ══════════════
+  #   Name                    Project              Last Active
+  1   api-refactor            ~/projects/myapp     2 hours ago
+  2   fix-auth-bug            ~/projects/myapp     Yesterday
+  3   neam-agent-setup        ~/projects/neam      3 days ago
+  4   unnamed-session-0412    ~/projects/blog      1 week ago
+  5   deploy-staging          ~/projects/myapp     2 weeks ago
+
+  Enter number or name to resume: 2
+
+  ✓ Resumed session &quot;fix-auth-bug&quot; (23 messages)
+  Mode: Debug (restored from session)
+  Last context: We identified a race condition in the auth
+  middleware. I suggested adding a mutex lock.</code></pre>
+<p>You can also resume by name directly:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; /resume neam-agent-setup
+
+  ✓ Resumed session &quot;neam-agent-setup&quot;</code></pre>
+<div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip:</strong> If you work on multiple projects, <code>/resume</code> is better than <code>--continue</code> because it shows you all sessions across all projects.</p></div>
+<h3 id="what-gets-restored">What Gets Restored <a href="#what-gets-restored" class="heading-anchor">#</a></h3>
+<p>When you resume a session, NeamCode restores:</p>
+<ul>
+<li>The full conversation (or its compacted summary if it was large)</li>
+<li>Your active mode (Debug, Explore, etc.)</li>
+<li>The working directory context</li>
+<li>Any MEMORY.md entries relevant to the project</li>
+</ul>
+<p>What it does NOT restore:</p>
+<ul>
+<li>File contents that have changed since the session was saved (it re-reads files)</li>
+<li>MCP server connections (these are re-established on demand)</li>
+<li>Running background tasks</li>
+</ul>
+<hr />
+<h2 id="103-naming-sessions">10.3 Naming Sessions <a href="#103-naming-sessions" class="heading-anchor">#</a></h2>
+<p>Unnamed sessions get auto-generated names like <code>unnamed-session-0412</code>. These are hard to find later. Name your sessions.</p>
+<h3 id="name-when-you-start">Name When You Start <a href="#name-when-you-start" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">bash</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-bash">$ neamcode --session &quot;payment-refactor&quot;
+
+  ✓ Started session &quot;payment-refactor&quot;</code></pre>
+<h3 id="name-during-the-session">Name During the Session <a href="#name-during-the-session" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; /rename payment-refactor
+
+  ✓ Session renamed to &quot;payment-refactor&quot;</code></pre>
+<h3 id="naming-conventions-that-work">Naming Conventions That Work <a href="#naming-conventions-that-work" class="heading-anchor">#</a></h3>
+<p>Good session names describe the task, not the date:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">Good names:
+  fix-auth-race-condition
+  add-stripe-webhooks
+  explore-legacy-codebase
+  deploy-v2.1-staging
+  test-coverage-push
+
+Bad names:
+  tuesday-work
+  session-3
+  stuff
+  temp</code></pre>
+<div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip:</strong> Name your session as soon as you know what you're working on. A 2-second <code>/rename</code> saves you 30 seconds of scanning unnamed sessions later.</p></div>
+<hr />
+<h2 id="104-checkpoints-your-safety-net">10.4 Checkpoints — Your Safety Net <a href="#104-checkpoints-your-safety-net" class="heading-anchor">#</a></h2>
+<p>Checkpoints are snapshots of your project's state at a specific moment. NeamCode creates them automatically before any destructive operation.</p>
+<h3 id="when-checkpoints-are-created">When Checkpoints Are Created <a href="#when-checkpoints-are-created" class="heading-anchor">#</a></h3>
+<div class="info-box">
+  <div class="info-box-header green">AUTOMATIC CHECKPOINT TRIGGERS</div>
+  <div class="info-box-body">
+    <ul>
+      <li>Before editing a file</li>
+      <li>Before deleting a file</li>
+      <li>Before running git commands</li>
+      <li>Before running shell commands that modify files</li>
+      <li>Before <code>/clear</code></li>
+      <li>Before applying multi-file refactors</li>
+    </ul>
+    <p>You don't need to create checkpoints manually. NeamCode handles it.</p>
+  </div>
+</div>
+<h3 id="viewing-checkpoints">Viewing Checkpoints <a href="#viewing-checkpoints" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; /rewind
+
+  Available Checkpoints
+  ═════════════════════
+  #   Time              Action
+  7   2 minutes ago     Edited src/api/routes.ts
+  6   5 minutes ago     Edited src/models/user.ts
+  5   12 minutes ago    Ran: npm install stripe
+  4   20 minutes ago    Edited package.json
+  3   35 minutes ago    Deleted src/old-auth.ts
+  2   1 hour ago        Edited src/middleware/auth.ts
+  1   1 hour ago        Edited .env.example
+
+  Enter checkpoint number to rewind, or &#x27;cancel&#x27;:</code></pre>
+<h3 id="what-checkpoints-capture">What Checkpoints Capture <a href="#what-checkpoints-capture" class="heading-anchor">#</a></h3>
+<p>A checkpoint records the state of all files that were about to be modified. Think of it as a mini git stash created automatically:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">Checkpoint #7
+├── src/api/routes.ts (before edit)
+├── Conversation state at that point
+└── Timestamp: 2026-03-07 14:23:05</code></pre>
+<div class="callout callout-note"><div class="callout-title"><span class="callout-icon">&#128221;</span> Note</div><p>📝 <strong>Note:</strong> Checkpoints are separate from git commits. They exist within NeamCode's session system and don't affect your git history.</p></div>
+<hr />
+<h2 id="105-the-rewind-command">10.5 The /rewind Command <a href="#105-the-rewind-command" class="heading-anchor">#</a></h2>
+<p><code>/rewind</code> is your undo button. It restores files to their state at a specific checkpoint.</p>
+<h3 id="basic-rewind">Basic Rewind <a href="#basic-rewind" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; /rewind 6
+
+  Rewinding to checkpoint #6...
+  ═════════════════════════════
+
+  Restoring: src/api/routes.ts
+  ── Reverting changes from checkpoint #7
+
+  ✓ Rewound to checkpoint #6
+  1 file restored
+
+  Changes since checkpoint #6 have been undone.
+  The conversation is aware of the rewind.</code></pre>
+<h3 id="rewind-to-the-last-checkpoint">Rewind to the Last Checkpoint <a href="#rewind-to-the-last-checkpoint" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; /rewind last
+
+  Rewinding to checkpoint #7...
+  ═════════════════════════════
+
+  Restoring: src/api/routes.ts
+  ── Reverting to pre-edit state
+
+  ✓ Rewound to checkpoint #7
+  1 file restored</code></pre>
+<h3 id="the-safety-of-rewind">The Safety of Rewind <a href="#the-safety-of-rewind" class="heading-anchor">#</a></h3>
+<p><code>/rewind</code> is itself safe — it creates a checkpoint before rewinding:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; /rewind 3
+
+  ⚠ This will undo changes from checkpoints #4 through #7.
+  Affected files:
+    - src/api/routes.ts
+    - src/models/user.ts
+    - package.json
+
+  A new checkpoint (#8) will be created before rewinding.
+  Continue? (y/n) y
+
+  ✓ Checkpoint #8 created (safety net)
+  ✓ Rewound to checkpoint #3
+  3 files restored</code></pre>
+<p>So if you rewind too far, you can rewind the rewind. It's safety nets all the way down.</p>
+<h3 id="real-world-rewind-scenario">Real-World Rewind Scenario <a href="#real-world-rewind-scenario" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; Refactor the auth module to use JWT instead of sessions
+
+  I&#x27;ll update the following files:
+  • src/middleware/auth.ts
+  • src/config/auth.ts
+  • src/routes/login.ts
+  • src/routes/logout.ts
+
+  ✓ Checkpoint #12 created
+  ✓ Updated 4 files
+
+neamcode&gt; Actually, the team decided to keep sessions. Undo everything.
+
+neamcode&gt; /rewind 12
+
+  Rewinding to checkpoint #12...
+  ✓ 4 files restored to their pre-refactor state.
+  It&#x27;s as if the JWT refactor never happened.</code></pre>
+<div class="callout callout-warning"><div class="callout-title"><span class="callout-icon">&#9888;&#65039;</span> Warning</div><p>⚠️ <strong>Warning:</strong> <code>/rewind</code> restores file contents but cannot undo external side effects. If NeamCode ran <code>npm install</code> or <code>git push</code>, those actions cannot be reversed by rewind. NeamCode will warn you about this.</p></div>
+<hr />
+<h2 id="106-context-compaction">10.6 Context Compaction <a href="#106-context-compaction" class="heading-anchor">#</a></h2>
+<p>Every message in your conversation uses tokens. As conversations grow long, you approach the model's context limit. Context compaction solves this.</p>
+<h3 id="how-compaction-works">How Compaction Works <a href="#how-compaction-works" class="heading-anchor">#</a></h3>
+<figure class="diagram-figure">
+  <img src="../assets/diagrams/ch10-context-compaction.svg" alt="Context Window Compaction" />
+  <figcaption>Figure 10.1 — Context Window Compaction</figcaption>
+</figure>
+<div class="ascii-fallback">
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">┌──────────────────────────────────────────────────────┐
+│              CONTEXT COMPACTION                       │
+│                                                      │
+│  Before compaction:                                  │
+│  ┌─────────────────────────────────────────┐         │
+│  │ msg 1 │ msg 2 │ msg 3 │ ... │ msg 89   │ 85%    │
+│  └─────────────────────────────────────────┘         │
+│                                                      │
+│  After compaction:                                   │
+│  ┌───────────────┬─────────────────────────┐         │
+│  │   Summary     │ msg 78 │ ... │ msg 89   │ 25%    │
+│  │  (msgs 1-77)  │    (recent messages)    │         │
+│  └───────────────┴─────────────────────────┘         │
+│                                                      │
+│  Older messages → compressed into a summary          │
+│  Recent messages → kept in full detail               │
+│                                                      │
+└──────────────────────────────────────────────────────┘</code></pre>
+</div>
+<h3 id="automatic-compaction">Automatic Compaction <a href="#automatic-compaction" class="heading-anchor">#</a></h3>
+<p>NeamCode triggers compaction automatically when token usage hits <strong>85%</strong> of the maximum context window:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">  ℹ Context usage at 85% — auto-compacting...
+
+  Compacting conversation...
+  ──────────────────────────
+  Before:  170,000 / 200,000 tokens (85.0%)
+  After:    48,200 / 200,000 tokens (24.1%)
+
+  ✓ Compressed 77 messages into a summary
+  ✓ Recent 12 messages preserved in full
+  ✓ MEMORY.md entries preserved (never compacted)</code></pre>
+<h3 id="manual-compaction">Manual Compaction <a href="#manual-compaction" class="heading-anchor">#</a></h3>
+<p>You can trigger compaction anytime with <code>/compact</code>:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; /compact
+
+  Compacting conversation...
+  ──────────────────────────
+  Before:  98,400 / 200,000 tokens (49.2%)
+  After:   31,600 / 200,000 tokens (15.8%)
+
+  ✓ Compressed 45 messages into a summary
+  ✓ Recent 12 messages preserved in full</code></pre>
+<h3 id="what-survives-compaction">What Survives Compaction <a href="#what-survives-compaction" class="heading-anchor">#</a></h3>
+<p>Compaction is lossy — old messages are summarized, not preserved verbatim. However, certain things always survive:</p>
+<ol>
+<li><strong>MEMORY.md entries</strong> — Long-term memory is never compacted</li>
+<li><strong>Recent messages</strong> — The last ~12 messages are kept in full</li>
+<li><strong>Key decisions</strong> — The summary captures important decisions and outcomes</li>
+<li><strong>File modification history</strong> — Which files were changed and why</li>
+</ol>
+<p>What might be lost:</p>
+<ul>
+<li>Exact wording of old messages</li>
+<li>Detailed explanations from early in the conversation</li>
+<li>Code snippets shown but not saved to files</li>
+</ul>
+<div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip:</strong> If something is important enough to survive compaction, tell NeamCode to remember it: "Remember that we decided to use JWT for auth." This saves it to MEMORY.md, which is compaction-proof.</p></div>
+<hr />
+<h2 id="107-exporting-conversations">10.7 Exporting Conversations <a href="#107-exporting-conversations" class="heading-anchor">#</a></h2>
+<p>Sometimes you need to share a conversation or archive it outside NeamCode.</p>
+<h3 id="export-to-markdown">Export to Markdown <a href="#export-to-markdown" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; /export
+
+  Export format:
+  1. Markdown (.md)
+  2. JSON (.json)
+  3. Plain text (.txt)
+  &gt; 1
+
+  ✓ Exported to ./neamcode-export-2026-03-07.md</code></pre>
+<p>The Markdown export is clean and readable:</p>
+<div class="code-header"><span class="code-lang">markdown</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-markdown"># NeamCode Session: api-refactor
+**Date:** 2026-03-07 | **Messages:** 47 | **Mode:** Explore
+
+---
+
+**You:** How is authentication handled in this project?
+
+**NeamCode:** I&#x27;ve examined the codebase and here&#x27;s how authentication works...
+
+---
+
+**You:** Can you show me the middleware chain?
+
+**NeamCode:** Here&#x27;s the middleware execution order...</code></pre>
+<h3 id="export-to-a-specific-file">Export to a Specific File <a href="#export-to-a-specific-file" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; /export docs/auth-investigation.md
+
+  ✓ Exported to docs/auth-investigation.md</code></pre>
+<h3 id="export-to-json-machine-readable">Export to JSON (Machine-Readable) <a href="#export-to-json-machine-readable" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; /export session-data.json
+
+  ✓ Exported to ./session-data.json</code></pre>
+<p>The JSON format includes metadata useful for automation:</p>
+<div class="code-header"><span class="code-lang">json</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-json">{
+  &quot;session_name&quot;: &quot;api-refactor&quot;,
+  &quot;created_at&quot;: &quot;2026-03-07T10:15:00Z&quot;,
+  &quot;messages&quot;: 47,
+  &quot;mode&quot;: &quot;explore&quot;,
+  &quot;total_tokens&quot;: 84200,
+  &quot;total_cost&quot;: 1.05,
+  &quot;files_modified&quot;: [
+    &quot;src/api/routes.ts&quot;,
+    &quot;src/models/user.ts&quot;
+  ],
+  &quot;conversation&quot;: [...]
+}</code></pre>
+<div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip:</strong> Exporting to Markdown is great for creating documentation from your investigation sessions. Use Explore mode to investigate a system, then <code>/export</code> the conversation as living documentation.</p></div>
+<hr />
+<h2 id="108-pro-tips">10.8 Pro Tips <a href="#108-pro-tips" class="heading-anchor">#</a></h2>
+<h3 id="session-hygiene">Session Hygiene <a href="#session-hygiene" class="heading-anchor">#</a></h3>
+<p>Keep your sessions clean and findable:</p>
+<ol>
+<li><strong>Name sessions immediately</strong> — <code>/rename</code> as soon as you know the task</li>
+<li><strong>One task per session</strong> — Don't mix "fix auth bug" with "add payments feature"</li>
+<li><strong>Export before closing long sessions</strong> — Compacted summaries lose detail</li>
+<li><strong>Use <code>/clear</code> to reset</strong> — If a session goes sideways, clear and start fresh</li>
+</ol>
+<h3 id="the-resume-mode-pattern">The Resume + Mode Pattern <a href="#the-resume-mode-pattern" class="heading-anchor">#</a></h3>
+<p>When you resume a session, check your mode:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; /resume fix-auth-bug
+
+  ✓ Resumed session &quot;fix-auth-bug&quot;
+  Mode: Debug (restored)
+
+neamcode&gt; /status
+
+  Status
+  ══════
+  Mode:     Debug
+  Session:  fix-auth-bug (23 msgs)
+  Context:  18,400 / 200,000 tokens (9.2%)</code></pre>
+<h3 id="long-running-investigations">Long-Running Investigations <a href="#long-running-investigations" class="heading-anchor">#</a></h3>
+<p>For multi-day investigations, the session + memory system works together:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">Day 1:
+  neamcode&gt; /mode explore
+  neamcode&gt; /rename investigate-memory-leak
+  neamcode&gt; (... investigate for an hour ...)
+  neamcode&gt; Remember that the memory leak is in the WebSocket
+    connection pool — connections aren&#x27;t being released on error
+  neamcode&gt; exit
+
+Day 2:
+  $ neamcode --continue
+  neamcode&gt; What do we know about the memory leak so far?
+
+  From memory and previous session: The memory leak is in the
+  WebSocket connection pool. Connections aren&#x27;t being released
+  when errors occur. We traced this to src/ws/pool.ts...</code></pre>
+<h3 id="context-budget-planning">Context Budget Planning <a href="#context-budget-planning" class="heading-anchor">#</a></h3>
+<p>Know your context limits and plan accordingly:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; /context
+
+  Context Usage
+  ═════════════
+  Tokens used:    142,800 / 200,000  (71.4%)</code></pre>
+<p>If you're above 70% and have more work to do:</p>
+<ul>
+<li><strong>Option A:</strong> <code>/compact</code> now to free up space</li>
+<li><strong>Option B:</strong> Ask NeamCode to remember key findings, then <code>/clear</code> and resume fresh</li>
+<li><strong>Option C:</strong> Continue and let auto-compaction handle it at 85%</li>
+</ul>
+<h3 id="checkpoints-vs-git-commits">Checkpoints vs. Git Commits <a href="#checkpoints-vs-git-commits" class="heading-anchor">#</a></h3>
+<p>Use both, but know the difference:</p>
+<div class="comparison-grid">
+  <div class="info-box">
+    <div class="info-box-header blue">Checkpoints</div>
+    <div class="info-box-body">
+      <ul>
+        <li>Automatic</li>
+        <li>Per-file snapshots</li>
+        <li>Session-scoped</li>
+        <li>Undo via <code>/rewind</code></li>
+        <li>For quick undo</li>
+        <li>Internal to NeamCode</li>
+      </ul>
+    </div>
+  </div>
+  <div class="info-box">
+    <div class="info-box-header gray">Git Commits</div>
+    <div class="info-box-body">
+      <ul>
+        <li>Manual</li>
+        <li>Whole-repo snapshots</li>
+        <li>Permanent history</li>
+        <li>Undo via <code>git revert</code></li>
+        <li>For project milestones</li>
+        <li>Shared with team</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<p>Checkpoints are your quick-undo for "that last change was wrong." Git commits are your permanent record of "this change is done and tested."</p>
+<h3 id="the-export-archive-workflow">The Export-Archive Workflow <a href="#the-export-archive-workflow" class="heading-anchor">#</a></h3>
+<p>For important sessions you want to keep long-term:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; /export archive/2026-03-07-auth-investigation.md
+
+  ✓ Exported to archive/2026-03-07-auth-investigation.md</code></pre>
+<p>Then add to <code>.gitignore</code> or a separate archive repo. Your future self will thank you.</p>
+<hr />
+<h2 id="exercises">Exercises <a href="#exercises" class="heading-anchor">#</a></h2>
+<p><strong>🎯 Exercise 10.1:</strong> Start a NeamCode session and have at least 10 exchanges with it. Then close NeamCode and reopen it with <code>neamcode --continue</code>. Verify that the conversation is restored.</p>
+<p><strong>🎯 Exercise 10.2:</strong> Start a session, <code>/rename</code> it to something descriptive. Start a second session about a different topic. Use <code>/sessions</code> to see both, then <code>/resume</code> the first one by name.</p>
+<p><strong>🎯 Exercise 10.3:</strong> Ask NeamCode to edit a file (any file — even a test file you create). Verify the edit was made. Then use <code>/rewind last</code> to undo it. Check the file to confirm it was restored.</p>
+<p><strong>🎯 Exercise 10.4:</strong> Have a long conversation (at least 20 exchanges). Run <code>/context</code> to see your token usage. Run <code>/compact</code> and check <code>/context</code> again. Note the reduction and verify that NeamCode still understands the conversation topic.</p>
+<p><strong>🎯 Exercise 10.5:</strong> Export a session in all three formats (Markdown, JSON, plain text). Open each one and compare the contents. Which format would you use for documentation? For data analysis? For sharing with a colleague?</p>
+<hr />
+    <nav class="chapter-nav"><a href="09-modes.html" class="nav-prev"><span class="nav-label">&larr; Previous</span><span class="nav-title">Modes</span></a><a href="11-auto-memory.html" class="nav-next"><span class="nav-label">Next &rarr;</span><span class="nav-title">Auto Memory</span></a></nav>
+  </article>
+</main>
+
+<button class="back-to-top" id="back-to-top" aria-label="Back to top">&#8593;</button>
+
+<div class="search-overlay" id="search-overlay">
+  <div class="search-modal">
+    <div class="search-input-wrap">
+      <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6.5" cy="6.5" r="5"/><line x1="10.5" y1="10.5" x2="15" y2="15"/></svg>
+      <input type="text" class="search-input" id="search-input" placeholder="Search chapters, topics...">
+    </div>
+    <div class="search-results" id="search-results">
+      <div class="search-empty">Start typing to search...</div>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/script.js"></script>
+</body>
+</html>

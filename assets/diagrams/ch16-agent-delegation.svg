@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520">
+  <defs>
+    <style>
+      text { font-family: 'Segoe UI', Arial, Helvetica, sans-serif; }
+      .title { font-size: 18px; font-weight: 700; fill: #1a1a1a; }
+      .label { font-size: 14px; font-weight: 600; fill: #ffffff; }
+      .label-dark { font-size: 14px; font-weight: 600; fill: #1a1a1a; }
+      .tool-label { font-size: 11px; fill: #555555; }
+      .tool-name { font-size: 12px; fill: #333333; font-weight: 500; }
+    </style>
+    <marker id="arrow-down" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#888888"/>
+    </marker>
+    <marker id="arrow-handoff" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#BE0027"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="520" rx="8" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1"/>
+
+  <!-- Title -->
+  <text x="400" y="35" text-anchor="middle" class="title">Agent Delegation Tree</text>
+
+  <!-- Main Agent (Orchestrator) -->
+  <rect x="260" y="55" width="280" height="60" rx="14" fill="#0060B6" stroke="#004e94" stroke-width="1"/>
+  <text x="400" y="82" text-anchor="middle" class="label" font-size="16">Main Agent</text>
+  <text x="400" y="100" text-anchor="middle" font-size="12" fill="#cce5ff">(Orchestrator)</text>
+
+  <!-- Lines from orchestrator to sub-agents -->
+  <line x1="280" y1="115" x2="130" y2="200" stroke="#888888" stroke-width="2" marker-end="url(#arrow-down)"/>
+  <line x1="400" y1="115" x2="400" y2="200" stroke="#888888" stroke-width="2" marker-end="url(#arrow-down)"/>
+  <line x1="520" y1="115" x2="670" y2="200" stroke="#888888" stroke-width="2" marker-end="url(#arrow-down)"/>
+
+  <!-- "delegates" labels -->
+  <text x="190" y="155" text-anchor="middle" font-size="11" fill="#888888" font-style="italic">delegates</text>
+  <text x="420" y="165" text-anchor="start" font-size="11" fill="#888888" font-style="italic">delegates</text>
+  <text x="600" y="155" text-anchor="middle" font-size="11" fill="#888888" font-style="italic">delegates</text>
+
+  <!-- Research Agent -->
+  <rect x="30" y="205" width="200" height="55" rx="12" fill="#27ae60"/>
+  <text x="130" y="230" text-anchor="middle" class="label" font-size="15">Research Agent</text>
+  <text x="130" y="248" text-anchor="middle" font-size="11" fill="#d4edda">Gathers information</text>
+
+  <!-- Research Agent Tools -->
+  <rect x="40" y="275" width="180" height="80" rx="8" fill="#ffffff" stroke="#dee2e6" stroke-width="1"/>
+  <text x="130" y="295" text-anchor="middle" class="tool-label" font-weight="600">TOOLS</text>
+  <rect x="55" y="302" width="70" height="22" rx="4" fill="#e8f5e9" stroke="#27ae60" stroke-width="1"/>
+  <text x="90" y="317" text-anchor="middle" class="tool-name" font-size="11">Web Search</text>
+  <rect x="135" y="302" width="70" height="22" rx="4" fill="#e8f5e9" stroke="#27ae60" stroke-width="1"/>
+  <text x="170" y="317" text-anchor="middle" class="tool-name" font-size="11">File Read</text>
+  <rect x="55" y="330" width="150" height="18" rx="4" fill="#f0f0f0"/>
+  <text x="130" y="343" text-anchor="middle" font-size="10" fill="#888888">Knowledge Retrieval</text>
+
+  <!-- Code Agent -->
+  <rect x="300" y="205" width="200" height="55" rx="12" fill="#BE0027"/>
+  <text x="400" y="230" text-anchor="middle" class="label" font-size="15">Code Agent</text>
+  <text x="400" y="248" text-anchor="middle" font-size="11" fill="#f8d7da">Writes and modifies code</text>
+
+  <!-- Code Agent Tools -->
+  <rect x="310" y="275" width="180" height="80" rx="8" fill="#ffffff" stroke="#dee2e6" stroke-width="1"/>
+  <text x="400" y="295" text-anchor="middle" class="tool-label" font-weight="600">TOOLS</text>
+  <rect x="318" y="302" width="50" height="22" rx="4" fill="#fde8e8" stroke="#BE0027" stroke-width="1"/>
+  <text x="343" y="317" text-anchor="middle" class="tool-name" font-size="11">Edit</text>
+  <rect x="375" y="302" width="50" height="22" rx="4" fill="#fde8e8" stroke="#BE0027" stroke-width="1"/>
+  <text x="400" y="317" text-anchor="middle" class="tool-name" font-size="11">Write</text>
+  <rect x="432" y="302" width="50" height="22" rx="4" fill="#fde8e8" stroke="#BE0027" stroke-width="1"/>
+  <text x="457" y="317" text-anchor="middle" class="tool-name" font-size="11">Bash</text>
+  <rect x="325" y="330" width="150" height="18" rx="4" fill="#f0f0f0"/>
+  <text x="400" y="343" text-anchor="middle" font-size="10" fill="#888888">Build and Test</text>
+
+  <!-- Review Agent -->
+  <rect x="570" y="205" width="200" height="55" rx="12" fill="#0060B6"/>
+  <text x="670" y="230" text-anchor="middle" class="label" font-size="15">Review Agent</text>
+  <text x="670" y="248" text-anchor="middle" font-size="11" fill="#cce5ff">Validates output</text>
+
+  <!-- Review Agent Tools -->
+  <rect x="580" y="275" width="180" height="80" rx="8" fill="#ffffff" stroke="#dee2e6" stroke-width="1"/>
+  <text x="670" y="295" text-anchor="middle" class="tool-label" font-weight="600">TOOLS</text>
+  <rect x="598" y="302" width="60" height="22" rx="4" fill="#e0ecf8" stroke="#0060B6" stroke-width="1"/>
+  <text x="628" y="317" text-anchor="middle" class="tool-name" font-size="11">Read</text>
+  <rect x="668" y="302" width="60" height="22" rx="4" fill="#e0ecf8" stroke="#0060B6" stroke-width="1"/>
+  <text x="698" y="317" text-anchor="middle" class="tool-name" font-size="11">Grep</text>
+  <rect x="605" y="330" width="130" height="18" rx="4" fill="#f0f0f0"/>
+  <text x="670" y="343" text-anchor="middle" font-size="10" fill="#888888">Static Analysis</text>
+
+  <!-- Handoff arrows between agents -->
+  <!-- Research -> Code -->
+  <path d="M 230 232 Q 270 400 300 232" fill="none" stroke="#BE0027" stroke-width="1.5" stroke-dasharray="6,3" marker-end="url(#arrow-handoff)"/>
+  <text x="265" y="410" text-anchor="middle" font-size="10" fill="#BE0027" font-weight="500">handoff</text>
+
+  <!-- Code -> Review -->
+  <path d="M 500 232 Q 540 400 570 232" fill="none" stroke="#BE0027" stroke-width="1.5" stroke-dasharray="6,3" marker-end="url(#arrow-handoff)"/>
+  <text x="535" y="410" text-anchor="middle" font-size="10" fill="#BE0027" font-weight="500">handoff</text>
+
+  <!-- Review -> Main (feedback loop) -->
+  <path d="M 720 205 Q 760 140 540 75" fill="none" stroke="#BE0027" stroke-width="1.5" stroke-dasharray="6,3" marker-end="url(#arrow-handoff)"/>
+  <text x="700" y="130" text-anchor="middle" font-size="10" fill="#BE0027" font-weight="500">report</text>
+
+  <!-- Legend -->
+  <rect x="150" y="445" width="500" height="50" rx="10" fill="#ffffff" stroke="#dee2e6" stroke-width="1"/>
+  <line x1="200" y1="470" x2="240" y2="470" stroke="#888888" stroke-width="2"/>
+  <text x="248" y="474" font-size="11" fill="#666666">Delegation</text>
+  <line x1="340" y1="470" x2="380" y2="470" stroke="#BE0027" stroke-width="1.5" stroke-dasharray="6,3"/>
+  <text x="388" y="474" font-size="11" fill="#666666">Handoff / Report</text>
+  <rect x="490" y="462" width="16" height="16" rx="3" fill="#e8f5e9" stroke="#27ae60" stroke-width="1"/>
+  <text x="514" y="474" font-size="11" fill="#666666">Tool</text>
+</svg>

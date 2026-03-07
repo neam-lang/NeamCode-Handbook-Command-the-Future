@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 23: Walkthrough: Fix a Real Bug | Command the Future</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-base="../">
+
+<header class="topbar">
+  <div class="topbar-left">
+    <button class="hamburger" id="hamburger" aria-label="Toggle sidebar">&#9776;</button>
+    <a href="../index.html" class="topbar-title">Command the Future</a>
+  </div>
+  <div class="topbar-right">
+    <button class="topbar-btn search-btn" aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6.5" cy="6.5" r="5"/><line x1="10.5" y1="10.5" x2="15" y2="15"/></svg><kbd>Ctrl+K</kbd></button>
+    <button class="topbar-btn" id="theme-toggle" aria-label="Toggle theme"></button>
+  </div>
+</header>
+
+<div class="progress-bar"><div class="progress-fill"></div></div>
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+<aside class="sidebar" id="sidebar">
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Getting Started</div>
+  <div class="sidebar-chapters">
+    <a href="00-preface.html" class="sidebar-link" title="Preface">Preface</a>
+    <a href="01-meet-neamcode.html" class="sidebar-link" title="Meet NeamCode">Meet NeamCode</a>
+    <a href="02-install-first-conversation.html" class="sidebar-link" title="Install & First Conversation">Install & First Conversation</a>
+    <a href="03-art-of-prompting.html" class="sidebar-link" title="The Art of Prompting">The Art of Prompting</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Core Skills</div>
+  <div class="sidebar-chapters">
+    <a href="04-working-with-files.html" class="sidebar-link" title="Working with Files">Working with Files</a>
+    <a href="05-finding-things.html" class="sidebar-link" title="Finding Things in Code">Finding Things in Code</a>
+    <a href="06-commands-and-git.html" class="sidebar-link" title="Running Commands & Git">Running Commands & Git</a>
+    <a href="07-web-research.html" class="sidebar-link" title="Researching from the Terminal">Researching from the Terminal</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Workflow & Configuration</div>
+  <div class="sidebar-chapters">
+    <a href="08-slash-commands.html" class="sidebar-link" title="Slash Commands">Slash Commands</a>
+    <a href="09-modes.html" class="sidebar-link" title="Modes">Modes</a>
+    <a href="10-sessions-context.html" class="sidebar-link" title="Sessions & Context">Sessions & Context</a>
+    <a href="11-auto-memory.html" class="sidebar-link" title="Auto Memory">Auto Memory</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Providers & Cost</div>
+  <div class="sidebar-chapters">
+    <a href="12-choosing-providers.html" class="sidebar-link" title="Choosing Your AI Provider">Choosing Your AI Provider</a>
+    <a href="13-offline-mode.html" class="sidebar-link" title="Offline Mode">Offline Mode</a>
+    <a href="14-zero-cost-setup.html" class="sidebar-link" title="The $0 AI Setup">The $0 AI Setup</a>
+    <a href="15-budget-cost.html" class="sidebar-link" title="Budget & Cost Tracking">Budget & Cost Tracking</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Advanced Features</div>
+  <div class="sidebar-chapters">
+    <a href="16-agents.html" class="sidebar-link" title="Agents & Delegation">Agents & Delegation</a>
+    <a href="17-mcp-servers.html" class="sidebar-link" title="MCP Servers">MCP Servers</a>
+    <a href="18-neam-language.html" class="sidebar-link" title="Neam Language Integration">Neam Language Integration</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Audience Guides</div>
+  <div class="sidebar-chapters">
+    <a href="19-for-students.html" class="sidebar-link" title="For Students">For Students</a>
+    <a href="20-for-researchers.html" class="sidebar-link" title="For Researchers">For Researchers</a>
+    <a href="21-for-professionals.html" class="sidebar-link" title="For Professionals">For Professionals</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Walkthroughs</div>
+  <div class="sidebar-chapters">
+    <a href="22-walkthrough-build-project.html" class="sidebar-link" title="Walkthrough: Build a Project">Walkthrough: Build a Project</a>
+    <a href="23-walkthrough-fix-bug.html" class="sidebar-link active" title="Walkthrough: Fix a Real Bug">Walkthrough: Fix a Real Bug</a>
+    <a href="24-making-it-yours.html" class="sidebar-link" title="Making NeamCode Yours">Making NeamCode Yours</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Closing</div>
+  <div class="sidebar-chapters">
+    <a href="25-road-ahead.html" class="sidebar-link" title="The Road Ahead">The Road Ahead</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Appendices</div>
+  <div class="sidebar-chapters">
+    <a href="../appendices/A-slash-commands.html" class="sidebar-link" title="All Slash Commands">All Slash Commands</a>
+    <a href="../appendices/B-skills-reference.html" class="sidebar-link" title="All Skills Reference">All Skills Reference</a>
+    <a href="../appendices/C-configuration.html" class="sidebar-link" title="Configuration Reference">Configuration Reference</a>
+    <a href="../appendices/D-troubleshooting.html" class="sidebar-link" title="Troubleshooting & FAQ">Troubleshooting & FAQ</a>
+    <a href="../appendices/E-glossary.html" class="sidebar-link" title="Glossary">Glossary</a>
+  </div>
+</div>
+</aside>
+
+<main class="main">
+  <article class="content">
+<h1 id="chapter-23-walkthrough-fix-a-real-bug">Chapter 23: Walkthrough — Fix a Real Bug <a href="#chapter-23-walkthrough-fix-a-real-bug" class="heading-anchor">#</a></h1>
+<blockquote><p>"Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it."<br>— Brian W. Kernighan</p></blockquote>
+<p>📖 <strong>Estimated read time:</strong> 25 minutes</p>
+<hr />
+<h2 id="what-youll-learn">What You'll Learn <a href="#what-youll-learn" class="heading-anchor">#</a></h2>
+<ul>
+<li>How to use NeamCode to investigate a bug from report to fix</li>
+<li>How to reproduce, trace, isolate, and fix a real logic error</li>
+<li>How to write regression tests that prove the fix works</li>
+<li>A clean, linear debugging workflow you can apply to any project</li>
+</ul>
+<hr />
+<h2 id="the-scenario">The Scenario <a href="#the-scenario" class="heading-anchor">#</a></h2>
+<p>We are working on the <strong>BookShelf API</strong> we built in Chapter 22. Two related bugs have been reported in the <code>PATCH /:id/progress</code> endpoint — the handler that automatically updates a book's status when the user updates their reading progress.</p>
+<p>If you need a refresher on the project, it is a Node.js REST API using Express, SQLite (better-sqlite3), and Zod. There is no frontend — this is a pure backend API.</p>
+<hr />
+<h2 id="231-the-bug-report">23.1 The Bug Report <a href="#231-the-bug-report" class="heading-anchor">#</a></h2>
+<p>Here is the bug report from our issue tracker:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">Bug #47: Progress endpoint has incorrect status transitions
+
+Reporter: @sarah-dev
+Priority: High
+
+Bug A — Jumping to the last page:
+  1. Add a book with 400 total pages
+  2. Update progress directly from page 0 to page 400
+  3. Status becomes &quot;finished&quot; (correct), but started_at is also
+     set (suspicious) and the book was never &quot;reading&quot;
+  4. The book jumps from &quot;want-to-read&quot; straight to &quot;finished&quot;
+     without ever being in &quot;reading&quot; state
+
+Bug B — Re-reading a finished book:
+  1. After finishing the book above, update progress to page 50
+     (simulating a re-read of an early chapter)
+  2. Status stays &quot;finished&quot; instead of going back to &quot;reading&quot;
+  3. finished_at is not cleared
+
+Expected: Status transitions should be logically consistent.
+          A book going from page 0 to the last page should pass
+          through &quot;reading&quot; before &quot;finished.&quot; A finished book
+          with a lowered page number should go back to &quot;reading.&quot;</code></pre>
+<hr />
+<h2 id="232-starting-the-investigation">23.2 Starting the Investigation <a href="#232-starting-the-investigation" class="heading-anchor">#</a></h2>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">$ cd ~/projects/bookshelf-api
+$ neamcode
+
+&gt; /mode debug
+
+Mode switched to: Debug
+I&#x27;ll help you find and fix bugs systematically.
+
+You&gt; We have bug #47. Two related issues in the PATCH /:id/progress
+     endpoint. First, jumping from page 0 directly to the last page
+     skips the &quot;reading&quot; state entirely. Second, lowering the page
+     on a finished book doesn&#x27;t reset status to &quot;reading.&quot;
+
+     Let&#x27;s start by reading the progress handler code.</code></pre>
+<p><strong>NeamCode responds:</strong></p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">Let me read the progress endpoint to understand the current logic.
+
+Reading src/routes/books.js...
+
+Here is the PATCH /:id/progress handler (lines 82-106):
+
+  router.patch(&#x27;/:id/progress&#x27;, (req, res) =&gt; {
+    const db = getDatabase();
+    const book = db.prepare(&#x27;SELECT * FROM books WHERE id = ?&#x27;)
+      .get(req.params.id);
+
+    if (!book) {
+      return res.status(404).json({ error: &#x27;Book not found&#x27; });
+    }
+
+    const { current_page } = req.body;
+    if (typeof current_page !== &#x27;number&#x27; || current_page &lt; 0) {
+      return res.status(400).json({
+        error: &#x27;current_page must be a non-negative number&#x27;
+      });
+    }
+    if (book.total_pages &amp;&amp; current_page &gt; book.total_pages) {
+      return res.status(400).json({
+        error: &#x27;current_page cannot exceed total_pages&#x27;
+      });
+    }
+
+    // Auto-update status based on progress
+    let status = book.status;
+    let started_at = book.started_at;
+    let finished_at = book.finished_at;
+
+    if (current_page &gt; 0 &amp;&amp; status === &#x27;want-to-read&#x27;) {     // Block A
+      status = &#x27;reading&#x27;;
+      started_at = new Date().toISOString();
+    }
+    if (book.total_pages &amp;&amp; current_page &gt;= book.total_pages) { // Block B
+      status = &#x27;finished&#x27;;
+      finished_at = new Date().toISOString();
+    }
+
+    db.prepare(`
+      UPDATE books
+      SET current_page = ?, status = ?, started_at = ?, finished_at = ?
+      WHERE id = ?
+    `).run(current_page, status, started_at, finished_at, req.params.id);
+
+    const updated = db.prepare(&#x27;SELECT * FROM books WHERE id = ?&#x27;)
+      .get(req.params.id);
+    res.json(updated);
+  });
+
+I can see two problems already, but let me reproduce them first
+to confirm the exact behavior before proposing a fix.</code></pre>
+<hr />
+<h2 id="233-reproducing-the-bug">23.3 Reproducing the Bug <a href="#233-reproducing-the-bug" class="heading-anchor">#</a></h2>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You&gt; Good. Let&#x27;s reproduce both bugs with curl commands.</code></pre>
+<p><strong>NeamCode responds:</strong></p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">Starting the server...
+BookShelf API running on http://localhost:3000
+
+── Bug A: Jumping from page 0 to the last page ──
+
+Step 1: Create a book with 400 pages.
+
+  curl -s -X POST http://localhost:3000/api/books \
+    -H &quot;Content-Type: application/json&quot; \
+    -d &#x27;{&quot;title&quot;:&quot;Test Book&quot;,&quot;author&quot;:&quot;Author&quot;,&quot;total_pages&quot;:400}&#x27;
+
+  Response:
+  {
+    &quot;id&quot;: 1,
+    &quot;title&quot;: &quot;Test Book&quot;,
+    &quot;status&quot;: &quot;want-to-read&quot;,
+    &quot;current_page&quot;: 0,
+    &quot;started_at&quot;: null,
+    &quot;finished_at&quot;: null
+  }
+
+Step 2: Jump directly from page 0 to page 400.
+
+  curl -s -X PATCH http://localhost:3000/api/books/1/progress \
+    -H &quot;Content-Type: application/json&quot; \
+    -d &#x27;{&quot;current_page&quot;: 400}&#x27;
+
+  Response:
+  {
+    &quot;id&quot;: 1,
+    &quot;status&quot;: &quot;finished&quot;,          ← jumped straight past &quot;reading&quot;
+    &quot;current_page&quot;: 400,
+    &quot;started_at&quot;: &quot;2026-03-07T10:30:00.000Z&quot;,  ← set, but...
+    &quot;finished_at&quot;: &quot;2026-03-07T10:30:00.000Z&quot;   ← same timestamp
+  }
+
+Bug A confirmed. The book went from &quot;want-to-read&quot; directly to
+&quot;finished&quot; without ever being &quot;reading.&quot; The started_at and
+finished_at timestamps are identical, which makes no logical sense.
+
+── Bug B: Re-reading a finished book ──
+
+Step 3: Set progress back to page 50 (re-reading).
+
+  curl -s -X PATCH http://localhost:3000/api/books/1/progress \
+    -H &quot;Content-Type: application/json&quot; \
+    -d &#x27;{&quot;current_page&quot;: 50}&#x27;
+
+  Response:
+  {
+    &quot;id&quot;: 1,
+    &quot;status&quot;: &quot;finished&quot;,          ← BUG! Should be &quot;reading&quot;
+    &quot;current_page&quot;: 50,
+    &quot;started_at&quot;: &quot;2026-03-07T10:30:00.000Z&quot;,
+    &quot;finished_at&quot;: &quot;2026-03-07T10:30:00.000Z&quot;  ← not cleared
+  }
+
+Bug B confirmed. The book is at page 50 of 400 but still shows
+as &quot;finished.&quot; Neither the status nor finished_at was updated.
+
+Both bugs reproduced. Let me trace the code to find the root cause.</code></pre>
+<p>💡 <strong>Key principle:</strong> Always reproduce the bug before reading the code. A confirmed reproduction tells you exactly what to look for.</p>
+<hr />
+<h2 id="234-reading-the-code">23.4 Reading the Code <a href="#234-reading-the-code" class="heading-anchor">#</a></h2>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You&gt; Walk me through the code line by line for each scenario.
+     Show me exactly where the logic goes wrong.</code></pre>
+<p><strong>NeamCode responds:</strong></p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">Let me trace through both scenarios against the handler code.
+I&#x27;ll label the two if-blocks as Block A and Block B.
+
+  Block A (line 99):  if (current_page &gt; 0 &amp;&amp; status === &#x27;want-to-read&#x27;)
+  Block B (line 103): if (book.total_pages &amp;&amp; current_page &gt;= book.total_pages)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+TRACE — Bug A: page 0 → page 400 (total_pages = 400)
+
+  Input:  book.status = &quot;want-to-read&quot;, current_page = 400
+
+  Variables initialized:
+    status     = &quot;want-to-read&quot;   (from book)
+    started_at = null             (from book)
+    finished_at = null            (from book)
+
+  Block A: current_page &gt; 0?        YES (400 &gt; 0)
+           status === &#x27;want-to-read&#x27;? YES
+           → ENTERS block
+           → status = &quot;reading&quot;
+           → started_at = &quot;2026-03-07T10:30:00.000Z&quot;
+
+  Block B: book.total_pages?         YES (400)
+           current_page &gt;= 400?      YES (400 &gt;= 400)
+           → ENTERS block
+           → status = &quot;finished&quot;     ← OVERWRITES &quot;reading&quot;!
+           → finished_at = &quot;2026-03-07T10:30:00.000Z&quot;
+
+  Result: status = &quot;finished&quot;, started_at = set, finished_at = set
+
+The problem: Both blocks run sequentially. Block A correctly
+transitions to &quot;reading&quot; and sets started_at. But Block B
+immediately overwrites status to &quot;finished.&quot; The book was
+never actually in the &quot;reading&quot; state — it was &quot;reading&quot; for
+zero milliseconds between two lines of JavaScript.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+TRACE — Bug B: page 400 → page 50 (status = &quot;finished&quot;)
+
+  Input:  book.status = &quot;finished&quot;, current_page = 50
+
+  Variables initialized:
+    status     = &quot;finished&quot;   (from book)
+    started_at = &quot;2026-...&quot;   (from book)
+    finished_at = &quot;2026-...&quot;  (from book)
+
+  Block A: current_page &gt; 0?        YES (50 &gt; 0)
+           status === &#x27;want-to-read&#x27;? NO (it&#x27;s &quot;finished&quot;)
+           → SKIPS block
+
+  Block B: book.total_pages?         YES (400)
+           current_page &gt;= 400?      NO (50 &lt; 400)
+           → SKIPS block
+
+  Result: status = &quot;finished&quot; (unchanged), finished_at preserved
+
+The problem: There is NO condition that handles the transition
+from &quot;finished&quot; back to &quot;reading.&quot; Block A only checks for
+&quot;want-to-read.&quot; If a finished book&#x27;s page number decreases,
+nothing in the code changes the status. The handler falls
+through both blocks without touching any of the variables.</code></pre>
+<hr />
+<h2 id="235-root-cause-analysis">23.5 Root Cause Analysis <a href="#235-root-cause-analysis" class="heading-anchor">#</a></h2>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You&gt; Good traces. Summarize the root causes clearly.</code></pre>
+<p><strong>NeamCode responds:</strong></p>
+<figure class="diagram-figure">
+  <img src="../assets/diagrams/ch23-debugging-flow.svg" alt="Debugging Workflow" />
+  <figcaption>Figure 23.1 — Debugging Workflow</figcaption>
+</figure>
+<div class="ascii-fallback">
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">Here are the two root causes:
+
+  ┌─────────────────────────────────────────────────────────┐
+  │                  Root Cause Analysis                     │
+  ├─────────────────────────────────────────────────────────┤
+  │                                                         │
+  │  Bug A: Sequential if-blocks cause state corruption     │
+  │                                                         │
+  │  Block A and Block B are independent if-statements,     │
+  │  not if/else-if. When both conditions are true (page    │
+  │  jumps from 0 to the last page), both blocks execute.   │
+  │  Block A sets status = &quot;reading&quot;, then Block B          │
+  │  immediately overwrites it to &quot;finished.&quot;               │
+  │                                                         │
+  │  The started_at IS set (by Block A), but finished_at    │
+  │  gets the same timestamp. The book was never actually    │
+  │  in &quot;reading&quot; state from the API consumer&#x27;s perspective. │
+  │                                                         │
+  │  Bug B: Missing reverse transition                      │
+  │                                                         │
+  │  Block A only handles: want-to-read → reading           │
+  │  Block B only handles: * → finished                     │
+  │  Nothing handles:      finished → reading               │
+  │                                                         │
+  │  When a finished book&#x27;s page decreases below             │
+  │  total_pages, the status should revert to &quot;reading&quot;     │
+  │  and finished_at should be cleared. But no code          │
+  │  exists for this transition.                             │
+  │                                                         │
+  └─────────────────────────────────────────────────────────┘
+
+The status transition logic needs to be rewritten to handle
+all valid transitions as a complete state machine:
+
+  ┌──────────────┐   page &gt; 0    ┌─────────┐   page &gt;= total   ┌──────────┐
+  │ want-to-read │──────────────▶│ reading │──────────────────▶│ finished │
+  └──────────────┘               └─────────┘                   └──────────┘
+                                      ▲                             │
+                                      │     page &lt; total            │
+                                      └─────────────────────────────┘
+
+The current code handles the forward arrows but not the
+backward arrow, and it doesn&#x27;t handle the case where both
+forward arrows fire on the same request.</code></pre>
+</div>
+<div class="callout callout-note"><div class="callout-title"><span class="callout-icon">&#128221;</span> Note</div><p>📝 <strong>Note:</strong> Drawing out the state machine makes the missing transitions obvious. When debugging state-related bugs, always map out the expected transitions and compare them to what the code actually implements.</p></div>
+<hr />
+<h2 id="236-implementing-the-fix">23.6 Implementing the Fix <a href="#236-implementing-the-fix" class="heading-anchor">#</a></h2>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You&gt; Fix the progress handler. Make the status transitions correct
+     for all cases. Keep it simple.</code></pre>
+<p><strong>NeamCode responds:</strong></p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">Here&#x27;s the fixed handler. I&#x27;m replacing the two independent
+if-blocks with a single, clear state machine:
+
+  // Auto-update status based on progress
+  let status = book.status;
+  let started_at = book.started_at;
+  let finished_at = book.finished_at;
+
+  const isFinishingBook = book.total_pages
+    &amp;&amp; current_page &gt;= book.total_pages;
+  const hasStartedReading = current_page &gt; 0;
+  const isReReading = book.status === &#x27;finished&#x27;
+    &amp;&amp; book.total_pages
+    &amp;&amp; current_page &lt; book.total_pages;
+
+  if (isFinishingBook) {
+    // Finishing the book — set both timestamps if needed
+    if (!started_at) {
+      started_at = new Date().toISOString();
+    }
+    status = &#x27;finished&#x27;;
+    finished_at = new Date().toISOString();
+  } else if (isReReading) {
+    // Going back to an earlier page on a finished book
+    status = &#x27;reading&#x27;;
+    finished_at = null;
+  } else if (hasStartedReading &amp;&amp; status === &#x27;want-to-read&#x27;) {
+    // First time opening the book
+    status = &#x27;reading&#x27;;
+    started_at = new Date().toISOString();
+  }
+
+Let me explain the key changes:
+
+  1. Changed independent if/if to if/else-if/else-if
+     Only ONE transition fires per request. No more overwrites.
+
+  2. Check &quot;finishing&quot; FIRST
+     If the book is being finished, we handle it in one place.
+     If started_at was never set (the &quot;jump to last page&quot; case),
+     we set it here too. This ensures started_at is always set
+     before finished_at.
+
+  3. Added the &quot;re-reading&quot; transition
+     If a finished book&#x27;s page drops below total_pages, transition
+     back to &quot;reading&quot; and clear finished_at. The started_at is
+     preserved — the user did start reading at that earlier time.
+
+  4. &quot;First read&quot; transition is now the else-if fallback
+     This only fires if neither of the above conditions matched.</code></pre>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You&gt; Apply the fix to the actual file.</code></pre>
+<p><strong>NeamCode responds:</strong></p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">Updated: src/routes/books.js
+
+The PATCH /:id/progress handler now reads (lines 82-120):
+
+  router.patch(&#x27;/:id/progress&#x27;, (req, res) =&gt; {
+    const db = getDatabase();
+    const book = db.prepare(&#x27;SELECT * FROM books WHERE id = ?&#x27;)
+      .get(req.params.id);
+
+    if (!book) {
+      return res.status(404).json({ error: &#x27;Book not found&#x27; });
+    }
+
+    const { current_page } = req.body;
+    if (typeof current_page !== &#x27;number&#x27; || current_page &lt; 0) {
+      return res.status(400).json({
+        error: &#x27;current_page must be a non-negative number&#x27;
+      });
+    }
+    if (book.total_pages &amp;&amp; current_page &gt; book.total_pages) {
+      return res.status(400).json({
+        error: &#x27;current_page cannot exceed total_pages&#x27;
+      });
+    }
+
+    // Auto-update status based on progress
+    let status = book.status;
+    let started_at = book.started_at;
+    let finished_at = book.finished_at;
+
+    const isFinishingBook = book.total_pages
+      &amp;&amp; current_page &gt;= book.total_pages;
+    const hasStartedReading = current_page &gt; 0;
+    const isReReading = book.status === &#x27;finished&#x27;
+      &amp;&amp; book.total_pages
+      &amp;&amp; current_page &lt; book.total_pages;
+
+    if (isFinishingBook) {
+      if (!started_at) {
+        started_at = new Date().toISOString();
+      }
+      status = &#x27;finished&#x27;;
+      finished_at = new Date().toISOString();
+    } else if (isReReading) {
+      status = &#x27;reading&#x27;;
+      finished_at = null;
+    } else if (hasStartedReading &amp;&amp; status === &#x27;want-to-read&#x27;) {
+      status = &#x27;reading&#x27;;
+      started_at = new Date().toISOString();
+    }
+
+    db.prepare(`
+      UPDATE books
+      SET current_page = ?, status = ?, started_at = ?, finished_at = ?
+      WHERE id = ?
+    `).run(current_page, status, started_at, finished_at, req.params.id);
+
+    const updated = db.prepare(&#x27;SELECT * FROM books WHERE id = ?&#x27;)
+      .get(req.params.id);
+    res.json(updated);
+  });
+
+File saved. Let me verify the existing tests still pass before
+writing the new regression tests.
+
+Running: npm test
+
+  19 passed, 19 total ✅
+
+All existing tests pass. The fix is backward-compatible with
+the normal cases.</code></pre>
+<p>⚠️ <strong>Important:</strong> Always run existing tests immediately after applying a fix, before writing new tests. If existing tests break, your fix has a regression.</p>
+<hr />
+<h2 id="237-writing-regression-tests">23.7 Writing Regression Tests <a href="#237-writing-regression-tests" class="heading-anchor">#</a></h2>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You&gt; Now write regression tests that cover both bugs and the
+     edge cases around status transitions.</code></pre>
+<p><strong>NeamCode responds:</strong></p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">Added to tests/books.test.js:
+
+  describe(&#x27;Bug #47: Progress status transitions&#x27;, () =&gt; {
+    let bookId;
+
+    beforeEach(async () =&gt; {
+      const res = await request(app)
+        .post(&#x27;/api/books&#x27;)
+        .send({
+          title: &#x27;Status Test Book&#x27;,
+          author: &#x27;Tester&#x27;,
+          total_pages: 400
+        });
+      bookId = res.body.id;
+    });
+
+    test(&#x27;jumping from page 0 to last page sets both timestamps&#x27;, async () =&gt; {
+      const res = await request(app)
+        .patch(`/api/books/${bookId}/progress`)
+        .send({ current_page: 400 });
+
+      expect(res.body.status).toBe(&#x27;finished&#x27;);
+      expect(res.body.started_at).not.toBeNull();
+      expect(res.body.finished_at).not.toBeNull();
+
+      // started_at should be &lt;= finished_at
+      const started = new Date(res.body.started_at).getTime();
+      const finished = new Date(res.body.finished_at).getTime();
+      expect(started).toBeLessThanOrEqual(finished);
+    });
+
+    test(&#x27;re-reading a finished book sets status back to reading&#x27;, async () =&gt; {
+      // Finish the book
+      await request(app)
+        .patch(`/api/books/${bookId}/progress`)
+        .send({ current_page: 400 });
+
+      // Go back to page 50
+      const res = await request(app)
+        .patch(`/api/books/${bookId}/progress`)
+        .send({ current_page: 50 });
+
+      expect(res.body.status).toBe(&#x27;reading&#x27;);
+      expect(res.body.current_page).toBe(50);
+      expect(res.body.finished_at).toBeNull();
+      expect(res.body.started_at).not.toBeNull(); // preserved
+    });
+
+    test(&#x27;normal forward progress sets started_at only once&#x27;, async () =&gt; {
+      // Start reading
+      const first = await request(app)
+        .patch(`/api/books/${bookId}/progress`)
+        .send({ current_page: 100 });
+
+      const originalStarted = first.body.started_at;
+      expect(originalStarted).not.toBeNull();
+
+      // Continue reading
+      const second = await request(app)
+        .patch(`/api/books/${bookId}/progress`)
+        .send({ current_page: 200 });
+
+      expect(second.body.started_at).toBe(originalStarted);
+      expect(second.body.status).toBe(&#x27;reading&#x27;);
+    });
+
+    test(&#x27;going back to page 0 on a reading book resets to want-to-read&#x27;, async () =&gt; {
+      // Start reading
+      await request(app)
+        .patch(`/api/books/${bookId}/progress`)
+        .send({ current_page: 100 });
+
+      // Go back to page 0
+      const res = await request(app)
+        .patch(`/api/books/${bookId}/progress`)
+        .send({ current_page: 0 });
+
+      expect(res.body.status).toBe(&#x27;want-to-read&#x27;);
+      expect(res.body.current_page).toBe(0);
+    });
+
+    test(&#x27;re-finishing after re-reading updates finished_at&#x27;, async () =&gt; {
+      // Finish the book
+      const firstFinish = await request(app)
+        .patch(`/api/books/${bookId}/progress`)
+        .send({ current_page: 400 });
+
+      const firstFinishedAt = firstFinish.body.finished_at;
+
+      // Re-read from page 50
+      await request(app)
+        .patch(`/api/books/${bookId}/progress`)
+        .send({ current_page: 50 });
+
+      // Wait a moment so the timestamp differs
+      await new Promise(resolve =&gt; setTimeout(resolve, 10));
+
+      // Finish again
+      const secondFinish = await request(app)
+        .patch(`/api/books/${bookId}/progress`)
+        .send({ current_page: 400 });
+
+      expect(secondFinish.body.status).toBe(&#x27;finished&#x27;);
+      expect(secondFinish.body.finished_at).not.toBe(firstFinishedAt);
+      expect(secondFinish.body.started_at).not.toBeNull();
+    });
+  });
+
+These 5 tests cover:
+  1. Bug A — jumping to the last page (both timestamps set)
+  2. Bug B — re-reading a finished book (status reverts)
+  3. Baseline — normal forward progress preserves started_at
+  4. Edge case — returning to page 0 resets to want-to-read
+  5. Full cycle — finish → re-read → finish again</code></pre>
+<p>💡 <strong>Regression test naming:</strong> Each test name describes the scenario and expected outcome. When a test fails six months from now, the name alone should tell you what broke.</p>
+<hr />
+<h2 id="238-verifying-the-fix">23.8 Verifying the Fix <a href="#238-verifying-the-fix" class="heading-anchor">#</a></h2>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You&gt; Run all tests — the 19 originals plus the 5 new ones.</code></pre>
+<p><strong>NeamCode responds:</strong></p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">Running: npm test
+
+ PASS  tests/books.test.js
+  POST /api/books
+    ✓ creates a book with valid data (22 ms)
+    ✓ returns 400 when title is missing (4 ms)
+    ✓ returns 400 when author is missing (3 ms)
+    ✓ returns 409 for duplicate ISBN (7 ms)
+    ✓ rejects invalid rating (3 ms)
+  GET /api/books
+    ✓ returns all books (5 ms)
+    ✓ filters by status (4 ms)
+    ✓ searches by title (3 ms)
+  GET /api/books/:id
+    ✓ returns a specific book (3 ms)
+    ✓ returns 404 for non-existent book (2 ms)
+  PUT /api/books/:id
+    ✓ updates a book (5 ms)
+    ✓ returns 404 for non-existent book (3 ms)
+    ✓ rejects empty update body (3 ms)
+  PATCH /api/books/:id/progress
+    ✓ updates reading progress (5 ms)
+    ✓ auto-finishes when reaching last page (4 ms)
+    ✓ rejects negative page numbers (3 ms)
+    ✓ rejects page beyond total (3 ms)
+  DELETE /api/books/:id
+    ✓ deletes a book (6 ms)
+    ✓ returns 404 for non-existent book (2 ms)
+  Bug #47: Progress status transitions
+    ✓ jumping from page 0 to last page sets both timestamps (8 ms)
+    ✓ re-reading a finished book sets status back to reading (6 ms)
+    ✓ normal forward progress sets started_at only once (5 ms)
+    ✓ going back to page 0 on a reading book resets to want-to-read (4 ms)
+    ✓ re-finishing after re-reading updates finished_at (18 ms)
+
+Tests:       24 passed, 24 total
+Time:        1.523 s
+
+All 24 tests passing — 19 original + 5 new regression tests.</code></pre>
+<p>Let's also re-run the manual reproduction to confirm:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You&gt; Run the manual reproduction from section 23.3 again.</code></pre>
+<p><strong>NeamCode responds:</strong></p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">── Re-testing Bug A: page 0 → page 400 ──
+
+  curl -s -X POST http://localhost:3000/api/books \
+    -H &quot;Content-Type: application/json&quot; \
+    -d &#x27;{&quot;title&quot;:&quot;Retest&quot;,&quot;author&quot;:&quot;Author&quot;,&quot;total_pages&quot;:400}&#x27;
+
+  curl -s -X PATCH http://localhost:3000/api/books/2/progress \
+    -H &quot;Content-Type: application/json&quot; \
+    -d &#x27;{&quot;current_page&quot;: 400}&#x27;
+
+  {
+    &quot;status&quot;: &quot;finished&quot;,         ← correct
+    &quot;started_at&quot;: &quot;2026-03-07T10:45:00.000Z&quot;,  ← set
+    &quot;finished_at&quot;: &quot;2026-03-07T10:45:00.000Z&quot;  ← set
+  }
+
+Bug A: Fixed. Both timestamps are set when jumping to the end.
+
+── Re-testing Bug B: finished → page 50 ──
+
+  curl -s -X PATCH http://localhost:3000/api/books/2/progress \
+    -H &quot;Content-Type: application/json&quot; \
+    -d &#x27;{&quot;current_page&quot;: 50}&#x27;
+
+  {
+    &quot;status&quot;: &quot;reading&quot;,          ← correct! was &quot;finished&quot; before
+    &quot;current_page&quot;: 50,
+    &quot;started_at&quot;: &quot;2026-03-07T10:45:00.000Z&quot;,  ← preserved
+    &quot;finished_at&quot;: null           ← cleared
+  }
+
+Bug B: Fixed. Re-reading reverts to &quot;reading&quot; and clears
+finished_at while preserving started_at.</code></pre>
+<hr />
+<h2 id="239-the-commit">23.9 The Commit <a href="#239-the-commit" class="heading-anchor">#</a></h2>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You&gt; Commit the fix with a good message that references the bug.</code></pre>
+<p><strong>NeamCode responds:</strong></p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">Staging the changed files:
+
+  modified:   src/routes/books.js
+  modified:   tests/books.test.js
+
+Committed:
+
+  fix: Correct status transitions in progress endpoint (#47)
+
+  Two bugs in the PATCH /:id/progress handler:
+
+  1. Jumping from page 0 to the last page caused status to skip
+     &quot;reading&quot; entirely — both if-blocks fired sequentially,
+     with Block B overwriting Block A&#x27;s &quot;reading&quot; status to
+     &quot;finished.&quot;
+
+  2. Lowering the page on a finished book did not revert status
+     to &quot;reading&quot; — no code handled the finished→reading
+     transition.
+
+  Fix: Replaced two independent if-blocks with an if/else-if
+  chain that implements a proper state machine:
+  - Check &quot;finishing&quot; first (handles the jump-to-end case)
+  - Check &quot;re-reading&quot; second (finished→reading transition)
+  - Check &quot;first read&quot; last (want-to-read→reading transition)
+
+  Added 5 regression tests covering both bugs and edge cases.
+
+  Closes #47</code></pre>
+<hr />
+<h2 id="what-we-learned">What We Learned <a href="#what-we-learned" class="heading-anchor">#</a></h2>
+<p>This debugging session followed a clean, repeatable workflow:</p>
+<figure class="diagram-figure">
+  <img src="../assets/diagrams/ch23-state-machine.svg" alt="Bug Investigation State Machine" />
+  <figcaption>Figure 23.2 — Bug Investigation State Machine</figcaption>
+</figure>
+<div class="ascii-fallback">
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">  ┌──────────────────────────────────────────────────────────┐
+  │               Debugging Workflow                          │
+  ├──────────────────────────────────────────────────────────┤
+  │                                                          │
+  │  1. Read the bug report         Understand the symptoms  │
+  │          │                                                │
+  │          ▼                                                │
+  │  2. Read the code               Understand the logic     │
+  │          │                                                │
+  │          ▼                                                │
+  │  3. Reproduce the bug           Confirm it&#x27;s real         │
+  │          │                                                │
+  │          ▼                                                │
+  │  4. Trace the code              Follow the exact path     │
+  │          │                                                │
+  │          ▼                                                │
+  │  5. Identify root cause         Name the exact problem    │
+  │          │                                                │
+  │          ▼                                                │
+  │  6. Implement the fix           Change only what&#x27;s needed │
+  │          │                                                │
+  │          ▼                                                │
+  │  7. Run existing tests          Check for regressions     │
+  │          │                                                │
+  │          ▼                                                │
+  │  8. Write regression tests      Prevent recurrence        │
+  │          │                                                │
+  │          ▼                                                │
+  │  9. Verify manually             Confirm the fix works     │
+  │          │                                                │
+  │          ▼                                                │
+  │  10. Commit with context        Help future debuggers     │
+  │                                                          │
+  └──────────────────────────────────────────────────────────┘</code></pre>
+</div>
+<p>Key debugging principles demonstrated:</p>
+<p><strong>1. Reproduce before you theorize.</strong> We confirmed both bugs with curl commands before touching any code. If you cannot reproduce it, you cannot verify you fixed it.</p>
+<p><strong>2. Trace the code with concrete values.</strong> Walking through the handler with <code>current_page = 400</code> and <code>status = "want-to-read"</code> made the sequential if-block problem obvious. Abstract reasoning ("this looks right") is less reliable than concrete tracing ("at this line, status equals X").</p>
+<p><strong>3. Draw the state machine.</strong> The moment we sketched out the expected transitions versus the implemented transitions, the missing arrow (finished → reading) became visible.</p>
+<p><strong>4. Fix the root cause, not the symptom.</strong> We did not add a special case for "page 400." We restructured the logic into a proper if/else-if chain that handles all transitions correctly.</p>
+<p><strong>5. Existing tests first, new tests second.</strong> Running the 19 existing tests immediately after the fix confirmed we did not break anything. Only then did we write the 5 new tests.</p>
+<p><strong>6. The commit message is documentation.</strong> Six months from now, someone will read <code>git log</code> and see exactly what was wrong, why it was wrong, and how it was fixed.</p>
+<hr />
+<h2 id="exercises">Exercises <a href="#exercises" class="heading-anchor">#</a></h2>
+<p><strong>🎯 Exercise 23.1:</strong> The current fix does not handle books without <code>total_pages</code>. What happens if you create a book with no total_pages and update progress to page 100, then to page 50? Trace through the fixed code and determine whether the behavior is correct. If not, write a fix and a test.</p>
+<p><strong>🎯 Exercise 23.2:</strong> Add a new field <code>times_read</code> (INTEGER DEFAULT 0) to the books table. Increment it each time a book transitions from "reading" to "finished." Write the migration, update the progress handler, and add tests.</p>
+<p><strong>🎯 Exercise 23.3:</strong> The progress handler currently allows <code>current_page</code> to equal <code>total_pages</code>, which triggers the "finished" transition. Some users might consider page 400 of 400 to mean "I'm on the last page, still reading." Change the logic so that finishing requires a separate explicit action (e.g., <code>{"current_page": 400, "mark_finished": true}</code>), and update the tests accordingly.</p>
+<p><strong>🎯 Exercise 23.4:</strong> Find a real bug in an open-source project's issue tracker. Use NeamCode to read the codebase, reproduce the bug, trace the root cause, and draft a fix. Even if you do not submit a PR, document your debugging trace as practice.</p>
+<hr />
+    <nav class="chapter-nav"><a href="22-walkthrough-build-project.html" class="nav-prev"><span class="nav-label">&larr; Previous</span><span class="nav-title">Walkthrough: Build a Project</span></a><a href="24-making-it-yours.html" class="nav-next"><span class="nav-label">Next &rarr;</span><span class="nav-title">Making NeamCode Yours</span></a></nav>
+  </article>
+</main>
+
+<button class="back-to-top" id="back-to-top" aria-label="Back to top">&#8593;</button>
+
+<div class="search-overlay" id="search-overlay">
+  <div class="search-modal">
+    <div class="search-input-wrap">
+      <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6.5" cy="6.5" r="5"/><line x1="10.5" y1="10.5" x2="15" y2="15"/></svg>
+      <input type="text" class="search-input" id="search-input" placeholder="Search chapters, topics...">
+    </div>
+    <div class="search-results" id="search-results">
+      <div class="search-empty">Start typing to search...</div>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/script.js"></script>
+</body>
+</html>

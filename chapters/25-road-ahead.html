@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 25: The Road Ahead | Command the Future</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-base="../">
+
+<header class="topbar">
+  <div class="topbar-left">
+    <button class="hamburger" id="hamburger" aria-label="Toggle sidebar">&#9776;</button>
+    <a href="../index.html" class="topbar-title">Command the Future</a>
+  </div>
+  <div class="topbar-right">
+    <button class="topbar-btn search-btn" aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6.5" cy="6.5" r="5"/><line x1="10.5" y1="10.5" x2="15" y2="15"/></svg><kbd>Ctrl+K</kbd></button>
+    <button class="topbar-btn" id="theme-toggle" aria-label="Toggle theme"></button>
+  </div>
+</header>
+
+<div class="progress-bar"><div class="progress-fill"></div></div>
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+<aside class="sidebar" id="sidebar">
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Getting Started</div>
+  <div class="sidebar-chapters">
+    <a href="00-preface.html" class="sidebar-link" title="Preface">Preface</a>
+    <a href="01-meet-neamcode.html" class="sidebar-link" title="Meet NeamCode">Meet NeamCode</a>
+    <a href="02-install-first-conversation.html" class="sidebar-link" title="Install & First Conversation">Install & First Conversation</a>
+    <a href="03-art-of-prompting.html" class="sidebar-link" title="The Art of Prompting">The Art of Prompting</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Core Skills</div>
+  <div class="sidebar-chapters">
+    <a href="04-working-with-files.html" class="sidebar-link" title="Working with Files">Working with Files</a>
+    <a href="05-finding-things.html" class="sidebar-link" title="Finding Things in Code">Finding Things in Code</a>
+    <a href="06-commands-and-git.html" class="sidebar-link" title="Running Commands & Git">Running Commands & Git</a>
+    <a href="07-web-research.html" class="sidebar-link" title="Researching from the Terminal">Researching from the Terminal</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Workflow & Configuration</div>
+  <div class="sidebar-chapters">
+    <a href="08-slash-commands.html" class="sidebar-link" title="Slash Commands">Slash Commands</a>
+    <a href="09-modes.html" class="sidebar-link" title="Modes">Modes</a>
+    <a href="10-sessions-context.html" class="sidebar-link" title="Sessions & Context">Sessions & Context</a>
+    <a href="11-auto-memory.html" class="sidebar-link" title="Auto Memory">Auto Memory</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Providers & Cost</div>
+  <div class="sidebar-chapters">
+    <a href="12-choosing-providers.html" class="sidebar-link" title="Choosing Your AI Provider">Choosing Your AI Provider</a>
+    <a href="13-offline-mode.html" class="sidebar-link" title="Offline Mode">Offline Mode</a>
+    <a href="14-zero-cost-setup.html" class="sidebar-link" title="The $0 AI Setup">The $0 AI Setup</a>
+    <a href="15-budget-cost.html" class="sidebar-link" title="Budget & Cost Tracking">Budget & Cost Tracking</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Advanced Features</div>
+  <div class="sidebar-chapters">
+    <a href="16-agents.html" class="sidebar-link" title="Agents & Delegation">Agents & Delegation</a>
+    <a href="17-mcp-servers.html" class="sidebar-link" title="MCP Servers">MCP Servers</a>
+    <a href="18-neam-language.html" class="sidebar-link" title="Neam Language Integration">Neam Language Integration</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Audience Guides</div>
+  <div class="sidebar-chapters">
+    <a href="19-for-students.html" class="sidebar-link" title="For Students">For Students</a>
+    <a href="20-for-researchers.html" class="sidebar-link" title="For Researchers">For Researchers</a>
+    <a href="21-for-professionals.html" class="sidebar-link" title="For Professionals">For Professionals</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Walkthroughs</div>
+  <div class="sidebar-chapters">
+    <a href="22-walkthrough-build-project.html" class="sidebar-link" title="Walkthrough: Build a Project">Walkthrough: Build a Project</a>
+    <a href="23-walkthrough-fix-bug.html" class="sidebar-link" title="Walkthrough: Fix a Real Bug">Walkthrough: Fix a Real Bug</a>
+    <a href="24-making-it-yours.html" class="sidebar-link" title="Making NeamCode Yours">Making NeamCode Yours</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Closing</div>
+  <div class="sidebar-chapters">
+    <a href="25-road-ahead.html" class="sidebar-link active" title="The Road Ahead">The Road Ahead</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Appendices</div>
+  <div class="sidebar-chapters">
+    <a href="../appendices/A-slash-commands.html" class="sidebar-link" title="All Slash Commands">All Slash Commands</a>
+    <a href="../appendices/B-skills-reference.html" class="sidebar-link" title="All Skills Reference">All Skills Reference</a>
+    <a href="../appendices/C-configuration.html" class="sidebar-link" title="Configuration Reference">Configuration Reference</a>
+    <a href="../appendices/D-troubleshooting.html" class="sidebar-link" title="Troubleshooting & FAQ">Troubleshooting & FAQ</a>
+    <a href="../appendices/E-glossary.html" class="sidebar-link" title="Glossary">Glossary</a>
+  </div>
+</div>
+</aside>
+
+<main class="main">
+  <article class="content">
+<h1 id="chapter-25-the-road-ahead">Chapter 25: The Road Ahead <a href="#chapter-25-the-road-ahead" class="heading-anchor">#</a></h1>
+<blockquote><p><em>"The future belongs to those who command it."</em></p></blockquote>
+<hr />
+<p>📖 <strong>12 min read</strong></p>
+<p><strong>What you'll learn:</strong></p>
+<ul>
+<li>What's coming next for NeamCode</li>
+<li>How NeamCode fits into the larger Neam ecosystem</li>
+<li>How to stay updated and contribute</li>
+<li>Three learning paths you can follow from here</li>
+<li>Where to find community and resources</li>
+<li>Where to go from here</li>
+</ul>
+<hr />
+<h2 id="251-youve-come-a-long-way">25.1 You've Come a Long Way <a href="#251-youve-come-a-long-way" class="heading-anchor">#</a></h2>
+<p>Take a moment to appreciate what you've learned. You started with a blank terminal and a question: "What is NeamCode?" Now you can:</p>
+<ul>
+<li>Have natural conversations with AI that reads, writes, and runs code</li>
+<li>Navigate any codebase — familiar or foreign — with confidence</li>
+<li>Use six specialized modes for different kinds of work</li>
+<li>Set up project-specific memory and rules that persist across sessions</li>
+<li>Work offline with local AI models at zero cost</li>
+<li>Track and control your AI spending</li>
+<li>Connect external tools through MCP servers</li>
+<li>Compile and debug Neam programs with first-class support</li>
+<li>Apply all of this to your specific world — whether you're a student, researcher, or professional</li>
+</ul>
+<p>You didn't just learn a tool. You learned a new way of working with code.</p>
+<hr />
+<h2 id="252-whats-coming-next">25.2 What's Coming Next <a href="#252-whats-coming-next" class="heading-anchor">#</a></h2>
+<p>NeamCode is actively developed. Here's a preview of what's on the roadmap:</p>
+<h3 id="v04-voice-mode">v0.4 — Voice Mode <a href="#v04-voice-mode" class="heading-anchor">#</a></h3>
+<p>The next major release brings <strong>voice interaction</strong> to the terminal:</p>
+<ul>
+<li><strong>Speech-to-text</strong> — Talk to NeamCode instead of typing</li>
+<li><strong>Text-to-speech</strong> — Hear responses read aloud</li>
+<li><strong>Hands-free coding</strong> — Issue commands by voice while your hands are on the keyboard</li>
+<li><strong>Voice-activated modes</strong> — "Switch to debug mode" spoken naturally</li>
+</ul>
+<p>Imagine debugging while pacing around your room, describing the problem out loud, and having NeamCode investigate and fix it while you think.</p>
+<h3 id="beyond-v04">Beyond v0.4 <a href="#beyond-v04" class="heading-anchor">#</a></h3>
+<p>The long-term vision includes:</p>
+<ul>
+<li><strong>Neuro-aware assistance</strong> — AI that adapts to your cognitive state and workflow patterns</li>
+<li><strong>Enhanced agent orchestration</strong> — More sophisticated multi-agent workflows</li>
+<li><strong>Deeper IDE integration</strong> — Tighter connections with VS Code and other editors</li>
+<li><strong>Community plugins</strong> — User-created skills and modes</li>
+<li><strong>Team collaboration</strong> — Shared sessions and memory across team members</li>
+</ul>
+<hr />
+<h2 id="253-the-neam-ecosystem">25.3 The Neam Ecosystem <a href="#253-the-neam-ecosystem" class="heading-anchor">#</a></h2>
+<p>NeamCode is one part of a larger ecosystem built around the <a href="https://github.com/neam-lang/Neam">Neam programming language</a>:</p>
+<figure class="diagram-figure">
+  <img src="../assets/diagrams/ch25-neam-ecosystem.svg" alt="The Neam Ecosystem" />
+  <figcaption>Figure 25.1 — The Neam Ecosystem</figcaption>
+</figure>
+<div class="ascii-fallback">
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">The Neam Ecosystem
+══════════════════
+
+┌─────────────────────────────────────────────┐
+│                                             │
+│  Neam Language (v0.8.0)                     │
+│  A compiled DSL for AI agent systems        │
+│                                             │
+│  ┌──────────┐ ┌──────────┐ ┌──────────┐    │
+│  │  neamc   │ │  neam    │ │ neam-cli │    │
+│  │ compiler │ │ runtime  │ │   REPL   │    │
+│  └──────────┘ └──────────┘ └──────────┘    │
+│                                             │
+│  ┌──────────┐ ┌──────────┐ ┌──────────┐    │
+│  │ neam-lsp │ │ neam-dap │ │ neam-pkg │    │
+│  │ language │ │ debugger │ │ packages │    │
+│  │ server   │ │ adapter  │ │ manager  │    │
+│  └──────────┘ └──────────┘ └──────────┘    │
+│                                             │
+│  ┌──────────┐ ┌──────────┐ ┌──────────┐    │
+│  │ neam-api │ │ neam-gym │ │neam-forge│    │
+│  │ HTTP API │ │ training │ │ build    │    │
+│  │ server   │ │ environ. │ │ agent    │    │
+│  └──────────┘ └──────────┘ └──────────┘    │
+│                                             │
+├─────────────────────────────────────────────┤
+│                                             │
+│  NeamCode (v0.3.5) ← You are here          │
+│  The agentic AI terminal client             │
+│                                             │
+├─────────────────────────────────────────────┤
+│                                             │
+│  Books &amp; Learning                           │
+│  • Programming Neam (language ebook)        │
+│  • Command the Future (this book!)          │
+│                                             │
+└─────────────────────────────────────────────┘</code></pre>
+</div>
+<h3 id="learning-more-about-neam">Learning More About Neam <a href="#learning-more-about-neam" class="heading-anchor">#</a></h3>
+<p>If you want to learn the Neam programming language itself, the companion ebook is available at:</p>
+<p><strong><a href="https://neam-lang.github.io/Neam-The-AI-Native-Programming-Language/">Programming Neam: The AI-Native Programming Language</a></strong></p>
+<p>It covers everything from basic syntax to building multi-agent AI systems, cloud deployment, and cognitive features — in 28 chapters with hands-on examples.</p>
+<hr />
+<h2 id="254-staying-updated">25.4 Staying Updated <a href="#254-staying-updated" class="heading-anchor">#</a></h2>
+<h3 id="github-releases">GitHub Releases <a href="#github-releases" class="heading-anchor">#</a></h3>
+<p>Watch the repository for new releases:</p>
+<ul>
+<li><strong>NeamCode:</strong> <a href="https://github.com/neam-lang/NeamCode/releases">github.com/neam-lang/NeamCode/releases</a></li>
+<li><strong>Neam Language:</strong> <a href="https://github.com/neam-lang/Neam/releases">github.com/neam-lang/Neam/releases</a></li>
+</ul>
+<h3 id="update-neamcode">Update NeamCode <a href="#update-neamcode" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">bash</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-bash"># Check for updates
+$ neamcode update
+
+# Or reinstall
+$ curl -fsSL https://neamcode.com/install.sh | sh</code></pre>
+<hr />
+<h2 id="255-your-learning-path-from-here">25.5 Your Learning Path From Here <a href="#255-your-learning-path-from-here" class="heading-anchor">#</a></h2>
+<p>You have finished the book, but the real learning starts now. Depending on your goals, here are three paths forward. Pick one, or mix and match as your curiosity leads you.</p>
+<div class="flow-steps">
+  <span class="flow-step highlight">You Are Here (Book Complete!)</span>
+</div>
+<div class="flow-steps" style="margin-top: 0.75rem;">
+  <span class="flow-step">Path A: Deepen NeamCode Mastery</span>
+  <span class="flow-step">Path B: Learn the Neam Language</span>
+  <span class="flow-step">Path C: Contribute to the Ecosystem</span>
+</div>
+<h3 id="path-a-deepen-your-neamcode-mastery">Path A: Deepen Your NeamCode Mastery <a href="#path-a-deepen-your-neamcode-mastery" class="heading-anchor">#</a></h3>
+<p>If you want to become truly fluent in NeamCode, go back and practice deliberately:</p>
+<ol>
+<li><strong>Re-read Chapters 10 through 17.</strong> These cover modes, context management, MCP servers, and automation — the chapters where depth pays off the most. On a second reading, you will notice techniques you skimmed the first time.</li>
+</ol>
+<ol>
+<li><strong>Set up at least two MCP servers.</strong> If you only tried the filesystem server, add a database server or a custom API server. Chapter 13 walks through the setup. The goal is to feel comfortable connecting NeamCode to any external tool.</li>
+</ol>
+<ol>
+<li><strong>Use all six modes on a real project.</strong> Pick a side project or open-source repo and deliberately switch between code mode, architect mode, debug mode, ask mode, orchestrator mode, and the others. Notice which mode you reach for naturally, and force yourself to try the ones you skip.</li>
+</ol>
+<ol>
+<li><strong>Build a custom NEAMCODE.md file from scratch.</strong> Chapter 24 introduced project-level configuration. Now write one for a project you care about. Include coding standards, architecture notes, and preferred patterns. Watch how dramatically it changes the quality of NeamCode's suggestions.</li>
+</ol>
+<ol>
+<li><strong>Time yourself.</strong> Pick a task — say, adding a feature to an existing codebase — and do it once without NeamCode, once with NeamCode. Compare not just speed, but the quality of the result. This builds intuition for when AI assistance helps and when it gets in the way.</li>
+</ol>
+<ol>
+<li><strong>Explore slash commands you haven't tried.</strong> Appendix A lists every available command. Most developers settle into a handful of favorites and never discover the rest. Spend an afternoon trying the ones that are unfamiliar. You may find a shortcut that saves you minutes every day.</li>
+</ol>
+<h3 id="path-b-learn-the-neam-programming-language">Path B: Learn the Neam Programming Language <a href="#path-b-learn-the-neam-programming-language" class="heading-anchor">#</a></h3>
+<p>NeamCode is the tool. Neam is the language it was built to support. If you want to build AI agent systems, learning Neam opens up a new level of capability.</p>
+<ol>
+<li><strong>Start with the companion ebook.</strong> <a href="https://neam-lang.github.io/Neam-The-AI-Native-Programming-Language/">Programming Neam: The AI-Native Programming Language</a> covers the language in 28 chapters. Begin with the first five chapters to get comfortable with the syntax and compilation model.</li>
+</ol>
+<ol>
+<li><strong>Focus on agents and knowledge blocks first.</strong> These are the two constructs that make Neam unique. An <code>agent</code> block defines an AI agent with its provider, model, budget, and skills in a few lines of declarative code. A <code>knowledge</code> block sets up RAG with vector stores and retrieval strategies. Together, they let you build sophisticated AI systems in a fraction of the code you would write in Python or TypeScript.</li>
+</ol>
+<ol>
+<li><strong>Try the built-in examples.</strong> The <code>neam-nightly/examples/</code> directory contains working programs that demonstrate agents, knowledge retrieval, multi-agent orchestration, budgets, and more. Compile and run them. Then modify them. Break them on purpose and fix them.</li>
+</ol>
+<ol>
+<li><strong>Use NeamCode to learn Neam.</strong> This is the satisfying loop — use the tool you just learned to learn the language it supports. Open a <code>.neam</code> file, ask NeamCode to explain it, then ask it to help you write a variation.</li>
+</ol>
+<ol>
+<li><strong>Build something small end-to-end.</strong> Create a simple agent that answers questions about a local document. This exercises agents, knowledge blocks, budgets, and skills in one project. Keep it small — the goal is to see the full pipeline, not to build something production-grade on your first try.</li>
+</ol>
+<h3 id="path-c-contribute-to-the-ecosystem">Path C: Contribute to the Ecosystem <a href="#path-c-contribute-to-the-ecosystem" class="heading-anchor">#</a></h3>
+<p>Open-source projects thrive on contributions, and you don't need to be a C++ expert to make a difference.</p>
+<ol>
+<li><strong>Start with documentation.</strong> Found a typo in this book? A confusing explanation in the README? A missing example in the docs? Fix it. Documentation PRs are the easiest way to get your first merge and learn the contribution workflow.</li>
+</ol>
+<ol>
+<li><strong>Look for <code>good first issue</code> tags.</strong> Both the NeamCode and Neam repositories label issues that are suitable for newcomers. These are scoped, well-described, and often come with hints about where to look in the code.</li>
+</ol>
+<ol>
+<li><strong>Write tests.</strong> The test suite can always use more coverage. Pick a feature from the chapters you read, find the corresponding code, and write a test for an edge case. Chapter 22 shows you how NeamCode itself can help you write tests.</li>
+</ol>
+<ol>
+<li><strong>Propose a new skill or mode.</strong> Once you are comfortable with the architecture, think about what is missing. A mode for database migrations? A skill for generating API documentation? Open a discussion on GitHub, describe your idea, and gauge community interest before writing code.</li>
+</ol>
+<ol>
+<li><strong>Share what you build.</strong> Write a blog post about your experience. Record a short screencast. Answer a question on Stack Overflow. Every bit of shared knowledge makes the ecosystem stronger.</li>
+</ol>
+<hr />
+<h2 id="256-community-resources">25.6 Community Resources <a href="#256-community-resources" class="heading-anchor">#</a></h2>
+<p>No tool exists in isolation. Here is where to find the people, conversations, and updates that surround NeamCode and Neam.</p>
+<h3 id="github-repositories">GitHub Repositories <a href="#github-repositories" class="heading-anchor">#</a></h3>
+<p>These are the primary homes for code, issues, and discussions:</p>
+<ul>
+<li><strong>NeamCode</strong> — <a href="https://github.com/neam-lang/NeamCode">github.com/neam-lang/NeamCode</a></li>
+</ul>
+<p>The AI terminal client you learned in this book. Star it, watch for releases, file issues.</p>
+<ul>
+<li><strong>Neam Language</strong> — <a href="https://github.com/neam-lang/Neam">github.com/neam-lang/Neam</a></li>
+</ul>
+<p>The compiler, runtime, VM, and standard library. This is where the language itself lives.</p>
+<ul>
+<li><strong>This Book</strong> — <a href="https://github.com/neam-lang/command-the-future">github.com/neam-lang/command-the-future</a></li>
+</ul>
+<p>The source for "Command the Future." Found an error? Submit a PR directly.</p>
+<ul>
+<li><strong>Programming Neam Book</strong> — <a href="https://github.com/neam-lang/Neam-The-AI-Native-Programming-Language">github.com/neam-lang/Neam-The-AI-Native-Programming-Language</a></li>
+</ul>
+<p>The companion ebook covering the Neam language in depth.</p>
+<h3 id="blog-and-newsletter">Blog and Newsletter <a href="#blog-and-newsletter" class="heading-anchor">#</a></h3>
+<p>Stay current with articles, tutorials, and release announcements:</p>
+<ul>
+<li><strong>Medium Blog</strong> — <a href="https://medium.com/@praveengovi">medium.com/@praveengovi</a></li>
+</ul>
+<p>In-depth articles on Neam, NeamCode, AI agent architecture, and the thinking behind design decisions.</p>
+<ul>
+<li><strong>Substack Newsletter</strong> — <a href="https://aisparks01.substack.com">aisparks01.substack.com</a></li>
+</ul>
+<p>Regular updates on new releases, feature previews, and ecosystem news. Subscribe to get notified when something ships.</p>
+<h3 id="social-media">Social Media <a href="#social-media" class="heading-anchor">#</a></h3>
+<ul>
+<li><strong>Twitter/X</strong> — <a href="https://x.com/Praveen_G07">@Praveen_G07</a></li>
+</ul>
+<p>Quick updates, announcements, and conversations about Neam and the broader AI-native development space. Follow along for release announcements, tips, and behind-the-scenes looks at what is being built next.</p>
+<h3 id="community-channels">Community Channels <a href="#community-channels" class="heading-anchor">#</a></h3>
+<ul>
+<li><strong>GitHub Discussions</strong> — Available on both the NeamCode and Neam repositories. Ask questions, share tips, propose features, or just show off what you built. This is the best place for longer-form conversations that benefit from threading and persistence.</li>
+</ul>
+<ul>
+<li><strong>Discord</strong> — Coming soon. A real-time community server for chat, help, and collaboration. Watch the GitHub repos for the invite link when it launches. Planned channels include <code>#help</code>, <code>#showcase</code>, <code>#neam-language</code>, and <code>#neamcode-tips</code>.</li>
+</ul>
+<ul>
+<li><strong>Stack Overflow</strong> — Use the tag <code>neamcode</code> for questions about the terminal client, and <code>neam</code> for questions about the language. Tagging correctly helps others find answers later. If you answer questions there, you are directly helping the next person who runs into the same problem.</li>
+</ul>
+<h3 id="staying-in-the-loop">Staying in the Loop <a href="#staying-in-the-loop" class="heading-anchor">#</a></h3>
+<p>The easiest way to stay current is to pick two of the channels above and check them regularly. If you prefer passive updates, subscribe to the Substack newsletter and star the GitHub repos with notifications set to "Releases only." You will hear about every major version without any noise.</p>
+<hr />
+<h2 id="257-contributing">25.7 Contributing <a href="#257-contributing" class="heading-anchor">#</a></h2>
+<p>NeamCode is open-source under the Apache 2.0 license. Contributions are welcome at every level, from first-time open-source contributors to seasoned systems programmers.</p>
+<p><strong>Ways to contribute:</strong></p>
+<ul>
+<li><strong>Bug reports</strong> — Found something broken? Open an issue with reproduction steps. Include your OS, NeamCode version (<code>neamcode --version</code>), and the exact commands that triggered the problem.</li>
+<li><strong>Feature requests</strong> — Have an idea? Start a discussion first. Describe the use case, not just the solution. The best features come from real workflows.</li>
+<li><strong>Documentation</strong> — See a typo or unclear explanation? Submit a PR. Documentation improvements are merged quickly and help every future reader.</li>
+<li><strong>Code</strong> — Check the issues tagged <code>good first issue</code> for entry points. Read the CONTRIBUTING.md file in the repository for setup instructions and coding conventions.</li>
+<li><strong>Testing</strong> — Write new tests, improve existing ones, or report flaky tests. A strong test suite is the backbone of reliable software.</li>
+<li><strong>Community support</strong> — Help others in GitHub Discussions or on Stack Overflow. Answering questions is one of the most valuable contributions because it scales — your answer helps not just the person who asked, but everyone who finds it later.</li>
+</ul>
+<p>Every contribution, no matter how small, moves the project forward. The maintainers review PRs regularly and are happy to guide first-time contributors through the process.</p>
+<p>The repository follows GitHub Flow:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">fork → feature branch → implement → test → pull request → review → merge</code></pre>
+<p>Branch names use prefixes: <code>feature/</code>, <code>fix/</code>, <code>docs/</code>, <code>refactor/</code>, <code>perf/</code>, <code>test/</code>. PR titles follow the format <code>&lt;type&gt;: &lt;description&gt;</code> — for example, <code>feat: Add checkpoint/rewind</code> or <code>docs: Fix typo in Chapter 12</code>.</p>
+<hr />
+<h2 id="258-final-thoughts">25.8 Final Thoughts <a href="#258-final-thoughts" class="heading-anchor">#</a></h2>
+<p>Software development is changing. The terminal is no longer just a place to run commands — it's a place to think, explore, and create alongside an AI partner.</p>
+<p>NeamCode doesn't write code <em>for</em> you. It writes code <em>with</em> you. The difference matters. You bring the ideas, the judgment, the context, the taste. NeamCode brings speed, tireless attention to detail, instant recall, and the ability to search, analyze, and act across your entire codebase in seconds.</p>
+<p>The best developers of the next decade won't be those who type the fastest. They'll be those who communicate their intent most clearly — who know how to guide AI towards great outcomes.</p>
+<p>You now have that skill.</p>
+<p>Whatever you build next — a side project, a startup, a research paper, a classroom assignment — you are not building it alone. You have NeamCode at your side, and a growing community behind you.</p>
+<p>Go command the future.</p>
+<hr />
+<blockquote><p><strong>Previous:</strong> <a href="24-making-it-yours.md">Chapter 24 — Making NeamCode Yours</a><br><strong>Next:</strong> <a href="../appendices/A-slash-commands.md">Appendix A — All Slash Commands</a></p></blockquote>
+    <nav class="chapter-nav"><a href="24-making-it-yours.html" class="nav-prev"><span class="nav-label">&larr; Previous</span><span class="nav-title">Making NeamCode Yours</span></a><a href="../appendices/A-slash-commands.html" class="nav-next"><span class="nav-label">Next &rarr;</span><span class="nav-title">All Slash Commands</span></a></nav>
+  </article>
+</main>
+
+<button class="back-to-top" id="back-to-top" aria-label="Back to top">&#8593;</button>
+
+<div class="search-overlay" id="search-overlay">
+  <div class="search-modal">
+    <div class="search-input-wrap">
+      <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6.5" cy="6.5" r="5"/><line x1="10.5" y1="10.5" x2="15" y2="15"/></svg>
+      <input type="text" class="search-input" id="search-input" placeholder="Search chapters, topics...">
+    </div>
+    <div class="search-results" id="search-results">
+      <div class="search-empty">Start typing to search...</div>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 4: Working with Files | Command the Future</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-base="../">
+
+<header class="topbar">
+  <div class="topbar-left">
+    <button class="hamburger" id="hamburger" aria-label="Toggle sidebar">&#9776;</button>
+    <a href="../index.html" class="topbar-title">Command the Future</a>
+  </div>
+  <div class="topbar-right">
+    <button class="topbar-btn search-btn" aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6.5" cy="6.5" r="5"/><line x1="10.5" y1="10.5" x2="15" y2="15"/></svg><kbd>Ctrl+K</kbd></button>
+    <button class="topbar-btn" id="theme-toggle" aria-label="Toggle theme"></button>
+  </div>
+</header>
+
+<div class="progress-bar"><div class="progress-fill"></div></div>
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+<aside class="sidebar" id="sidebar">
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Getting Started</div>
+  <div class="sidebar-chapters">
+    <a href="00-preface.html" class="sidebar-link" title="Preface">Preface</a>
+    <a href="01-meet-neamcode.html" class="sidebar-link" title="Meet NeamCode">Meet NeamCode</a>
+    <a href="02-install-first-conversation.html" class="sidebar-link" title="Install & First Conversation">Install & First Conversation</a>
+    <a href="03-art-of-prompting.html" class="sidebar-link" title="The Art of Prompting">The Art of Prompting</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Core Skills</div>
+  <div class="sidebar-chapters">
+    <a href="04-working-with-files.html" class="sidebar-link active" title="Working with Files">Working with Files</a>
+    <a href="05-finding-things.html" class="sidebar-link" title="Finding Things in Code">Finding Things in Code</a>
+    <a href="06-commands-and-git.html" class="sidebar-link" title="Running Commands & Git">Running Commands & Git</a>
+    <a href="07-web-research.html" class="sidebar-link" title="Researching from the Terminal">Researching from the Terminal</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Workflow & Configuration</div>
+  <div class="sidebar-chapters">
+    <a href="08-slash-commands.html" class="sidebar-link" title="Slash Commands">Slash Commands</a>
+    <a href="09-modes.html" class="sidebar-link" title="Modes">Modes</a>
+    <a href="10-sessions-context.html" class="sidebar-link" title="Sessions & Context">Sessions & Context</a>
+    <a href="11-auto-memory.html" class="sidebar-link" title="Auto Memory">Auto Memory</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Providers & Cost</div>
+  <div class="sidebar-chapters">
+    <a href="12-choosing-providers.html" class="sidebar-link" title="Choosing Your AI Provider">Choosing Your AI Provider</a>
+    <a href="13-offline-mode.html" class="sidebar-link" title="Offline Mode">Offline Mode</a>
+    <a href="14-zero-cost-setup.html" class="sidebar-link" title="The $0 AI Setup">The $0 AI Setup</a>
+    <a href="15-budget-cost.html" class="sidebar-link" title="Budget & Cost Tracking">Budget & Cost Tracking</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Advanced Features</div>
+  <div class="sidebar-chapters">
+    <a href="16-agents.html" class="sidebar-link" title="Agents & Delegation">Agents & Delegation</a>
+    <a href="17-mcp-servers.html" class="sidebar-link" title="MCP Servers">MCP Servers</a>
+    <a href="18-neam-language.html" class="sidebar-link" title="Neam Language Integration">Neam Language Integration</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Audience Guides</div>
+  <div class="sidebar-chapters">
+    <a href="19-for-students.html" class="sidebar-link" title="For Students">For Students</a>
+    <a href="20-for-researchers.html" class="sidebar-link" title="For Researchers">For Researchers</a>
+    <a href="21-for-professionals.html" class="sidebar-link" title="For Professionals">For Professionals</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Walkthroughs</div>
+  <div class="sidebar-chapters">
+    <a href="22-walkthrough-build-project.html" class="sidebar-link" title="Walkthrough: Build a Project">Walkthrough: Build a Project</a>
+    <a href="23-walkthrough-fix-bug.html" class="sidebar-link" title="Walkthrough: Fix a Real Bug">Walkthrough: Fix a Real Bug</a>
+    <a href="24-making-it-yours.html" class="sidebar-link" title="Making NeamCode Yours">Making NeamCode Yours</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Closing</div>
+  <div class="sidebar-chapters">
+    <a href="25-road-ahead.html" class="sidebar-link" title="The Road Ahead">The Road Ahead</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Appendices</div>
+  <div class="sidebar-chapters">
+    <a href="../appendices/A-slash-commands.html" class="sidebar-link" title="All Slash Commands">All Slash Commands</a>
+    <a href="../appendices/B-skills-reference.html" class="sidebar-link" title="All Skills Reference">All Skills Reference</a>
+    <a href="../appendices/C-configuration.html" class="sidebar-link" title="Configuration Reference">Configuration Reference</a>
+    <a href="../appendices/D-troubleshooting.html" class="sidebar-link" title="Troubleshooting & FAQ">Troubleshooting & FAQ</a>
+    <a href="../appendices/E-glossary.html" class="sidebar-link" title="Glossary">Glossary</a>
+  </div>
+</div>
+</aside>
+
+<main class="main">
+  <article class="content">
+<h1 id="chapter-4-working-with-files">Chapter 4: Working with Files <a href="#chapter-4-working-with-files" class="heading-anchor">#</a></h1>
+<blockquote><p><em>"The file system is a programmer's canvas. With NeamCode, you paint with words."</em><br>— The NeamCode Handbook</p></blockquote>
+<p>📖 <strong>Estimated read time:</strong> 20 minutes</p>
+<hr />
+<h2 id="what-youll-learn">What You'll Learn <a href="#what-youll-learn" class="heading-anchor">#</a></h2>
+<ul>
+<li>How to read files of any type with <code>file_read</code></li>
+<li>How to create new files with <code>file_write</code></li>
+<li>The precise <code>old_string→new_string</code> editing model that makes <code>file_edit</code> reliable</li>
+<li>How to scaffold an entire project from scratch using natural language</li>
+<li>Strategies for working with large files</li>
+<li>Handling binary files and images</li>
+</ul>
+<hr />
+<h2 id="41-reading-files">4.1 Reading Files <a href="#41-reading-files" class="heading-anchor">#</a></h2>
+<p>Reading files is the most common operation you'll perform in NeamCode. The <code>file_read</code> skill loads file contents so NeamCode can understand, analyze, and discuss your code with you.</p>
+<h3 id="basic-file-reading">Basic File Reading <a href="#basic-file-reading" class="heading-anchor">#</a></h3>
+<p>Simply ask NeamCode to look at a file:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Show me the contents of server.js
+
+NeamCode: I&#x27;ll read that file for you.
+
+  [file_read] server.js
+
+const express = require(&#x27;express&#x27;);
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+app.get(&#x27;/&#x27;, (req, res) =&gt; {
+  res.json({ message: &#x27;Hello World&#x27; });
+});
+
+app.listen(PORT, () =&gt; {
+  console.log(`Server running on port ${PORT}`);
+});
+
+This is a basic Express.js server that:
+- Listens on port 3000 (or a custom PORT from environment variables)
+- Has a single GET route at &quot;/&quot; that returns a JSON message</code></pre>
+<h3 id="reading-multiple-files">Reading Multiple Files <a href="#reading-multiple-files" class="heading-anchor">#</a></h3>
+<p>You can ask about several files at once:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Read package.json and server.js — do the dependencies match what&#x27;s used?
+
+NeamCode:
+  [file_read] package.json
+  [file_read] server.js
+
+Looking at both files, I notice a mismatch. Your server.js imports
+`express` and `cors`, but package.json only lists `express` as a
+dependency. You&#x27;re missing `cors`. Run:
+
+  npm install cors</code></pre>
+<h3 id="partial-file-reading">Partial File Reading <a href="#partial-file-reading" class="heading-anchor">#</a></h3>
+<p>For large files, you can ask for specific parts:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Show me just the first 50 lines of database.js
+
+NeamCode:
+  [file_read] database.js (lines 1-50)
+
+  // ... first 50 lines displayed ...</code></pre>
+<div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip:</strong> File reads are <strong>auto-approved</strong> — they never require permission confirmation. NeamCode treats reading as a safe, non-destructive operation.</p></div>
+<h3 id="reading-with-context">Reading with Context <a href="#reading-with-context" class="heading-anchor">#</a></h3>
+<p>NeamCode doesn't just dump file contents — it understands them:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Read the User model and tell me if there are any security issues
+
+NeamCode:
+  [file_read] models/User.js
+
+I found two security concerns:
+
+1. **Password stored in plain text** (line 12): The password field has
+   no hashing. Use bcrypt before saving.
+2. **No input validation** (line 8): The email field accepts any string.
+   Add a validation regex or use a library like `validator`.</code></pre>
+<hr />
+<h2 id="42-creating-new-files">4.2 Creating New Files <a href="#42-creating-new-files" class="heading-anchor">#</a></h2>
+<p>When you need a new file, use natural language to describe what you want. NeamCode uses <code>file_write</code> to create it.</p>
+<h3 id="simple-file-creation">Simple File Creation <a href="#simple-file-creation" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Create a .gitignore for a Node.js project
+
+NeamCode: I&#x27;ll create a .gitignore file with common Node.js exclusions.
+
+  [file_write] .gitignore (awaiting approval)
+
+  ⟹ Allow this write? (y/n): y
+
+  ✓ Created .gitignore
+
+Contents written:
+  node_modules/
+  .env
+  .env.local
+  dist/
+  build/
+  coverage/
+  *.log
+  .DS_Store
+  .idea/
+  .vscode/</code></pre>
+<div class="callout callout-warning"><div class="callout-title"><span class="callout-icon">&#9888;&#65039;</span> Warning</div><p>⚠️ <strong>Warning:</strong> File writes <strong>always require your approval</strong>. NeamCode will show you what it's about to write and wait for confirmation. This is by design — you stay in control.</p></div>
+<h3 id="creating-files-with-specific-content">Creating Files with Specific Content <a href="#creating-files-with-specific-content" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Create a TypeScript interface file at src/types/user.ts with fields
+     for id (number), name (string), email (string), and optional avatar (string)
+
+NeamCode:
+  [file_write] src/types/user.ts (awaiting approval)
+
+  export interface User {
+    id: number;
+    name: string;
+    email: string;
+    avatar?: string;
+  }
+
+  ⟹ Allow this write? (y/n): y
+
+  ✓ Created src/types/user.ts</code></pre>
+<h3 id="creating-multiple-files">Creating Multiple Files <a href="#creating-multiple-files" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Create a basic React component called Header with its CSS module
+
+NeamCode:
+  [file_write] src/components/Header/Header.tsx (awaiting approval)
+  ⟹ Allow this write? (y/n): y
+  ✓ Created Header.tsx
+
+  [file_write] src/components/Header/Header.module.css (awaiting approval)
+  ⟹ Allow this write? (y/n): y
+  ✓ Created Header.module.css
+
+  [file_write] src/components/Header/index.ts (awaiting approval)
+  ⟹ Allow this write? (y/n): y
+  ✓ Created index.ts</code></pre>
+<div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip:</strong> If you trust NeamCode for a session, you can pre-approve certain write patterns. But for learning, keeping approvals on helps you understand exactly what's happening.</p></div>
+<hr />
+<h2 id="43-editing-existing-code">4.3 Editing Existing Code <a href="#43-editing-existing-code" class="heading-anchor">#</a></h2>
+<p>This is where NeamCode's approach really shines — and where understanding the underlying model pays off.</p>
+<h3 id="the-old_string-new_string-model">The old_string → new_string Model <a href="#the-old_string-new_string-model" class="heading-anchor">#</a></h3>
+<p>NeamCode's <code>file_edit</code> skill works by <strong>precise text matching</strong>. It finds an exact string in your file and replaces it with a new string. This is fundamentally different from line-number-based editing.</p>
+<div class="info-box">
+  <div class="info-box-header blue">How file_edit Works</div>
+  <div class="info-box-body">
+    <ol>
+      <li>NeamCode reads the current file</li>
+      <li>It identifies the EXACT text to change</li>
+      <li>It specifies:
+        <ul>
+          <li><strong>old_string:</strong> the text to find</li>
+          <li><strong>new_string:</strong> the text to replace it with</li>
+        </ul>
+      </li>
+      <li>The match must be UNIQUE in the file</li>
+      <li>You approve → change applied</li>
+    </ol>
+    <div class="flow-steps">
+      <span class="flow-step">old_string<br><small>(must exist exactly once)</small></span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-step highlight">new_string<br><small>(replaces in place)</small></span>
+    </div>
+  </div>
+</div>
+<h3 id="basic-edit-example">Basic Edit Example <a href="#basic-edit-example" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Change the port from 3000 to 8080 in server.js
+
+NeamCode:
+  [file_edit] server.js (awaiting approval)
+
+  old_string:
+    const PORT = process.env.PORT || 3000;
+
+  new_string:
+    const PORT = process.env.PORT || 8080;
+
+  ⟹ Allow this edit? (y/n): y
+
+  ✓ Edited server.js</code></pre>
+<h3 id="why-old_string-new_string-matters">Why old_string → new_string Matters <a href="#why-old_string-new_string-matters" class="heading-anchor">#</a></h3>
+<p>This approach is more reliable than line-number editing because:</p>
+<ol>
+<li><strong>No off-by-one errors.</strong> Line numbers shift when you add or remove lines. Text matching doesn't care about line numbers.</li>
+<li><strong>Context-aware.</strong> The matched string provides surrounding context, so you can verify the right code is being changed.</li>
+<li><strong>Transparent.</strong> You see exactly what's being removed and what's replacing it.</li>
+</ol>
+<div class="callout callout-note"><div class="callout-title"><span class="callout-icon">&#128221;</span> Note</div><p>📝 <strong>Note:</strong> If the <code>old_string</code> appears more than once in the file, NeamCode will include enough surrounding context to make the match unique. If it can't find the exact text, the edit fails safely — nothing is changed.</p></div>
+<h3 id="multi-part-edits">Multi-Part Edits <a href="#multi-part-edits" class="heading-anchor">#</a></h3>
+<p>Sometimes a single change requires editing multiple locations:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Add CORS support to server.js
+
+NeamCode:
+  [file_read] server.js
+
+  I&#x27;ll make two edits: add the import and add the middleware.
+
+  [file_edit] server.js (1/2) (awaiting approval)
+
+  old_string:
+    const express = require(&#x27;express&#x27;);
+
+  new_string:
+    const express = require(&#x27;express&#x27;);
+    const cors = require(&#x27;cors&#x27;);
+
+  ⟹ Allow this edit? (y/n): y
+  ✓ Edited server.js
+
+  [file_edit] server.js (2/2) (awaiting approval)
+
+  old_string:
+    const app = express();
+
+  new_string:
+    const app = express();
+    app.use(cors());
+
+  ⟹ Allow this edit? (y/n): y
+  ✓ Edited server.js</code></pre>
+<h3 id="when-edits-fail">When Edits Fail <a href="#when-edits-fail" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Change the database URL to localhost
+
+NeamCode:
+  [file_edit] config.js
+
+  ✗ Edit failed: old_string not found in file.
+
+  The file may have been modified since I last read it.
+  Let me re-read and try again.
+
+  [file_read] config.js
+
+  I see — the database URL is in config/database.js, not config.js.
+  Let me edit the correct file.
+
+  [file_edit] config/database.js (awaiting approval)
+  ...</code></pre>
+<div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip:</strong> If an edit fails, NeamCode will typically re-read the file and retry. This self-correction is a strength of the text-matching approach — failures are obvious and recoverable.</p></div>
+<hr />
+<h2 id="44-building-a-project-from-scratch">4.4 Building a Project from Scratch <a href="#44-building-a-project-from-scratch" class="heading-anchor">#</a></h2>
+<p>Let's put it all together. We'll ask NeamCode to scaffold a complete Node.js Express application with routes, middleware, and tests.</p>
+<h3 id="step-1-describe-what-you-want">Step 1: Describe What You Want <a href="#step-1-describe-what-you-want" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Create a Node.js Express REST API for a todo app.
+     I want:
+     - Express with JSON body parsing
+     - Routes for CRUD on todos (in-memory array is fine)
+     - Error handling middleware
+     - A health check endpoint
+     - Basic tests with Jest
+     - package.json with scripts for start, dev, and test</code></pre>
+<h3 id="step-2-watch-neamcode-work">Step 2: Watch NeamCode Work <a href="#step-2-watch-neamcode-work" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">NeamCode: I&#x27;ll create the full project structure. Here&#x27;s my plan:
+
+  todo-api/
+  ├── package.json
+  ├── .gitignore
+  ├── src/
+  │   ├── index.js          # Entry point
+  │   ├── app.js             # Express app setup
+  │   ├── routes/
+  │   │   └── todos.js       # CRUD routes
+  │   └── middleware/
+  │       └── errorHandler.js
+  └── tests/
+      └── todos.test.js
+
+  Let me create each file.
+
+  [file_write] todo-api/package.json (awaiting approval)
+  ⟹ Allow? (y/n): y ✓
+
+  [file_write] todo-api/.gitignore (awaiting approval)
+  ⟹ Allow? (y/n): y ✓
+
+  [file_write] todo-api/src/app.js (awaiting approval)
+  ⟹ Allow? (y/n): y ✓
+
+  [file_write] todo-api/src/routes/todos.js (awaiting approval)
+  ⟹ Allow? (y/n): y ✓
+
+  [file_write] todo-api/src/middleware/errorHandler.js (awaiting approval)
+  ⟹ Allow? (y/n): y ✓
+
+  [file_write] todo-api/src/index.js (awaiting approval)
+  ⟹ Allow? (y/n): y ✓
+
+  [file_write] todo-api/tests/todos.test.js (awaiting approval)
+  ⟹ Allow? (y/n): y ✓
+
+  All files created! To get started:
+
+    cd todo-api
+    npm install
+    npm run dev</code></pre>
+<h3 id="step-3-iterate">Step 3: Iterate <a href="#step-3-iterate" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Add input validation — todos should have a title (required)
+     and a completed field (boolean, defaults to false)
+
+NeamCode:
+  [file_read] todo-api/src/routes/todos.js
+
+  [file_edit] todo-api/src/routes/todos.js (awaiting approval)
+
+  old_string:
+    router.post(&#x27;/&#x27;, (req, res) =&gt; {
+      const todo = {
+        id: nextId++,
+        ...req.body
+      };
+
+  new_string:
+    router.post(&#x27;/&#x27;, (req, res) =&gt; {
+      const { title, completed } = req.body;
+
+      if (!title || typeof title !== &#x27;string&#x27; || title.trim() === &#x27;&#x27;) {
+        return res.status(400).json({ error: &#x27;Title is required&#x27; });
+      }
+
+      const todo = {
+        id: nextId++,
+        title: title.trim(),
+        completed: typeof completed === &#x27;boolean&#x27; ? completed : false
+      };
+
+  ⟹ Allow? (y/n): y
+  ✓ Edited todos.js</code></pre>
+<p>This iterative flow — scaffold, review, refine — is how experienced NeamCode users build real projects.</p>
+<hr />
+<h2 id="45-working-with-large-files">4.5 Working with Large Files <a href="#45-working-with-large-files" class="heading-anchor">#</a></h2>
+<p>Large files (hundreds or thousands of lines) require some strategy.</p>
+<h3 id="reading-specific-sections">Reading Specific Sections <a href="#reading-specific-sections" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Show me the handleSubmit function in src/components/Form.tsx
+
+NeamCode:
+  [file_read] src/components/Form.tsx
+
+  Here&#x27;s the handleSubmit function (lines 142-189):
+
+  const handleSubmit = async (e: FormEvent) =&gt; {
+    e.preventDefault();
+    setLoading(true);
+    // ... full function shown ...
+  };</code></pre>
+<p>NeamCode is smart enough to read the whole file internally but show you only the relevant portion.</p>
+<h3 id="targeted-edits-in-large-files">Targeted Edits in Large Files <a href="#targeted-edits-in-large-files" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: In the 800-line utils.js file, find the formatDate function
+     and make it support ISO 8601 format
+
+NeamCode:
+  [file_read] src/utils.js
+
+  Found formatDate at line 347. Currently it only supports
+  &#x27;MM/DD/YYYY&#x27;. I&#x27;ll add ISO 8601 support.
+
+  [file_edit] src/utils.js (awaiting approval)
+
+  old_string:
+    function formatDate(date) {
+      const mm = String(date.getMonth() + 1).padStart(2, &#x27;0&#x27;);
+      const dd = String(date.getDate()).padStart(2, &#x27;0&#x27;);
+      const yyyy = date.getFullYear();
+      return `${mm}/${dd}/${yyyy}`;
+    }
+
+  new_string:
+    function formatDate(date, format = &#x27;MM/DD/YYYY&#x27;) {
+      const mm = String(date.getMonth() + 1).padStart(2, &#x27;0&#x27;);
+      const dd = String(date.getDate()).padStart(2, &#x27;0&#x27;);
+      const yyyy = date.getFullYear();
+
+      switch (format) {
+        case &#x27;ISO&#x27;:
+          return date.toISOString();
+        case &#x27;YYYY-MM-DD&#x27;:
+          return `${yyyy}-${mm}-${dd}`;
+        case &#x27;MM/DD/YYYY&#x27;:
+        default:
+          return `${mm}/${dd}/${yyyy}`;
+      }
+    }
+
+  ⟹ Allow? (y/n): y
+  ✓ Edited src/utils.js</code></pre>
+<div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip:</strong> When working with large files, be specific about what you want changed. Instead of "refactor utils.js," say "refactor the formatDate function in utils.js to support multiple formats." Precision helps NeamCode find the right section and produce a clean edit.</p></div>
+<h3 id="summarizing-large-files">Summarizing Large Files <a href="#summarizing-large-files" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Give me an overview of what&#x27;s in this 1200-line middleware.js
+
+NeamCode:
+  [file_read] src/middleware.js
+
+  This file contains 14 middleware functions:
+
+  1. authMiddleware (lines 1-45) — JWT token validation
+  2. rateLimiter (lines 47-92) — Per-IP rate limiting
+  3. requestLogger (lines 94-128) — Structured logging
+  ...</code></pre>
+<hr />
+<h2 id="46-binary-files-and-images">4.6 Binary Files and Images <a href="#46-binary-files-and-images" class="heading-anchor">#</a></h2>
+<p>NeamCode can work with more than just text files.</p>
+<h3 id="reading-images">Reading Images <a href="#reading-images" class="heading-anchor">#</a></h3>
+<p>The <code>image_read</code> skill lets NeamCode analyze images:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Look at the screenshot in bug-report.png and tell me what&#x27;s wrong
+
+NeamCode:
+  [image_read] bug-report.png
+
+  I can see the issue in the screenshot. The navigation bar is
+  overlapping the main content area. The hamburger menu icon is
+  also cut off on the right side. This looks like a CSS overflow
+  issue — likely the nav container is missing `overflow: hidden`
+  or the flex container needs `flex-shrink: 0` on the nav element.</code></pre>
+<h3 id="working-with-binary-files">Working with Binary Files <a href="#working-with-binary-files" class="heading-anchor">#</a></h3>
+<p>NeamCode can detect binary files and handle them appropriately:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: What&#x27;s in data/export.csv?
+
+NeamCode:
+  [file_read] data/export.csv
+
+  This CSV has 3 columns and 1,247 rows:
+  - id (integer)
+  - customer_name (string)
+  - purchase_amount (decimal)
+
+  First 5 rows:
+  1, Alice Johnson, 49.99
+  2, Bob Smith, 124.50
+  ...</code></pre>
+<div class="callout callout-note"><div class="callout-title"><span class="callout-icon">&#128221;</span> Note</div><p>📝 <strong>Note:</strong> NeamCode can read text-based data formats (CSV, JSON, XML, YAML) just like code. For truly binary files (compiled binaries, images, archives), it will let you know it can't read the raw contents but can still help you work with them using shell commands.</p></div>
+<hr />
+<h2 id="47-pro-tips">4.7 Pro Tips <a href="#47-pro-tips" class="heading-anchor">#</a></h2>
+<h3 id="1-read-before-editing">1. Read Before Editing <a href="#1-read-before-editing" class="heading-anchor">#</a></h3>
+<p>Always let NeamCode read a file before asking it to edit. This ensures the <code>old_string</code> matching will be accurate:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Read server.js then add request logging
+
+# Better than:
+You: Add request logging to server.js
+# (NeamCode will read it anyway, but being explicit helps it plan)</code></pre>
+<h3 id="2-batch-related-changes">2. Batch Related Changes <a href="#2-batch-related-changes" class="heading-anchor">#</a></h3>
+<p>Instead of making one edit at a time, describe the full change:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-"># Good:
+You: Add a User model with validation, a users route with
+     CRUD endpoints, and register the route in app.js
+
+# Less efficient:
+You: Create a User model
+You: Now add a users route
+You: Now register it in app.js</code></pre>
+<h3 id="3-use-file_write-for-new-files-file_edit-for-changes">3. Use file_write for New Files, file_edit for Changes <a href="#3-use-file_write-for-new-files-file_edit-for-changes" class="heading-anchor">#</a></h3>
+<p>NeamCode picks the right tool automatically, but understanding the distinction helps you set expectations:</p>
+<ul>
+<li><strong>file_write</strong>: Creates a new file or completely overwrites an existing one</li>
+<li><strong>file_edit</strong>: Surgically modifies a specific part of an existing file</li>
+</ul>
+<h3 id="4-trust-the-approval-system">4. Trust the Approval System <a href="#4-trust-the-approval-system" class="heading-anchor">#</a></h3>
+<p>Every write and edit requires your approval. Use this as a code review step — actually read the changes before accepting. It's your last line of defense and a great way to learn.</p>
+<h3 id="5-when-in-doubt-ask-for-a-plan-first">5. When in Doubt, Ask for a Plan First <a href="#5-when-in-doubt-ask-for-a-plan-first" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: I want to refactor the auth system. Before making changes,
+     read all the relevant files and give me a plan.</code></pre>
+<p>This lets you review the approach before any files are touched.</p>
+<hr />
+<h2 id="exercises">Exercises <a href="#exercises" class="heading-anchor">#</a></h2>
+<div class="callout callout-try-it-yourself"><p>🎯 <strong>Exercise 4.1:</strong> Ask NeamCode to read your shell configuration file (<code>~/.zshrc</code> or <code>~/.bashrc</code>). Then ask it to explain what each section does.</p></div>
+<div class="callout callout-try-it-yourself"><p>🎯 <strong>Exercise 4.2:</strong> Create a Python script called <code>calculator.py</code> that takes two numbers and an operator from the command line and prints the result. Use only natural language — don't write any code yourself.</p></div>
+<div class="callout callout-try-it-yourself"><p>🎯 <strong>Exercise 4.3:</strong> After creating the calculator, ask NeamCode to edit it to add support for the modulo operator (<code>%</code>). Pay attention to the <code>old_string → new_string</code> shown in the edit.</p></div>
+<div class="callout callout-try-it-yourself"><p>🎯 <strong>Exercise 4.4:</strong> Ask NeamCode to scaffold a complete project in your language of choice. Start with a description and iterate through at least 3 rounds of refinement.</p></div>
+<div class="callout callout-try-it-yourself"><p>🎯 <strong>Exercise 4.5:</strong> Find a large file in any project on your machine (100+ lines). Ask NeamCode to summarize it, then make a targeted edit to a specific function.</p></div>
+<hr />
+<div class="table-wrap"><table>
+<thead><tr>
+<th><a href="03-art-of-prompting.md">← Chapter 3: The Art of Prompting</a></th>
+<th><a href="05-finding-things.md">Chapter 5: Finding Things in Code →</a></th>
+</tr></thead><tbody>
+</tbody></table></div>
+    <nav class="chapter-nav"><a href="03-art-of-prompting.html" class="nav-prev"><span class="nav-label">&larr; Previous</span><span class="nav-title">The Art of Prompting</span></a><a href="05-finding-things.html" class="nav-next"><span class="nav-label">Next &rarr;</span><span class="nav-title">Finding Things in Code</span></a></nav>
+  </article>
+</main>
+
+<button class="back-to-top" id="back-to-top" aria-label="Back to top">&#8593;</button>
+
+<div class="search-overlay" id="search-overlay">
+  <div class="search-modal">
+    <div class="search-input-wrap">
+      <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6.5" cy="6.5" r="5"/><line x1="10.5" y1="10.5" x2="15" y2="15"/></svg>
+      <input type="text" class="search-input" id="search-input" placeholder="Search chapters, topics...">
+    </div>
+    <div class="search-results" id="search-results">
+      <div class="search-empty">Start typing to search...</div>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/script.js"></script>
+</body>
+</html>

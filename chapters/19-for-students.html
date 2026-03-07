@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 19: For Students | Command the Future</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-base="../">
+
+<header class="topbar">
+  <div class="topbar-left">
+    <button class="hamburger" id="hamburger" aria-label="Toggle sidebar">&#9776;</button>
+    <a href="../index.html" class="topbar-title">Command the Future</a>
+  </div>
+  <div class="topbar-right">
+    <button class="topbar-btn search-btn" aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6.5" cy="6.5" r="5"/><line x1="10.5" y1="10.5" x2="15" y2="15"/></svg><kbd>Ctrl+K</kbd></button>
+    <button class="topbar-btn" id="theme-toggle" aria-label="Toggle theme"></button>
+  </div>
+</header>
+
+<div class="progress-bar"><div class="progress-fill"></div></div>
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+<aside class="sidebar" id="sidebar">
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Getting Started</div>
+  <div class="sidebar-chapters">
+    <a href="00-preface.html" class="sidebar-link" title="Preface">Preface</a>
+    <a href="01-meet-neamcode.html" class="sidebar-link" title="Meet NeamCode">Meet NeamCode</a>
+    <a href="02-install-first-conversation.html" class="sidebar-link" title="Install & First Conversation">Install & First Conversation</a>
+    <a href="03-art-of-prompting.html" class="sidebar-link" title="The Art of Prompting">The Art of Prompting</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Core Skills</div>
+  <div class="sidebar-chapters">
+    <a href="04-working-with-files.html" class="sidebar-link" title="Working with Files">Working with Files</a>
+    <a href="05-finding-things.html" class="sidebar-link" title="Finding Things in Code">Finding Things in Code</a>
+    <a href="06-commands-and-git.html" class="sidebar-link" title="Running Commands & Git">Running Commands & Git</a>
+    <a href="07-web-research.html" class="sidebar-link" title="Researching from the Terminal">Researching from the Terminal</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Workflow & Configuration</div>
+  <div class="sidebar-chapters">
+    <a href="08-slash-commands.html" class="sidebar-link" title="Slash Commands">Slash Commands</a>
+    <a href="09-modes.html" class="sidebar-link" title="Modes">Modes</a>
+    <a href="10-sessions-context.html" class="sidebar-link" title="Sessions & Context">Sessions & Context</a>
+    <a href="11-auto-memory.html" class="sidebar-link" title="Auto Memory">Auto Memory</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Providers & Cost</div>
+  <div class="sidebar-chapters">
+    <a href="12-choosing-providers.html" class="sidebar-link" title="Choosing Your AI Provider">Choosing Your AI Provider</a>
+    <a href="13-offline-mode.html" class="sidebar-link" title="Offline Mode">Offline Mode</a>
+    <a href="14-zero-cost-setup.html" class="sidebar-link" title="The $0 AI Setup">The $0 AI Setup</a>
+    <a href="15-budget-cost.html" class="sidebar-link" title="Budget & Cost Tracking">Budget & Cost Tracking</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Advanced Features</div>
+  <div class="sidebar-chapters">
+    <a href="16-agents.html" class="sidebar-link" title="Agents & Delegation">Agents & Delegation</a>
+    <a href="17-mcp-servers.html" class="sidebar-link" title="MCP Servers">MCP Servers</a>
+    <a href="18-neam-language.html" class="sidebar-link" title="Neam Language Integration">Neam Language Integration</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Audience Guides</div>
+  <div class="sidebar-chapters">
+    <a href="19-for-students.html" class="sidebar-link active" title="For Students">For Students</a>
+    <a href="20-for-researchers.html" class="sidebar-link" title="For Researchers">For Researchers</a>
+    <a href="21-for-professionals.html" class="sidebar-link" title="For Professionals">For Professionals</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Walkthroughs</div>
+  <div class="sidebar-chapters">
+    <a href="22-walkthrough-build-project.html" class="sidebar-link" title="Walkthrough: Build a Project">Walkthrough: Build a Project</a>
+    <a href="23-walkthrough-fix-bug.html" class="sidebar-link" title="Walkthrough: Fix a Real Bug">Walkthrough: Fix a Real Bug</a>
+    <a href="24-making-it-yours.html" class="sidebar-link" title="Making NeamCode Yours">Making NeamCode Yours</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Closing</div>
+  <div class="sidebar-chapters">
+    <a href="25-road-ahead.html" class="sidebar-link" title="The Road Ahead">The Road Ahead</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Appendices</div>
+  <div class="sidebar-chapters">
+    <a href="../appendices/A-slash-commands.html" class="sidebar-link" title="All Slash Commands">All Slash Commands</a>
+    <a href="../appendices/B-skills-reference.html" class="sidebar-link" title="All Skills Reference">All Skills Reference</a>
+    <a href="../appendices/C-configuration.html" class="sidebar-link" title="Configuration Reference">Configuration Reference</a>
+    <a href="../appendices/D-troubleshooting.html" class="sidebar-link" title="Troubleshooting & FAQ">Troubleshooting & FAQ</a>
+    <a href="../appendices/E-glossary.html" class="sidebar-link" title="Glossary">Glossary</a>
+  </div>
+</div>
+</aside>
+
+<main class="main">
+  <article class="content">
+<h1 id="chapter-19-for-students-your-ai-study-buddy">Chapter 19: For Students — Your AI Study Buddy <a href="#chapter-19-for-students-your-ai-study-buddy" class="heading-anchor">#</a></h1>
+<blockquote><p>"The beautiful thing about learning is that nobody can take it away from you."<br>— B.B. King</p></blockquote>
+<p>📖 <strong>Estimated read time:</strong> 25 minutes</p>
+<hr />
+<h2 id="what-youll-learn">What You'll Learn <a href="#what-youll-learn" class="heading-anchor">#</a></h2>
+<ul>
+<li>How to learn a new programming language with NeamCode as your tutor</li>
+<li>How to explore and understand open-source codebases</li>
+<li>How to get homework help the ethical way — learning, not cheating</li>
+<li>How to debug assignments step by step</li>
+<li>How to prepare for coding interviews with real practice</li>
+<li>How to build portfolio projects that impress recruiters</li>
+<li>How to reproduce and understand research paper code</li>
+</ul>
+<hr />
+<h2 id="191-learning-a-new-programming-language">19.1 Learning a New Programming Language <a href="#191-learning-a-new-programming-language" class="heading-anchor">#</a></h2>
+<p>Starting a new programming language can feel overwhelming. NeamCode turns that anxiety into a guided conversation. Instead of searching Stack Overflow for hours, you can ask questions right from your terminal and get explanations tailored to what you already know.</p>
+<h3 id="setting-up-your-learning-environment">Setting Up Your Learning Environment <a href="#setting-up-your-learning-environment" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">$ neamcode
+
+&gt; /mode explore
+
+Mode switched to: Explore
+Ready to explore and learn. Ask me anything.
+
+&gt; I&#x27;m a Python developer learning Rust. Start me with the basics
+  — what&#x27;s different about ownership?</code></pre>
+<p><strong>NeamCode responds:</strong></p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">Great question! Coming from Python, ownership is the biggest mental
+shift in Rust. Let me explain with a comparison.
+
+In Python, you can do this freely:
+
+    x = [1, 2, 3]
+    y = x          # Both x and y point to the same list
+    y.append(4)
+    print(x)       # [1, 2, 3, 4] — x changed too!
+
+In Rust, assignment *moves* ownership:
+
+    let x = vec![1, 2, 3];
+    let y = x;     // x is MOVED to y
+    // println!(&quot;{:?}&quot;, x);  // ERROR! x no longer owns the data
+
+This prevents data races and memory bugs at compile time.
+
+Three rules to remember:
+1. Each value has exactly one owner
+2. When the owner goes out of scope, the value is dropped
+3. You can borrow (&amp;x) instead of moving
+
+Want me to create a small Rust project so you can practice ownership
+hands-on?</code></pre>
+<h3 id="building-practice-files">Building Practice Files <a href="#building-practice-files" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">&gt; Yes, create a practice file with 5 ownership exercises,
+  starting easy and getting harder
+
+I&#x27;ll create a Rust practice file for you.
+
+Created: ownership_practice/src/main.rs
+
+The file contains 5 exercises:
+  1. Fix a moved variable (easy)
+  2. Return ownership from a function (easy)
+  3. Borrow vs. move in function args (medium)
+  4. Mutable borrowing rules (medium)
+  5. Lifetime annotations (hard)
+
+Each exercise has a TODO comment and a hint.
+Run with: cd ownership_practice &amp;&amp; cargo run</code></pre>
+<h3 id="getting-explanations-for-compiler-errors">Getting Explanations for Compiler Errors <a href="#getting-explanations-for-compiler-errors" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">&gt; cargo run gives me this error:
+  &quot;error[E0382]: borrow of moved value: `data`&quot;
+  on line 23. Explain what this means and how to fix it.
+
+This error means you used `data` after it was moved to another variable
+or function.
+
+Looking at line 23 in your file:
+
+    let data = String::from(&quot;hello&quot;);
+    let other = data;           // data is moved here
+    println!(&quot;{}&quot;, data);       // ERROR: data was moved on line above
+
+Fix options:
+  1. Clone it:    let other = data.clone();
+  2. Borrow it:   let other = &amp;data;
+  3. Use it after: swap the println before the move
+
+For exercise 1, option 2 (borrowing) is the intended solution.</code></pre>
+<div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip:</strong> Use <code>/mode explore</code> when learning. It prioritizes explanations and context over code generation, which helps you actually understand what's happening.</p></div>
+<hr />
+<h2 id="192-understanding-an-open-source-project">19.2 Understanding an Open-Source Project <a href="#192-understanding-an-open-source-project" class="heading-anchor">#</a></h2>
+<p>You found an interesting open-source project on GitHub. It has 200 files and zero documentation on how the internals work. NeamCode can map it out for you.</p>
+<h3 id="cloning-and-exploring">Cloning and Exploring <a href="#cloning-and-exploring" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">$ git clone https://github.com/example/fastcache.git
+$ cd fastcache
+$ neamcode
+
+&gt; /mode analyze
+
+Mode switched to: Analyze
+Ready to analyze code structure and patterns.
+
+&gt; Give me a high-level overview of this project. What does it do,
+  how is it organized, and what are the main entry points?</code></pre>
+<p><strong>NeamCode responds:</strong></p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-"># FastCache — Project Overview
+
+**Purpose:** An in-memory caching library for Go with LRU eviction
+and TTL support.
+
+**Structure:**
+    fastcache/
+    ├── cache.go          # Core Cache struct and public API
+    ├── lru.go            # LRU eviction policy
+    ├── ttl.go            # TTL (time-to-live) expiration
+    ├── shard.go          # Sharding for concurrent access
+    ├── hash.go           # FNV-based hash function
+    ├── stats.go          # Hit/miss/eviction counters
+    ├── cache_test.go     # Unit tests (87% coverage)
+    ├── benchmark_test.go # Performance benchmarks
+    └── examples/
+        ├── basic/        # Simple get/set example
+        └── http/         # HTTP cache middleware
+
+**Entry Points:**
+  1. cache.New(opts) — creates a new cache instance
+  2. cache.Get(key) — retrieves a value
+  3. cache.Set(key, value, ttl) — stores a value
+  4. cache.Delete(key) — removes a value
+
+**Architecture:**
+    ┌─────────────────────────────┐
+    │        Public API           │
+    │   Get / Set / Delete        │
+    ├─────────────────────────────┤
+    │      Shard Router           │
+    │   hash(key) % numShards     │
+    ├──────┬──────┬──────┬────────┤
+    │Shard │Shard │Shard │ Shard  │
+    │  0   │  1   │  2   │  ...   │
+    │ LRU  │ LRU  │ LRU  │  LRU   │
+    │ TTL  │ TTL  │ TTL  │  TTL   │
+    └──────┴──────┴──────┴────────┘
+
+Each shard has its own mutex, LRU list, and TTL heap.
+This design allows concurrent access without a global lock.</code></pre>
+<h3 id="tracing-a-function-call">Tracing a Function Call <a href="#tracing-a-function-call" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">&gt; Trace what happens when I call cache.Set(&quot;user:123&quot;, userData, 5*time.Minute).
+  Walk me through every function it touches.
+
+Here&#x27;s the call chain for Set():
+
+  1. cache.go:Set(key, value, ttl)
+     → Computes shard index: hash(key) % numShards
+
+  2. shard.go:shard.set(key, value, ttl)
+     → Acquires shard mutex lock
+     → Checks if key already exists
+
+  3. If key exists:
+     → lru.go:lru.moveToFront(entry)
+     → Updates entry.value and entry.expireAt
+
+  4. If key is new:
+     → Checks if shard is at capacity
+     → If full: lru.go:lru.evictLast() removes oldest entry
+     → Creates new entry, adds to front of LRU list
+     → ttl.go:ttl.schedule(entry) adds to expiration heap
+
+  5. shard.go: releases mutex lock
+
+  6. stats.go:stats.recordSet() increments set counter
+
+Total functions touched: 6 files, 8 functions</code></pre>
+<div class="callout callout-note"><div class="callout-title"><span class="callout-icon">&#128221;</span> Note</div><p>📝 <strong>Note:</strong> The <code>/mode analyze</code> command tells NeamCode to focus on reading and understanding code rather than modifying it. This is perfect for studying codebases.</p></div>
+<h3 id="asking-why-questions">Asking "Why" Questions <a href="#asking-why-questions" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">&gt; Why does this project use sharding instead of a single mutex?
+  Is the complexity worth it?
+
+Good architectural question!
+
+**Why sharding:**
+A single mutex means only one goroutine can read/write at a time.
+With sharding (default 256 shards), up to 256 goroutines can
+operate concurrently on different keys.
+
+**Is it worth it?**
+Looking at their benchmarks:
+
+  BenchmarkSet/single_mutex-8     2,400,000 ops/sec
+  BenchmarkSet/256_shards-8      18,000,000 ops/sec  (7.5x faster)
+
+  BenchmarkGet/single_mutex-8     5,100,000 ops/sec
+  BenchmarkGet/256_shards-8      42,000,000 ops/sec  (8.2x faster)
+
+For a caching library, this is absolutely worth the added ~100 lines
+of sharding code. The performance difference is dramatic under
+concurrent load.</code></pre>
+<hr />
+<h2 id="193-getting-homework-help-the-right-way">19.3 Getting Homework Help (The Right Way) <a href="#193-getting-homework-help-the-right-way" class="heading-anchor">#</a></h2>
+<p>There is a right way and a wrong way to use AI for homework. The wrong way is copying answers. The right way is using AI as a tutor that helps you understand concepts so you can solve problems yourself.</p>
+<h3 id="the-wrong-way-dont-do-this">The Wrong Way (Don't Do This) <a href="#the-wrong-way-dont-do-this" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">&gt; Write the solution to this binary search tree assignment for me.
+
+⚠️  I can help you learn, but writing your assignment solution directly
+would be academic dishonesty. Instead, let me:
+
+  1. Explain the concepts you need
+  2. Walk through the algorithm step by step
+  3. Help you debug YOUR code
+  4. Point out where your logic has gaps
+
+Which approach would you like?</code></pre>
+<h3 id="the-right-way">The Right Way <a href="#the-right-way" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">&gt; I need to implement a binary search tree insert function in Java.
+  I understand the concept but I&#x27;m stuck on the recursive case.
+  Here&#x27;s what I have so far...
+
+  public void insert(int value) {
+      root = insertRec(root, value);
+  }
+
+  private Node insertRec(Node node, int value) {
+      if (node == null) {
+          return new Node(value);
+      }
+      // I&#x27;m stuck here — how do I decide left vs right?
+  }</code></pre>
+<p><strong>NeamCode responds:</strong></p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You&#x27;re on the right track! The base case is correct. For the
+recursive case, think about the BST property:
+
+  - All values LESS than the current node go LEFT
+  - All values GREATER than the current node go RIGHT
+
+So you need two comparisons:
+
+    if (value &lt; node.value) {
+        node.left = insertRec(node.left, value);
+    } else if (value &gt; node.value) {
+        node.right = insertRec(node.right, value);
+    }
+    // If equal, we typically don&#x27;t insert duplicates
+    return node;
+
+Notice the pattern: we recurse down the tree, and the returned
+node gets assigned back to the parent&#x27;s left or right pointer.
+This is how the new node gets &quot;attached&quot; to the tree.
+
+Try adding this to your code and test with: insert(5), insert(3),
+insert(7), insert(1). Draw the tree on paper to verify.</code></pre>
+<h3 id="asking-for-concept-explanations">Asking for Concept Explanations <a href="#asking-for-concept-explanations" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">&gt; Explain Big O notation like I&#x27;m in my first CS class.
+  Use examples I can relate to.
+
+# Big O Notation — The Simple Version
+
+Big O tells you how your code slows down as the input gets bigger.
+Think of it like this:
+
+**O(1) — Constant: Looking up your locker**
+  You know the number, you go straight there.
+  Doesn&#x27;t matter if the school has 100 or 10,000 lockers.
+  Example: array[5] — direct index access
+
+**O(log n) — Logarithmic: Finding a word in a dictionary**
+  You open to the middle, then half again, then half again.
+  A 1,000-page dictionary takes ~10 steps. 1,000,000 pages? ~20.
+  Example: binary search
+
+**O(n) — Linear: Reading every page of a book**
+  Twice as many pages = twice as long.
+  Example: finding the max value in an unsorted array
+
+**O(n²) — Quadratic: Comparing every student to every other student**
+  30 students = 900 comparisons. 300 students = 90,000.
+  Example: bubble sort, nested loops
+
+    O(1)  &lt;  O(log n)  &lt;  O(n)  &lt;  O(n log n)  &lt;  O(n²)
+    fast  ←————————————————————————————————→  slow</code></pre>
+<div class="callout callout-warning"><div class="callout-title"><span class="callout-icon">&#9888;&#65039;</span> Warning</div><p>⚠️ <strong>Warning:</strong> Always check your school's academic integrity policy. Using AI to learn concepts is generally fine. Submitting AI-generated code as your own work is generally not. When in doubt, ask your professor.</p></div>
+<hr />
+<h2 id="194-debugging-your-assignments">19.4 Debugging Your Assignments <a href="#194-debugging-your-assignments" class="heading-anchor">#</a></h2>
+<p>It's 11 PM, the assignment is due at midnight, and your code doesn't work. Your TA isn't responding. NeamCode can help you find the bug without just giving you the answer.</p>
+<h3 id="starting-a-debug-session">Starting a Debug Session <a href="#starting-a-debug-session" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">$ cd ~/cs201/assignment3
+$ neamcode
+
+&gt; /mode debug
+
+Mode switched to: Debug
+I&#x27;ll help you find and fix bugs systematically.
+
+&gt; My merge sort implementation returns the wrong output.
+  Input: [38, 27, 43, 3, 9, 82, 10]
+  Expected: [3, 9, 10, 27, 38, 43, 82]
+  Actual: [3, 9, 10, 27, 27, 38, 43]
+
+  The number 82 disappears and 27 appears twice. Here&#x27;s my code.</code></pre>
+<p><strong>NeamCode responds:</strong></p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">Classic merge sort bug! The symptom (element disappearing, another
+duplicating) points to an off-by-one error in your merge step.
+
+Let me look at your merge function...
+
+Found it! In merge_sort.py, line 34:
+
+    while j &lt; len(right):
+        result.append(left[i])    # ← BUG: should be right[j]
+        j += 1
+
+You&#x27;re appending from `left[i]` when you should be appending
+from `right[j]`. This is in the cleanup loop that handles
+remaining elements in the right array.
+
+Change line 34 to:
+    result.append(right[j])
+
+This is a very common typo. The fix is one character: left → right.
+
+Want me to walk through why this causes the specific symptom
+you&#x27;re seeing?</code></pre>
+<h3 id="understanding-why-the-bug-causes-that-symptom">Understanding Why the Bug Causes That Symptom <a href="#understanding-why-the-bug-causes-that-symptom" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">&gt; Yes, walk me through it. I want to understand, not just fix it.
+
+Let&#x27;s trace the execution with your input [38, 27, 43, 3, 9, 82, 10]:
+
+Split phase (correct):
+  [38, 27, 43, 3] and [9, 82, 10]
+  → [38, 27] [43, 3] [9, 82] [10]
+  → [38] [27] [43] [3] [9] [82] [10]
+
+Merge phase — the bug hits when merging [43, 82] with [10]:
+
+  Merge [43, 82] and [10]:
+    Compare 43 vs 10 → append 10, j=1
+    Right array exhausted. Enter left cleanup loop:
+      append 43, i=1
+      append 82, i=2  ← correct so far
+
+  But when merging [3, 10] with [43, 82]:
+    Compare 3 vs 43 → append 3, i=1
+    Compare 10 vs 43 → append 10, i=2
+    Left array exhausted. Enter RIGHT cleanup loop:
+      Line 34: append left[i] → append left[2]
+                                          ↑
+      left only has indices 0,1. This is index 2!
+      In Python, this would be an IndexError...
+
+  Wait — actually, looking more carefully at your code, `i`
+  hasn&#x27;t been incremented past the array bounds because of
+  how your loop variable works. Let me re-trace...
+
+  The issue is that left[i] still points to the last compared
+  element (10), so it gets appended again instead of 82.
+  That&#x27;s why 27 (or whichever element) appears twice — the
+  wrong array is being read during cleanup.
+
+  Fix: change left[i] to right[j] on line 34.</code></pre>
+<div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip:</strong> When debugging, always tell NeamCode what the expected output is AND what the actual output is. The gap between them is the most valuable clue.</p></div>
+<hr />
+<h2 id="195-preparing-for-coding-interviews">19.5 Preparing for Coding Interviews <a href="#195-preparing-for-coding-interviews" class="heading-anchor">#</a></h2>
+<p>NeamCode can simulate a coding interview environment, give you problems, evaluate your solutions, and coach you on how to communicate your thought process.</p>
+<h3 id="starting-an-interview-practice-session">Starting an Interview Practice Session <a href="#starting-an-interview-practice-session" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">&gt; I have a Google interview in 2 weeks. Give me a medium-difficulty
+  array problem and act as my interviewer. Don&#x27;t give hints unless
+  I ask. Evaluate my approach, not just my code.
+
+**Interview Question: Product of Array Except Self**
+
+Given an integer array `nums`, return an array `answer` where
+`answer[i]` is equal to the product of all elements of `nums`
+except `nums[i]`.
+
+You must solve it in O(n) time WITHOUT using division.
+
+Example:
+  Input:  [1, 2, 3, 4]
+  Output: [24, 12, 8, 6]
+
+Take your time. Talk through your approach before coding.</code></pre>
+<h3 id="working-through-the-problem">Working Through the Problem <a href="#working-through-the-problem" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">&gt; Okay, my first thought is brute force — for each element, multiply
+  all the others. That&#x27;s O(n²). Let me think about O(n)...
+
+  If I could use division, I&#x27;d multiply everything and divide by
+  each element. But I can&#x27;t.
+
+  What if I precompute prefix products and suffix products?
+  prefix[i] = product of everything before index i
+  suffix[i] = product of everything after index i
+  Then answer[i] = prefix[i] * suffix[i]
+
+Good approach! A few follow-up observations:
+
+✅ You identified brute force first and its complexity — that shows
+   systematic thinking. Interviewers like this.
+
+✅ You considered the division approach and correctly noted the
+   constraint. This shows you read the problem carefully.
+
+✅ The prefix/suffix approach is correct and achieves O(n) time.
+
+One thing to consider: what&#x27;s the space complexity of your approach?
+Can you optimize it?
+
+Go ahead and code it up. I&#x27;ll evaluate when you&#x27;re done.</code></pre>
+<h3 id="getting-feedback">Getting Feedback <a href="#getting-feedback" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">&gt; Here&#x27;s my solution:
+
+  def productExceptSelf(nums):
+      n = len(nums)
+      answer = [1] * n
+      prefix = 1
+      for i in range(n):
+          answer[i] = prefix
+          prefix *= nums[i]
+      suffix = 1
+      for i in range(n-1, -1, -1):
+          answer[i] *= suffix
+          suffix *= nums[i]
+      return answer
+
+**Interview Evaluation:**
+
+Code Correctness: ✅ Pass
+  - Handles the example correctly
+  - Handles edge cases (zeros, negative numbers)
+
+Time Complexity: ✅ O(n) — two passes
+Space Complexity: ✅ O(1) extra space (answer array doesn&#x27;t count)
+
+Communication: ⭐⭐⭐⭐ (4/5)
+  - You walked through your thought process clearly
+  - You started with brute force and optimized
+  - Suggestion: explicitly state the space optimization
+    (&quot;I&#x27;m using the output array to store prefix products
+     in the first pass, then multiplying suffix in-place
+     in the second pass&quot;)
+
+Code Quality: ⭐⭐⭐⭐⭐ (5/5)
+  - Clean variable names
+  - Concise implementation
+  - Used the O(1) space optimization
+
+Overall: Strong hire signal. Ready for this type of question.
+Want another problem? I can increase difficulty.</code></pre>
+<div class="callout callout-note"><div class="callout-title"><span class="callout-icon">&#128221;</span> Note</div><p>📝 <strong>Note:</strong> Practice explaining your approach out loud while coding. Interview performance is 50% communication, 50% code. NeamCode can evaluate both.</p></div>
+<hr />
+<h2 id="196-building-portfolio-projects">19.6 Building Portfolio Projects <a href="#196-building-portfolio-projects" class="heading-anchor">#</a></h2>
+<p>A strong portfolio gets you interviews. NeamCode helps you build projects that demonstrate real skills, not just tutorial copies.</p>
+<h3 id="brainstorming-project-ideas">Brainstorming Project Ideas <a href="#brainstorming-project-ideas" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">&gt; I&#x27;m a sophomore CS student applying for internships. I know Python
+  and basic React. Suggest 3 portfolio project ideas that would
+  impress recruiters. They should be doable in a weekend each.
+
+Here are 3 portfolio projects ranked by impact:
+
+**1. Real-Time Markdown Previewer (React + WebSockets)**
+   Why it impresses: Shows you understand real-time data, state
+   management, and can build polished UI.
+   - Split-pane editor with live preview
+   - Syntax highlighting for code blocks
+   - Export to PDF
+   - Doable in: 1.5 days
+
+**2. CLI Task Tracker with SQLite (Python)**
+   Why it impresses: Shows you can build practical tools, use
+   databases, and write clean CLI interfaces.
+   - Add/complete/delete tasks from terminal
+   - Priority levels and due dates
+   - Filter and search
+   - Doable in: 1 day
+
+**3. GitHub Repo Analyzer (Python + GitHub API)**
+   Why it impresses: Shows API integration, data processing,
+   and visualization skills.
+   - Input: GitHub repo URL
+   - Output: commit frequency chart, contributor stats,
+     language breakdown, issue response time
+   - Display with matplotlib or terminal charts
+   - Doable in: 1.5 days
+
+Want to start building one of these? I&#x27;ll guide you through
+the entire process.</code></pre>
+<h3 id="guided-project-building">Guided Project Building <a href="#guided-project-building" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">&gt; Let&#x27;s build #2, the CLI Task Tracker. Help me set it up properly
+  with good project structure from the start.
+
+Let&#x27;s set this up like a real project:
+
+Created project structure:
+
+  task-tracker/
+  ├── README.md
+  ├── setup.py
+  ├── requirements.txt
+  ├── task_tracker/
+  │   ├── __init__.py
+  │   ├── cli.py          # Click-based CLI interface
+  │   ├── database.py     # SQLite operations
+  │   └── models.py       # Task data class
+  └── tests/
+      ├── __init__.py
+      └── test_database.py
+
+Key decisions I made:
+  - Click library for CLI (cleaner than argparse)
+  - SQLite for persistence (no server needed)
+  - Dataclass for Task model (modern Python)
+  - Tests from day one (recruiters check for this!)
+
+The database.py file has the schema:
+
+  CREATE TABLE tasks (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      title TEXT NOT NULL,
+      priority TEXT DEFAULT &#x27;medium&#x27;,
+      due_date TEXT,
+      completed BOOLEAN DEFAULT 0,
+      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  );
+
+Want to start implementing the CLI commands?</code></pre>
+<div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip:</strong> Always include a README, tests, and clean commit history in portfolio projects. Recruiters look at these signals to gauge your professionalism.</p></div>
+<hr />
+<h2 id="197-reproducing-research-paper-code">19.7 Reproducing Research Paper Code <a href="#197-reproducing-research-paper-code" class="heading-anchor">#</a></h2>
+<p>You read a paper for your ML class and want to implement the algorithm. NeamCode can help bridge the gap between mathematical notation and working code.</p>
+<h3 id="understanding-paper-algorithms">Understanding Paper Algorithms <a href="#understanding-paper-algorithms" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">&gt; I&#x27;m reading &quot;Attention Is All You Need&quot; and I need to implement
+  the scaled dot-product attention from Section 3.2.1. The formula
+  is Attention(Q,K,V) = softmax(QK^T / sqrt(d_k))V
+
+  Help me understand this and implement it in PyTorch.
+
+Let me break down the formula into plain English:
+
+  Attention(Q, K, V) = softmax(Q K^T / sqrt(d_k)) V
+
+  Step by step:
+  1. Q K^T       → &quot;How much does each query match each key?&quot;
+                    Matrix multiply, gives similarity scores
+  2. / sqrt(d_k) → &quot;Scale down so softmax isn&#x27;t too spiky&quot;
+                    d_k is the dimension of keys
+  3. softmax()   → &quot;Convert scores to probabilities (sum to 1)&quot;
+  4. × V         → &quot;Weight the values by those probabilities&quot;
+
+  Diagram:
+    Q ──┐
+        ├── MatMul ── Scale ── Softmax ──┐
+    K ──┘                                ├── MatMul ── Output
+    V ───────────────────────────────────┘
+
+Here&#x27;s the PyTorch implementation:
+
+  import torch
+  import torch.nn.functional as F
+  import math
+
+  def scaled_dot_product_attention(Q, K, V, mask=None):
+      &quot;&quot;&quot;
+      Q: (batch, heads, seq_len, d_k)
+      K: (batch, heads, seq_len, d_k)
+      V: (batch, heads, seq_len, d_v)
+      &quot;&quot;&quot;
+      d_k = Q.size(-1)
+
+      # Step 1 &amp; 2: QK^T / sqrt(d_k)
+      scores = torch.matmul(Q, K.transpose(-2, -1)) / math.sqrt(d_k)
+
+      # Optional: apply mask (for decoder self-attention)
+      if mask is not None:
+          scores = scores.masked_fill(mask == 0, -1e9)
+
+      # Step 3: softmax
+      attention_weights = F.softmax(scores, dim=-1)
+
+      # Step 4: multiply by V
+      output = torch.matmul(attention_weights, V)
+
+      return output, attention_weights
+
+Each line maps directly to a step in the formula.
+Want me to explain the mask parameter or move on to
+multi-head attention?</code></pre>
+<h3 id="verifying-your-implementation">Verifying Your Implementation <a href="#verifying-your-implementation" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">&gt; Let me test this with small tensors to verify it&#x27;s correct.
+  Generate a test case with known expected output.
+
+Here&#x27;s a simple test case you can verify by hand:
+
+  # Small example: 1 batch, 1 head, 3 tokens, d_k=2
+  Q = torch.tensor([[[[1.0, 0.0],
+                       [0.0, 1.0],
+                       [1.0, 1.0]]]])
+
+  K = torch.tensor([[[[1.0, 0.0],
+                       [0.0, 1.0],
+                       [1.0, 1.0]]]])
+
+  V = torch.tensor([[[[1.0, 0.0],
+                       [0.0, 1.0],
+                       [0.5, 0.5]]]])
+
+  Manual calculation for Q[0] = [1, 0]:
+    Scores: [1*1+0*0, 1*0+0*1, 1*1+0*1] = [1, 0, 1]
+    Scaled: [1/1.41, 0/1.41, 1/1.41] = [0.707, 0, 0.707]
+    Softmax: [0.390, 0.219, 0.390]
+    Output: 0.390*[1,0] + 0.219*[0,1] + 0.390*[0.5,0.5]
+          = [0.585, 0.414]
+
+  Run the function and compare with these expected values.
+  They should match within floating-point tolerance.</code></pre>
+<hr />
+<h2 id="198-pro-tips-for-students">19.8 Pro Tips for Students <a href="#198-pro-tips-for-students" class="heading-anchor">#</a></h2>
+<h3 id="use-checkpoints-before-experiments">Use Checkpoints Before Experiments <a href="#use-checkpoints-before-experiments" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">&gt; /checkpoint before-refactor
+
+Checkpoint saved: before-refactor
+You can restore with: /restore before-refactor</code></pre>
+<p>If your refactoring breaks everything at 11:30 PM, just restore.</p>
+<h3 id="track-your-learning-cost">Track Your Learning Cost <a href="#track-your-learning-cost" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">&gt; /cost
+
+Session cost: $0.12
+  - 47 messages
+  - 23,400 input tokens
+  - 8,200 output tokens
+
+Monthly total: $3.45</code></pre>
+<p>Students on a budget can switch to Ollama for free local AI:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">&gt; /provider ollama
+&gt; /model codellama
+
+Provider switched to: ollama (local, free)
+Model: codellama</code></pre>
+<h3 id="use-sessions-to-organize-by-course">Use Sessions to Organize by Course <a href="#use-sessions-to-organize-by-course" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">&gt; /session cs201-assignment3
+
+Session loaded: cs201-assignment3
+Previous context restored (BST implementation discussion).</code></pre>
+<p>Keep separate sessions for each class so context doesn't bleed between assignments.</p>
+<h3 id="create-course-specific-neamcodemd-files">Create Course-Specific NEAMCODE.md Files <a href="#create-course-specific-neamcodemd-files" class="heading-anchor">#</a></h3>
+<p>Create a <code>NEAMCODE.md</code> in each course's project directory:</p>
+<div class="code-header"><span class="code-lang">markdown</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-markdown"># CS 201 — Data Structures
+
+## Context
+- Language: Java 17
+- IDE: IntelliJ (but I use terminal for compiling)
+- Professor requires: Javadoc comments on all public methods
+- Testing framework: JUnit 5
+- Style guide: Google Java Style
+
+## Preferences
+- Explain concepts before showing code
+- Use analogies when possible
+- Always show time/space complexity
+- Don&#x27;t give full solutions to assignments</code></pre>
+<h3 id="use-explore-mode-as-a-study-tool-before-exams">Use Explore Mode as a Study Tool Before Exams <a href="#use-explore-mode-as-a-study-tool-before-exams" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">&gt; /mode explore
+
+&gt; Quiz me on graph algorithms. Ask 5 questions, wait for my
+  answer, then tell me if I&#x27;m right. Start easy, get harder.
+
+Question 1 (Easy):
+What&#x27;s the difference between BFS and DFS? Which uses a queue
+and which uses a stack?
+
+Your answer:</code></pre>
+<h3 id="the-offline-study-advantage">The Offline Study Advantage <a href="#the-offline-study-advantage" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">&gt; /offline
+
+Offline mode enabled. Using local Ollama model.
+No internet required — study anywhere.</code></pre>
+<p>Study on a plane, in a cafe with bad WiFi, or anywhere else. Your local Ollama model works without any internet connection.</p>
+<hr />
+<h2 id="exercises">Exercises <a href="#exercises" class="heading-anchor">#</a></h2>
+<p><strong>🎯 Exercise 19.1:</strong> Pick a programming language you don't know. Use NeamCode in Explore mode to learn the three most unique features of that language. Write a small program demonstrating each feature.</p>
+<p><strong>🎯 Exercise 19.2:</strong> Clone any popular open-source project (under 50 files) and use <code>/mode analyze</code> to map out its architecture. Create a diagram of how the main components interact.</p>
+<p><strong>🎯 Exercise 19.3:</strong> Take a coding problem you've already solved and ask NeamCode to interview you on it. Practice explaining your approach out loud before typing code.</p>
+<p><strong>🎯 Exercise 19.4:</strong> Set up a <code>NEAMCODE.md</code> file for one of your courses. Include your professor's coding style requirements, the language version, and your preferred learning style.</p>
+<p><strong>🎯 Exercise 19.5:</strong> Find a short research paper with pseudocode and implement the algorithm with NeamCode's help. Verify your implementation with test cases.</p>
+<hr />
+    <nav class="chapter-nav"><a href="18-neam-language.html" class="nav-prev"><span class="nav-label">&larr; Previous</span><span class="nav-title">Neam Language Integration</span></a><a href="20-for-researchers.html" class="nav-next"><span class="nav-label">Next &rarr;</span><span class="nav-title">For Researchers</span></a></nav>
+  </article>
+</main>
+
+<button class="back-to-top" id="back-to-top" aria-label="Back to top">&#8593;</button>
+
+<div class="search-overlay" id="search-overlay">
+  <div class="search-modal">
+    <div class="search-input-wrap">
+      <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6.5" cy="6.5" r="5"/><line x1="10.5" y1="10.5" x2="15" y2="15"/></svg>
+      <input type="text" class="search-input" id="search-input" placeholder="Search chapters, topics...">
+    </div>
+    <div class="search-results" id="search-results">
+      <div class="search-empty">Start typing to search...</div>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/script.js"></script>
+</body>
+</html>

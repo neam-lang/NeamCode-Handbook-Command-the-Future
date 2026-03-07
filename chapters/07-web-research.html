@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 7: Researching from the Terminal | Command the Future</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-base="../">
+
+<header class="topbar">
+  <div class="topbar-left">
+    <button class="hamburger" id="hamburger" aria-label="Toggle sidebar">&#9776;</button>
+    <a href="../index.html" class="topbar-title">Command the Future</a>
+  </div>
+  <div class="topbar-right">
+    <button class="topbar-btn search-btn" aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6.5" cy="6.5" r="5"/><line x1="10.5" y1="10.5" x2="15" y2="15"/></svg><kbd>Ctrl+K</kbd></button>
+    <button class="topbar-btn" id="theme-toggle" aria-label="Toggle theme"></button>
+  </div>
+</header>
+
+<div class="progress-bar"><div class="progress-fill"></div></div>
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+<aside class="sidebar" id="sidebar">
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Getting Started</div>
+  <div class="sidebar-chapters">
+    <a href="00-preface.html" class="sidebar-link" title="Preface">Preface</a>
+    <a href="01-meet-neamcode.html" class="sidebar-link" title="Meet NeamCode">Meet NeamCode</a>
+    <a href="02-install-first-conversation.html" class="sidebar-link" title="Install & First Conversation">Install & First Conversation</a>
+    <a href="03-art-of-prompting.html" class="sidebar-link" title="The Art of Prompting">The Art of Prompting</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Core Skills</div>
+  <div class="sidebar-chapters">
+    <a href="04-working-with-files.html" class="sidebar-link" title="Working with Files">Working with Files</a>
+    <a href="05-finding-things.html" class="sidebar-link" title="Finding Things in Code">Finding Things in Code</a>
+    <a href="06-commands-and-git.html" class="sidebar-link" title="Running Commands & Git">Running Commands & Git</a>
+    <a href="07-web-research.html" class="sidebar-link active" title="Researching from the Terminal">Researching from the Terminal</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Workflow & Configuration</div>
+  <div class="sidebar-chapters">
+    <a href="08-slash-commands.html" class="sidebar-link" title="Slash Commands">Slash Commands</a>
+    <a href="09-modes.html" class="sidebar-link" title="Modes">Modes</a>
+    <a href="10-sessions-context.html" class="sidebar-link" title="Sessions & Context">Sessions & Context</a>
+    <a href="11-auto-memory.html" class="sidebar-link" title="Auto Memory">Auto Memory</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Providers & Cost</div>
+  <div class="sidebar-chapters">
+    <a href="12-choosing-providers.html" class="sidebar-link" title="Choosing Your AI Provider">Choosing Your AI Provider</a>
+    <a href="13-offline-mode.html" class="sidebar-link" title="Offline Mode">Offline Mode</a>
+    <a href="14-zero-cost-setup.html" class="sidebar-link" title="The $0 AI Setup">The $0 AI Setup</a>
+    <a href="15-budget-cost.html" class="sidebar-link" title="Budget & Cost Tracking">Budget & Cost Tracking</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Advanced Features</div>
+  <div class="sidebar-chapters">
+    <a href="16-agents.html" class="sidebar-link" title="Agents & Delegation">Agents & Delegation</a>
+    <a href="17-mcp-servers.html" class="sidebar-link" title="MCP Servers">MCP Servers</a>
+    <a href="18-neam-language.html" class="sidebar-link" title="Neam Language Integration">Neam Language Integration</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Audience Guides</div>
+  <div class="sidebar-chapters">
+    <a href="19-for-students.html" class="sidebar-link" title="For Students">For Students</a>
+    <a href="20-for-researchers.html" class="sidebar-link" title="For Researchers">For Researchers</a>
+    <a href="21-for-professionals.html" class="sidebar-link" title="For Professionals">For Professionals</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Walkthroughs</div>
+  <div class="sidebar-chapters">
+    <a href="22-walkthrough-build-project.html" class="sidebar-link" title="Walkthrough: Build a Project">Walkthrough: Build a Project</a>
+    <a href="23-walkthrough-fix-bug.html" class="sidebar-link" title="Walkthrough: Fix a Real Bug">Walkthrough: Fix a Real Bug</a>
+    <a href="24-making-it-yours.html" class="sidebar-link" title="Making NeamCode Yours">Making NeamCode Yours</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Closing</div>
+  <div class="sidebar-chapters">
+    <a href="25-road-ahead.html" class="sidebar-link" title="The Road Ahead">The Road Ahead</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Appendices</div>
+  <div class="sidebar-chapters">
+    <a href="../appendices/A-slash-commands.html" class="sidebar-link" title="All Slash Commands">All Slash Commands</a>
+    <a href="../appendices/B-skills-reference.html" class="sidebar-link" title="All Skills Reference">All Skills Reference</a>
+    <a href="../appendices/C-configuration.html" class="sidebar-link" title="Configuration Reference">Configuration Reference</a>
+    <a href="../appendices/D-troubleshooting.html" class="sidebar-link" title="Troubleshooting & FAQ">Troubleshooting & FAQ</a>
+    <a href="../appendices/E-glossary.html" class="sidebar-link" title="Glossary">Glossary</a>
+  </div>
+</div>
+</aside>
+
+<main class="main">
+  <article class="content">
+<h1 id="chapter-7-researching-from-the-terminal">Chapter 7: Researching from the Terminal <a href="#chapter-7-researching-from-the-terminal" class="heading-anchor">#</a></h1>
+<blockquote><p><em>"The best developers don't memorize everything — they know how to find anything."</em><br>— The NeamCode Handbook</p></blockquote>
+<p>📖 <strong>Estimated read time:</strong> 12 minutes</p>
+<hr />
+<h2 id="what-youll-learn">What You'll Learn <a href="#what-youll-learn" class="heading-anchor">#</a></h2>
+<ul>
+<li>How to search the web for documentation, solutions, and references with <code>web_search</code></li>
+<li>How to fetch and parse web pages directly with <code>web_fetch</code></li>
+<li>How to analyze screenshots and UI mockups with <code>image_read</code></li>
+<li>How to combine research with live coding in a single workflow</li>
+</ul>
+<hr />
+<h2 id="71-web-search">7.1 Web Search <a href="#71-web-search" class="heading-anchor">#</a></h2>
+<p>The <code>web_search</code> skill lets NeamCode search the internet for information — documentation, Stack Overflow answers, blog posts, changelogs — without you leaving the terminal.</p>
+<h3 id="basic-web-search">Basic Web Search <a href="#basic-web-search" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: How do I set up ESLint with TypeScript in a Next.js project?
+
+NeamCode:
+  [web_search] &quot;ESLint TypeScript Next.js setup 2026&quot;
+
+  Based on the current documentation and community best practices:
+
+  1. Install the required packages:
+     npm install -D eslint @typescript-eslint/parser
+       @typescript-eslint/eslint-plugin eslint-config-next
+
+  2. Next.js 14+ includes ESLint config out of the box.
+     Your .eslintrc.json should extend:
+
+     {
+       &quot;extends&quot;: [
+         &quot;next/core-web-vitals&quot;,
+         &quot;plugin:@typescript-eslint/recommended&quot;
+       ]
+     }
+
+  3. Add a lint script to package.json:
+     &quot;lint&quot;: &quot;next lint&quot;
+
+  Source: Next.js documentation (nextjs.org/docs/app/building-
+  your-application/configuring/eslint)</code></pre>
+<h3 id="searching-for-error-solutions">Searching for Error Solutions <a href="#searching-for-error-solutions" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: I&#x27;m getting &quot;TypeError: Cannot read properties of undefined
+     (reading &#x27;map&#x27;)&quot; in my React component. Why?
+
+NeamCode:
+  [web_search] &quot;TypeError Cannot read properties undefined map React&quot;
+
+  This is one of the most common React errors. It means you&#x27;re
+  calling .map() on a variable that is `undefined`. Common causes:
+
+  1. **Data hasn&#x27;t loaded yet.** If you&#x27;re fetching data
+     asynchronously, the initial render has `undefined`:
+
+     // Problem:
+     const [items, setItems] = useState();
+     return items.map(...)  // 💥 items is undefined
+
+     // Fix:
+     const [items, setItems] = useState([]);
+     return items.map(...)  // ✓ empty array, safe to map
+
+  2. **API response shape changed.** You&#x27;re accessing
+     `response.data.items` but the API now returns
+     `response.data.results`.
+
+  3. **Optional chaining missing.** Use `items?.map(...)` for
+     defensive coding.
+
+  Want me to look at your component and find the specific issue?</code></pre>
+<h3 id="searching-for-api-documentation">Searching for API Documentation <a href="#searching-for-api-documentation" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: What are the Stripe API parameters for creating a PaymentIntent?
+
+NeamCode:
+  [web_search] &quot;Stripe API create PaymentIntent parameters&quot;
+
+  Stripe PaymentIntent.create() accepts these key parameters:
+
+  Required:
+  - amount (integer) — Amount in smallest currency unit (cents)
+  - currency (string) — Three-letter ISO currency code
+
+  Common optional:
+  - payment_method_types (array) — e.g., [&#x27;card&#x27;]
+  - customer (string) — Stripe Customer ID
+  - description (string) — Internal description
+  - metadata (object) — Key-value pairs for your use
+  - confirm (boolean) — Confirm immediately if true
+  - receipt_email (string) — Send receipt to this email
+
+  Example:
+    const intent = await stripe.paymentIntents.create({
+      amount: 2000,      // $20.00
+      currency: &#x27;usd&#x27;,
+      payment_method_types: [&#x27;card&#x27;],
+    });
+
+  Source: Stripe API reference (stripe.com/docs/api/payment_intents)</code></pre>
+<div class="callout callout-note"><div class="callout-title"><span class="callout-icon">&#128221;</span> Note</div><p>📝 <strong>Note:</strong> NeamCode cites its sources when searching the web. This lets you verify the information if needed. Always check the source for critical implementation details — web search provides good starting points, but official docs are the final authority.</p></div>
+<hr />
+<h2 id="72-fetching-web-pages">7.2 Fetching Web Pages <a href="#72-fetching-web-pages" class="heading-anchor">#</a></h2>
+<p>The <code>web_fetch</code> skill retrieves and parses the content of a specific URL. Use this when you know exactly which page has the information you need.</p>
+<h3 id="fetching-documentation">Fetching Documentation <a href="#fetching-documentation" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Fetch the Prisma documentation page for migrations
+
+NeamCode:
+  [web_fetch] https://www.prisma.io/docs/concepts/components/
+    prisma-migrate
+
+  Here&#x27;s a summary of the Prisma Migrate documentation:
+
+  Prisma Migrate is a database migration tool. Key commands:
+
+  • npx prisma migrate dev — Create and apply migrations
+    (development)
+  • npx prisma migrate deploy — Apply pending migrations
+    (production)
+  • npx prisma migrate reset — Reset database and reapply
+    all migrations
+
+  Workflow:
+  1. Edit schema.prisma
+  2. Run `prisma migrate dev --name description`
+  3. Prisma generates SQL, creates migration file, applies it
+  4. Commit the migration files to version control
+
+  Important: Never edit migration files after they&#x27;ve been applied.</code></pre>
+<h3 id="fetching-changelogs-and-release-notes">Fetching Changelogs and Release Notes <a href="#fetching-changelogs-and-release-notes" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: What&#x27;s new in React 19? Fetch the blog post.
+
+NeamCode:
+  [web_fetch] https://react.dev/blog/2024/12/05/react-19
+
+  React 19 major changes:
+
+  1. **Actions** — async functions in transitions for forms,
+     pending states, error handling
+  2. **useActionState** — new hook for form action results
+  3. **useOptimistic** — optimistic UI updates made simple
+  4. **use()** — read resources (promises, context) in render
+  5. **Server Components** — stable, first-class support
+  6. **Document metadata** — &lt;title&gt;, &lt;meta&gt; in components
+  7. **ref as a prop** — no more forwardRef needed
+  8. **Improved error reporting** — better hydration error messages</code></pre>
+<h3 id="fetching-api-responses">Fetching API Responses <a href="#fetching-api-responses" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Fetch https://api.github.com/repos/facebook/react and tell me
+     the star count and latest release
+
+NeamCode:
+  [web_fetch] https://api.github.com/repos/facebook/react
+
+  Repository: facebook/react
+  Stars: 232,847
+  Forks: 47,521
+  Open Issues: 1,034
+  Default Branch: main
+  License: MIT
+  Last Push: 2 hours ago
+
+  [web_fetch] https://api.github.com/repos/facebook/react/releases/latest
+
+  Latest Release: v19.0.0
+  Published: December 5, 2024
+  Release notes: (summary of changes)</code></pre>
+<div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip:</strong> <code>web_fetch</code> is great for pulling structured data from APIs. You can fetch JSON endpoints, parse the results, and use that data in your coding workflow.</p></div>
+<hr />
+<h2 id="73-analyzing-screenshots">7.3 Analyzing Screenshots <a href="#73-analyzing-screenshots" class="heading-anchor">#</a></h2>
+<p>The <code>image_read</code> skill lets NeamCode look at screenshots, mockups, and visual references. This bridges the gap between design and code.</p>
+<h3 id="matching-a-design-mockup">Matching a Design Mockup <a href="#matching-a-design-mockup" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Here&#x27;s a screenshot of the design we need to implement.
+     [provides mockup.png]
+
+NeamCode:
+  [image_read] mockup.png
+
+  I can see a card-based product listing with:
+
+  - Header bar with logo (left) and search + cart icon (right)
+  - 3-column grid of product cards
+  - Each card has:
+    - Product image (square, rounded corners)
+    - Product name (bold, ~16px)
+    - Price in green ($XX.XX format)
+    - &quot;Add to Cart&quot; button (blue, full-width)
+  - Pagination dots at the bottom
+
+  Want me to create the React component and CSS for this layout?</code></pre>
+<h3 id="debugging-ui-issues">Debugging UI Issues <a href="#debugging-ui-issues" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: The layout is broken on mobile. Here&#x27;s a screenshot.
+     [provides mobile-bug.png]
+
+NeamCode:
+  [image_read] mobile-bug.png
+
+  I can see two issues:
+
+  1. The sidebar navigation is overlapping the main content
+     instead of collapsing into a hamburger menu.
+  2. The product grid is still showing 3 columns instead
+     of stacking into a single column.
+
+  These are both CSS responsive breakpoint issues. Let me check
+  your styles.
+
+  [grep] &quot;@media&quot; in src/**/*.css
+
+  Found the issue — your breakpoint is set at 480px but most
+  mobile devices are 375-428px wide. Let me fix it.</code></pre>
+<h3 id="comparing-screenshots">Comparing Screenshots <a href="#comparing-screenshots" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Compare these two screenshots — before.png is the current
+     state, after.png is what the client wants. What needs to change?
+
+NeamCode:
+  [image_read] before.png
+  [image_read] after.png
+
+  Differences I can see:
+
+  1. **Header height reduced** — from ~80px to ~60px
+  2. **Logo moved** — from center to left-aligned
+  3. **Navigation links** — font size decreased, spacing tighter
+  4. **Hero section** — background changed from solid blue to
+     gradient (blue to purple, left to right)
+  5. **CTA button** — changed from rounded corners to pill shape,
+     color from blue to white with blue text
+  6. **Footer** — new 4-column layout replacing the simple
+     centered text
+
+  Want me to implement these changes one by one?</code></pre>
+<hr />
+<h2 id="74-combining-research-with-coding">7.4 Combining Research with Coding <a href="#74-combining-research-with-coding" class="heading-anchor">#</a></h2>
+<p>The real power emerges when you combine research skills with coding skills in a single workflow.</p>
+<h3 id="the-research-implement-verify-loop">The Research-Implement-Verify Loop <a href="#the-research-implement-verify-loop" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: I need to add rate limiting to my Express API.
+     Research the best approach and implement it.
+
+NeamCode:
+  [web_search] &quot;Express rate limiting best practices 2026&quot;
+
+  The recommended approach is `express-rate-limit`. Let me
+  implement it.
+
+  [bash] npm install express-rate-limit (awaiting approval)
+  ⟹ Allow? (y/n): y
+
+  [file_read] src/app.ts
+
+  [file_edit] src/app.ts (awaiting approval)
+
+  old_string:
+    import express from &#x27;express&#x27;;
+    import cors from &#x27;cors&#x27;;
+
+  new_string:
+    import express from &#x27;express&#x27;;
+    import cors from &#x27;cors&#x27;;
+    import rateLimit from &#x27;express-rate-limit&#x27;;
+
+  ⟹ Allow? (y/n): y
+
+  [file_edit] src/app.ts (awaiting approval)
+
+  old_string:
+    app.use(cors());
+    app.use(express.json());
+
+  new_string:
+    app.use(cors());
+    app.use(express.json());
+
+    const limiter = rateLimit({
+      windowMs: 15 * 60 * 1000,  // 15 minutes
+      max: 100,                    // limit each IP to 100 requests
+      standardHeaders: true,
+      legacyHeaders: false,
+      message: { error: &#x27;Too many requests, please try again later&#x27; }
+    });
+    app.use(&#x27;/api&#x27;, limiter);
+
+  ⟹ Allow? (y/n): y
+
+  [bash] npm test (awaiting approval)
+  ⟹ Allow? (y/n): y
+
+  ✓ All tests passing. Rate limiting is configured for 100
+  requests per 15-minute window on all /api routes.</code></pre>
+<h3 id="debugging-with-documentation">Debugging with Documentation <a href="#debugging-with-documentation" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: My Prisma query is returning null when I know data exists.
+     Here&#x27;s my code:
+
+     const user = await prisma.user.findFirst({
+       where: { email: email }
+     });
+
+NeamCode:
+  [web_search] &quot;Prisma findFirst returning null case sensitivity&quot;
+
+  I found the issue. Prisma queries are **case-sensitive** by
+  default with PostgreSQL. If the email in your database is
+  &quot;User@Example.com&quot; but the query email is &quot;user@example.com&quot;,
+  it won&#x27;t match.
+
+  Fix:
+
+  [file_edit] src/services/userService.ts (awaiting approval)
+
+  old_string:
+    const user = await prisma.user.findFirst({
+      where: { email: email }
+    });
+
+  new_string:
+    const user = await prisma.user.findFirst({
+      where: {
+        email: {
+          equals: email,
+          mode: &#x27;insensitive&#x27;
+        }
+      }
+    });
+
+  ⟹ Allow? (y/n): y
+  ✓ Fixed. Prisma will now do case-insensitive email matching.</code></pre>
+<h3 id="staying-current">Staying Current <a href="#staying-current" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Is there a newer version of the helmet package?
+     We&#x27;re on 6.1.0 — check if we should upgrade.
+
+NeamCode:
+  [web_fetch] https://registry.npmjs.org/helmet/latest
+
+  Current latest: helmet 8.0.0
+
+  You&#x27;re on 6.1.0, which is 2 major versions behind.
+
+  [web_search] &quot;helmet npm changelog breaking changes v7 v8&quot;
+
+  Breaking changes to be aware of:
+
+  v7.0.0:
+  - Dropped Node 14 support
+  - crossOriginResourcePolicy enabled by default
+  - contentSecurityPolicy default directives changed
+
+  v8.0.0:
+  - Dropped Node 16 support
+  - Removed deprecated xssFilter (browsers handle this natively)
+  - New strictTransportSecurity defaults
+
+  Since you&#x27;re on Node 20, both upgrades are safe. The main
+  thing to watch is the CSP default changes. Want me to upgrade
+  and update your CSP config?</code></pre>
+<hr />
+<h2 id="75-pro-tips">7.5 Pro Tips <a href="#75-pro-tips" class="heading-anchor">#</a></h2>
+<h3 id="1-be-specific-with-search-queries">1. Be Specific with Search Queries <a href="#1-be-specific-with-search-queries" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-"># Good:
+You: Search for how to implement WebSocket authentication in Express
+
+# Less useful:
+You: Search for WebSockets</code></pre>
+<p>NeamCode formulates good search queries, but specific questions get better results.</p>
+<h3 id="2-fetch-official-docs-over-blog-posts">2. Fetch Official Docs Over Blog Posts <a href="#2-fetch-official-docs-over-blog-posts" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Fetch the official Next.js docs on server actions,
+     not blog posts
+
+# Official docs are more accurate and up-to-date.</code></pre>
+<h3 id="3-use-image-analysis-for-ui-work">3. Use Image Analysis for UI Work <a href="#3-use-image-analysis-for-ui-work" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Look at this Figma export and build the component
+
+# Saves you from manually translating visual designs into code.
+# NeamCode can see colors, spacing, layout, and typography.</code></pre>
+<h3 id="4-combine-multiple-research-sources">4. Combine Multiple Research Sources <a href="#4-combine-multiple-research-sources" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: I need to choose between Redis and Memcached for caching.
+     Research both and give me a comparison for my use case
+     (session storage for a Node.js app with 10k concurrent users).
+
+NeamCode:
+  [web_search] &quot;Redis vs Memcached session storage Node.js&quot;
+  [web_search] &quot;Redis session store performance 10k users&quot;
+  [web_fetch] https://redis.io/docs/latest/develop/use/
+    client-side-caching/
+
+  (Detailed comparison with recommendation)</code></pre>
+<h3 id="5-let-research-flow-into-implementation">5. Let Research Flow Into Implementation <a href="#5-let-research-flow-into-implementation" class="heading-anchor">#</a></h3>
+<p>Don't separate research and coding into different sessions. The best workflow is:</p>
+<figure class="diagram-figure">
+  <img src="../assets/diagrams/ch07-research-code-loop.svg" alt="The Research-Code Loop" />
+  <figcaption>Figure 7.1 — The Research-Code Loop</figcaption>
+</figure>
+<div class="ascii-fallback">
+<div class="code-header ascii-fallback"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre class="ascii-fallback"><code class="language-">┌──────────────────────────────────────────────────┐
+│         The Research-Code Loop                   │
+│                                                  │
+│   ┌──────────┐                                   │
+│   │ Question │                                   │
+│   └────┬─────┘                                   │
+│        │                                         │
+│        ▼                                         │
+│   ┌──────────┐    ┌───────────┐                  │
+│   │  Search  │───▶│ Understand│                  │
+│   │ web_search│   │  Results  │                  │
+│   └──────────┘    └─────┬─────┘                  │
+│                         │                        │
+│                         ▼                        │
+│                   ┌───────────┐                   │
+│                   │ Implement │                   │
+│                   │ file_edit │                   │
+│                   └─────┬─────┘                  │
+│                         │                        │
+│                         ▼                        │
+│                   ┌───────────┐                   │
+│                   │  Verify   │                   │
+│                   │   bash    │                   │
+│                   └─────┬─────┘                  │
+│                         │                        │
+│                    ✓ or loop back                 │
+└──────────────────────────────────────────────────┘</code></pre>
+</div>
+<p>All of this happens in a single NeamCode conversation. No tab-switching, no copy-pasting from browser to terminal.</p>
+<h3 id="6-research-before-refactoring">6. Research Before Refactoring <a href="#6-research-before-refactoring" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: I want to migrate from Express to Fastify.
+     Research the differences first, then help me plan the migration.
+
+# NeamCode will search for migration guides, API differences,
+# and plugin equivalents before touching any code.</code></pre>
+<hr />
+<h2 id="exercises">Exercises <a href="#exercises" class="heading-anchor">#</a></h2>
+<div class="callout callout-try-it-yourself"><p>🎯 <strong>Exercise 7.1:</strong> Ask NeamCode to search for the latest best practices for a technology you use daily (e.g., "React state management 2026" or "Python async patterns"). Compare what it finds with what you currently know.</p></div>
+<div class="callout callout-try-it-yourself"><p>🎯 <strong>Exercise 7.2:</strong> Pick an npm package (or pip/gem/cargo package) you depend on. Ask NeamCode to fetch its changelog and tell you if there are any breaking changes between your version and the latest.</p></div>
+<div class="callout callout-try-it-yourself"><p>🎯 <strong>Exercise 7.3:</strong> Take a screenshot of any web page. Ask NeamCode to analyze it and describe the layout structure. Then ask it to recreate the layout in HTML and CSS.</p></div>
+<div class="callout callout-try-it-yourself"><p>🎯 <strong>Exercise 7.4:</strong> Combine all the skills: ask NeamCode to research a new library, install it, implement a feature using it, and verify it works with a test — all in one conversation.</p></div>
+<div class="callout callout-try-it-yourself"><p>🎯 <strong>Exercise 7.5:</strong> Ask NeamCode to fetch a public API (e.g., the GitHub API, a weather API, or any REST endpoint) and use the data to generate a summary or a piece of code that works with that data.</p></div>
+<hr />
+<div class="table-wrap"><table>
+<thead><tr>
+<th><a href="06-commands-and-git.md">← Chapter 6: Running Commands &amp; Git</a></th>
+<th><a href="08-slash-commands.md">Chapter 8: Slash Commands — Your Quick Reference →</a></th>
+</tr></thead><tbody>
+</tbody></table></div>
+    <nav class="chapter-nav"><a href="06-commands-and-git.html" class="nav-prev"><span class="nav-label">&larr; Previous</span><span class="nav-title">Running Commands & Git</span></a><a href="08-slash-commands.html" class="nav-next"><span class="nav-label">Next &rarr;</span><span class="nav-title">Slash Commands</span></a></nav>
+  </article>
+</main>
+
+<button class="back-to-top" id="back-to-top" aria-label="Back to top">&#8593;</button>
+
+<div class="search-overlay" id="search-overlay">
+  <div class="search-modal">
+    <div class="search-input-wrap">
+      <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6.5" cy="6.5" r="5"/><line x1="10.5" y1="10.5" x2="15" y2="15"/></svg>
+      <input type="text" class="search-input" id="search-input" placeholder="Search chapters, topics...">
+    </div>
+    <div class="search-results" id="search-results">
+      <div class="search-empty">Start typing to search...</div>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/script.js"></script>
+</body>
+</html>

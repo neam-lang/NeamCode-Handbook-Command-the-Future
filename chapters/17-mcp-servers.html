@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 17: MCP Servers | Command the Future</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-base="../">
+
+<header class="topbar">
+  <div class="topbar-left">
+    <button class="hamburger" id="hamburger" aria-label="Toggle sidebar">&#9776;</button>
+    <a href="../index.html" class="topbar-title">Command the Future</a>
+  </div>
+  <div class="topbar-right">
+    <button class="topbar-btn search-btn" aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6.5" cy="6.5" r="5"/><line x1="10.5" y1="10.5" x2="15" y2="15"/></svg><kbd>Ctrl+K</kbd></button>
+    <button class="topbar-btn" id="theme-toggle" aria-label="Toggle theme"></button>
+  </div>
+</header>
+
+<div class="progress-bar"><div class="progress-fill"></div></div>
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+<aside class="sidebar" id="sidebar">
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Getting Started</div>
+  <div class="sidebar-chapters">
+    <a href="00-preface.html" class="sidebar-link" title="Preface">Preface</a>
+    <a href="01-meet-neamcode.html" class="sidebar-link" title="Meet NeamCode">Meet NeamCode</a>
+    <a href="02-install-first-conversation.html" class="sidebar-link" title="Install & First Conversation">Install & First Conversation</a>
+    <a href="03-art-of-prompting.html" class="sidebar-link" title="The Art of Prompting">The Art of Prompting</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Core Skills</div>
+  <div class="sidebar-chapters">
+    <a href="04-working-with-files.html" class="sidebar-link" title="Working with Files">Working with Files</a>
+    <a href="05-finding-things.html" class="sidebar-link" title="Finding Things in Code">Finding Things in Code</a>
+    <a href="06-commands-and-git.html" class="sidebar-link" title="Running Commands & Git">Running Commands & Git</a>
+    <a href="07-web-research.html" class="sidebar-link" title="Researching from the Terminal">Researching from the Terminal</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Workflow & Configuration</div>
+  <div class="sidebar-chapters">
+    <a href="08-slash-commands.html" class="sidebar-link" title="Slash Commands">Slash Commands</a>
+    <a href="09-modes.html" class="sidebar-link" title="Modes">Modes</a>
+    <a href="10-sessions-context.html" class="sidebar-link" title="Sessions & Context">Sessions & Context</a>
+    <a href="11-auto-memory.html" class="sidebar-link" title="Auto Memory">Auto Memory</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Providers & Cost</div>
+  <div class="sidebar-chapters">
+    <a href="12-choosing-providers.html" class="sidebar-link" title="Choosing Your AI Provider">Choosing Your AI Provider</a>
+    <a href="13-offline-mode.html" class="sidebar-link" title="Offline Mode">Offline Mode</a>
+    <a href="14-zero-cost-setup.html" class="sidebar-link" title="The $0 AI Setup">The $0 AI Setup</a>
+    <a href="15-budget-cost.html" class="sidebar-link" title="Budget & Cost Tracking">Budget & Cost Tracking</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Advanced Features</div>
+  <div class="sidebar-chapters">
+    <a href="16-agents.html" class="sidebar-link" title="Agents & Delegation">Agents & Delegation</a>
+    <a href="17-mcp-servers.html" class="sidebar-link active" title="MCP Servers">MCP Servers</a>
+    <a href="18-neam-language.html" class="sidebar-link" title="Neam Language Integration">Neam Language Integration</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Audience Guides</div>
+  <div class="sidebar-chapters">
+    <a href="19-for-students.html" class="sidebar-link" title="For Students">For Students</a>
+    <a href="20-for-researchers.html" class="sidebar-link" title="For Researchers">For Researchers</a>
+    <a href="21-for-professionals.html" class="sidebar-link" title="For Professionals">For Professionals</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Walkthroughs</div>
+  <div class="sidebar-chapters">
+    <a href="22-walkthrough-build-project.html" class="sidebar-link" title="Walkthrough: Build a Project">Walkthrough: Build a Project</a>
+    <a href="23-walkthrough-fix-bug.html" class="sidebar-link" title="Walkthrough: Fix a Real Bug">Walkthrough: Fix a Real Bug</a>
+    <a href="24-making-it-yours.html" class="sidebar-link" title="Making NeamCode Yours">Making NeamCode Yours</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Closing</div>
+  <div class="sidebar-chapters">
+    <a href="25-road-ahead.html" class="sidebar-link" title="The Road Ahead">The Road Ahead</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Appendices</div>
+  <div class="sidebar-chapters">
+    <a href="../appendices/A-slash-commands.html" class="sidebar-link" title="All Slash Commands">All Slash Commands</a>
+    <a href="../appendices/B-skills-reference.html" class="sidebar-link" title="All Skills Reference">All Skills Reference</a>
+    <a href="../appendices/C-configuration.html" class="sidebar-link" title="Configuration Reference">Configuration Reference</a>
+    <a href="../appendices/D-troubleshooting.html" class="sidebar-link" title="Troubleshooting & FAQ">Troubleshooting & FAQ</a>
+    <a href="../appendices/E-glossary.html" class="sidebar-link" title="Glossary">Glossary</a>
+  </div>
+</div>
+</aside>
+
+<main class="main">
+  <article class="content">
+<h1 id="chapter-17-mcp-servers-extending-neamcode">Chapter 17: MCP Servers — Extending NeamCode <a href="#chapter-17-mcp-servers-extending-neamcode" class="heading-anchor">#</a></h1>
+<blockquote><p><em>"Any sufficiently advanced tool is indistinguishable from an ecosystem."</em><br>— Freely adapted from Arthur C. Clarke</p></blockquote>
+<p>📖 <strong>Estimated read time:</strong> 12 minutes</p>
+<hr />
+<h2 id="what-youll-learn">What You'll Learn <a href="#what-youll-learn" class="heading-anchor">#</a></h2>
+<ul>
+<li>What the Model Context Protocol (MCP) is and why it matters</li>
+<li>How to connect external MCP servers to NeamCode</li>
+<li>How to discover and use MCP tools</li>
+<li>How to manage your MCP connections</li>
+<li>How to expose NeamCode itself as an MCP server for other tools</li>
+<li>Pro tips for working with MCP effectively</li>
+</ul>
+<hr />
+<h2 id="171-what-is-mcp">17.1 What Is MCP? <a href="#171-what-is-mcp" class="heading-anchor">#</a></h2>
+<p>The <strong>Model Context Protocol (MCP)</strong> is an open standard that lets AI assistants connect to external tools and services through a unified interface. Think of it as a USB port for AI — any tool that speaks MCP can plug into any AI assistant that supports it.</p>
+<figure class="diagram-figure">
+  <img src="../assets/diagrams/ch17-mcp-architecture.svg" alt="MCP Server Architecture" />
+  <figcaption>Figure 17.1 — MCP Server Architecture</figcaption>
+</figure>
+<div class="ascii-fallback">
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">┌──────────────┐       MCP        ┌──────────────────┐
+│   NeamCode   │◄────────────────►│  Notion Server   │
+│              │                  └──────────────────┘
+│              │       MCP        ┌──────────────────┐
+│              │◄────────────────►│  GitHub Server   │
+│              │                  └──────────────────┘
+│              │       MCP        ┌──────────────────┐
+│              │◄────────────────►│  Slack Server    │
+│              │                  └──────────────────┘
+│              │       MCP        ┌──────────────────┐
+│              │◄────────────────►│  Database Server │
+└──────────────┘                  └──────────────────┘</code></pre>
+</div>
+<p>Without MCP, you'd need custom integrations for every tool. With MCP, any server that implements the protocol automatically works with NeamCode.</p>
+<h3 id="what-mcp-servers-provide">What MCP Servers Provide <a href="#what-mcp-servers-provide" class="heading-anchor">#</a></h3>
+<p>An MCP server can expose:</p>
+<ul>
+<li><strong>Tools</strong> — Functions NeamCode can call (e.g., "create a Jira ticket", "query a database", "send a Slack message")</li>
+<li><strong>Resources</strong> — Data NeamCode can read (e.g., database schemas, document contents)</li>
+<li><strong>Prompts</strong> — Pre-built prompt templates for common tasks</li>
+</ul>
+<h3 id="how-neamcode-connects">How NeamCode Connects <a href="#how-neamcode-connects" class="heading-anchor">#</a></h3>
+<p>NeamCode acts as an <strong>MCP client</strong>. It connects to one or more MCP servers, discovers what tools they offer, and makes those tools available during your session. You configure which servers to connect to, and NeamCode handles the rest.</p>
+<hr />
+<h2 id="172-connecting-an-mcp-server">17.2 Connecting an MCP Server <a href="#172-connecting-an-mcp-server" class="heading-anchor">#</a></h2>
+<p>MCP servers are configured in your NeamCode settings. There are two common transport types: <strong>stdio</strong> (local process) and <strong>SSE/HTTP</strong> (remote).</p>
+<h3 id="local-server-stdio">Local Server (stdio) <a href="#local-server-stdio" class="heading-anchor">#</a></h3>
+<p>A local MCP server runs as a subprocess. NeamCode starts it, communicates over stdin/stdout, and stops it when you disconnect.</p>
+<p>Add it to your configuration file (<code>.neamcode/settings.json</code> or global config):</p>
+<div class="code-header"><span class="code-lang">json</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-json">{
+  &quot;mcp_servers&quot;: {
+    &quot;filesystem&quot;: {
+      &quot;command&quot;: &quot;npx&quot;,
+      &quot;args&quot;: [&quot;-y&quot;, &quot;@modelcontextprotocol/server-filesystem&quot;, &quot;/home/user/projects&quot;],
+      &quot;transport&quot;: &quot;stdio&quot;
+    }
+  }
+}</code></pre>
+<h3 id="remote-server-sse">Remote Server (SSE) <a href="#remote-server-sse" class="heading-anchor">#</a></h3>
+<p>A remote MCP server runs on a network endpoint:</p>
+<div class="code-header"><span class="code-lang">json</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-json">{
+  &quot;mcp_servers&quot;: {
+    &quot;company-tools&quot;: {
+      &quot;url&quot;: &quot;https://mcp.internal.company.com/sse&quot;,
+      &quot;transport&quot;: &quot;sse&quot;,
+      &quot;headers&quot;: {
+        &quot;Authorization&quot;: &quot;Bearer ${MCP_COMPANY_TOKEN}&quot;
+      }
+    }
+  }
+}</code></pre>
+<h3 id="verifying-the-connection">Verifying the Connection <a href="#verifying-the-connection" class="heading-anchor">#</a></h3>
+<p>After configuring, verify that NeamCode can reach the server:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: /mcp list</code></pre>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">MCP Server Connections
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Name             Transport   Status    Tools
+  ─────────────    ─────────   ──────    ─────
+  filesystem       stdio       ✅ Connected   8
+  company-tools    sse         ✅ Connected  12
+
+2 servers connected, 20 tools available</code></pre>
+<div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip:</strong> You can use environment variables in your MCP configuration (like <code>${MCP_COMPANY_TOKEN}</code> above). NeamCode resolves them at connection time, so you never hardcode secrets.</p></div>
+<hr />
+<h2 id="173-using-mcp-tools">17.3 Using MCP Tools <a href="#173-using-mcp-tools" class="heading-anchor">#</a></h2>
+<p>Once a server is connected, its tools are available to NeamCode automatically. You can use them in two ways: <strong>implicitly</strong> (just describe what you want) or <strong>explicitly</strong> (browse and call tools directly).</p>
+<h3 id="implicit-use-recommended">Implicit Use (Recommended) <a href="#implicit-use-recommended" class="heading-anchor">#</a></h3>
+<p>Just tell NeamCode what you need. It knows which MCP tools are available and will use them when appropriate:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Create a new page in Notion called &quot;Sprint 24 Planning&quot;
+     with a table for tracking tasks</code></pre>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">Using tool: notion.create_page
+  title: &quot;Sprint 24 Planning&quot;
+  content: [table block with columns: Task, Owner, Status, Due Date]
+
+✅ Page created: https://notion.so/Sprint-24-Planning-abc123</code></pre>
+<p>You didn't need to know the tool name or its parameters — NeamCode figured it out.</p>
+<h3 id="explicit-tool-discovery">Explicit Tool Discovery <a href="#explicit-tool-discovery" class="heading-anchor">#</a></h3>
+<p>To see what tools a server provides:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: /mcp tools filesystem</code></pre>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">Tools from &#x27;filesystem&#x27; server:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  read_file        Read the contents of a file
+  write_file       Write content to a file
+  list_directory   List files in a directory
+  create_dir       Create a new directory
+  move_file        Move or rename a file
+  search_files     Search for files by pattern
+  get_file_info    Get metadata about a file
+  delete_file      Delete a file
+
+8 tools available</code></pre>
+<h3 id="testing-a-tool">Testing a Tool <a href="#testing-a-tool" class="heading-anchor">#</a></h3>
+<p>Before relying on a tool in a workflow, you can test it:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: /mcp test filesystem read_file</code></pre>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">Testing: filesystem.read_file
+
+  Sending test request with sample parameters...
+  Response received in 23ms
+  ✅ Tool is working correctly
+
+  Sample output:
+  {
+    &quot;content&quot;: &quot;# README\nWelcome to the project...&quot;,
+    &quot;metadata&quot;: { &quot;size&quot;: 1024, &quot;modified&quot;: &quot;2026-03-06T...&quot; }
+  }</code></pre>
+<h3 id="lazy-tool-loading">Lazy Tool Loading <a href="#lazy-tool-loading" class="heading-anchor">#</a></h3>
+<p>NeamCode uses <strong>lazy tool loading</strong> for MCP connections. This means:</p>
+<ul>
+<li>Tool definitions are fetched when you first need them, not at startup</li>
+<li>Connecting many MCP servers doesn't slow down your session</li>
+<li>Tools are cached after first load</li>
+</ul>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">First use:
+You: Read the file /tmp/notes.txt using the filesystem server
+
+  Loading tools from &#x27;filesystem&#x27;... (first time, ~200ms)
+  Using tool: filesystem.read_file
+  ✅ Done
+
+Second use:
+You: Now list the /tmp directory
+
+  Using tool: filesystem.list_directory  (instant — already loaded)
+  ✅ Done</code></pre>
+<div class="callout callout-note"><div class="callout-title"><span class="callout-icon">&#128221;</span> Note</div><p>📝 <strong>Note:</strong> Lazy loading means <code>/mcp tools &lt;name&gt;</code> triggers a tool fetch if it hasn't happened yet. This is normal and only takes a moment.</p></div>
+<hr />
+<h2 id="174-managing-connections">17.4 Managing Connections <a href="#174-managing-connections" class="heading-anchor">#</a></h2>
+<h3 id="listing-all-servers">Listing All Servers <a href="#listing-all-servers" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: /mcp list</code></pre>
+<p>Shows all configured servers, their connection status, and tool counts.</p>
+<h3 id="connection-troubleshooting">Connection Troubleshooting <a href="#connection-troubleshooting" class="heading-anchor">#</a></h3>
+<p>If a server shows as disconnected:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: /mcp list</code></pre>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">MCP Server Connections
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Name             Transport   Status           Tools
+  ─────────────    ─────────   ──────           ─────
+  filesystem       stdio       ✅ Connected        8
+  company-tools    sse         ❌ Disconnected     —
+</code></pre>
+<p>Common causes and fixes:</p>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Problem</th>
+<th>Solution</th>
+</tr></thead><tbody>
+<tr>
+<td>Server binary not found</td>
+<td>Check that the <code>command</code> path is correct and the binary is installed</td>
+</tr>
+<tr>
+<td>Authentication failed</td>
+<td>Verify tokens/credentials in environment variables</td>
+</tr>
+<tr>
+<td>Network unreachable</td>
+<td>Check URL and network connectivity for SSE servers</td>
+</tr>
+<tr>
+<td>Server crashed on start</td>
+<td>Run the server command manually to see error output</td>
+</tr>
+</tbody></table></div>
+<h3 id="adding-a-new-server-mid-session">Adding a New Server Mid-Session <a href="#adding-a-new-server-mid-session" class="heading-anchor">#</a></h3>
+<p>You can add MCP servers to your config while NeamCode is running:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Add an MCP server for GitHub. Use the official
+     @modelcontextprotocol/server-github package.</code></pre>
+<p>NeamCode will update your configuration and connect to the new server without restarting.</p>
+<div class="callout callout-warning"><div class="callout-title"><span class="callout-icon">&#9888;&#65039;</span> Warning</div><p>⚠️ <strong>Warning:</strong> Be cautious when connecting to untrusted MCP servers. An MCP server's tools can read and write data on your behalf. Only connect to servers you trust or have audited.</p></div>
+<hr />
+<h2 id="175-neamcode-as-an-mcp-server">17.5 NeamCode as an MCP Server <a href="#175-neamcode-as-an-mcp-server" class="heading-anchor">#</a></h2>
+<p>NeamCode doesn't just consume MCP services — it can <strong>act as one</strong>. This means other MCP-compatible tools can call NeamCode's capabilities.</p>
+<h3 id="starting-neamcode-in-mcp-server-mode">Starting NeamCode in MCP Server Mode <a href="#starting-neamcode-in-mcp-server-mode" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">bash</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-bash">$ neamcode mcp-server</code></pre>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">NeamCode MCP Server started
+  Transport: stdio
+  Tools exposed: 15
+  Ready for connections.</code></pre>
+<h3 id="what-this-enables">What This Enables <a href="#what-this-enables" class="heading-anchor">#</a></h3>
+<p>When NeamCode runs as an MCP server, other tools can:</p>
+<ul>
+<li>Ask NeamCode to analyze code</li>
+<li>Request code generation</li>
+<li>Trigger NeamCode's agents (Explore, Plan, Review, Test)</li>
+<li>Use NeamCode's file editing capabilities</li>
+</ul>
+<h3 id="use-case-ide-integration">Use Case: IDE Integration <a href="#use-case-ide-integration" class="heading-anchor">#</a></h3>
+<p>Your IDE can connect to NeamCode as an MCP server:</p>
+<div class="comparison-grid">
+  <div class="info-box">
+    <div class="info-box-header blue">Your IDE (client)</div>
+    <div class="info-box-body">
+      <p>"Explain this code"</p>
+      <p>Receives: explanation response</p>
+    </div>
+  </div>
+  <div class="info-box">
+    <div class="info-box-header green">NeamCode (MCP server)</div>
+    <div class="info-box-body">
+      <p>Analyzes code, returns answer</p>
+    </div>
+  </div>
+</div>
+<div class="flow-steps">
+  <span class="flow-step">Your IDE</span>
+  <span class="flow-arrow">&harr;</span>
+  <span class="flow-step highlight">MCP</span>
+  <span class="flow-arrow">&harr;</span>
+  <span class="flow-step">NeamCode</span>
+</div>
+<h3 id="use-case-chaining-ai-assistants">Use Case: Chaining AI Assistants <a href="#use-case-chaining-ai-assistants" class="heading-anchor">#</a></h3>
+<p>Another AI assistant can delegate coding tasks to NeamCode:</p>
+<div class="comparison-grid">
+  <div class="info-box">
+    <div class="info-box-header purple">Other AI Assistant</div>
+    <div class="info-box-body">
+      <p>"Implement feature X"</p>
+      <p>Receives: result (done)</p>
+    </div>
+  </div>
+  <div class="info-box">
+    <div class="info-box-header green">NeamCode (MCP server)</div>
+    <div class="info-box-body">
+      <p>Writes code, runs tests, returns result</p>
+    </div>
+  </div>
+</div>
+<div class="flow-steps">
+  <span class="flow-step">Other AI</span>
+  <span class="flow-arrow">&harr;</span>
+  <span class="flow-step highlight">MCP</span>
+  <span class="flow-arrow">&harr;</span>
+  <span class="flow-step">NeamCode</span>
+</div>
+<h3 id="configuration-for-mcp-server-mode">Configuration for MCP Server Mode <a href="#configuration-for-mcp-server-mode" class="heading-anchor">#</a></h3>
+<p>You can customize what NeamCode exposes:</p>
+<div class="code-header"><span class="code-lang">json</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-json">{
+  &quot;mcp_server&quot;: {
+    &quot;expose_tools&quot;: [&quot;read_file&quot;, &quot;edit_file&quot;, &quot;run_command&quot;,
+                     &quot;agent_explore&quot;, &quot;agent_review&quot;],
+    &quot;allow_write&quot;: true,
+    &quot;working_directory&quot;: &quot;/home/user/projects/myapp&quot;
+  }
+}</code></pre>
+<div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip:</strong> When running NeamCode as an MCP server, limit <code>expose_tools</code> to only what the connecting client needs. Follow the principle of least privilege.</p></div>
+<hr />
+<h2 id="176-pro-tips">17.6 Pro Tips <a href="#176-pro-tips" class="heading-anchor">#</a></h2>
+<h3 id="combine-multiple-mcp-servers-in-one-task">Combine Multiple MCP Servers in One Task <a href="#combine-multiple-mcp-servers-in-one-task" class="heading-anchor">#</a></h3>
+<p>NeamCode can use tools from different servers in a single conversation:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Look up the latest bug reports in Jira, find the related code
+     in our repo, and post a summary to the #bugs Slack channel</code></pre>
+<p>NeamCode seamlessly uses tools from three servers: Jira, filesystem, and Slack — all in one flow.</p>
+<h3 id="create-project-specific-mcp-configs">Create Project-Specific MCP Configs <a href="#create-project-specific-mcp-configs" class="heading-anchor">#</a></h3>
+<p>Put MCP configuration in your project's <code>.neamcode/settings.json</code> so every team member gets the same tool access:</p>
+<div class="code-header"><span class="code-lang">json</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-json">{
+  &quot;mcp_servers&quot;: {
+    &quot;our-database&quot;: {
+      &quot;command&quot;: &quot;npx&quot;,
+      &quot;args&quot;: [&quot;-y&quot;, &quot;@company/db-mcp-server&quot;],
+      &quot;transport&quot;: &quot;stdio&quot;,
+      &quot;env&quot;: {
+        &quot;DB_HOST&quot;: &quot;localhost&quot;,
+        &quot;DB_NAME&quot;: &quot;myapp_dev&quot;
+      }
+    }
+  }
+}</code></pre>
+<p>Check this into version control (without secrets) so the team shares a consistent setup.</p>
+<h3 id="monitor-tool-usage">Monitor Tool Usage <a href="#monitor-tool-usage" class="heading-anchor">#</a></h3>
+<p>Keep an eye on which MCP tools are being called, especially for tools that have side effects:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: /mcp list</code></pre>
+<p>Review the tools column. If a server has many tools, use <code>/mcp tools &lt;name&gt;</code> to understand what you're exposing to the AI.</p>
+<h3 id="build-your-own-mcp-server">Build Your Own MCP Server <a href="#build-your-own-mcp-server" class="heading-anchor">#</a></h3>
+<p>If your team has internal tools or APIs, consider wrapping them in an MCP server. The protocol is straightforward:</p>
+<ol>
+<li>Accept tool call requests via stdio or HTTP</li>
+<li>Return structured JSON responses</li>
+<li>Provide tool descriptions so AI clients know what's available</li>
+</ol>
+<p>Many teams build MCP servers for:</p>
+<ul>
+<li>Internal databases (read-only query access)</li>
+<li>Deployment systems (trigger deploys, check status)</li>
+<li>Monitoring dashboards (fetch metrics, alerts)</li>
+<li>Documentation systems (search internal wikis)</li>
+</ul>
+<div class="callout callout-note"><div class="callout-title"><span class="callout-icon">&#128221;</span> Note</div><p>📝 <strong>Note:</strong> The MCP specification is open and well-documented. Building a simple MCP server for a REST API can be done in an afternoon.</p></div>
+<hr />
+<h2 id="exercises">Exercises <a href="#exercises" class="heading-anchor">#</a></h2>
+<h3 id="exercise-171-your-first-mcp-connection">🎯 Exercise 17.1: Your First MCP Connection <a href="#exercise-171-your-first-mcp-connection" class="heading-anchor">#</a></h3>
+<p>Configure the official filesystem MCP server to access a directory on your machine. Then:</p>
+<ol>
+<li>Run <code>/mcp list</code> to verify the connection</li>
+<li>Run <code>/mcp tools filesystem</code> to see available tools</li>
+<li>Ask NeamCode to list the files in that directory using the MCP server</li>
+</ol>
+<h3 id="exercise-172-implicit-tool-use">🎯 Exercise 17.2: Implicit Tool Use <a href="#exercise-172-implicit-tool-use" class="heading-anchor">#</a></h3>
+<p>With a server connected, try asking NeamCode to do something without mentioning MCP or tool names. For example: "What files are in /tmp?" Watch how NeamCode discovers and uses the right tool automatically.</p>
+<h3 id="exercise-173-test-before-you-trust">🎯 Exercise 17.3: Test Before You Trust <a href="#exercise-173-test-before-you-trust" class="heading-anchor">#</a></h3>
+<p>Connect a new MCP server and run <code>/mcp test</code> on each of its tools before using them in a real workflow. Note how long each tool takes to respond and whether the output matches your expectations.</p>
+<h3 id="exercise-174-neamcode-as-a-server">🎯 Exercise 17.4: NeamCode as a Server <a href="#exercise-174-neamcode-as-a-server" class="heading-anchor">#</a></h3>
+<p>Start NeamCode in MCP server mode:</p>
+<div class="code-header"><span class="code-lang">bash</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-bash">neamcode mcp-server</code></pre>
+<p>If you have another MCP client available, try connecting it to NeamCode and asking it to read a file.</p>
+<hr />
+    <nav class="chapter-nav"><a href="16-agents.html" class="nav-prev"><span class="nav-label">&larr; Previous</span><span class="nav-title">Agents & Delegation</span></a><a href="18-neam-language.html" class="nav-next"><span class="nav-label">Next &rarr;</span><span class="nav-title">Neam Language Integration</span></a></nav>
+  </article>
+</main>
+
+<button class="back-to-top" id="back-to-top" aria-label="Back to top">&#8593;</button>
+
+<div class="search-overlay" id="search-overlay">
+  <div class="search-modal">
+    <div class="search-input-wrap">
+      <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6.5" cy="6.5" r="5"/><line x1="10.5" y1="10.5" x2="15" y2="15"/></svg>
+      <input type="text" class="search-input" id="search-input" placeholder="Search chapters, topics...">
+    </div>
+    <div class="search-results" id="search-results">
+      <div class="search-empty">Start typing to search...</div>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/script.js"></script>
+</body>
+</html>

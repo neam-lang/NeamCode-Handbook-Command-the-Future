@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 16: Agents &amp; Delegation | Command the Future</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-base="../">
+
+<header class="topbar">
+  <div class="topbar-left">
+    <button class="hamburger" id="hamburger" aria-label="Toggle sidebar">&#9776;</button>
+    <a href="../index.html" class="topbar-title">Command the Future</a>
+  </div>
+  <div class="topbar-right">
+    <button class="topbar-btn search-btn" aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6.5" cy="6.5" r="5"/><line x1="10.5" y1="10.5" x2="15" y2="15"/></svg><kbd>Ctrl+K</kbd></button>
+    <button class="topbar-btn" id="theme-toggle" aria-label="Toggle theme"></button>
+  </div>
+</header>
+
+<div class="progress-bar"><div class="progress-fill"></div></div>
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+<aside class="sidebar" id="sidebar">
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Getting Started</div>
+  <div class="sidebar-chapters">
+    <a href="00-preface.html" class="sidebar-link" title="Preface">Preface</a>
+    <a href="01-meet-neamcode.html" class="sidebar-link" title="Meet NeamCode">Meet NeamCode</a>
+    <a href="02-install-first-conversation.html" class="sidebar-link" title="Install & First Conversation">Install & First Conversation</a>
+    <a href="03-art-of-prompting.html" class="sidebar-link" title="The Art of Prompting">The Art of Prompting</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Core Skills</div>
+  <div class="sidebar-chapters">
+    <a href="04-working-with-files.html" class="sidebar-link" title="Working with Files">Working with Files</a>
+    <a href="05-finding-things.html" class="sidebar-link" title="Finding Things in Code">Finding Things in Code</a>
+    <a href="06-commands-and-git.html" class="sidebar-link" title="Running Commands & Git">Running Commands & Git</a>
+    <a href="07-web-research.html" class="sidebar-link" title="Researching from the Terminal">Researching from the Terminal</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Workflow & Configuration</div>
+  <div class="sidebar-chapters">
+    <a href="08-slash-commands.html" class="sidebar-link" title="Slash Commands">Slash Commands</a>
+    <a href="09-modes.html" class="sidebar-link" title="Modes">Modes</a>
+    <a href="10-sessions-context.html" class="sidebar-link" title="Sessions & Context">Sessions & Context</a>
+    <a href="11-auto-memory.html" class="sidebar-link" title="Auto Memory">Auto Memory</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Providers & Cost</div>
+  <div class="sidebar-chapters">
+    <a href="12-choosing-providers.html" class="sidebar-link" title="Choosing Your AI Provider">Choosing Your AI Provider</a>
+    <a href="13-offline-mode.html" class="sidebar-link" title="Offline Mode">Offline Mode</a>
+    <a href="14-zero-cost-setup.html" class="sidebar-link" title="The $0 AI Setup">The $0 AI Setup</a>
+    <a href="15-budget-cost.html" class="sidebar-link" title="Budget & Cost Tracking">Budget & Cost Tracking</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Advanced Features</div>
+  <div class="sidebar-chapters">
+    <a href="16-agents.html" class="sidebar-link active" title="Agents & Delegation">Agents & Delegation</a>
+    <a href="17-mcp-servers.html" class="sidebar-link" title="MCP Servers">MCP Servers</a>
+    <a href="18-neam-language.html" class="sidebar-link" title="Neam Language Integration">Neam Language Integration</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Audience Guides</div>
+  <div class="sidebar-chapters">
+    <a href="19-for-students.html" class="sidebar-link" title="For Students">For Students</a>
+    <a href="20-for-researchers.html" class="sidebar-link" title="For Researchers">For Researchers</a>
+    <a href="21-for-professionals.html" class="sidebar-link" title="For Professionals">For Professionals</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Walkthroughs</div>
+  <div class="sidebar-chapters">
+    <a href="22-walkthrough-build-project.html" class="sidebar-link" title="Walkthrough: Build a Project">Walkthrough: Build a Project</a>
+    <a href="23-walkthrough-fix-bug.html" class="sidebar-link" title="Walkthrough: Fix a Real Bug">Walkthrough: Fix a Real Bug</a>
+    <a href="24-making-it-yours.html" class="sidebar-link" title="Making NeamCode Yours">Making NeamCode Yours</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Closing</div>
+  <div class="sidebar-chapters">
+    <a href="25-road-ahead.html" class="sidebar-link" title="The Road Ahead">The Road Ahead</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Appendices</div>
+  <div class="sidebar-chapters">
+    <a href="../appendices/A-slash-commands.html" class="sidebar-link" title="All Slash Commands">All Slash Commands</a>
+    <a href="../appendices/B-skills-reference.html" class="sidebar-link" title="All Skills Reference">All Skills Reference</a>
+    <a href="../appendices/C-configuration.html" class="sidebar-link" title="Configuration Reference">Configuration Reference</a>
+    <a href="../appendices/D-troubleshooting.html" class="sidebar-link" title="Troubleshooting & FAQ">Troubleshooting & FAQ</a>
+    <a href="../appendices/E-glossary.html" class="sidebar-link" title="Glossary">Glossary</a>
+  </div>
+</div>
+</aside>
+
+<main class="main">
+  <article class="content">
+<h1 id="chapter-16-agents-let-it-delegate">Chapter 16: Agents — Let It Delegate <a href="#chapter-16-agents-let-it-delegate" class="heading-anchor">#</a></h1>
+<blockquote><p><em>"The best leaders don't do all the work — they know who to ask."</em><br>— Management proverb, repurposed for AI</p></blockquote>
+<p>📖 <strong>Estimated read time:</strong> 15 minutes</p>
+<hr />
+<h2 id="what-youll-learn">What You'll Learn <a href="#what-youll-learn" class="heading-anchor">#</a></h2>
+<ul>
+<li>What agents are and how they differ from regular NeamCode interactions</li>
+<li>How to use each of the four built-in agents: Explore, Plan, Review, and Test</li>
+<li>How delegation works under the hood</li>
+<li>When NeamCode spawns agents automatically (and when to invoke them yourself)</li>
+<li>Pro tips for getting the most out of multi-agent workflows</li>
+</ul>
+<hr />
+<h2 id="161-what-are-agents">16.1 What Are Agents? <a href="#161-what-are-agents" class="heading-anchor">#</a></h2>
+<p>When you chat with NeamCode normally, you're talking to a single AI assistant that reads your files, writes code, and runs commands. That works great for most tasks. But some jobs are too big or too specialized for a single conversation thread.</p>
+<p><strong>Agents</strong> are specialized sub-assistants that NeamCode can spin up to handle focused tasks. Each agent:</p>
+<ul>
+<li>Has its <strong>own independent context window</strong> (it doesn't share memory with your main session)</li>
+<li>Is optimized for a <strong>specific type of work</strong> (research, planning, reviewing, or testing)</li>
+<li>Reports its <strong>findings back</strong> to the main session when finished</li>
+<li>Can be invoked <strong>manually by you</strong> or <strong>automatically by NeamCode</strong></li>
+</ul>
+<p>Think of it like this:</p>
+<figure class="diagram-figure">
+  <img src="../assets/diagrams/ch16-agent-delegation.svg" alt="Agent Delegation Architecture" />
+  <figcaption>Figure 16.1 — Agent Delegation Architecture</figcaption>
+</figure>
+<div class="ascii-fallback">
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">┌─────────────────────────────────────┐
+│         Your Main Session           │
+│                                     │
+│  &quot;Refactor the auth module&quot;         │
+│         │                           │
+│         ├──► [ Explore Agent ]      │
+│         │     Researches codebase   │
+│         │     Reports back          │
+│         │                           │
+│         ├──► [ Plan Agent ]         │
+│         │     Creates step-by-step  │
+│         │     Reports back          │
+│         │                           │
+│         ├──► [ Review Agent ]       │
+│         │     Checks the changes    │
+│         │     Reports back          │
+│         │                           │
+│         └──► [ Test Agent ]         │
+│               Writes &amp; runs tests   │
+│               Reports back          │
+└─────────────────────────────────────┘</code></pre>
+</div>
+<p>The key insight: each agent gets a <strong>fresh context window</strong>. This means an Explore agent can read dozens of files without cluttering your main conversation. When it finishes, only the summary comes back — keeping your session clean and focused.</p>
+<hr />
+<h2 id="162-the-explore-agent">16.2 The Explore Agent <a href="#162-the-explore-agent" class="heading-anchor">#</a></h2>
+<p>The Explore agent is your <strong>codebase researcher</strong>. When you need to understand how something works across many files, Explore dives deep so you don't have to.</p>
+<h3 id="when-to-use-it">When to Use It <a href="#when-to-use-it" class="heading-anchor">#</a></h3>
+<ul>
+<li>Understanding an unfamiliar codebase</li>
+<li>Tracing how a feature works end-to-end</li>
+<li>Finding all the places where something is used</li>
+<li>Answering "how does X work?" questions</li>
+</ul>
+<h3 id="invoking-the-explore-agent">Invoking the Explore Agent <a href="#invoking-the-explore-agent" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: /agent explore How does the authentication middleware chain work?</code></pre>
+<p>NeamCode responds:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">🔍 Spawning Explore agent...
+
+Explore agent is researching your question. This may take a moment.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Explore Agent Report:
+
+The authentication middleware chain works as follows:
+
+1. **Entry point:** `src/middleware/auth.ts` exports `authMiddleware()`
+2. **Token extraction:** Line 23 pulls the Bearer token from the
+   Authorization header
+3. **Validation flow:**
+   - JWT verification via `src/auth/jwt.ts` → `verifyToken()`
+   - User lookup via `src/models/user.ts` → `findById()`
+   - Permission check via `src/auth/permissions.ts` → `hasAccess()`
+4. **Error handling:** Falls through to `src/middleware/errorHandler.ts`
+   which returns 401/403 responses
+
+Files examined: 12
+Key files:
+  - src/middleware/auth.ts (main chain)
+  - src/auth/jwt.ts (token verification)
+  - src/auth/permissions.ts (RBAC logic)
+  - src/models/user.ts (user model)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</code></pre>
+<h3 id="a-more-targeted-example">A More Targeted Example <a href="#a-more-targeted-example" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: /agent explore Find every place where we call the Stripe API
+     and list which endpoints are used</code></pre>
+<p>The Explore agent will grep through code, read relevant files, trace imports, and come back with a comprehensive answer — all without burning through your main session's context.</p>
+<div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip:</strong> The Explore agent is read-only. It investigates but never modifies files. This makes it safe to use any time you need answers.</p></div>
+<hr />
+<h2 id="163-the-plan-agent">16.3 The Plan Agent <a href="#163-the-plan-agent" class="heading-anchor">#</a></h2>
+<p>The Plan agent is your <strong>implementation strategist</strong>. Give it a goal, and it creates a detailed, step-by-step plan for achieving it.</p>
+<h3 id="when-to-use-it">When to Use It <a href="#when-to-use-it" class="heading-anchor">#</a></h3>
+<ul>
+<li>Before starting a complex refactor</li>
+<li>When you want to see the approach before committing to it</li>
+<li>Breaking a big feature into manageable pieces</li>
+<li>Getting a second opinion on how to approach something</li>
+</ul>
+<h3 id="invoking-the-plan-agent">Invoking the Plan Agent <a href="#invoking-the-plan-agent" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: /agent plan Add rate limiting to all public API endpoints</code></pre>
+<p>NeamCode responds:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">📋 Spawning Plan agent...
+
+Plan agent is analyzing your codebase and creating a plan.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Implementation Plan: Add Rate Limiting to Public API Endpoints
+
+## Overview
+Add token-bucket rate limiting to the 14 public endpoints in
+src/routes/public/. Use Redis for distributed state.
+
+## Steps
+
+### Step 1: Install dependencies
+- Add `rate-limiter-flexible` package
+- Add Redis client if not already present
+
+### Step 2: Create rate limiter middleware
+- File: `src/middleware/rateLimiter.ts`
+- Configure: 100 requests/minute per IP (default)
+- Use Redis store for multi-instance support
+
+### Step 3: Create rate limit configuration
+- File: `src/config/rateLimits.ts`
+- Per-endpoint overrides (e.g., /login = 10/min)
+
+### Step 4: Apply to public routes
+- Modify `src/routes/public/index.ts`
+- Add middleware before route handlers
+- Files affected: 3
+
+### Step 5: Add response headers
+- X-RateLimit-Limit
+- X-RateLimit-Remaining
+- X-RateLimit-Reset
+
+### Step 6: Add tests
+- Unit tests for rate limiter logic
+- Integration test for rate limit responses
+
+## Estimated scope
+- New files: 2
+- Modified files: 4
+- Risk level: Low (additive change, no existing logic modified)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</code></pre>
+<p>After reviewing the plan, you can tell NeamCode to execute it:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: That plan looks good. Go ahead and implement it.</code></pre>
+<div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip:</strong> The Plan agent examines your actual codebase structure, existing patterns, and dependencies. Its plans aren't generic — they're tailored to your project.</p></div>
+<div class="callout callout-warning"><div class="callout-title"><span class="callout-icon">&#9888;&#65039;</span> Warning</div><p>⚠️ <strong>Warning:</strong> The Plan agent creates plans but does not execute them. You (or the main session) must decide to proceed with implementation.</p></div>
+<hr />
+<h2 id="164-the-review-agent">16.4 The Review Agent <a href="#164-the-review-agent" class="heading-anchor">#</a></h2>
+<p>The Review agent is your <strong>code reviewer</strong>. It examines changes with fresh eyes and provides feedback just like a human reviewer would on a pull request.</p>
+<h3 id="when-to-use-it">When to Use It <a href="#when-to-use-it" class="heading-anchor">#</a></h3>
+<ul>
+<li>After making significant changes</li>
+<li>Before committing to a branch</li>
+<li>When you want a quality check on AI-generated code</li>
+<li>To catch bugs, security issues, or style problems</li>
+</ul>
+<h3 id="invoking-the-review-agent">Invoking the Review Agent <a href="#invoking-the-review-agent" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: /agent review Review the changes I just made to the auth module</code></pre>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">🔎 Spawning Review agent...
+
+Review agent is examining your changes.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Code Review Report
+
+## Summary
+Reviewed 4 modified files in src/auth/
+
+## Issues Found
+
+### 🔴 Critical (1)
+1. **SQL Injection vulnerability** in `src/auth/lookup.ts:47`</code></pre>
+<p>const query = <code>SELECT * FROM users WHERE email = '${email}'</code></p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">   → Use parameterized queries instead
+
+### 🟡 Warnings (2)
+1. **Missing error handling** in `src/auth/jwt.ts:31`
+   `verifyToken()` doesn&#x27;t catch `TokenExpiredError` separately
+   from `JsonWebTokenError` — users get a generic error
+
+2. **Hardcoded secret** in `src/auth/jwt.ts:8`</code></pre>
+<p>const SECRET = "my-secret-key"</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">   → Move to environment variable
+
+### 🟢 Suggestions (1)
+1. Consider adding TypeScript return types to exported functions
+   in `src/auth/permissions.ts`
+
+## Overall Assessment
+The logic is sound but there&#x27;s a critical security issue that must
+be fixed before merging. See item #1 above.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</code></pre>
+<h3 id="reviewing-staged-git-changes">Reviewing Staged Git Changes <a href="#reviewing-staged-git-changes" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: /agent review Review my staged changes</code></pre>
+<p>The Review agent will run <code>git diff --staged</code> and review exactly what you're about to commit.</p>
+<div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip:</strong> Make it a habit to run <code>/agent review</code> before every commit. The Review agent often catches issues that are easy to miss when you've been staring at the same code for a while.</p></div>
+<hr />
+<h2 id="165-the-test-agent">16.5 The Test Agent <a href="#165-the-test-agent" class="heading-anchor">#</a></h2>
+<p>The Test agent is your <strong>testing specialist</strong>. It can write tests, run them, analyze failures, and suggest fixes.</p>
+<h3 id="when-to-use-it">When to Use It <a href="#when-to-use-it" class="heading-anchor">#</a></h3>
+<ul>
+<li>Writing tests for new or existing code</li>
+<li>Diagnosing test failures</li>
+<li>Improving test coverage</li>
+<li>Running specific test suites</li>
+</ul>
+<h3 id="writing-tests">Writing Tests <a href="#writing-tests" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: /agent test Write unit tests for src/utils/validators.ts</code></pre>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">🧪 Spawning Test agent...
+
+Test agent is analyzing the code and writing tests.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Test Agent Report
+
+Created: src/utils/__tests__/validators.test.ts
+
+Tests written: 14
+- validateEmail: 5 tests (valid, invalid, edge cases)
+- validatePassword: 4 tests (strength rules, length, special chars)
+- validateUsername: 3 tests (format, length, reserved words)
+- sanitizeInput: 2 tests (XSS prevention, SQL chars)
+
+Running tests...
+
+  ✓ validateEmail - accepts standard email (2ms)
+  ✓ validateEmail - rejects missing @ symbol (1ms)
+  ✓ validateEmail - rejects double dots (1ms)
+  ✓ validateEmail - accepts plus addressing (1ms)
+  ✓ validateEmail - rejects empty string (1ms)
+  ✓ validatePassword - requires minimum 8 chars (1ms)
+  ✓ validatePassword - requires uppercase letter (1ms)
+  ✓ validatePassword - requires special character (2ms)
+  ✓ validatePassword - accepts strong password (1ms)
+  ✓ validateUsername - accepts alphanumeric (1ms)
+  ✓ validateUsername - rejects spaces (1ms)
+  ✓ validateUsername - rejects reserved words (1ms)
+  ✓ sanitizeInput - strips script tags (2ms)
+  ✓ sanitizeInput - escapes SQL characters (1ms)
+
+14/14 tests passed ✅
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</code></pre>
+<h3 id="diagnosing-failures">Diagnosing Failures <a href="#diagnosing-failures" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: /agent test My tests in src/api are failing. Can you figure out why?</code></pre>
+<p>The Test agent will run the test suite, read the error output, examine the source code, and report back with both the cause and a fix.</p>
+<div class="callout callout-note"><div class="callout-title"><span class="callout-icon">&#128221;</span> Note</div><p>📝 <strong>Note:</strong> The Test agent can both write new test files and run existing tests. It uses your project's existing test framework (Jest, Mocha, pytest, GoogleTest, etc.) automatically.</p></div>
+<hr />
+<h2 id="166-how-delegation-works">16.6 How Delegation Works <a href="#166-how-delegation-works" class="heading-anchor">#</a></h2>
+<p>When NeamCode delegates to an agent, here's what happens under the hood:</p>
+<div class="info-box">
+  <div class="info-box-header blue">How Delegation Works</div>
+  <div class="info-box-body">
+    <ol>
+      <li>You ask a question or give a task</li>
+      <li>NeamCode decides delegation is needed</li>
+      <li>Calls <code>delegate_to_agent(agent: "explore", task: "Find all API routes")</code></li>
+    </ol>
+    <div class="flow-steps">
+      <span class="flow-step">Main Session</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-step highlight">Agent Sub-Session</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-step">Summary Returned</span>
+    </div>
+    <p style="margin-top: 0.75rem;"><strong>Agent Sub-Session capabilities:</strong></p>
+    <ul>
+      <li>Fresh context window</li>
+      <li>Full tool access</li>
+      <li>Reads files, runs commands</li>
+      <li>Builds a summary</li>
+    </ul>
+    <p>4. Summary returned to main session<br>5. Main session continues with the findings</p>
+  </div>
+</div>
+<h3 id="the-delegate_to_agent-skill">The <code>delegate_to_agent</code> Skill <a href="#the-delegate_to_agent-skill" class="heading-anchor">#</a></h3>
+<p>Under the hood, NeamCode uses a built-in skill called <code>delegate_to_agent</code>. This skill:</p>
+<ol>
+<li><strong>Creates a new agent session</strong> with its own context window</li>
+<li><strong>Passes the task description</strong> to the agent</li>
+<li><strong>Gives the agent access</strong> to the same tools (file reading, shell commands, etc.)</li>
+<li><strong>Collects the result</strong> when the agent finishes</li>
+<li><strong>Returns the summary</strong> to the main session</li>
+</ol>
+<p>You don't need to call <code>delegate_to_agent</code> directly — the <code>/agent</code> command and automatic delegation handle it for you. But understanding the mechanism helps you know what's happening when NeamCode says "Spawning agent..."</p>
+<h3 id="why-independent-context-windows-matter">Why Independent Context Windows Matter <a href="#why-independent-context-windows-matter" class="heading-anchor">#</a></h3>
+<p>Each agent gets its own context window. This is critical because:</p>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Scenario</th>
+<th>Without Agents</th>
+<th>With Agents</th>
+</tr></thead><tbody>
+<tr>
+<td>Research 30 files</td>
+<td>All 30 files fill your main context</td>
+<td>Only the summary enters your context</td>
+</tr>
+<tr>
+<td>Plan a big feature</td>
+<td>Exploration + planning clutter the session</td>
+<td>Clean plan delivered back</td>
+</tr>
+<tr>
+<td>Review changes</td>
+<td>Diff analysis takes up space</td>
+<td>Compact review report returned</td>
+</tr>
+</tbody></table></div>
+<p>This means your main session stays <strong>focused and efficient</strong>, even when working on complex, multi-step tasks.</p>
+<hr />
+<h2 id="167-when-neamcode-spawns-agents-automatically">16.7 When NeamCode Spawns Agents Automatically <a href="#167-when-neamcode-spawns-agents-automatically" class="heading-anchor">#</a></h2>
+<p>You don't always need to type <code>/agent</code>. NeamCode is smart enough to spawn agents on its own when the situation calls for it.</p>
+<h3 id="common-auto-delegation-triggers">Common Auto-Delegation Triggers <a href="#common-auto-delegation-triggers" class="heading-anchor">#</a></h3>
+<p><strong>Large research tasks:</strong></p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: How does the payment processing pipeline work end to end?</code></pre>
+<p>NeamCode recognizes this requires reading many files and automatically spawns an Explore agent.</p>
+<p><strong>Complex implementation requests:</strong></p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Add WebSocket support to the chat feature</code></pre>
+<p>NeamCode may first spawn a Plan agent to map out the approach, then proceed with implementation.</p>
+<p><strong>Pre-commit quality checks (if configured):</strong></p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Commit these changes with message &quot;Add user profile endpoint&quot;</code></pre>
+<p>If you've configured auto-review, NeamCode spawns a Review agent before committing.</p>
+<h3 id="how-to-tell-when-an-agent-is-active">How to Tell When an Agent Is Active <a href="#how-to-tell-when-an-agent-is-active" class="heading-anchor">#</a></h3>
+<p>You'll see clear indicators in the terminal:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">🔍 Delegating to Explore agent...
+   Task: Trace the payment processing pipeline
+
+   [Explore agent working...]
+
+   Explore agent completed. Integrating findings.</code></pre>
+<div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip:</strong> If you want NeamCode to always use a specific agent workflow, tell it explicitly: "Always run a review before committing" or "Plan first before implementing any feature."</p></div>
+<hr />
+<h2 id="168-pro-tips">16.8 Pro Tips <a href="#168-pro-tips" class="heading-anchor">#</a></h2>
+<h3 id="chain-agents-for-complex-workflows">Chain Agents for Complex Workflows <a href="#chain-agents-for-complex-workflows" class="heading-anchor">#</a></h3>
+<p>You can invoke agents in sequence for thorough results:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: /agent explore How is error handling done across the codebase?
+     ... (review findings) ...
+You: /agent plan Standardize error handling based on those findings
+     ... (review plan) ...
+You: Implement the plan
+     ... (implementation) ...
+You: /agent review Review the error handling changes
+     ... (review results) ...
+You: /agent test Write tests for the new error handling</code></pre>
+<h3 id="be-specific-with-agent-tasks">Be Specific With Agent Tasks <a href="#be-specific-with-agent-tasks" class="heading-anchor">#</a></h3>
+<p>The more specific your task description, the better the agent's output:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-"># Too vague
+You: /agent explore Look at the database code
+
+# Much better
+You: /agent explore Find all database queries that don&#x27;t use
+     parameterized statements and list them with file paths
+     and line numbers</code></pre>
+<h3 id="use-explore-before-plan">Use Explore Before Plan <a href="#use-explore-before-plan" class="heading-anchor">#</a></h3>
+<p>When tackling something unfamiliar, always explore first:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: /agent explore What testing framework and patterns does
+     this project use?
+     ... (review findings) ...
+You: /agent test Write tests for src/services/billing.ts
+     following the existing patterns</code></pre>
+<p>This way, the Test agent's work will be consistent with your project's conventions.</p>
+<h3 id="know-when-not-to-use-agents">Know When NOT to Use Agents <a href="#know-when-not-to-use-agents" class="heading-anchor">#</a></h3>
+<p>Agents have overhead — spawning a sub-session takes time. For quick tasks, just ask directly:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-"># Don&#x27;t bother with an agent for this:
+You: What&#x27;s in src/config.ts?
+
+# DO use an agent for this:
+You: /agent explore Map out the entire configuration system —
+     how config files are loaded, merged, and overridden</code></pre>
+<div class="callout callout-note"><div class="callout-title"><span class="callout-icon">&#128221;</span> Note</div><p>📝 <strong>Note:</strong> Agent results are summaries. If you need the full, unabridged detail from an agent's research, say so: "/agent explore ... Give me exhaustive detail, not a summary."</p></div>
+<hr />
+<h2 id="exercises">Exercises <a href="#exercises" class="heading-anchor">#</a></h2>
+<h3 id="exercise-161-first-exploration">🎯 Exercise 16.1: First Exploration <a href="#exercise-161-first-exploration" class="heading-anchor">#</a></h3>
+<p>Open a project you're working on and run:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">/agent explore What are the main entry points to this application
+and how is routing configured?</code></pre>
+<p>Review the report. Did the Explore agent find files you didn't know about?</p>
+<h3 id="exercise-162-plan-before-you-build">🎯 Exercise 16.2: Plan Before You Build <a href="#exercise-162-plan-before-you-build" class="heading-anchor">#</a></h3>
+<p>Think of a feature you want to add. Run:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">/agent plan &lt;describe your feature&gt;</code></pre>
+<p>Read the plan critically. Is there anything it missed? Tell it: "Revise the plan to also consider [your concern]."</p>
+<h3 id="exercise-163-review-your-own-code">🎯 Exercise 16.3: Review Your Own Code <a href="#exercise-163-review-your-own-code" class="heading-anchor">#</a></h3>
+<p>Make some changes to a file (or use uncommitted changes you already have). Run:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">/agent review Review my uncommitted changes</code></pre>
+<p>Did the Review agent catch anything you'd overlooked?</p>
+<h3 id="exercise-164-the-full-chain">🎯 Exercise 16.4: The Full Chain <a href="#exercise-164-the-full-chain" class="heading-anchor">#</a></h3>
+<p>Pick a small, real task and go through all four agents in order:</p>
+<ol>
+<li><code>/agent explore</code> to understand the current state</li>
+<li><code>/agent plan</code> to map out the approach</li>
+<li>Implement the changes (with NeamCode's help)</li>
+<li><code>/agent review</code> to check the work</li>
+<li><code>/agent test</code> to write and run tests</li>
+</ol>
+<p>Notice how each agent's fresh context keeps the workflow clean.</p>
+<hr />
+    <nav class="chapter-nav"><a href="15-budget-cost.html" class="nav-prev"><span class="nav-label">&larr; Previous</span><span class="nav-title">Budget & Cost Tracking</span></a><a href="17-mcp-servers.html" class="nav-next"><span class="nav-label">Next &rarr;</span><span class="nav-title">MCP Servers</span></a></nav>
+  </article>
+</main>
+
+<button class="back-to-top" id="back-to-top" aria-label="Back to top">&#8593;</button>
+
+<div class="search-overlay" id="search-overlay">
+  <div class="search-modal">
+    <div class="search-input-wrap">
+      <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6.5" cy="6.5" r="5"/><line x1="10.5" y1="10.5" x2="15" y2="15"/></svg>
+      <input type="text" class="search-input" id="search-input" placeholder="Search chapters, topics...">
+    </div>
+    <div class="search-results" id="search-results">
+      <div class="search-empty">Start typing to search...</div>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520">
+  <defs>
+    <style>
+      text { font-family: 'Segoe UI', Arial, Helvetica, sans-serif; }
+    </style>
+    <filter id="shadow" x="-4%" y="-4%" width="108%" height="108%">
+      <feDropShadow dx="1" dy="2" stdDeviation="2" flood-opacity="0.12" />
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="520" rx="12" fill="#f9fafb" />
+
+  <!-- Title -->
+  <text x="400" y="38" text-anchor="middle" font-size="20" font-weight="bold" fill="#333">Chapter 25 &#x2014; Neam / NeamCode Ecosystem Overview</text>
+
+  <!-- ========== LEFT PILLAR: Community ========== -->
+  <rect x="30" y="70" width="90" height="370" rx="10" fill="#f0e6fa" stroke="#8250df" stroke-width="2" filter="url(#shadow)" />
+  <text x="75" y="260" text-anchor="middle" font-size="15" font-weight="700" fill="#8250df" transform="rotate(-90, 75, 260)">Community</text>
+  <!-- Connecting lines to layers -->
+  <line x1="120" y1="140" x2="145" y2="140" stroke="#8250df" stroke-width="1.5" stroke-dasharray="4,3" />
+  <line x1="120" y1="270" x2="145" y2="270" stroke="#8250df" stroke-width="1.5" stroke-dasharray="4,3" />
+  <line x1="120" y1="390" x2="145" y2="390" stroke="#8250df" stroke-width="1.5" stroke-dasharray="4,3" />
+
+  <!-- ========== RIGHT PILLAR: Ecosystem ========== -->
+  <rect x="680" y="70" width="90" height="370" rx="10" fill="#e6f4ea" stroke="#27ae60" stroke-width="2" filter="url(#shadow)" />
+  <text x="725" y="265" text-anchor="middle" font-size="15" font-weight="700" fill="#27ae60" transform="rotate(90, 725, 265)">Ecosystem</text>
+  <!-- Connecting lines to layers -->
+  <line x1="655" y1="140" x2="680" y2="140" stroke="#27ae60" stroke-width="1.5" stroke-dasharray="4,3" />
+  <line x1="655" y1="270" x2="680" y2="270" stroke="#27ae60" stroke-width="1.5" stroke-dasharray="4,3" />
+  <line x1="655" y1="390" x2="680" y2="390" stroke="#27ae60" stroke-width="1.5" stroke-dasharray="4,3" />
+
+  <!-- ========== TOP LAYER: Applications ========== -->
+  <rect x="145" y="70" width="510" height="120" rx="10" fill="#0060B6" opacity="0.07" stroke="#0060B6" stroke-width="2" />
+  <text x="400" y="95" text-anchor="middle" font-size="16" font-weight="700" fill="#0060B6">Applications</text>
+
+  <!-- Application boxes -->
+  <rect x="170" y="110" width="140" height="60" rx="8" fill="#fff" stroke="#0060B6" stroke-width="1.5" filter="url(#shadow)" />
+  <text x="240" y="136" text-anchor="middle" font-size="13" font-weight="600" fill="#0060B6">Agent Systems</text>
+  <text x="240" y="155" text-anchor="middle" font-size="10" fill="#888">Multi-agent orchestration</text>
+
+  <rect x="330" y="110" width="140" height="60" rx="8" fill="#fff" stroke="#0060B6" stroke-width="1.5" filter="url(#shadow)" />
+  <text x="400" y="136" text-anchor="middle" font-size="13" font-weight="600" fill="#0060B6">AI Workflows</text>
+  <text x="400" y="155" text-anchor="middle" font-size="10" fill="#888">RAG, LLM pipelines</text>
+
+  <rect x="490" y="110" width="140" height="60" rx="8" fill="#fff" stroke="#0060B6" stroke-width="1.5" filter="url(#shadow)" />
+  <text x="560" y="136" text-anchor="middle" font-size="13" font-weight="600" fill="#0060B6">Cloud Services</text>
+  <text x="560" y="155" text-anchor="middle" font-size="10" fill="#888">Deploy, scale, manage</text>
+
+  <!-- ========== MIDDLE LAYER: NeamCode CLI ========== -->
+  <rect x="145" y="210" width="510" height="120" rx="10" fill="#BE0027" opacity="0.07" stroke="#BE0027" stroke-width="2.5" />
+  <text x="400" y="237" text-anchor="middle" font-size="16" font-weight="700" fill="#BE0027">NeamCode CLI</text>
+
+  <!-- NeamCode feature boxes -->
+  <rect x="170" y="250" width="140" height="60" rx="8" fill="#fff" stroke="#BE0027" stroke-width="1.5" filter="url(#shadow)" />
+  <text x="240" y="276" text-anchor="middle" font-size="13" font-weight="600" fill="#BE0027">Code Assistant</text>
+  <text x="240" y="295" text-anchor="middle" font-size="10" fill="#888">Agentic development</text>
+
+  <rect x="330" y="250" width="140" height="60" rx="8" fill="#fff" stroke="#BE0027" stroke-width="1.5" filter="url(#shadow)" />
+  <text x="400" y="276" text-anchor="middle" font-size="13" font-weight="600" fill="#BE0027">Multi-Provider</text>
+  <text x="400" y="295" text-anchor="middle" font-size="10" fill="#888">OpenAI, Bedrock, Ollama</text>
+
+  <rect x="490" y="250" width="140" height="60" rx="8" fill="#fff" stroke="#BE0027" stroke-width="1.5" filter="url(#shadow)" />
+  <text x="560" y="276" text-anchor="middle" font-size="13" font-weight="600" fill="#BE0027">MCP Tools</text>
+  <text x="560" y="295" text-anchor="middle" font-size="10" fill="#888">Extensible tool system</text>
+
+  <!-- ========== BOTTOM LAYER: Neam Language ========== -->
+  <rect x="145" y="350" width="510" height="120" rx="10" fill="#0060B6" opacity="0.07" stroke="#0060B6" stroke-width="2" />
+  <text x="400" y="377" text-anchor="middle" font-size="16" font-weight="700" fill="#0060B6">Neam Language</text>
+
+  <!-- Language component boxes -->
+  <rect x="170" y="390" width="140" height="60" rx="8" fill="#fff" stroke="#0060B6" stroke-width="1.5" filter="url(#shadow)" />
+  <text x="240" y="416" text-anchor="middle" font-size="13" font-weight="600" fill="#0060B6">Compiler</text>
+  <text x="240" y="435" text-anchor="middle" font-size="10" fill="#888">neamc, tree-sitter parser</text>
+
+  <rect x="330" y="390" width="140" height="60" rx="8" fill="#fff" stroke="#0060B6" stroke-width="1.5" filter="url(#shadow)" />
+  <text x="400" y="416" text-anchor="middle" font-size="13" font-weight="600" fill="#0060B6">Virtual Machine</text>
+  <text x="400" y="435" text-anchor="middle" font-size="10" fill="#888">Bytecode interpreter, GC</text>
+
+  <rect x="490" y="390" width="140" height="60" rx="8" fill="#fff" stroke="#0060B6" stroke-width="1.5" filter="url(#shadow)" />
+  <text x="560" y="416" text-anchor="middle" font-size="13" font-weight="600" fill="#0060B6">Stdlib</text>
+  <text x="560" y="435" text-anchor="middle" font-size="10" fill="#888">agents, ai, rag, core...</text>
+
+  <!-- Inter-layer arrows (down) -->
+  <line x1="400" y1="190" x2="400" y2="210" stroke="#666" stroke-width="1.5" />
+  <polygon points="395,208 400,215 405,208" fill="#666" />
+  <line x1="400" y1="330" x2="400" y2="350" stroke="#666" stroke-width="1.5" />
+  <polygon points="395,348 400,355 405,348" fill="#666" />
+
+  <!-- Footer -->
+  <text x="400" y="500" text-anchor="middle" font-size="11" fill="#999">Chapter 25 &#x2014; The Road Ahead</text>
+</svg>

@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 9: Modes | Command the Future</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-base="../">
+
+<header class="topbar">
+  <div class="topbar-left">
+    <button class="hamburger" id="hamburger" aria-label="Toggle sidebar">&#9776;</button>
+    <a href="../index.html" class="topbar-title">Command the Future</a>
+  </div>
+  <div class="topbar-right">
+    <button class="topbar-btn search-btn" aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6.5" cy="6.5" r="5"/><line x1="10.5" y1="10.5" x2="15" y2="15"/></svg><kbd>Ctrl+K</kbd></button>
+    <button class="topbar-btn" id="theme-toggle" aria-label="Toggle theme"></button>
+  </div>
+</header>
+
+<div class="progress-bar"><div class="progress-fill"></div></div>
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+<aside class="sidebar" id="sidebar">
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Getting Started</div>
+  <div class="sidebar-chapters">
+    <a href="00-preface.html" class="sidebar-link" title="Preface">Preface</a>
+    <a href="01-meet-neamcode.html" class="sidebar-link" title="Meet NeamCode">Meet NeamCode</a>
+    <a href="02-install-first-conversation.html" class="sidebar-link" title="Install & First Conversation">Install & First Conversation</a>
+    <a href="03-art-of-prompting.html" class="sidebar-link" title="The Art of Prompting">The Art of Prompting</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Core Skills</div>
+  <div class="sidebar-chapters">
+    <a href="04-working-with-files.html" class="sidebar-link" title="Working with Files">Working with Files</a>
+    <a href="05-finding-things.html" class="sidebar-link" title="Finding Things in Code">Finding Things in Code</a>
+    <a href="06-commands-and-git.html" class="sidebar-link" title="Running Commands & Git">Running Commands & Git</a>
+    <a href="07-web-research.html" class="sidebar-link" title="Researching from the Terminal">Researching from the Terminal</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Workflow & Configuration</div>
+  <div class="sidebar-chapters">
+    <a href="08-slash-commands.html" class="sidebar-link" title="Slash Commands">Slash Commands</a>
+    <a href="09-modes.html" class="sidebar-link active" title="Modes">Modes</a>
+    <a href="10-sessions-context.html" class="sidebar-link" title="Sessions & Context">Sessions & Context</a>
+    <a href="11-auto-memory.html" class="sidebar-link" title="Auto Memory">Auto Memory</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Providers & Cost</div>
+  <div class="sidebar-chapters">
+    <a href="12-choosing-providers.html" class="sidebar-link" title="Choosing Your AI Provider">Choosing Your AI Provider</a>
+    <a href="13-offline-mode.html" class="sidebar-link" title="Offline Mode">Offline Mode</a>
+    <a href="14-zero-cost-setup.html" class="sidebar-link" title="The $0 AI Setup">The $0 AI Setup</a>
+    <a href="15-budget-cost.html" class="sidebar-link" title="Budget & Cost Tracking">Budget & Cost Tracking</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Advanced Features</div>
+  <div class="sidebar-chapters">
+    <a href="16-agents.html" class="sidebar-link" title="Agents & Delegation">Agents & Delegation</a>
+    <a href="17-mcp-servers.html" class="sidebar-link" title="MCP Servers">MCP Servers</a>
+    <a href="18-neam-language.html" class="sidebar-link" title="Neam Language Integration">Neam Language Integration</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Audience Guides</div>
+  <div class="sidebar-chapters">
+    <a href="19-for-students.html" class="sidebar-link" title="For Students">For Students</a>
+    <a href="20-for-researchers.html" class="sidebar-link" title="For Researchers">For Researchers</a>
+    <a href="21-for-professionals.html" class="sidebar-link" title="For Professionals">For Professionals</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Walkthroughs</div>
+  <div class="sidebar-chapters">
+    <a href="22-walkthrough-build-project.html" class="sidebar-link" title="Walkthrough: Build a Project">Walkthrough: Build a Project</a>
+    <a href="23-walkthrough-fix-bug.html" class="sidebar-link" title="Walkthrough: Fix a Real Bug">Walkthrough: Fix a Real Bug</a>
+    <a href="24-making-it-yours.html" class="sidebar-link" title="Making NeamCode Yours">Making NeamCode Yours</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Closing</div>
+  <div class="sidebar-chapters">
+    <a href="25-road-ahead.html" class="sidebar-link" title="The Road Ahead">The Road Ahead</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Appendices</div>
+  <div class="sidebar-chapters">
+    <a href="../appendices/A-slash-commands.html" class="sidebar-link" title="All Slash Commands">All Slash Commands</a>
+    <a href="../appendices/B-skills-reference.html" class="sidebar-link" title="All Skills Reference">All Skills Reference</a>
+    <a href="../appendices/C-configuration.html" class="sidebar-link" title="Configuration Reference">Configuration Reference</a>
+    <a href="../appendices/D-troubleshooting.html" class="sidebar-link" title="Troubleshooting & FAQ">Troubleshooting & FAQ</a>
+    <a href="../appendices/E-glossary.html" class="sidebar-link" title="Glossary">Glossary</a>
+  </div>
+</div>
+</aside>
+
+<main class="main">
+  <article class="content">
+<h1 id="chapter-9-modes-different-hats-for-different-tasks">Chapter 9: Modes — Different Hats for Different Tasks <a href="#chapter-9-modes-different-hats-for-different-tasks" class="heading-anchor">#</a></h1>
+<blockquote><p><em>"It is not the strongest of the species that survives, nor the most intelligent, but the one most adaptable to change."</em><br>— Charles Darwin</p></blockquote>
+<p><strong>📖 Estimated read time: 22 minutes</strong></p>
+<hr />
+<h2 id="what-youll-learn">What You'll Learn <a href="#what-youll-learn" class="heading-anchor">#</a></h2>
+<ul>
+<li>What modes are and why they matter</li>
+<li>How each of the 6 modes changes NeamCode's behavior</li>
+<li>Real terminal examples of every mode in action</li>
+<li>When to use which mode for maximum effectiveness</li>
+<li>How to combine modes within a single work session</li>
+<li>Power-user tips for mode-based workflows</li>
+</ul>
+<hr />
+<h2 id="91-what-are-modes">9.1 What Are Modes? <a href="#91-what-are-modes" class="heading-anchor">#</a></h2>
+<p>Modes are like different hats you put on NeamCode. When you switch modes, you change how NeamCode thinks, what it prioritizes, and what tools it reaches for first.</p>
+<p>Think of it this way:</p>
+<figure class="diagram-figure">
+  <img src="../assets/diagrams/ch09-six-modes.svg" alt="The Six NeamCode Modes" />
+  <figcaption>Figure 9.1 — The Six NeamCode Modes</figcaption>
+</figure>
+<div class="ascii-fallback">
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">┌─────────────────────────────────────────────────────┐
+│              Same NeamCode, Different Focus          │
+│                                                     │
+│   You ──→ /mode explore ──→ &quot;Let me read and map    │
+│                              this codebase for you&quot;  │
+│                                                     │
+│   You ──→ /mode debug   ──→ &quot;Show me the error,     │
+│                              let&#x27;s trace it&quot;         │
+│                                                     │
+│   You ──→ /mode deploy  ──→ &quot;Let&#x27;s get this live     │
+│                              and running&quot;            │
+│                                                     │
+└─────────────────────────────────────────────────────┘</code></pre>
+</div>
+<p>When you switch modes, NeamCode adjusts:</p>
+<ul>
+<li><strong>System prompt</strong> — Its underlying instructions shift to match the task</li>
+<li><strong>Tool preferences</strong> — It reaches for different tools first</li>
+<li><strong>Response style</strong> — More explanatory in Explore, more action-oriented in Deploy</li>
+<li><strong>Suggestions</strong> — It proactively offers mode-relevant next steps</li>
+</ul>
+<p>Switching is instant, free, and you can do it as many times as you want in a session:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; /mode debug
+
+  ✓ Switched to Debug mode
+  Debug mode active — I&#x27;ll focus on finding and fixing bugs.
+  Paste an error message or describe the issue.</code></pre>
+<hr />
+<h2 id="92-explore-mode">9.2 Explore Mode <a href="#92-explore-mode" class="heading-anchor">#</a></h2>
+<p><strong>Purpose:</strong> Understand codebases you didn't write (or wrote six months ago and forgot).</p>
+<p>Explore mode is the default when you start NeamCode. It's optimized for reading, mapping, and explaining code.</p>
+<h3 id="what-changes-in-explore-mode">What Changes in Explore Mode <a href="#what-changes-in-explore-mode" class="heading-anchor">#</a></h3>
+<ul>
+<li>NeamCode reads more files before answering</li>
+<li>Responses include architecture context and dependency explanations</li>
+<li>It draws connections between components</li>
+<li>It avoids modifying code unless explicitly asked</li>
+</ul>
+<h3 id="explore-mode-in-action">Explore Mode in Action <a href="#explore-mode-in-action" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; /mode explore
+
+  ✓ Switched to Explore mode
+  I&#x27;ll focus on understanding and explaining code.
+
+neamcode&gt; How is authentication handled in this project?
+
+  I&#x27;ve examined the codebase and here&#x27;s how authentication works:
+
+  Authentication Flow
+  ═══════════════════
+
+  ┌──────────┐    ┌──────────────┐    ┌──────────────┐
+  │  Client   │───→│  Auth        │───→│  Route       │
+  │  Request  │    │  Middleware   │    │  Handler     │
+  └──────────┘    └──────┬───────┘    └──────────────┘
+                         │
+                  ┌──────▼───────┐
+                  │  Clerk SDK    │
+                  │  (clerk.com)  │
+                  └──────────────┘
+
+  1. **Entry point:** `src/middleware/auth.ts` (line 12)
+     - Extracts the Bearer token from the Authorization header
+     - Calls Clerk&#x27;s `verifyToken()` to validate
+
+  2. **Session handling:** `src/middleware/session.ts`
+     - Attaches the decoded user object to `req.user`
+     - Sets session cookie with 24-hour expiry
+
+  3. **Route protection:** Routes use `requireAuth` middleware
+     - Public routes: `/api/health`, `/api/auth/login`
+     - Protected routes: Everything under `/api/users/*`
+
+  4. **Role-based access:** `src/middleware/rbac.ts`
+     - Three roles: admin, editor, viewer
+     - Checked via `requireRole(&#x27;admin&#x27;)` middleware
+
+  Key files:
+  • src/middleware/auth.ts
+  • src/middleware/session.ts
+  • src/middleware/rbac.ts
+  • src/config/clerk.ts</code></pre>
+<h3 id="when-to-use-explore-mode">When to Use Explore Mode <a href="#when-to-use-explore-mode" class="heading-anchor">#</a></h3>
+<ul>
+<li>Onboarding to a new codebase</li>
+<li>Understanding how a feature works end-to-end</li>
+<li>Finding where something is defined or used</li>
+<li>Getting architecture overviews</li>
+<li>Reviewing someone else's code for comprehension</li>
+</ul>
+<div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip:</strong> Explore mode is great for the question "Where would I even start?" Ask NeamCode to map the entry points and data flow for any feature.</p></div>
+<hr />
+<h2 id="93-debug-mode">9.3 Debug Mode <a href="#93-debug-mode" class="heading-anchor">#</a></h2>
+<p><strong>Purpose:</strong> Find bugs, trace errors, and generate fixes.</p>
+<p>Debug mode turns NeamCode into a diagnostic partner. It asks more targeted questions, traces execution paths, and proposes fixes with explanations.</p>
+<h3 id="what-changes-in-debug-mode">What Changes in Debug Mode <a href="#what-changes-in-debug-mode" class="heading-anchor">#</a></h3>
+<ul>
+<li>NeamCode prioritizes error analysis and root-cause investigation</li>
+<li>It looks at stack traces, logs, and error messages first</li>
+<li>Responses include specific fix suggestions with file/line references</li>
+<li>It proactively checks for common related issues</li>
+</ul>
+<h3 id="debug-mode-in-action">Debug Mode in Action <a href="#debug-mode-in-action" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; /mode debug
+
+  ✓ Switched to Debug mode
+  Paste an error message or describe the issue.
+
+neamcode&gt; I&#x27;m getting &quot;TypeError: Cannot read properties of undefined
+  (reading &#x27;id&#x27;)&quot; in the user profile page
+
+  Let me trace this error.
+
+  Investigating...
+  ════════════════
+
+  I found the issue in `src/pages/Profile.tsx` at line 34:
+</code></pre>
+<p>// Line 34 — the bug const userId = session.user.id;</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">
+  The problem: `session.user` can be `undefined` when the page
+  loads before the auth session is fully initialized.
+
+  Root Cause
+  ──────────
+  The `useSession()` hook from Clerk returns `{ session: null }`
+  during the initial render. Your component doesn&#x27;t guard against
+  this.
+
+  Fix
+  ───</code></pre>
+<p>// Option 1: Early return with loading state const { session, isLoaded } = useSession();</p>
+<p>if (!isLoaded || !session?.user) { return &lt;LoadingSpinner /&gt;; }</p>
+<p>const userId = session.user.id; // Now safe</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">
+  Related Issues I Noticed
+  ────────────────────────
+  ⚠ The same pattern exists in `src/pages/Settings.tsx` (line 22)
+    and `src/pages/Dashboard.tsx` (line 18). You may want to fix
+    those too.
+
+  Want me to apply this fix to all three files?</code></pre>
+<h3 id="paste-and-fix-workflow">Paste-and-Fix Workflow <a href="#paste-and-fix-workflow" class="heading-anchor">#</a></h3>
+<p>Debug mode excels at the paste-an-error workflow:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; npm run build
+
+  ERROR in src/api/routes.ts:47:5
+  TS2345: Argument of type &#x27;string&#x27; is not assignable to
+  parameter of type &#x27;number&#x27;.
+
+  ─────────────────────────────────
+
+  The issue is on line 47 of `src/api/routes.ts`:
+</code></pre>
+<p>const result = fetchUser(req.params.id); //                       ^^^^^^^^^^^^^ //  req.params.id is a string, but fetchUser expects a number</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">
+  Fix:</code></pre>
+<p>const result = fetchUser(parseInt(req.params.id, 10));</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">
+  Or better, with validation:</code></pre>
+<p>const id = parseInt(req.params.id, 10); if (isNaN(id)) { return res.status(400).json({ error: 'Invalid user ID' }); } const result = fetchUser(id);</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">
+  Want me to apply the safer version?</code></pre>
+<div class="callout callout-warning"><div class="callout-title"><span class="callout-icon">&#9888;&#65039;</span> Warning</div><p>⚠️ <strong>Warning:</strong> Debug mode is more action-oriented than Explore. It may suggest code changes proactively. Always review before accepting.</p></div>
+<hr />
+<h2 id="94-test-mode">9.4 Test Mode <a href="#94-test-mode" class="heading-anchor">#</a></h2>
+<p><strong>Purpose:</strong> Write tests, run test suites, and improve coverage.</p>
+<p>Test mode is optimized for generating test cases, running test commands, and analyzing coverage reports.</p>
+<h3 id="what-changes-in-test-mode">What Changes in Test Mode <a href="#what-changes-in-test-mode" class="heading-anchor">#</a></h3>
+<ul>
+<li>NeamCode generates test code that matches your project's testing framework</li>
+<li>It focuses on edge cases and boundary conditions</li>
+<li>It can run tests and interpret results</li>
+<li>It suggests what else to test</li>
+</ul>
+<h3 id="test-mode-in-action">Test Mode in Action <a href="#test-mode-in-action" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; /mode test
+
+  ✓ Switched to Test mode
+  I&#x27;ll help you write and run tests. What would you like to test?
+
+neamcode&gt; Write tests for the fetchUser function in src/api/users.ts
+
+  I&#x27;ve analyzed `fetchUser` and here are comprehensive tests:
+
+  Creating: src/api/__tests__/users.test.ts
+  ════════════════════════════════════════
+</code></pre>
+<p>import { describe, it, expect, vi } from 'vitest'; import { fetchUser } from '../users'; import { db } from '../../db';</p>
+<p>vi.mock('../../db');</p>
+<p>describe('fetchUser', () =&gt; { it('returns user when found', async () =&gt; { vi.mocked(db.users.findById).mockResolvedValue({ id: 1, name: 'Alice', email: 'alice@example.com' });</p>
+<p>const user = await fetchUser(1); expect(user).toEqual({ id: 1, name: 'Alice', email: 'alice@example.com' }); });</p>
+<p>it('throws NotFoundError when user does not exist', async () =&gt; { vi.mocked(db.users.findById).mockResolvedValue(null);</p>
+<p>await expect(fetchUser(999)).rejects.toThrow('User not found'); });</p>
+<p>it('throws on invalid ID (negative number)', async () =&gt; { await expect(fetchUser(-1)).rejects.toThrow('Invalid user ID'); });</p>
+<p>it('throws on invalid ID (zero)', async () =&gt; { await expect(fetchUser(0)).rejects.toThrow('Invalid user ID'); });</p>
+<p>it('handles database connection errors', async () =&gt; { vi.mocked(db.users.findById).mockRejectedValue( new Error('Connection refused') );</p>
+<p>await expect(fetchUser(1)).rejects.toThrow('Connection refused'); }); });</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">
+  5 test cases covering:
+  ✓ Happy path (user found)
+  ✓ Not found case
+  ✓ Invalid input (negative)
+  ✓ Invalid input (zero)
+  ✓ Database errors
+
+  Want me to run these tests now?</code></pre>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; Yes, run them
+
+  Running: npx vitest run src/api/__tests__/users.test.ts
+  ══════════════════════════════════════════════════════════
+
+   ✓ fetchUser &gt; returns user when found (3ms)
+   ✓ fetchUser &gt; throws NotFoundError when user does not exist (1ms)
+   ✗ fetchUser &gt; throws on invalid ID (negative number) (2ms)
+     → Expected: &quot;Invalid user ID&quot;
+     → Received: function did not throw
+   ✓ fetchUser &gt; throws on invalid ID (zero) (1ms)
+   ✓ fetchUser &gt; handles database connection errors (1ms)
+
+  4 passed, 1 failed
+
+  Analysis: `fetchUser` doesn&#x27;t validate negative IDs.
+  This is actually a missing validation in your source code,
+  not a test bug. Want me to add input validation to `fetchUser`?</code></pre>
+<div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip:</strong> Test mode doesn't just write tests — it helps you discover bugs through testing. Failed tests often reveal missing validations or edge cases.</p></div>
+<hr />
+<h2 id="95-analyze-mode">9.5 Analyze Mode <a href="#95-analyze-mode" class="heading-anchor">#</a></h2>
+<p><strong>Purpose:</strong> Work with data — query databases, transform datasets, create visualizations.</p>
+<p>Analyze mode is built for data work. It's comfortable with SQL, data pipelines, CSV files, and statistical analysis.</p>
+<h3 id="what-changes-in-analyze-mode">What Changes in Analyze Mode <a href="#what-changes-in-analyze-mode" class="heading-anchor">#</a></h3>
+<ul>
+<li>NeamCode prioritizes data exploration and querying</li>
+<li>It generates SQL, pandas code, or data transformation scripts</li>
+<li>It focuses on patterns, anomalies, and insights</li>
+<li>It can work with MCP-connected databases directly</li>
+</ul>
+<h3 id="analyze-mode-in-action">Analyze Mode in Action <a href="#analyze-mode-in-action" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; /mode analyze
+
+  ✓ Switched to Analyze mode
+  I&#x27;ll help with data analysis tasks. What data are we working with?
+
+neamcode&gt; I have a PostgreSQL database connected via MCP.
+  Show me the top 10 customers by total order value this quarter.
+
+  Querying via MCP (postgres)...
+  ═══════════════════════════════
+
+  SELECT
+    c.name,
+    c.email,
+    COUNT(o.id) as order_count,
+    SUM(o.total) as total_value
+  FROM customers c
+  JOIN orders o ON o.customer_id = c.id
+  WHERE o.created_at &gt;= &#x27;2026-01-01&#x27;
+  GROUP BY c.id, c.name, c.email
+  ORDER BY total_value DESC
+  LIMIT 10;
+
+  Results
+  ───────
+  #   Customer          Orders   Total Value
+  1   Acme Corp           47     $124,500.00
+  2   TechStart Inc       31      $89,200.00
+  3   Global Widgets      28      $76,800.00
+  4   DataFlow LLC        22      $65,400.00
+  5   CloudNine Co        19      $52,100.00
+  ...
+
+  Key Insights
+  ────────────
+  • Top customer (Acme Corp) accounts for 18.2% of revenue
+  • Average order value ranges from $1,600 to $2,648
+  • Top 5 customers represent 59.4% of total Q1 revenue
+
+  Want me to break this down by month or product category?</code></pre>
+<h3 id="working-with-local-data">Working with Local Data <a href="#working-with-local-data" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; Analyze the CSV file at ./data/sales-2025.csv
+
+  Loading sales-2025.csv (14,230 rows, 12 columns)...
+  ════════════════════════════════════════════════════
+
+  Column Summary
+  ──────────────
+  date          datetime  range: 2025-01-01 to 2025-12-31
+  product_id    int       1,247 unique values
+  category      string    8 categories
+  quantity      int       mean: 3.2, max: 150
+  unit_price    float     mean: $42.80
+  total         float     mean: $136.96
+  region        string    4 regions (NA, EU, APAC, LATAM)
+  ...
+
+  ⚠ Data Quality Issues
+  ─────────────────────
+  • 23 rows have null `region` values
+  • 5 rows have negative `quantity` (likely returns)
+  • `unit_price` has 2 outliers &gt; $10,000 (possibly errors)
+
+  What would you like to explore first?</code></pre>
+<hr />
+<h2 id="96-deploy-mode">9.6 Deploy Mode <a href="#96-deploy-mode" class="heading-anchor">#</a></h2>
+<p><strong>Purpose:</strong> Build, ship, and monitor your applications.</p>
+<p>Deploy mode focuses on infrastructure, CI/CD, containerization, and cloud services. It's action-oriented and safety-conscious.</p>
+<h3 id="what-changes-in-deploy-mode">What Changes in Deploy Mode <a href="#what-changes-in-deploy-mode" class="heading-anchor">#</a></h3>
+<ul>
+<li>NeamCode focuses on infrastructure files (Dockerfiles, configs, CI/CD)</li>
+<li>It double-checks destructive operations</li>
+<li>It generates deployment scripts with rollback plans</li>
+<li>It proactively flags security and cost concerns</li>
+</ul>
+<h3 id="deploy-mode-in-action">Deploy Mode in Action <a href="#deploy-mode-in-action" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; /mode deploy
+
+  ✓ Switched to Deploy mode
+  I&#x27;ll help with infrastructure and deployment tasks.
+  What are we shipping?
+
+neamcode&gt; Help me containerize this Node.js app
+
+  I&#x27;ll create a production-ready Dockerfile.
+  ════════════════════════════════════════════
+
+  Analyzing your project...
+  • Runtime: Node.js 20 (from .nvmrc)
+  • Package manager: pnpm (from pnpm-lock.yaml)
+  • Build step: `pnpm build` outputs to `dist/`
+  • Port: 3000 (from src/server.ts)
+
+  Creating Dockerfile:
+</code></pre>
+<p># Build stage FROM node:20-alpine AS builder WORKDIR /app RUN corepack enable &amp;&amp; corepack prepare pnpm@latest --activate COPY package.json pnpm-lock.yaml ./ RUN pnpm install --frozen-lockfile COPY . . RUN pnpm build</p>
+<p># Production stage FROM node:20-alpine AS runner WORKDIR /app RUN addgroup -g 1001 -S appgroup &amp;&amp; \ adduser -S appuser -u 1001 COPY --from=builder /app/dist ./dist COPY --from=builder /app/node_modules ./node_modules COPY --from=builder /app/package.json ./ USER appuser EXPOSE 3000 HEALTHCHECK --interval=30s --timeout=3s \ CMD wget --spider http://localhost:3000/health || exit 1 CMD ["node", "dist/server.js"]</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">
+  Also creating .dockerignore:</code></pre>
+<p>node_modules .git .env *.md tests/</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">
+  ⚠ Security notes:
+  • Runs as non-root user (appuser)
+  • Uses multi-stage build to minimize image size
+  • No secrets baked into the image
+
+  Want me to also create a docker-compose.yml for local development?</code></pre>
+<div class="callout callout-warning"><div class="callout-title"><span class="callout-icon">&#9888;&#65039;</span> Warning</div><p>⚠️ <strong>Warning:</strong> Deploy mode will ask for confirmation before running commands that affect live infrastructure. Always double-check the target environment.</p></div>
+<hr />
+<h2 id="97-ideate-mode">9.7 Ideate Mode <a href="#97-ideate-mode" class="heading-anchor">#</a></h2>
+<p><strong>Purpose:</strong> Brainstorm, explore ideas, and design solutions before writing code.</p>
+<p>Ideate mode is the creative mode. It's less concerned with exact implementations and more focused on generating options, weighing trade-offs, and exploring possibilities.</p>
+<h3 id="what-changes-in-ideate-mode">What Changes in Ideate Mode <a href="#what-changes-in-ideate-mode" class="heading-anchor">#</a></h3>
+<ul>
+<li>NeamCode generates multiple alternatives instead of one answer</li>
+<li>It weighs pros and cons explicitly</li>
+<li>It asks clarifying questions about goals and constraints</li>
+<li>It's more conversational and exploratory</li>
+</ul>
+<h3 id="ideate-mode-in-action">Ideate Mode in Action <a href="#ideate-mode-in-action" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; /mode ideate
+
+  ✓ Switched to Ideate mode
+  Let&#x27;s brainstorm. What problem are we solving?
+
+neamcode&gt; We need to add real-time notifications to our app.
+  Currently we have a REST API with PostgreSQL.
+
+  Great question to explore! Let me lay out the main approaches:
+
+  Option 1: WebSockets (Socket.IO)
+  ═════════════════════════════════
+  ✓ True real-time, bidirectional
+  ✓ Mature ecosystem (Socket.IO)
+  ✗ Requires persistent connections (more server resources)
+  ✗ Need to handle reconnection logic
+  Best for: Chat-like features, live dashboards
+
+  Option 2: Server-Sent Events (SSE)
+  ═══════════════════════════════════
+  ✓ Simpler than WebSockets
+  ✓ Works over standard HTTP
+  ✓ Auto-reconnection built into browsers
+  ✗ One-directional (server → client only)
+  ✗ Limited browser connection pool
+  Best for: Notification feeds, status updates
+
+  Option 3: Polling (Short or Long)
+  ══════════════════════════════════
+  ✓ Simplest to implement
+  ✓ Works everywhere, no special infrastructure
+  ✗ Not truly real-time (delay between polls)
+  ✗ Wasteful — constant requests even when nothing changes
+  Best for: Low-frequency updates, MVP/prototype
+
+  Option 4: PostgreSQL LISTEN/NOTIFY + SSE
+  ═════════════════════════════════════════
+  ✓ Uses your existing database
+  ✓ No additional infrastructure needed
+  ✓ Triggers on actual data changes
+  ✗ Doesn&#x27;t scale past ~10K concurrent listeners
+  Best for: Your current stack — minimal new dependencies
+
+  My Recommendation
+  ─────────────────
+  Given your current REST + PostgreSQL stack, I&#x27;d suggest
+  starting with **Option 4** (PG LISTEN/NOTIFY + SSE):
+
+  ┌──────────┐   NOTIFY   ┌──────────┐   SSE    ┌──────────┐
+  │ Database  │──────────→ │  API     │────────→ │  Client  │
+  │ (trigger) │            │  Server  │          │  Browser  │
+  └──────────┘            └──────────┘          └──────────┘
+
+  It requires zero new infrastructure and gives you real-time
+  updates for your current scale. If you outgrow it, migrating
+  to WebSockets later is straightforward.
+
+  Want me to explore any of these options in more detail?
+  Or should we think about the notification data model?</code></pre>
+<div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip:</strong> Ideate mode is perfect for the start of a project or feature. Use it to think through options before switching to Explore or Debug mode for implementation.</p></div>
+<hr />
+<h2 id="98-when-to-use-which-mode">9.8 When to Use Which Mode <a href="#98-when-to-use-which-mode" class="heading-anchor">#</a></h2>
+<p>Here's a decision guide:</p>
+<div class="info-box">
+  <div class="info-box-header blue">MODE DECISION GUIDE</div>
+  <div class="info-box-body">
+    <ul>
+      <li>"I need to understand this code" &rarr; <code>/mode explore</code></li>
+      <li>"Something is broken" &rarr; <code>/mode debug</code></li>
+      <li>"I need tests for this" &rarr; <code>/mode test</code></li>
+      <li>"I'm working with data" &rarr; <code>/mode analyze</code></li>
+      <li>"I need to ship this" &rarr; <code>/mode deploy</code></li>
+      <li>"I'm not sure what to build yet" &rarr; <code>/mode ideate</code></li>
+    </ul>
+  </div>
+</div>
+<div class="info-box">
+  <div class="info-box-header gray">COMMON MODE FLOWS</div>
+  <div class="info-box-body">
+    <ul>
+      <li><strong>New feature:</strong> ideate &rarr; explore &rarr; (implement) &rarr; test &rarr; deploy</li>
+      <li><strong>Bug fix:</strong> debug &rarr; explore &rarr; (fix) &rarr; test</li>
+      <li><strong>New codebase:</strong> explore &rarr; explore &rarr; explore (take your time)</li>
+      <li><strong>Data migration:</strong> analyze &rarr; test &rarr; deploy</li>
+    </ul>
+  </div>
+</div>
+<h3 id="mode-transitions-in-a-real-session">Mode Transitions in a Real Session <a href="#mode-transitions-in-a-real-session" class="heading-anchor">#</a></h3>
+<p>You don't need to stick with one mode. Here's a realistic work session:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; /mode explore
+neamcode&gt; How does the payment processing work?
+  (... NeamCode explains the payment flow ...)
+
+neamcode&gt; /mode debug
+neamcode&gt; Users are reporting double charges. Here&#x27;s the error log...
+  (... NeamCode traces the race condition ...)
+
+neamcode&gt; /mode test
+neamcode&gt; Write a test that reproduces this double-charge scenario
+  (... NeamCode generates a regression test ...)
+
+neamcode&gt; /mode deploy
+neamcode&gt; We need to deploy this fix to production with a rollback plan
+  (... NeamCode generates deployment steps ...)</code></pre>
+<hr />
+<h2 id="99-pro-tips">9.9 Pro Tips <a href="#99-pro-tips" class="heading-anchor">#</a></h2>
+<h3 id="mode-persistence">Mode Persistence <a href="#mode-persistence" class="heading-anchor">#</a></h3>
+<p>Modes persist within a session. If you <code>/resume</code> a session, you return to whatever mode you were last using:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; /resume payment-fix
+
+  ✓ Resumed session &quot;payment-fix&quot; (23 messages)
+  Mode: Debug (restored from session)</code></pre>
+<h3 id="the-default-mode">The Default Mode <a href="#the-default-mode" class="heading-anchor">#</a></h3>
+<p>When you start a new session without specifying a mode, NeamCode defaults to <strong>Explore</strong> mode. This is intentional — understanding comes before action.</p>
+<h3 id="mode-memory-interaction">Mode + Memory Interaction <a href="#mode-memory-interaction" class="heading-anchor">#</a></h3>
+<p>NeamCode's memory system (MEMORY.md) works across all modes. If you tell NeamCode to remember something in Debug mode, that knowledge is available in every other mode too:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; /mode debug
+neamcode&gt; Remember that the double-charge bug was caused by
+  a missing idempotency key in the Stripe webhook handler
+
+  ✓ Saved to MEMORY.md
+
+neamcode&gt; /mode explore
+neamcode&gt; What do you know about our payment issues?
+
+  From memory: The double-charge bug was caused by a missing
+  idempotency key in the Stripe webhook handler.</code></pre>
+<h3 id="dont-overthink-mode-selection">Don't Overthink Mode Selection <a href="#dont-overthink-mode-selection" class="heading-anchor">#</a></h3>
+<p>Modes are helpers, not constraints. If you're in Explore mode and ask NeamCode to fix a bug, it will still help. Modes just optimize the approach — they don't limit capability.</p>
+<p>If you find yourself constantly switching, you might be better off just staying in the mode closest to your primary task and letting NeamCode adapt.</p>
+<h3 id="modes-in-neam-programs">Modes in Neam Programs <a href="#modes-in-neam-programs" class="heading-anchor">#</a></h3>
+<p>If you're writing Neam agents, you can specify modes in your agent definitions for automated workflows:</p>
+<div class="code-header"><span class="code-lang">neam</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-neam">agent CodeReviewer {
+  provider: &quot;openai&quot;,
+  model: &quot;gpt-4o&quot;,
+  mode: &quot;explore&quot;,
+  system: &quot;Review pull requests for quality and correctness&quot;
+}</code></pre>
+<div class="callout callout-note"><div class="callout-title"><span class="callout-icon">&#128221;</span> Note</div><p>📝 <strong>Note:</strong> Modes affect the AI's behavior, not your permissions. You can always override a mode's tendencies with explicit instructions.</p></div>
+<hr />
+<h2 id="exercises">Exercises <a href="#exercises" class="heading-anchor">#</a></h2>
+<p><strong>🎯 Exercise 9.1:</strong> Start a new NeamCode session. Enter each of the 6 modes one by one using <code>/mode &lt;name&gt;</code>. In each mode, ask: "What can you help me with right now?" Compare the responses.</p>
+<p><strong>🎯 Exercise 9.2:</strong> Pick a file in one of your projects. Switch to <strong>Explore mode</strong> and ask NeamCode to explain what it does. Then switch to <strong>Test mode</strong> and ask for tests. Notice how the focus shifts.</p>
+<p><strong>🎯 Exercise 9.3:</strong> Practice the "bug fix flow": Start in <strong>Debug mode</strong> with a real or simulated error. After understanding the bug, switch to <strong>Test mode</strong> to write a regression test, then switch to <strong>Explore mode</strong> to understand if the bug pattern exists elsewhere in the codebase.</p>
+<p><strong>🎯 Exercise 9.4:</strong> Use <strong>Ideate mode</strong> to brainstorm a feature you've been thinking about. Don't commit to an approach — let NeamCode generate at least 3 options with trade-offs. Then switch to <strong>Explore mode</strong> to investigate which option fits your existing codebase best.</p>
+<p><strong>🎯 Exercise 9.5:</strong> Use <strong>Analyze mode</strong> with a data file (CSV, JSON, or a connected database). Ask NeamCode to find data quality issues and summarize the dataset. Practice asking follow-up analytical questions.</p>
+<hr />
+    <nav class="chapter-nav"><a href="08-slash-commands.html" class="nav-prev"><span class="nav-label">&larr; Previous</span><span class="nav-title">Slash Commands</span></a><a href="10-sessions-context.html" class="nav-next"><span class="nav-label">Next &rarr;</span><span class="nav-title">Sessions & Context</span></a></nav>
+  </article>
+</main>
+
+<button class="back-to-top" id="back-to-top" aria-label="Back to top">&#8593;</button>
+
+<div class="search-overlay" id="search-overlay">
+  <div class="search-modal">
+    <div class="search-input-wrap">
+      <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6.5" cy="6.5" r="5"/><line x1="10.5" y1="10.5" x2="15" y2="15"/></svg>
+      <input type="text" class="search-input" id="search-input" placeholder="Search chapters, topics...">
+    </div>
+    <div class="search-results" id="search-results">
+      <div class="search-empty">Start typing to search...</div>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/script.js"></script>
+</body>
+</html>

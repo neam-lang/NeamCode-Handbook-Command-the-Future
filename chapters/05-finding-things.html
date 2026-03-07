@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 5: Finding Things in Code | Command the Future</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-base="../">
+
+<header class="topbar">
+  <div class="topbar-left">
+    <button class="hamburger" id="hamburger" aria-label="Toggle sidebar">&#9776;</button>
+    <a href="../index.html" class="topbar-title">Command the Future</a>
+  </div>
+  <div class="topbar-right">
+    <button class="topbar-btn search-btn" aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6.5" cy="6.5" r="5"/><line x1="10.5" y1="10.5" x2="15" y2="15"/></svg><kbd>Ctrl+K</kbd></button>
+    <button class="topbar-btn" id="theme-toggle" aria-label="Toggle theme"></button>
+  </div>
+</header>
+
+<div class="progress-bar"><div class="progress-fill"></div></div>
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+<aside class="sidebar" id="sidebar">
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Getting Started</div>
+  <div class="sidebar-chapters">
+    <a href="00-preface.html" class="sidebar-link" title="Preface">Preface</a>
+    <a href="01-meet-neamcode.html" class="sidebar-link" title="Meet NeamCode">Meet NeamCode</a>
+    <a href="02-install-first-conversation.html" class="sidebar-link" title="Install & First Conversation">Install & First Conversation</a>
+    <a href="03-art-of-prompting.html" class="sidebar-link" title="The Art of Prompting">The Art of Prompting</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Core Skills</div>
+  <div class="sidebar-chapters">
+    <a href="04-working-with-files.html" class="sidebar-link" title="Working with Files">Working with Files</a>
+    <a href="05-finding-things.html" class="sidebar-link active" title="Finding Things in Code">Finding Things in Code</a>
+    <a href="06-commands-and-git.html" class="sidebar-link" title="Running Commands & Git">Running Commands & Git</a>
+    <a href="07-web-research.html" class="sidebar-link" title="Researching from the Terminal">Researching from the Terminal</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Workflow & Configuration</div>
+  <div class="sidebar-chapters">
+    <a href="08-slash-commands.html" class="sidebar-link" title="Slash Commands">Slash Commands</a>
+    <a href="09-modes.html" class="sidebar-link" title="Modes">Modes</a>
+    <a href="10-sessions-context.html" class="sidebar-link" title="Sessions & Context">Sessions & Context</a>
+    <a href="11-auto-memory.html" class="sidebar-link" title="Auto Memory">Auto Memory</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Providers & Cost</div>
+  <div class="sidebar-chapters">
+    <a href="12-choosing-providers.html" class="sidebar-link" title="Choosing Your AI Provider">Choosing Your AI Provider</a>
+    <a href="13-offline-mode.html" class="sidebar-link" title="Offline Mode">Offline Mode</a>
+    <a href="14-zero-cost-setup.html" class="sidebar-link" title="The $0 AI Setup">The $0 AI Setup</a>
+    <a href="15-budget-cost.html" class="sidebar-link" title="Budget & Cost Tracking">Budget & Cost Tracking</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Advanced Features</div>
+  <div class="sidebar-chapters">
+    <a href="16-agents.html" class="sidebar-link" title="Agents & Delegation">Agents & Delegation</a>
+    <a href="17-mcp-servers.html" class="sidebar-link" title="MCP Servers">MCP Servers</a>
+    <a href="18-neam-language.html" class="sidebar-link" title="Neam Language Integration">Neam Language Integration</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Audience Guides</div>
+  <div class="sidebar-chapters">
+    <a href="19-for-students.html" class="sidebar-link" title="For Students">For Students</a>
+    <a href="20-for-researchers.html" class="sidebar-link" title="For Researchers">For Researchers</a>
+    <a href="21-for-professionals.html" class="sidebar-link" title="For Professionals">For Professionals</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Walkthroughs</div>
+  <div class="sidebar-chapters">
+    <a href="22-walkthrough-build-project.html" class="sidebar-link" title="Walkthrough: Build a Project">Walkthrough: Build a Project</a>
+    <a href="23-walkthrough-fix-bug.html" class="sidebar-link" title="Walkthrough: Fix a Real Bug">Walkthrough: Fix a Real Bug</a>
+    <a href="24-making-it-yours.html" class="sidebar-link" title="Making NeamCode Yours">Making NeamCode Yours</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Closing</div>
+  <div class="sidebar-chapters">
+    <a href="25-road-ahead.html" class="sidebar-link" title="The Road Ahead">The Road Ahead</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Appendices</div>
+  <div class="sidebar-chapters">
+    <a href="../appendices/A-slash-commands.html" class="sidebar-link" title="All Slash Commands">All Slash Commands</a>
+    <a href="../appendices/B-skills-reference.html" class="sidebar-link" title="All Skills Reference">All Skills Reference</a>
+    <a href="../appendices/C-configuration.html" class="sidebar-link" title="Configuration Reference">Configuration Reference</a>
+    <a href="../appendices/D-troubleshooting.html" class="sidebar-link" title="Troubleshooting & FAQ">Troubleshooting & FAQ</a>
+    <a href="../appendices/E-glossary.html" class="sidebar-link" title="Glossary">Glossary</a>
+  </div>
+</div>
+</aside>
+
+<main class="main">
+  <article class="content">
+<h1 id="chapter-5-finding-things-in-code">Chapter 5: Finding Things in Code <a href="#chapter-5-finding-things-in-code" class="heading-anchor">#</a></h1>
+<blockquote><p><em>"A codebase is a city. You need to know how to navigate it before you can build in it."</em><br>— The NeamCode Handbook</p></blockquote>
+<p>📖 <strong>Estimated read time:</strong> 18 minutes</p>
+<hr />
+<h2 id="what-youll-learn">What You'll Learn <a href="#what-youll-learn" class="heading-anchor">#</a></h2>
+<ul>
+<li>How to find files by name using <code>glob</code> patterns</li>
+<li>How to search inside files for specific text or patterns with <code>grep</code></li>
+<li>How to visualize project structure with <code>dir_tree</code></li>
+<li>How to analyze code architecture with <code>code_structure</code></li>
+<li>A complete walkthrough of exploring an unfamiliar codebase</li>
+</ul>
+<hr />
+<h2 id="51-finding-files-by-name-glob">5.1 Finding Files by Name (glob) <a href="#51-finding-files-by-name-glob" class="heading-anchor">#</a></h2>
+<p>The <code>glob</code> skill searches for files by their <strong>filename pattern</strong>. Think of it as a smarter version of <code>find</code> that understands wildcards.</p>
+<h3 id="basic-glob-searches">Basic Glob Searches <a href="#basic-glob-searches" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Find all TypeScript files in the project
+
+NeamCode:
+  [glob] **/*.ts
+
+  Found 47 files:
+  src/index.ts
+  src/app.ts
+  src/config/database.ts
+  src/config/auth.ts
+  src/controllers/userController.ts
+  src/controllers/postController.ts
+  src/models/User.ts
+  src/models/Post.ts
+  src/routes/users.ts
+  src/routes/posts.ts
+  src/middleware/auth.ts
+  src/middleware/validation.ts
+  ... (35 more)</code></pre>
+<h3 id="common-glob-patterns">Common Glob Patterns <a href="#common-glob-patterns" class="heading-anchor">#</a></h3>
+<div class="info-box">
+  <div class="info-box-header blue">Glob Pattern Quick Reference</div>
+  <div class="info-box-body">
+    <div class="table-wrap"><table>
+      <thead><tr><th>Pattern</th><th>Matches</th></tr></thead>
+      <tbody>
+        <tr><td><code>*.ts</code></td><td>TypeScript files (current dir)</td></tr>
+        <tr><td><code>**/*.ts</code></td><td>TypeScript files (all dirs)</td></tr>
+        <tr><td><code>src/**/*.test.ts</code></td><td>Test files under src/</td></tr>
+        <tr><td><code>**/config.*</code></td><td>Any config file, any extension</td></tr>
+        <tr><td><code>**/*.{ts,tsx}</code></td><td>Both .ts and .tsx files</td></tr>
+        <tr><td><code>**/README*</code></td><td>All README files</td></tr>
+        <tr><td><code>src/models/*.ts</code></td><td>Models only (no subdirectories)</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</div>
+<h3 id="practical-examples">Practical Examples <a href="#practical-examples" class="heading-anchor">#</a></h3>
+<p><strong>Finding config files:</strong></p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Where are the config files in this project?
+
+NeamCode:
+  [glob] **/*config*
+
+  Found 6 files:
+  .eslintrc.config.js
+  jest.config.ts
+  tsconfig.json
+  src/config/database.ts
+  src/config/auth.ts
+  src/config/index.ts</code></pre>
+<p><strong>Finding test files:</strong></p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Show me all test files
+
+NeamCode:
+  [glob] **/*.test.{ts,tsx,js,jsx}
+  [glob] **/*.spec.{ts,tsx,js,jsx}
+  [glob] **/__tests__/**
+
+  Found 23 test files across the project:
+  tests/unit/user.test.ts
+  tests/unit/post.test.ts
+  tests/integration/api.test.ts
+  src/components/__tests__/Header.test.tsx
+  ...</code></pre>
+<p><strong>Finding a specific file when you know part of the name:</strong></p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: There&#x27;s a file with &quot;migration&quot; in the name somewhere
+
+NeamCode:
+  [glob] **/*migration*
+
+  Found 3 files:
+  db/migrations/001_create_users.sql
+  db/migrations/002_create_posts.sql
+  scripts/run-migrations.sh</code></pre>
+<div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip:</strong> <code>glob</code> searches by <strong>filename and path</strong>. If you need to search for text <em>inside</em> files, use <code>grep</code> (next section). The two skills complement each other perfectly.</p></div>
+<hr />
+<h2 id="52-searching-inside-files-grep">5.2 Searching Inside Files (grep) <a href="#52-searching-inside-files-grep" class="heading-anchor">#</a></h2>
+<p>The <code>grep</code> skill searches for <strong>text content</strong> within files. It's your go-to when you know <em>what</em> code says but not <em>where</em> it lives.</p>
+<h3 id="basic-text-search">Basic Text Search <a href="#basic-text-search" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Where is the database connection string defined?
+
+NeamCode:
+  [grep] &quot;DATABASE_URL&quot; across all files
+
+  Found in 3 files:
+
+  .env (line 4):
+    DATABASE_URL=postgres://localhost:5432/myapp
+
+  src/config/database.ts (line 7):
+    const url = process.env.DATABASE_URL;
+
+  docker-compose.yml (line 12):
+    DATABASE_URL: postgres://db:5432/myapp</code></pre>
+<h3 id="searching-for-function-definitions">Searching for Function Definitions <a href="#searching-for-function-definitions" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Where is the validateEmail function defined?
+
+NeamCode:
+  [grep] &quot;function validateEmail&quot; across all files
+  [grep] &quot;validateEmail =&quot; across all files
+  [grep] &quot;const validateEmail&quot; across all files
+
+  Found definition in src/utils/validation.ts (line 23):
+    export const validateEmail = (email: string): boolean =&gt; {
+
+  Used in 4 other files:
+  src/controllers/userController.ts (line 15): import
+  src/controllers/authController.ts (line 8): import
+  src/routes/users.ts (line 31): called
+  tests/unit/validation.test.ts (line 12): tested</code></pre>
+<h3 id="searching-with-patterns">Searching with Patterns <a href="#searching-with-patterns" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Find all TODO comments in the codebase
+
+NeamCode:
+  [grep] &quot;TODO&quot; across all files
+
+  Found 8 TODO comments:
+
+  src/controllers/userController.ts:42:  // TODO: Add pagination
+  src/controllers/postController.ts:18:  // TODO: Implement caching
+  src/middleware/auth.ts:55:             // TODO: Refresh token logic
+  src/models/User.ts:30:                // TODO: Add email verification
+  ...</code></pre>
+<h3 id="searching-specific-file-types">Searching Specific File Types <a href="#searching-specific-file-types" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Find all uses of &quot;fetch&quot; but only in TypeScript files
+
+NeamCode:
+  [grep] &quot;fetch&quot; in **/*.ts
+
+  Found 12 matches across 5 files:
+
+  src/services/api.ts (lines 8, 15, 23, 31):
+    Multiple fetch calls to external APIs
+
+  src/utils/http.ts (lines 4, 12):
+    Custom fetch wrapper with retry logic
+  ...</code></pre>
+<div class="callout callout-note"><div class="callout-title"><span class="callout-icon">&#128221;</span> Note</div><p>📝 <strong>Note:</strong> NeamCode often combines <code>grep</code> with <code>file_read</code> automatically. It will search to find the right file, then read it to understand the full context before answering your question.</p></div>
+<h3 id="searching-for-patterns-not-just-exact-text">Searching for Patterns (Not Just Exact Text) <a href="#searching-for-patterns-not-just-exact-text" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Find all console.log statements that might have been left
+     in production code (not in test files)
+
+NeamCode:
+  [grep] &quot;console.log&quot; in src/**/*.ts
+
+  Found 5 console.log statements in production code:
+
+  src/controllers/userController.ts:67:
+    console.log(&#x27;User created:&#x27;, user.id);
+
+  src/services/payment.ts:43:
+    console.log(&#x27;Payment processed:&#x27;, amount);
+
+  ...
+
+  These should probably be replaced with a proper logger.
+  Want me to replace them with your logging library?</code></pre>
+<hr />
+<h2 id="53-understanding-directory-structure-dir_tree">5.3 Understanding Directory Structure (dir_tree) <a href="#53-understanding-directory-structure-dir_tree" class="heading-anchor">#</a></h2>
+<p>The <code>dir_tree</code> skill gives you a visual map of your project's file and folder hierarchy.</p>
+<h3 id="getting-the-full-picture">Getting the Full Picture <a href="#getting-the-full-picture" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Show me the project structure
+
+NeamCode:
+  [dir_tree] .
+
+  my-app/
+  ├── .github/
+  │   └── workflows/
+  │       └── ci.yml
+  ├── src/
+  │   ├── config/
+  │   │   ├── database.ts
+  │   │   └── auth.ts
+  │   ├── controllers/
+  │   │   ├── userController.ts
+  │   │   └── postController.ts
+  │   ├── middleware/
+  │   │   ├── auth.ts
+  │   │   └── validation.ts
+  │   ├── models/
+  │   │   ├── User.ts
+  │   │   └── Post.ts
+  │   ├── routes/
+  │   │   ├── users.ts
+  │   │   └── posts.ts
+  │   ├── services/
+  │   │   ├── api.ts
+  │   │   └── email.ts
+  │   ├── utils/
+  │   │   ├── helpers.ts
+  │   │   └── validation.ts
+  │   ├── app.ts
+  │   └── index.ts
+  ├── tests/
+  │   ├── unit/
+  │   └── integration/
+  ├── package.json
+  ├── tsconfig.json
+  └── README.md</code></pre>
+<h3 id="focused-directory-views">Focused Directory Views <a href="#focused-directory-views" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Show me just the src/models directory
+
+NeamCode:
+  [dir_tree] src/models
+
+  models/
+  ├── User.ts
+  ├── Post.ts
+  ├── Comment.ts
+  ├── Category.ts
+  └── index.ts      # barrel export</code></pre>
+<h3 id="understanding-architecture-from-structure">Understanding Architecture from Structure <a href="#understanding-architecture-from-structure" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Based on the project structure, what architecture
+     pattern is this project using?
+
+NeamCode:
+  [dir_tree] src/
+
+  This project follows the **MVC (Model-View-Controller)** pattern:
+
+  - models/     → Data layer (Mongoose/Sequelize models)
+  - controllers/ → Business logic
+  - routes/     → HTTP routing (acts as the &quot;View&quot; for an API)
+  - middleware/  → Cross-cutting concerns
+  - services/   → External integrations
+  - utils/      → Shared helpers
+
+  It&#x27;s a clean separation. The only thing I&#x27;d suggest is adding
+  a `types/` directory for shared TypeScript interfaces.</code></pre>
+<div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip:</strong> Running <code>dir_tree</code> is usually the first thing experienced NeamCode users do when opening a new project. It gives you a mental map before diving into any code.</p></div>
+<hr />
+<h2 id="54-analyzing-code-structure-code_structure">5.4 Analyzing Code Structure (code_structure) <a href="#54-analyzing-code-structure-code_structure" class="heading-anchor">#</a></h2>
+<p>The <code>code_structure</code> skill goes deeper than <code>dir_tree</code>. It analyzes the actual code to show you classes, functions, exports, and relationships.</p>
+<h3 id="analyzing-a-files-structure">Analyzing a File's Structure <a href="#analyzing-a-files-structure" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: What&#x27;s the structure of src/services/api.ts?
+
+NeamCode:
+  [code_structure] src/services/api.ts
+
+  src/services/api.ts
+  ├── Imports
+  │   ├── axios (external)
+  │   └── ApiConfig from ../config
+  ├── Types
+  │   ├── interface ApiResponse&lt;T&gt;
+  │   └── type HttpMethod = &#x27;GET&#x27; | &#x27;POST&#x27; | &#x27;PUT&#x27; | &#x27;DELETE&#x27;
+  ├── Class: ApiClient
+  │   ├── private baseUrl: string
+  │   ├── private headers: Record&lt;string, string&gt;
+  │   ├── constructor(config: ApiConfig)
+  │   ├── async get&lt;T&gt;(path: string): Promise&lt;ApiResponse&lt;T&gt;&gt;
+  │   ├── async post&lt;T&gt;(path: string, data: unknown): Promise&lt;ApiResponse&lt;T&gt;&gt;
+  │   ├── async put&lt;T&gt;(path: string, data: unknown): Promise&lt;ApiResponse&lt;T&gt;&gt;
+  │   ├── async delete(path: string): Promise&lt;void&gt;
+  │   └── private handleError(error: AxiosError): never
+  └── Exports
+      └── default ApiClient</code></pre>
+<h3 id="analyzing-a-module-or-directory">Analyzing a Module or Directory <a href="#analyzing-a-module-or-directory" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Show me the code structure of the entire models directory
+
+NeamCode:
+  [code_structure] src/models/
+
+  src/models/
+  ├── User.ts
+  │   ├── interface IUser
+  │   ├── class User extends Model
+  │   │   ├── static findByEmail(email: string)
+  │   │   ├── async hashPassword()
+  │   │   └── async comparePassword(candidate: string)
+  │   └── exports: User, IUser
+  ├── Post.ts
+  │   ├── interface IPost
+  │   ├── class Post extends Model
+  │   │   ├── static findByAuthor(authorId: string)
+  │   │   ├── static findPublished()
+  │   │   └── async publish()
+  │   └── exports: Post, IPost
+  └── index.ts
+      └── re-exports: User, Post, IUser, IPost</code></pre>
+<h3 id="finding-dependencies-between-modules">Finding Dependencies Between Modules <a href="#finding-dependencies-between-modules" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: What does the auth middleware depend on?
+
+NeamCode:
+  [code_structure] src/middleware/auth.ts
+  [grep] &quot;import&quot; in src/middleware/auth.ts
+
+  The auth middleware depends on:
+
+  1. jsonwebtoken (external) — JWT verification
+  2. ../models/User — User model for lookup
+  3. ../config/auth — Secret keys and token config
+  4. ../utils/errors — Custom error classes
+
+  Dependency chain:
+  auth.ts → User model → database config → .env
+            → auth config → .env
+            → jsonwebtoken (npm)</code></pre>
+<hr />
+<h2 id="55-exploring-an-unfamiliar-codebase">5.5 Exploring an Unfamiliar Codebase <a href="#55-exploring-an-unfamiliar-codebase" class="heading-anchor">#</a></h2>
+<p>Let's walk through a realistic scenario: you've just cloned a repository and need to understand it quickly.</p>
+<h3 id="step-1-get-the-lay-of-the-land">Step 1: Get the Lay of the Land <a href="#step-1-get-the-lay-of-the-land" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: I just cloned this repo. Help me understand it.
+
+NeamCode:
+  [dir_tree] .
+  [file_read] package.json
+  [file_read] README.md
+
+  This is a **Next.js 14** application — an e-commerce platform.
+
+  Key facts:
+  - Framework: Next.js 14 with App Router
+  - Language: TypeScript
+  - Database: PostgreSQL via Prisma ORM
+  - Auth: NextAuth.js
+  - Styling: Tailwind CSS
+  - Testing: Jest + React Testing Library
+  - 47 source files, ~8,200 lines of code</code></pre>
+<h3 id="step-2-understand-the-architecture">Step 2: Understand the Architecture <a href="#step-2-understand-the-architecture" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Show me how the code is organized
+
+NeamCode:
+  [dir_tree] src/
+  [code_structure] src/app/
+
+  The project uses Next.js App Router structure:
+
+  src/
+  ├── app/                    # Routes &amp; pages
+  │   ├── (auth)/             # Auth-grouped routes
+  │   │   ├── login/
+  │   │   └── register/
+  │   ├── (shop)/             # Shop-grouped routes
+  │   │   ├── products/
+  │   │   ├── cart/
+  │   │   └── checkout/
+  │   ├── api/                # API routes
+  │   │   ├── products/
+  │   │   ├── orders/
+  │   │   └── auth/
+  │   ├── layout.tsx
+  │   └── page.tsx
+  ├── components/             # Reusable UI
+  ├── lib/                    # Utilities &amp; config
+  ├── prisma/                 # Database schema
+  └── types/                  # TypeScript types
+
+  It follows the standard Next.js App Router conventions
+  with route groups for auth and shop sections.</code></pre>
+<h3 id="step-3-find-the-key-files">Step 3: Find the Key Files <a href="#step-3-find-the-key-files" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Where&#x27;s the database schema?
+
+NeamCode:
+  [glob] **/*schema*
+  [file_read] prisma/schema.prisma
+
+  The Prisma schema defines 5 models:
+  - User (id, email, name, password, role, orders)
+  - Product (id, name, description, price, stock, category)
+  - Category (id, name, products)
+  - Order (id, userId, items, status, total, createdAt)
+  - OrderItem (id, orderId, productId, quantity, price)</code></pre>
+<h3 id="step-4-trace-a-feature">Step 4: Trace a Feature <a href="#step-4-trace-a-feature" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: How does the checkout flow work? Walk me through the code.
+
+NeamCode:
+  [file_read] src/app/(shop)/checkout/page.tsx
+  [file_read] src/components/CheckoutForm.tsx
+  [file_read] src/app/api/orders/route.ts
+  [file_read] src/lib/stripe.ts
+
+  Here&#x27;s the checkout flow:
+
+  1. User visits /checkout → loads CheckoutForm component
+  2. CheckoutForm collects shipping info and renders Stripe Elements
+  3. On submit, it calls POST /api/orders with cart data
+  4. API route:
+     a. Validates cart items against database stock
+     b. Creates a Stripe PaymentIntent
+     c. Creates an Order record (status: &quot;pending&quot;)
+     d. Returns the client secret for Stripe confirmation
+  5. Frontend confirms payment with Stripe
+  6. Stripe webhook updates order status to &quot;paid&quot;</code></pre>
+<div class="flow-steps">
+  <span class="flow-step">Checkout Page</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step">API Route<br><small>/api/order</small></span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step">Stripe Payment</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step highlight">Webhook Update</span>
+</div>
+<div class="comparison-grid">
+  <div class="info-box">
+    <div class="info-box-header gray">Prisma Create Order</div>
+    <div class="info-box-body"><p>Created during API route processing</p></div>
+  </div>
+  <div class="info-box">
+    <div class="info-box-header green">Order Status → "paid"</div>
+    <div class="info-box-body"><p>Updated by Stripe webhook callback</p></div>
+  </div>
+</div>
+<h3 id="step-5-find-potential-issues">Step 5: Find Potential Issues <a href="#step-5-find-potential-issues" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Are there any obvious issues or code smells?
+
+NeamCode:
+  [grep] &quot;TODO&quot; across all files
+  [grep] &quot;FIXME&quot; across all files
+  [grep] &quot;console.log&quot; in src/**/*.ts
+  [grep] &quot;any&quot; in src/**/*.ts
+
+  I found several concerns:
+
+  1. **12 TODO/FIXME comments** — most are in the checkout flow
+  2. **7 console.log statements** in production code
+  3. **15 uses of `any` type** — reduces TypeScript&#x27;s safety
+  4. **No error boundary** in the app layout
+  5. **Stock check is not atomic** — race condition possible
+     during concurrent checkouts (src/app/api/orders/route.ts:34)</code></pre>
+<hr />
+<h2 id="56-pro-tips">5.6 Pro Tips <a href="#56-pro-tips" class="heading-anchor">#</a></h2>
+<h3 id="1-combine-search-skills">1. Combine Search Skills <a href="#1-combine-search-skills" class="heading-anchor">#</a></h3>
+<p>The most powerful searches combine multiple skills:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Find all React components that use the useAuth hook
+
+# NeamCode will:
+# 1. grep for &quot;useAuth&quot; to find usage
+# 2. glob for *.tsx to narrow to components
+# 3. code_structure on matches to understand context</code></pre>
+<h3 id="2-use-dir_tree-first-then-drill-down">2. Use dir_tree First, Then Drill Down <a href="#2-use-dir_tree-first-then-drill-down" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-"># Start broad:
+You: Show me the project structure
+
+# Then narrow:
+You: Show me what&#x27;s in the services directory
+
+# Then go deep:
+You: Analyze the code structure of the PaymentService</code></pre>
+<h3 id="3-search-for-patterns-not-just-text">3. Search for Patterns, Not Just Text <a href="#3-search-for-patterns-not-just-text" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Find all API endpoints in this Express app
+
+# NeamCode will grep for router.get, router.post, app.get, etc.
+# This is smarter than searching for a single string.</code></pre>
+<h3 id="4-let-neamcode-choose-the-right-tool">4. Let NeamCode Choose the Right Tool <a href="#4-let-neamcode-choose-the-right-tool" class="heading-anchor">#</a></h3>
+<p>You don't need to specify which skill to use. Just describe what you're looking for:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-"># These all work — NeamCode picks the right skill:
+You: Where is the login page?           → glob + file_read
+You: Who calls the sendEmail function?  → grep
+You: What&#x27;s the project layout?         → dir_tree
+You: How is the User class structured?  → code_structure</code></pre>
+<h3 id="5-bookmark-your-findings-mentally">5. Bookmark Your Findings Mentally <a href="#5-bookmark-your-findings-mentally" class="heading-anchor">#</a></h3>
+<p>When exploring a codebase, build a mental map:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: I need to understand the auth system. Start by finding
+     all auth-related files, then explain how they connect.
+
+# NeamCode will give you the full picture in one response.
+# This is faster than exploring file by file.</code></pre>
+<hr />
+<h2 id="exercises">Exercises <a href="#exercises" class="heading-anchor">#</a></h2>
+<div class="callout callout-try-it-yourself"><p>🎯 <strong>Exercise 5.1:</strong> Navigate to any project on your machine. Ask NeamCode to show its directory structure, then find all configuration files (any file with "config" in the name or common config extensions like <code>.yml</code>, <code>.json</code>, <code>.toml</code>).</p></div>
+<div class="callout callout-try-it-yourself"><p>🎯 <strong>Exercise 5.2:</strong> In the same project, use grep through NeamCode to find all <code>import</code> statements that reference a specific module. Then ask how many files depend on that module.</p></div>
+<div class="callout callout-try-it-yourself"><p>🎯 <strong>Exercise 5.3:</strong> Clone a popular open-source repository you've never worked with (e.g., a small Express.js project from GitHub). Ask NeamCode to explore it and explain the architecture in under 2 minutes.</p></div>
+<div class="callout callout-try-it-yourself"><p>🎯 <strong>Exercise 5.4:</strong> Ask NeamCode to find all functions that are defined but never called in a project. This requires combining <code>code_structure</code> with <code>grep</code> — see if NeamCode can figure it out.</p></div>
+<div class="callout callout-try-it-yourself"><p>🎯 <strong>Exercise 5.5:</strong> Pick a feature in a project (e.g., "user registration") and ask NeamCode to trace it from the frontend to the database, identifying every file involved.</p></div>
+<hr />
+<div class="table-wrap"><table>
+<thead><tr>
+<th><a href="04-working-with-files.md">← Chapter 4: Working with Files</a></th>
+<th><a href="06-commands-and-git.md">Chapter 6: Running Commands &amp; Git →</a></th>
+</tr></thead><tbody>
+</tbody></table></div>
+    <nav class="chapter-nav"><a href="04-working-with-files.html" class="nav-prev"><span class="nav-label">&larr; Previous</span><span class="nav-title">Working with Files</span></a><a href="06-commands-and-git.html" class="nav-next"><span class="nav-label">Next &rarr;</span><span class="nav-title">Running Commands & Git</span></a></nav>
+  </article>
+</main>
+
+<button class="back-to-top" id="back-to-top" aria-label="Back to top">&#8593;</button>
+
+<div class="search-overlay" id="search-overlay">
+  <div class="search-modal">
+    <div class="search-input-wrap">
+      <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6.5" cy="6.5" r="5"/><line x1="10.5" y1="10.5" x2="15" y2="15"/></svg>
+      <input type="text" class="search-input" id="search-input" placeholder="Search chapters, topics...">
+    </div>
+    <div class="search-results" id="search-results">
+      <div class="search-empty">Start typing to search...</div>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/script.js"></script>
+</body>
+</html>

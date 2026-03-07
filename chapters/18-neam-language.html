@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 18: Neam Language Integration | Command the Future</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-base="../">
+
+<header class="topbar">
+  <div class="topbar-left">
+    <button class="hamburger" id="hamburger" aria-label="Toggle sidebar">&#9776;</button>
+    <a href="../index.html" class="topbar-title">Command the Future</a>
+  </div>
+  <div class="topbar-right">
+    <button class="topbar-btn search-btn" aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6.5" cy="6.5" r="5"/><line x1="10.5" y1="10.5" x2="15" y2="15"/></svg><kbd>Ctrl+K</kbd></button>
+    <button class="topbar-btn" id="theme-toggle" aria-label="Toggle theme"></button>
+  </div>
+</header>
+
+<div class="progress-bar"><div class="progress-fill"></div></div>
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+<aside class="sidebar" id="sidebar">
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Getting Started</div>
+  <div class="sidebar-chapters">
+    <a href="00-preface.html" class="sidebar-link" title="Preface">Preface</a>
+    <a href="01-meet-neamcode.html" class="sidebar-link" title="Meet NeamCode">Meet NeamCode</a>
+    <a href="02-install-first-conversation.html" class="sidebar-link" title="Install & First Conversation">Install & First Conversation</a>
+    <a href="03-art-of-prompting.html" class="sidebar-link" title="The Art of Prompting">The Art of Prompting</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Core Skills</div>
+  <div class="sidebar-chapters">
+    <a href="04-working-with-files.html" class="sidebar-link" title="Working with Files">Working with Files</a>
+    <a href="05-finding-things.html" class="sidebar-link" title="Finding Things in Code">Finding Things in Code</a>
+    <a href="06-commands-and-git.html" class="sidebar-link" title="Running Commands & Git">Running Commands & Git</a>
+    <a href="07-web-research.html" class="sidebar-link" title="Researching from the Terminal">Researching from the Terminal</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Workflow & Configuration</div>
+  <div class="sidebar-chapters">
+    <a href="08-slash-commands.html" class="sidebar-link" title="Slash Commands">Slash Commands</a>
+    <a href="09-modes.html" class="sidebar-link" title="Modes">Modes</a>
+    <a href="10-sessions-context.html" class="sidebar-link" title="Sessions & Context">Sessions & Context</a>
+    <a href="11-auto-memory.html" class="sidebar-link" title="Auto Memory">Auto Memory</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Providers & Cost</div>
+  <div class="sidebar-chapters">
+    <a href="12-choosing-providers.html" class="sidebar-link" title="Choosing Your AI Provider">Choosing Your AI Provider</a>
+    <a href="13-offline-mode.html" class="sidebar-link" title="Offline Mode">Offline Mode</a>
+    <a href="14-zero-cost-setup.html" class="sidebar-link" title="The $0 AI Setup">The $0 AI Setup</a>
+    <a href="15-budget-cost.html" class="sidebar-link" title="Budget & Cost Tracking">Budget & Cost Tracking</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Advanced Features</div>
+  <div class="sidebar-chapters">
+    <a href="16-agents.html" class="sidebar-link" title="Agents & Delegation">Agents & Delegation</a>
+    <a href="17-mcp-servers.html" class="sidebar-link" title="MCP Servers">MCP Servers</a>
+    <a href="18-neam-language.html" class="sidebar-link active" title="Neam Language Integration">Neam Language Integration</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Audience Guides</div>
+  <div class="sidebar-chapters">
+    <a href="19-for-students.html" class="sidebar-link" title="For Students">For Students</a>
+    <a href="20-for-researchers.html" class="sidebar-link" title="For Researchers">For Researchers</a>
+    <a href="21-for-professionals.html" class="sidebar-link" title="For Professionals">For Professionals</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Walkthroughs</div>
+  <div class="sidebar-chapters">
+    <a href="22-walkthrough-build-project.html" class="sidebar-link" title="Walkthrough: Build a Project">Walkthrough: Build a Project</a>
+    <a href="23-walkthrough-fix-bug.html" class="sidebar-link" title="Walkthrough: Fix a Real Bug">Walkthrough: Fix a Real Bug</a>
+    <a href="24-making-it-yours.html" class="sidebar-link" title="Making NeamCode Yours">Making NeamCode Yours</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Closing</div>
+  <div class="sidebar-chapters">
+    <a href="25-road-ahead.html" class="sidebar-link" title="The Road Ahead">The Road Ahead</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Appendices</div>
+  <div class="sidebar-chapters">
+    <a href="../appendices/A-slash-commands.html" class="sidebar-link" title="All Slash Commands">All Slash Commands</a>
+    <a href="../appendices/B-skills-reference.html" class="sidebar-link" title="All Skills Reference">All Skills Reference</a>
+    <a href="../appendices/C-configuration.html" class="sidebar-link" title="Configuration Reference">Configuration Reference</a>
+    <a href="../appendices/D-troubleshooting.html" class="sidebar-link" title="Troubleshooting & FAQ">Troubleshooting & FAQ</a>
+    <a href="../appendices/E-glossary.html" class="sidebar-link" title="Glossary">Glossary</a>
+  </div>
+</div>
+</aside>
+
+<main class="main">
+  <article class="content">
+<h1 id="chapter-18-neam-language-integration">Chapter 18: Neam Language Integration <a href="#chapter-18-neam-language-integration" class="heading-anchor">#</a></h1>
+<blockquote><p><em>"The best tool for a language is an assistant that speaks it fluently."</em></p></blockquote>
+<p>📖 <strong>Estimated read time:</strong> 18 minutes</p>
+<hr />
+<h2 id="what-youll-learn">What You'll Learn <a href="#what-youll-learn" class="heading-anchor">#</a></h2>
+<ul>
+<li>What the Neam programming language is and what it's designed for</li>
+<li>How NeamCode automatically detects Neam projects</li>
+<li>How to compile, run, and build Neam programs from the terminal</li>
+<li>How AI-powered compilation works (fixing errors for you)</li>
+<li>How to leverage LSP-powered code intelligence for Neam</li>
+<li>How to manage Neam packages</li>
+<li>How to debug Neam programs with the built-in DAP debugger</li>
+<li>How to use the Neam REPL for interactive exploration</li>
+<li>How to benchmark Neam programs with evaluations</li>
+<li>Why Neam + NeamCode is an exceptionally powerful combination</li>
+</ul>
+<hr />
+<h2 id="181-what-is-neam">18.1 What Is Neam? <a href="#181-what-is-neam" class="heading-anchor">#</a></h2>
+<p><strong>Neam</strong> is a compiled, domain-specific programming language built for AI agent systems. While you can use NeamCode with any language (Python, JavaScript, Rust, etc.), Neam is the language NeamCode was born from — and they work together with a level of integration no other language gets.</p>
+<p>Here's what Neam code looks like:</p>
+<div class="code-header"><span class="code-lang">neam</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-neam">agent Assistant {
+  provider: &quot;openai&quot;,
+  model: &quot;gpt-4o-mini&quot;,
+  system: &quot;You are a helpful coding assistant.&quot;,
+  temperature: 0.7,
+  budget: QuickBudget,
+  skills: [SearchCode, WriteFile]
+}
+
+budget QuickBudget {
+  cost: 0.50,
+  tokens: 10000,
+  time: 30000
+}
+
+skill SearchCode {
+  // skill implementation
+}
+
+fun main() {
+  let response = Assistant.ask(&quot;Explain this codebase&quot;)
+  print(response)
+}</code></pre>
+<p>Agents, budgets, knowledge bases, and skills are <strong>first-class language constructs</strong> — not library calls bolted on after the fact.</p>
+<h3 id="the-neam-toolchain">The Neam Toolchain <a href="#the-neam-toolchain" class="heading-anchor">#</a></h3>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Tool</th>
+<th>Purpose</th>
+</tr></thead><tbody>
+<tr>
+<td><code>neamc</code></td>
+<td>Compiler — turns <code>.neam</code> files into <code>.neamb</code> bytecode</td>
+</tr>
+<tr>
+<td><code>neam</code> / <code>neam-cli</code></td>
+<td>Runtime — executes bytecode, includes REPL</td>
+</tr>
+<tr>
+<td><code>neam-lsp</code></td>
+<td>Language Server — powers editor intelligence</td>
+</tr>
+<tr>
+<td><code>neam-dap</code></td>
+<td>Debug Adapter — powers debugging</td>
+</tr>
+<tr>
+<td><code>neam-pkg</code></td>
+<td>Package manager — installs and manages packages</td>
+</tr>
+<tr>
+<td><code>neam-api</code></td>
+<td>HTTP API server for Neam applications</td>
+</tr>
+<tr>
+<td><code>neam-gym</code></td>
+<td>Training and benchmarking tool</td>
+</tr>
+</tbody></table></div>
+<p>NeamCode integrates with <strong>all</strong> of these tools, giving you a seamless development experience without leaving the terminal.</p>
+<hr />
+<h2 id="182-project-detection">18.2 Project Detection <a href="#182-project-detection" class="heading-anchor">#</a></h2>
+<p>NeamCode automatically detects when you're working in a Neam project. When it does, it unlocks Neam-specific commands and capabilities.</p>
+<h3 id="what-triggers-detection">What Triggers Detection <a href="#what-triggers-detection" class="heading-anchor">#</a></h3>
+<p>NeamCode looks for:</p>
+<ul>
+<li><code>.neam</code> files in your working directory or subdirectories</li>
+<li>A <code>neam.toml</code> or <code>neam-project.toml</code> project configuration file</li>
+<li>A <code>neam-release/</code> directory structure</li>
+</ul>
+<h3 id="what-happens-on-detection">What Happens on Detection <a href="#what-happens-on-detection" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">$ neamcode
+
+  NeamCode v0.3.1
+  Working directory: /home/user/projects/my-agent
+
+  📦 Neam project detected
+     Version: 0.2.1
+     Files: 12 .neam files found
+     Config: neam.toml
+
+  Neam-specific commands available:
+    /neam compile, /neam run, /neam build,
+    /neam files, /neam info, /neam repl
+    /pkg, /debug-neam, /eval</code></pre>
+<h3 id="checking-project-info">Checking Project Info <a href="#checking-project-info" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: /neam info</code></pre>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">Neam Project Information
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Project:     my-agent
+  Version:     0.2.1
+  Entry point: src/main.neam
+  Source files: 12
+  Dependencies: 3 (std.agents, std.rag, community.slack)
+  Build status: Not built</code></pre>
+<h3 id="listing-neam-files">Listing Neam Files <a href="#listing-neam-files" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: /neam files</code></pre>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">Neam Source Files
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  src/main.neam              Entry point
+  src/agents/assistant.neam  Main agent definition
+  src/agents/researcher.neam Research agent
+  src/skills/search.neam     Code search skill
+  src/skills/summarize.neam  Summarization skill
+  src/knowledge/docs.neam    Knowledge base config
+  src/budgets.neam           Budget definitions
+  src/guards.neam            Security guards
+  tests/agent_test.neam      Agent tests
+  tests/skill_test.neam      Skill tests
+  tests/budget_test.neam     Budget tests
+  stdlib/helpers.neam        Local helper library
+
+  12 files found</code></pre>
+<div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip:</strong> Even if you're working on a mixed-language project that has some <code>.neam</code> files alongside Python or TypeScript, NeamCode will detect the Neam components and offer Neam-specific commands.</p></div>
+<hr />
+<h2 id="183-compiling-running">18.3 Compiling &amp; Running <a href="#183-compiling-running" class="heading-anchor">#</a></h2>
+<h3 id="compiling-a-single-file">Compiling a Single File <a href="#compiling-a-single-file" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: /neam compile src/main.neam</code></pre>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">Compiling src/main.neam...
+
+  ✅ Compilation successful
+  Output: build/main.neamb
+  Time: 0.34s</code></pre>
+<h3 id="compiling-the-entire-project">Compiling the Entire Project <a href="#compiling-the-entire-project" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: /neam build</code></pre>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">Building project &#x27;my-agent&#x27;...
+
+  Compiling src/budgets.neam          ✅
+  Compiling src/guards.neam           ✅
+  Compiling src/knowledge/docs.neam   ✅
+  Compiling src/skills/search.neam    ✅
+  Compiling src/skills/summarize.neam ✅
+  Compiling src/agents/assistant.neam ✅
+  Compiling src/agents/researcher.neam ✅
+  Compiling src/main.neam             ✅
+  Linking...                          ✅
+
+  Build successful: build/my-agent.neamb
+  8 files compiled in 1.2s</code></pre>
+<h3 id="running-a-program">Running a Program <a href="#running-a-program" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: /neam run</code></pre>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">Running build/my-agent.neamb...
+
+  Agent &#x27;Assistant&#x27; initialized
+  Provider: openai (gpt-4o-mini)
+  Budget: QuickBudget ($0.50 / 10K tokens / 30s)
+
+  &gt; Ready for input.</code></pre>
+<h3 id="running-with-arguments">Running with Arguments <a href="#running-with-arguments" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: /neam run --input &quot;Analyze the Q4 report&quot; --verbose</code></pre>
+<h3 id="compilation-errors">Compilation Errors <a href="#compilation-errors" class="heading-anchor">#</a></h3>
+<p>When compilation fails, NeamCode shows clear error messages:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: /neam compile src/main.neam</code></pre>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">Compiling src/main.neam...
+
+  ❌ Compilation failed
+
+  Error at src/main.neam:15:3
+    Missing required field &#x27;provider&#x27; in agent declaration
+
+    13 │ agent Helper {
+    14 │   model: &quot;gpt-4o-mini&quot;,
+    15 │   system: &quot;You help with tasks&quot;
+       │   ^^^^^^^
+    16 │ }
+
+  1 error found</code></pre>
+<div class="callout callout-note"><div class="callout-title"><span class="callout-icon">&#128221;</span> Note</div><p>📝 <strong>Note:</strong> <code>/neam compile</code> compiles a single file. <code>/neam build</code> compiles the entire project in dependency order and links the result.</p></div>
+<hr />
+<h2 id="184-ai-powered-compilation">18.4 AI-Powered Compilation <a href="#184-ai-powered-compilation" class="heading-anchor">#</a></h2>
+<p>Here's where things get interesting. When a Neam compilation fails, you don't have to fix the errors yourself. NeamCode understands Neam deeply and can fix compilation errors automatically.</p>
+<h3 id="the-workflow">The Workflow <a href="#the-workflow" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: /neam compile src/agents/assistant.neam</code></pre>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">Compiling src/agents/assistant.neam...
+
+  ❌ Compilation failed (3 errors)
+
+  1. Line 8: Unknown retrieval strategy &quot;hybrd&quot; — did you mean &quot;hybrid&quot;?
+  2. Line 14: Type mismatch: budget expects number, got string &quot;500&quot;
+  3. Line 22: Undefined skill &#x27;WebSearch&#x27; — not imported
+
+  Would you like me to fix these errors? [Y/n]</code></pre>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Yes</code></pre>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">Fixing errors...
+
+  ✅ Line 8:  Changed &quot;hybrd&quot; → &quot;hybrid&quot;
+  ✅ Line 14: Changed &quot;500&quot; → 500
+  ✅ Line 22: Added import for WebSearch from std.skills
+
+Recompiling...
+
+  ✅ Compilation successful
+  Output: build/assistant.neamb</code></pre>
+<h3 id="ask-for-explanations">Ask for Explanations <a href="#ask-for-explanations" class="heading-anchor">#</a></h3>
+<p>You can also ask NeamCode to explain what went wrong:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Compile src/main.neam and explain any errors in detail</code></pre>
+<p>NeamCode will not only show the errors but explain the underlying Neam language rules, suggest best practices, and provide examples of correct usage.</p>
+<div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip:</strong> When you ask NeamCode to "write a Neam agent" or "create a Neam skill," it generates syntactically correct code and can compile-check it immediately. The feedback loop is instant.</p></div>
+<hr />
+<h2 id="185-code-intelligence-lsp">18.5 Code Intelligence (LSP) <a href="#185-code-intelligence-lsp" class="heading-anchor">#</a></h2>
+<p>NeamCode integrates with <code>neam-lsp</code>, the Neam Language Server, to provide rich code intelligence.</p>
+<h3 id="what-you-get">What You Get <a href="#what-you-get" class="heading-anchor">#</a></h3>
+<p><strong>Diagnostics</strong> — Real-time error and warning detection:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Check src/agents/assistant.neam for issues</code></pre>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">Diagnostics for src/agents/assistant.neam:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  ⚠️  Line 12: Budget &#x27;HighBudget&#x27; allows $50.00 — consider
+      adding a cost guard
+  ℹ️  Line 18: Skill &#x27;DataFetch&#x27; is declared but never used
+  ✅  No errors found</code></pre>
+<p><strong>Hover information</strong> — Ask about any symbol:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: What is the &#x27;hybrid&#x27; retrieval strategy in Neam?</code></pre>
+<p>NeamCode uses LSP hover data plus its own knowledge to give you a thorough explanation.</p>
+<p><strong>Go-to-definition</strong> — Jump to where something is defined:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Where is the SearchCode skill defined?</code></pre>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">SearchCode is defined at:
+  src/skills/search.neam:1
+
+  skill SearchCode {
+    description: &quot;Search the codebase for relevant code&quot;,
+    ...
+  }</code></pre>
+<p><strong>Auto-completion awareness</strong> — When helping you write Neam code, NeamCode knows valid completions:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Add a knowledge block to my agent. It should use the
+     usearch vector store and hybrid retrieval.</code></pre>
+<p>NeamCode generates syntactically valid Neam because it knows the schema from the LSP — field names, valid values, required properties.</p>
+<div class="callout callout-note"><div class="callout-title"><span class="callout-icon">&#128221;</span> Note</div><p>📝 <strong>Note:</strong> The LSP runs in the background. You don't need to start it manually — NeamCode manages the <code>neam-lsp</code> process when it detects a Neam project.</p></div>
+<hr />
+<h2 id="186-package-management">18.6 Package Management <a href="#186-package-management" class="heading-anchor">#</a></h2>
+<p>Neam has a package manager called <code>neam-pkg</code>. NeamCode provides commands to interact with it directly.</p>
+<h3 id="listing-installed-packages">Listing Installed Packages <a href="#listing-installed-packages" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: /pkg list</code></pre>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">Installed Packages
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Package              Version   Source
+  ───────              ───────   ──────
+  std.agents           0.2.1     stdlib
+  std.rag              0.2.1     stdlib
+  community.slack      1.0.3     registry
+
+  3 packages installed</code></pre>
+<h3 id="searching-for-packages">Searching for Packages <a href="#searching-for-packages" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: /pkg search database</code></pre>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">Package Search: &quot;database&quot;
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  community.postgres   1.2.0   PostgreSQL skills and knowledge adapters
+  community.mongodb    0.9.1   MongoDB integration for Neam agents
+  community.redis      1.0.0   Redis caching and pub/sub skills
+  std.sqlite           0.2.1   Built-in SQLite support
+
+  4 packages found</code></pre>
+<h3 id="installing-a-package">Installing a Package <a href="#installing-a-package" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: /pkg install community.postgres</code></pre>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">Installing community.postgres@1.2.0...
+
+  Downloading... ✅
+  Resolving dependencies...
+    + community.postgres@1.2.0
+    + std.collections@0.2.1 (dependency)
+  Installing... ✅
+
+  Package community.postgres@1.2.0 installed successfully.
+
+  Usage:
+    import community.postgres</code></pre>
+<h3 id="using-installed-packages-in-code">Using Installed Packages in Code <a href="#using-installed-packages-in-code" class="heading-anchor">#</a></h3>
+<p>After installing, use the package in your Neam files:</p>
+<div class="code-header"><span class="code-lang">neam</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-neam">import community.postgres
+
+skill QueryDB {
+  binding: postgres {
+    connection: &quot;postgresql://localhost:5432/mydb&quot;,
+    max_connections: 5
+  }
+}
+
+agent DataAgent {
+  provider: &quot;openai&quot;,
+  model: &quot;gpt-4o-mini&quot;,
+  skills: [QueryDB]
+}</code></pre>
+<div class="callout callout-warning"><div class="callout-title"><span class="callout-icon">&#9888;&#65039;</span> Warning</div><p>⚠️ <strong>Warning:</strong> Always review a community package before installing it in production. Use <code>/pkg info &lt;name&gt;</code> to check its documentation, author, and license.</p></div>
+<hr />
+<h2 id="187-debugging-with-dap">18.7 Debugging with DAP <a href="#187-debugging-with-dap" class="heading-anchor">#</a></h2>
+<p>NeamCode includes a full debugger for Neam programs via the Debug Adapter Protocol (DAP). This means you can set breakpoints, step through code, and inspect variables — all from the terminal.</p>
+<h3 id="starting-the-debugger">Starting the Debugger <a href="#starting-the-debugger" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: /debug-neam src/main.neam</code></pre>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">Neam Debugger (DAP)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Loading: src/main.neam
+  Compilation: ✅
+  Debugger attached.
+
+  Type &#x27;help&#x27; for debugger commands.
+
+  Stopped at src/main.neam:1
+  &gt; 1 │ module my.agent.app
+    2 │ import std.agents
+    3 │
+
+  (debug) _</code></pre>
+<h3 id="setting-breakpoints">Setting Breakpoints <a href="#setting-breakpoints" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">(debug) break src/main.neam:25</code></pre>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">Breakpoint 1 set at src/main.neam:25</code></pre>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">(debug) break src/agents/assistant.neam:10</code></pre>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">Breakpoint 2 set at src/agents/assistant.neam:10</code></pre>
+<h3 id="running-to-a-breakpoint">Running to a Breakpoint <a href="#running-to-a-breakpoint" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">(debug) continue</code></pre>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">Running...
+
+  Hit breakpoint 1 at src/main.neam:25
+
+    23 │ fun main() {
+    24 │   let agent = Assistant
+  &gt; 25 │   let response = agent.ask(&quot;Hello&quot;)
+    26 │   print(response)
+    27 │ }
+
+  (debug) _</code></pre>
+<h3 id="stepping-through-code">Stepping Through Code <a href="#stepping-through-code" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">(debug) step</code></pre>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">  Stepped into Assistant.ask()
+  at src/agents/assistant.neam:10
+
+     8 │ agent Assistant {
+     9 │   provider: &quot;openai&quot;,
+  &gt; 10 │   model: &quot;gpt-4o-mini&quot;,
+    11 │   system: &quot;You are helpful.&quot;,
+    12 │ }
+
+  (debug) _</code></pre>
+<h3 id="inspecting-variables">Inspecting Variables <a href="#inspecting-variables" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">(debug) print agent</code></pre>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">  agent = Agent {
+    name: &quot;Assistant&quot;,
+    provider: &quot;openai&quot;,
+    model: &quot;gpt-4o-mini&quot;,
+    temperature: 0.7,
+    budget: QuickBudget { cost: 0.50, tokens: 10000 },
+    skills: [SearchCode, WriteFile],
+    state: &quot;initialized&quot;
+  }</code></pre>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">(debug) print response</code></pre>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">  response = &lt;not yet evaluated&gt;</code></pre>
+<h3 id="debugger-command-reference">Debugger Command Reference <a href="#debugger-command-reference" class="heading-anchor">#</a></h3>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Command</th>
+<th>Short</th>
+<th>Description</th>
+</tr></thead><tbody>
+<tr>
+<td><code>break &lt;file&gt;:&lt;line&gt;</code></td>
+<td><code>b</code></td>
+<td>Set a breakpoint</td>
+</tr>
+<tr>
+<td><code>continue</code></td>
+<td><code>c</code></td>
+<td>Run until next breakpoint</td>
+</tr>
+<tr>
+<td><code>step</code></td>
+<td><code>s</code></td>
+<td>Step into the next line</td>
+</tr>
+<tr>
+<td><code>next</code></td>
+<td><code>n</code></td>
+<td>Step over (don't enter functions)</td>
+</tr>
+<tr>
+<td><code>print &lt;var&gt;</code></td>
+<td><code>p</code></td>
+<td>Print variable value</td>
+</tr>
+<tr>
+<td><code>backtrace</code></td>
+<td><code>bt</code></td>
+<td>Show call stack</td>
+</tr>
+<tr>
+<td><code>list</code></td>
+<td><code>l</code></td>
+<td>Show current source context</td>
+</tr>
+<tr>
+<td><code>delete &lt;num&gt;</code></td>
+<td><code>d</code></td>
+<td>Remove a breakpoint</td>
+</tr>
+<tr>
+<td><code>quit</code></td>
+<td><code>q</code></td>
+<td>Exit the debugger</td>
+</tr>
+</tbody></table></div>
+<div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip:</strong> You can ask NeamCode questions while debugging. For example: "Why is <code>response</code> null here?" NeamCode can examine the program state and the source code to help diagnose the issue.</p></div>
+<hr />
+<h2 id="188-the-repl">18.8 The REPL <a href="#188-the-repl" class="heading-anchor">#</a></h2>
+<p>The Neam REPL (Read-Eval-Print Loop) lets you experiment with Neam code interactively without creating files.</p>
+<h3 id="starting-the-repl">Starting the REPL <a href="#starting-the-repl" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: /neam repl</code></pre>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">Neam REPL v0.2.1
+Type expressions to evaluate. Type &#x27;exit&#x27; to quit.
+
+neam&gt; _</code></pre>
+<h3 id="basic-evaluation">Basic Evaluation <a href="#basic-evaluation" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neam&gt; 2 + 3
+5
+
+neam&gt; let greeting = &quot;Hello, Neam!&quot;
+&quot;Hello, Neam!&quot;
+
+neam&gt; greeting.length()
+12</code></pre>
+<h3 id="testing-agent-definitions">Testing Agent Definitions <a href="#testing-agent-definitions" class="heading-anchor">#</a></h3>
+<p>The REPL is great for testing agent configurations before putting them in a file:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neam&gt; budget TestBudget { cost: 0.05, tokens: 1000, time: 5000 }
+Budget &#x27;TestBudget&#x27; defined.
+
+neam&gt; agent QuickBot {
+...     provider: &quot;openai&quot;,
+...     model: &quot;gpt-4o-mini&quot;,
+...     system: &quot;Answer briefly.&quot;,
+...     budget: TestBudget
+...   }
+Agent &#x27;QuickBot&#x27; defined.
+
+neam&gt; QuickBot.ask(&quot;What is 2+2?&quot;)
+&quot;2+2 equals 4.&quot;
+
+  Budget used: $0.002 / $0.05 (tokens: 47/1000)</code></pre>
+<h3 id="importing-packages">Importing Packages <a href="#importing-packages" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neam&gt; import std.collections
+
+neam&gt; let items = List.of(1, 2, 3, 4, 5)
+[1, 2, 3, 4, 5]
+
+neam&gt; items.filter(fun(x) { x &gt; 3 })
+[4, 5]</code></pre>
+<h3 id="repl-history">REPL History <a href="#repl-history" class="heading-anchor">#</a></h3>
+<p>Use the up/down arrow keys to navigate through previous inputs. Your REPL history is saved between sessions.</p>
+<div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip:</strong> The REPL is perfect for quickly testing a knowledge retrieval strategy or budget configuration before committing it to your project files.</p></div>
+<hr />
+<h2 id="189-evaluations-benchmarks">18.9 Evaluations &amp; Benchmarks <a href="#189-evaluations-benchmarks" class="heading-anchor">#</a></h2>
+<p>NeamCode can run structured evaluations against your Neam agents to measure quality, speed, and cost.</p>
+<h3 id="running-an-evaluation">Running an Evaluation <a href="#running-an-evaluation" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: /eval run datasets/qa-benchmark.json</code></pre>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">Running evaluation: qa-benchmark
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Dataset: 50 questions
+  Agent: Assistant
+  Model: gpt-4o-mini
+
+  Progress: [████████████████████████████████████████] 50/50
+
+Results:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Metric                Value
+  ──────                ─────
+  Accuracy              84.0% (42/50 correct)
+  Avg response time     1.2s
+  Avg tokens/question   156
+  Total cost            $0.047
+  Median latency        0.9s
+  P95 latency           2.8s
+
+  Detailed results saved to: eval-results/qa-benchmark-20260307.json</code></pre>
+<h3 id="evaluation-dataset-format">Evaluation Dataset Format <a href="#evaluation-dataset-format" class="heading-anchor">#</a></h3>
+<p>Datasets are JSON files with input-output pairs:</p>
+<div class="code-header"><span class="code-lang">json</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;qa-benchmark&quot;,
+  &quot;agent&quot;: &quot;Assistant&quot;,
+  &quot;cases&quot;: [
+    {
+      &quot;input&quot;: &quot;What is the capital of France?&quot;,
+      &quot;expected&quot;: &quot;Paris&quot;,
+      &quot;match&quot;: &quot;contains&quot;
+    },
+    {
+      &quot;input&quot;: &quot;Explain recursion in one sentence.&quot;,
+      &quot;expected&quot;: &quot;function that calls itself&quot;,
+      &quot;match&quot;: &quot;semantic&quot;
+    }
+  ]
+}</code></pre>
+<h3 id="comparing-models">Comparing Models <a href="#comparing-models" class="heading-anchor">#</a></h3>
+<p>Run the same evaluation across different models to find the best fit:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Run the qa-benchmark evaluation with gpt-4o-mini,
+     then again with gpt-4o, and compare the results</code></pre>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">Comparison: qa-benchmark
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Metric          gpt-4o-mini    gpt-4o
+  ──────          ───────────    ──────
+  Accuracy        84.0%          94.0%
+  Avg time        1.2s           2.1s
+  Cost            $0.047         $0.31
+  Tokens/q        156            203
+
+  Verdict: gpt-4o is 10% more accurate but 6.6x more expensive.</code></pre>
+<p>This helps you make informed decisions about model selection based on real data rather than guesswork.</p>
+<div class="callout callout-note"><div class="callout-title"><span class="callout-icon">&#128221;</span> Note</div><p>📝 <strong>Note:</strong> The <code>neam-gym</code> tool (used by <code>/eval</code>) supports custom scoring functions, so you can define domain-specific quality metrics beyond simple string matching.</p></div>
+<hr />
+<h2 id="1810-why-neam-neamcode-is-a-powerful-combo">18.10 Why Neam + NeamCode Is a Powerful Combo <a href="#1810-why-neam-neamcode-is-a-powerful-combo" class="heading-anchor">#</a></h2>
+<p>Most language-plus-editor combinations are bolted together after the fact. Neam and NeamCode were designed together, and that shows in several ways.</p>
+<h3 id="native-understanding">Native Understanding <a href="#native-understanding" class="heading-anchor">#</a></h3>
+<p>NeamCode doesn't just syntax-highlight Neam files — it understands the <strong>semantics</strong>. When you write:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Create an agent that uses RAG with hybrid retrieval
+     and a $0.10 budget</code></pre>
+<p>NeamCode generates correct, idiomatic Neam code because it knows:</p>
+<ul>
+<li>The <code>agent</code> declaration syntax</li>
+<li>Valid retrieval strategies (<code>basic</code>, <code>mmr</code>, <code>hybrid</code>, <code>hyde</code>, <code>self-rag</code>, <code>crag</code>, <code>agentic</code>)</li>
+<li>How budgets, skills, and knowledge blocks connect</li>
+<li>Which fields are required vs. optional</li>
+</ul>
+<h3 id="compile-fix-run-loop">Compile-Fix-Run Loop <a href="#compile-fix-run-loop" class="heading-anchor">#</a></h3>
+<p>The integration between compilation, error fixing, and running is seamless:</p>
+<div class="flow-steps">
+  <span class="flow-step">Write code</span>
+  <span class="flow-arrow">&rarr;</span>
+  <span class="flow-step">Compile (/neam compile)</span>
+  <span class="flow-arrow">&rarr;</span>
+  <span class="flow-step highlight">Run (/neam run)</span>
+</div>
+<div class="flow-steps" style="margin-top: 0.5rem;">
+  <span class="flow-step" style="opacity: 0; pointer-events: none;">Write code</span>
+  <span class="flow-arrow">&darr;</span>
+  <span class="flow-step">errors?</span>
+  <span class="flow-arrow">&rarr;</span>
+  <span class="flow-step highlight">AI Fix errors</span>
+  <span class="flow-arrow">&rarr;</span>
+  <span class="flow-step">recompile</span>
+</div>
+<p>No context switching. No copying error messages into a chat window. The loop stays tight.</p>
+<h3 id="end-to-end-agent-development">End-to-End Agent Development <a href="#end-to-end-agent-development" class="heading-anchor">#</a></h3>
+<p>With NeamCode, you can go from idea to running agent without ever leaving the terminal:</p>
+<ol>
+<li><strong>Explore</strong> existing agents for patterns (<code>/agent explore</code>)</li>
+<li><strong>Write</strong> new Neam code (NeamCode generates it)</li>
+<li><strong>Compile</strong> to catch errors (<code>/neam compile</code>)</li>
+<li><strong>Debug</strong> to trace behavior (<code>/debug-neam</code>)</li>
+<li><strong>Test</strong> interactively (<code>/neam repl</code>)</li>
+<li><strong>Evaluate</strong> quality (<code>/eval run</code>)</li>
+<li><strong>Package</strong> for sharing (<code>/pkg</code>)</li>
+<li><strong>Review</strong> before shipping (<code>/agent review</code>)</li>
+</ol>
+<p>All in one tool. All in your terminal.</p>
+<hr />
+<h2 id="1811-pro-tips">18.11 Pro Tips <a href="#1811-pro-tips" class="heading-anchor">#</a></h2>
+<h3 id="use-the-repl-to-prototype-then-graduate-to-files">Use the REPL to Prototype, Then Graduate to Files <a href="#use-the-repl-to-prototype-then-graduate-to-files" class="heading-anchor">#</a></h3>
+<p>Start with the REPL for quick experiments:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neam&gt; agent TestBot { provider: &quot;ollama&quot;, model: &quot;llama3&quot;, system: &quot;Be brief.&quot; }
+neam&gt; TestBot.ask(&quot;Hello&quot;)</code></pre>
+<p>Once you're happy with the configuration, tell NeamCode:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Move my REPL agent definition into a proper file at
+     src/agents/testbot.neam</code></pre>
+<h3 id="leverage-ai-powered-compilation-as-a-learning-tool">Leverage AI-Powered Compilation as a Learning Tool <a href="#leverage-ai-powered-compilation-as-a-learning-tool" class="heading-anchor">#</a></h3>
+<p>When you're learning Neam, intentionally write code you're unsure about and let compilation + AI fix teach you:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: /neam compile src/experiment.neam</code></pre>
+<p>The error messages and AI fixes teach you the language faster than reading docs alone.</p>
+<h3 id="combine-evaluation-with-ci">Combine Evaluation with CI <a href="#combine-evaluation-with-ci" class="heading-anchor">#</a></h3>
+<p>Export evaluation datasets as part of your project and run them in CI:</p>
+<div class="code-header"><span class="code-lang">bash</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-bash"># In your CI pipeline:
+neamcode eval run datasets/regression-tests.json --threshold 90</code></pre>
+<p>This catches quality regressions before they reach production.</p>
+<h3 id="debug-budget-overruns">Debug Budget Overruns <a href="#debug-budget-overruns" class="heading-anchor">#</a></h3>
+<p>If an agent is consuming too much budget, use the debugger to trace exactly where tokens are spent:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: /debug-neam src/main.neam
+(debug) break src/agents/researcher.neam:15
+(debug) continue
+(debug) print budget</code></pre>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">  budget = QuickBudget {
+    cost_limit: 0.50,
+    cost_used: 0.43,    ← nearly exhausted
+    tokens_limit: 10000,
+    tokens_used: 8734,
+    time_limit: 30000,
+    time_used: 22450
+  }</code></pre>
+<p>Now you can see exactly where the budget is being consumed.</p>
+<h3 id="use-neam-info-to-onboard-new-team-members">Use <code>/neam info</code> to Onboard New Team Members <a href="#use-neam-info-to-onboard-new-team-members" class="heading-anchor">#</a></h3>
+<p>When someone new joins the project, tell them to run <code>/neam info</code> first. It gives a quick snapshot of the project's structure, dependencies, and configuration — much faster than reading through the codebase manually.</p>
+<div class="callout callout-note"><div class="callout-title"><span class="callout-icon">&#128221;</span> Note</div><p>📝 <strong>Note:</strong> All the Neam-specific commands (<code>/neam</code>, <code>/pkg</code>, <code>/debug-neam</code>, <code>/eval</code>) are only available when NeamCode detects a Neam project. If you don't see them, check that you have <code>.neam</code> files or a <code>neam.toml</code> in your working directory.</p></div>
+<hr />
+<h2 id="exercises">Exercises <a href="#exercises" class="heading-anchor">#</a></h2>
+<h3 id="exercise-181-detect-and-inspect">🎯 Exercise 18.1: Detect and Inspect <a href="#exercise-181-detect-and-inspect" class="heading-anchor">#</a></h3>
+<p>Navigate to a directory containing <code>.neam</code> files (or create a simple <code>hello.neam</code> file). Start NeamCode and verify:</p>
+<ol>
+<li>Does it detect the Neam project?</li>
+<li>Run <code>/neam info</code> — what does it report?</li>
+<li>Run <code>/neam files</code> — are all your files listed?</li>
+</ol>
+<h3 id="exercise-182-the-compile-fix-loop">🎯 Exercise 18.2: The Compile-Fix Loop <a href="#exercise-182-the-compile-fix-loop" class="heading-anchor">#</a></h3>
+<p>Write a Neam file with a deliberate error (e.g., misspell a keyword or omit a required field). Run <code>/neam compile</code> and let NeamCode fix the errors. How many iterations does it take to get a clean compile?</p>
+<h3 id="exercise-183-repl-exploration">🎯 Exercise 18.3: REPL Exploration <a href="#exercise-183-repl-exploration" class="heading-anchor">#</a></h3>
+<p>Start the REPL with <code>/neam repl</code> and try:</p>
+<ol>
+<li>Define a simple budget</li>
+<li>Define an agent using that budget</li>
+<li>Ask the agent a question</li>
+<li>Check how much budget was consumed</li>
+</ol>
+<h3 id="exercise-184-your-first-debug-session">🎯 Exercise 18.4: Your First Debug Session <a href="#exercise-184-your-first-debug-session" class="heading-anchor">#</a></h3>
+<p>Write a small Neam program with at least two function calls. Start the debugger with <code>/debug-neam</code>, set a breakpoint, and:</p>
+<ol>
+<li>Run to the breakpoint</li>
+<li>Inspect a variable with <code>print</code></li>
+<li>Step into a function with <code>step</code></li>
+<li>View the call stack with <code>backtrace</code></li>
+</ol>
+<h3 id="exercise-185-evaluate-your-agent">🎯 Exercise 18.5: Evaluate Your Agent <a href="#exercise-185-evaluate-your-agent" class="heading-anchor">#</a></h3>
+<p>Create a simple evaluation dataset (5-10 question/answer pairs) as a JSON file. Run <code>/eval run</code> against one of your agents. What accuracy do you get? Try adjusting the agent's system prompt and rerun — does accuracy improve?</p>
+<h3 id="exercise-186-package-discovery">🎯 Exercise 18.6: Package Discovery <a href="#exercise-186-package-discovery" class="heading-anchor">#</a></h3>
+<p>Run <code>/pkg search agents</code> to find available agent-related packages. Pick one that looks useful and:</p>
+<ol>
+<li>Read its description with <code>/pkg info &lt;name&gt;</code></li>
+<li>Install it with <code>/pkg install &lt;name&gt;</code></li>
+<li>Import it in the REPL and test it</li>
+</ol>
+<hr />
+    <nav class="chapter-nav"><a href="17-mcp-servers.html" class="nav-prev"><span class="nav-label">&larr; Previous</span><span class="nav-title">MCP Servers</span></a><a href="19-for-students.html" class="nav-next"><span class="nav-label">Next &rarr;</span><span class="nav-title">For Students</span></a></nav>
+  </article>
+</main>
+
+<button class="back-to-top" id="back-to-top" aria-label="Back to top">&#8593;</button>
+
+<div class="search-overlay" id="search-overlay">
+  <div class="search-modal">
+    <div class="search-input-wrap">
+      <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6.5" cy="6.5" r="5"/><line x1="10.5" y1="10.5" x2="15" y2="15"/></svg>
+      <input type="text" class="search-input" id="search-input" placeholder="Search chapters, topics...">
+    </div>
+    <div class="search-results" id="search-results">
+      <div class="search-empty">Start typing to search...</div>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/script.js"></script>
+</body>
+</html>

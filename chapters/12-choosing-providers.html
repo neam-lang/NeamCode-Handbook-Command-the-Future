@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 12: Choosing Your AI Provider | Command the Future</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-base="../">
+
+<header class="topbar">
+  <div class="topbar-left">
+    <button class="hamburger" id="hamburger" aria-label="Toggle sidebar">&#9776;</button>
+    <a href="../index.html" class="topbar-title">Command the Future</a>
+  </div>
+  <div class="topbar-right">
+    <button class="topbar-btn search-btn" aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6.5" cy="6.5" r="5"/><line x1="10.5" y1="10.5" x2="15" y2="15"/></svg><kbd>Ctrl+K</kbd></button>
+    <button class="topbar-btn" id="theme-toggle" aria-label="Toggle theme"></button>
+  </div>
+</header>
+
+<div class="progress-bar"><div class="progress-fill"></div></div>
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+<aside class="sidebar" id="sidebar">
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Getting Started</div>
+  <div class="sidebar-chapters">
+    <a href="00-preface.html" class="sidebar-link" title="Preface">Preface</a>
+    <a href="01-meet-neamcode.html" class="sidebar-link" title="Meet NeamCode">Meet NeamCode</a>
+    <a href="02-install-first-conversation.html" class="sidebar-link" title="Install & First Conversation">Install & First Conversation</a>
+    <a href="03-art-of-prompting.html" class="sidebar-link" title="The Art of Prompting">The Art of Prompting</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Core Skills</div>
+  <div class="sidebar-chapters">
+    <a href="04-working-with-files.html" class="sidebar-link" title="Working with Files">Working with Files</a>
+    <a href="05-finding-things.html" class="sidebar-link" title="Finding Things in Code">Finding Things in Code</a>
+    <a href="06-commands-and-git.html" class="sidebar-link" title="Running Commands & Git">Running Commands & Git</a>
+    <a href="07-web-research.html" class="sidebar-link" title="Researching from the Terminal">Researching from the Terminal</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Workflow & Configuration</div>
+  <div class="sidebar-chapters">
+    <a href="08-slash-commands.html" class="sidebar-link" title="Slash Commands">Slash Commands</a>
+    <a href="09-modes.html" class="sidebar-link" title="Modes">Modes</a>
+    <a href="10-sessions-context.html" class="sidebar-link" title="Sessions & Context">Sessions & Context</a>
+    <a href="11-auto-memory.html" class="sidebar-link" title="Auto Memory">Auto Memory</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Providers & Cost</div>
+  <div class="sidebar-chapters">
+    <a href="12-choosing-providers.html" class="sidebar-link active" title="Choosing Your AI Provider">Choosing Your AI Provider</a>
+    <a href="13-offline-mode.html" class="sidebar-link" title="Offline Mode">Offline Mode</a>
+    <a href="14-zero-cost-setup.html" class="sidebar-link" title="The $0 AI Setup">The $0 AI Setup</a>
+    <a href="15-budget-cost.html" class="sidebar-link" title="Budget & Cost Tracking">Budget & Cost Tracking</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Advanced Features</div>
+  <div class="sidebar-chapters">
+    <a href="16-agents.html" class="sidebar-link" title="Agents & Delegation">Agents & Delegation</a>
+    <a href="17-mcp-servers.html" class="sidebar-link" title="MCP Servers">MCP Servers</a>
+    <a href="18-neam-language.html" class="sidebar-link" title="Neam Language Integration">Neam Language Integration</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Audience Guides</div>
+  <div class="sidebar-chapters">
+    <a href="19-for-students.html" class="sidebar-link" title="For Students">For Students</a>
+    <a href="20-for-researchers.html" class="sidebar-link" title="For Researchers">For Researchers</a>
+    <a href="21-for-professionals.html" class="sidebar-link" title="For Professionals">For Professionals</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Walkthroughs</div>
+  <div class="sidebar-chapters">
+    <a href="22-walkthrough-build-project.html" class="sidebar-link" title="Walkthrough: Build a Project">Walkthrough: Build a Project</a>
+    <a href="23-walkthrough-fix-bug.html" class="sidebar-link" title="Walkthrough: Fix a Real Bug">Walkthrough: Fix a Real Bug</a>
+    <a href="24-making-it-yours.html" class="sidebar-link" title="Making NeamCode Yours">Making NeamCode Yours</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Closing</div>
+  <div class="sidebar-chapters">
+    <a href="25-road-ahead.html" class="sidebar-link" title="The Road Ahead">The Road Ahead</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Appendices</div>
+  <div class="sidebar-chapters">
+    <a href="../appendices/A-slash-commands.html" class="sidebar-link" title="All Slash Commands">All Slash Commands</a>
+    <a href="../appendices/B-skills-reference.html" class="sidebar-link" title="All Skills Reference">All Skills Reference</a>
+    <a href="../appendices/C-configuration.html" class="sidebar-link" title="Configuration Reference">Configuration Reference</a>
+    <a href="../appendices/D-troubleshooting.html" class="sidebar-link" title="Troubleshooting & FAQ">Troubleshooting & FAQ</a>
+    <a href="../appendices/E-glossary.html" class="sidebar-link" title="Glossary">Glossary</a>
+  </div>
+</div>
+</aside>
+
+<main class="main">
+  <article class="content">
+<h1 id="chapter-12-choosing-your-ai-provider">Chapter 12: Choosing Your AI Provider <a href="#chapter-12-choosing-your-ai-provider" class="heading-anchor">#</a></h1>
+<blockquote><p><em>"The best tool is the one that fits the job. The best AI provider is the one that fits your task."</em><br>— NeamCode Philosophy</p></blockquote>
+<p>📖 <strong>Estimated read time:</strong> 18 minutes</p>
+<hr />
+<h2 id="what-youll-learn">What You'll Learn <a href="#what-youll-learn" class="heading-anchor">#</a></h2>
+<ul>
+<li>The 11 AI providers NeamCode supports and what each excels at</li>
+<li>How to configure multiple providers and API keys</li>
+<li>How NeamCode's routing engine automatically picks the best provider</li>
+<li>The four routing strategies: quality, speed, cost, and balanced</li>
+<li>How to inspect available models with <code>/models</code></li>
+<li>How to manually switch providers mid-session</li>
+<li>Full YAML configuration reference for providers</li>
+</ul>
+<hr />
+<h2 id="121-available-providers">12.1 Available Providers <a href="#121-available-providers" class="heading-anchor">#</a></h2>
+<p>NeamCode ships with built-in support for <strong>11 AI providers</strong>. You don't need to use all of them — most users start with one or two and expand as needed.</p>
+<p>Here's the full lineup:</p>
+<div class="info-box">
+  <div class="info-box-header purple">NeamCode Provider Ecosystem</div>
+  <div class="info-box-body">
+    <table>
+      <thead>
+        <tr><th>Provider</th><th>Models</th><th>Context</th><th>Type</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Anthropic</td><td>Claude Opus/Sonnet/Haiku</td><td>200K</td><td>Cloud</td></tr>
+        <tr><td>OpenAI</td><td>GPT-4o / GPT-4o-mini</td><td>128K</td><td>Cloud</td></tr>
+        <tr><td>Gemini</td><td>Pro / Flash</td><td>1M+</td><td>Cloud</td></tr>
+        <tr><td>Ollama</td><td>Llama, Qwen, Mistral, Phi, Gemma, etc.</td><td>Varies</td><td>Local</td></tr>
+        <tr><td>DeepSeek</td><td>V3</td><td>64K</td><td>Cloud</td></tr>
+        <tr><td>Mistral</td><td>Large / Small</td><td>128K</td><td>Cloud</td></tr>
+        <tr><td>MiniMax</td><td>MiniMax</td><td>128K</td><td>Cloud</td></tr>
+        <tr><td>Kimi</td><td>Kimi</td><td>128K</td><td>Cloud</td></tr>
+        <tr><td>Qwen</td><td>Qwen</td><td>128K</td><td>Cloud</td></tr>
+        <tr><td>OpenAI-compatible</td><td>Any compatible API</td><td>Varies</td><td>Cloud/Local</td></tr>
+        <tr><td>Mock</td><td>Mock (testing only)</td><td>N/A</td><td>Local</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<p><strong>Which should you start with?</strong></p>
+<ul>
+<li><strong>Anthropic (Claude)</strong> — Best for nuanced coding tasks, long-context analysis, and careful reasoning. The 200K context window is excellent for working with large codebases.</li>
+<li><strong>OpenAI (GPT-4o)</strong> — Strong general-purpose choice. Fast responses, wide ecosystem.</li>
+<li><strong>Gemini</strong> — Unmatched context window (1M+ tokens). Ideal if you need to feed in entire repositories at once.</li>
+<li><strong>Ollama</strong> — Free, local, private. Essential for offline work and cost-conscious setups (see Chapter 14).</li>
+<li><strong>DeepSeek</strong> — Competitive quality at lower cost. Good budget option for cloud.</li>
+<li><strong>Mistral</strong> — Strong European provider with good multilingual support.</li>
+</ul>
+<div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip:</strong> You don't have to choose just one. NeamCode's routing engine can use multiple providers simultaneously, picking the best one for each request.</p></div>
+<hr />
+<h2 id="122-setting-up-multiple-providers">12.2 Setting Up Multiple Providers <a href="#122-setting-up-multiple-providers" class="heading-anchor">#</a></h2>
+<p>To use a provider, you need to give NeamCode its API key. Open your configuration file:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode $ neamcode config edit</code></pre>
+<p>Or edit <code>neamcode.config.yml</code> directly. Here's how to set up three providers:</p>
+<div class="code-header"><span class="code-lang">yaml</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-yaml"># neamcode.config.yml
+providers:
+  anthropic:
+    api_key: &quot;sk-ant-your-key-here&quot;
+    enabled: true
+    default_model: &quot;claude-sonnet&quot;
+
+  openai:
+    api_key: &quot;sk-your-openai-key-here&quot;
+    enabled: true
+    default_model: &quot;gpt-4o&quot;
+
+  ollama:
+    endpoint: &quot;http://localhost:11434&quot;
+    enabled: true
+    default_model: &quot;llama3.1:8b&quot;</code></pre>
+<div class="callout callout-note"><div class="callout-title"><span class="callout-icon">&#128221;</span> Note</div><p>📝 <strong>Note:</strong> API keys can also be set via environment variables. NeamCode checks <code>ANTHROPIC_API_KEY</code>, <code>OPENAI_API_KEY</code>, and similar variables automatically. Environment variables override the config file.</p></div>
+<div class="code-header"><span class="code-lang">bash</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-bash"># Set via environment (recommended for security)
+export ANTHROPIC_API_KEY=&quot;sk-ant-your-key-here&quot;
+export OPENAI_API_KEY=&quot;sk-your-openai-key-here&quot;</code></pre>
+<p>To verify your providers are configured correctly:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode $ /status
+
+Provider Status:
+  ● Anthropic    — connected (claude-sonnet)
+  ● OpenAI       — connected (gpt-4o)
+  ● Ollama       — connected (llama3.1:8b, local)
+  ○ Gemini       — not configured
+  ○ DeepSeek     — not configured
+  ○ Mistral      — not configured</code></pre>
+<div class="callout callout-warning"><div class="callout-title"><span class="callout-icon">&#9888;&#65039;</span> Warning</div><p>⚠️ <strong>Warning:</strong> Never commit API keys to version control. Use environment variables or keep <code>neamcode.config.yml</code> in your <code>.gitignore</code>.</p></div>
+<hr />
+<h2 id="123-how-neamcode-chooses-a-provider">12.3 How NeamCode Chooses a Provider <a href="#123-how-neamcode-chooses-a-provider" class="heading-anchor">#</a></h2>
+<p>When you send a message, NeamCode doesn't just blindly forward it to one provider. It runs a <strong>routing decision</strong> based on:</p>
+<figure class="diagram-figure">
+  <img src="../assets/diagrams/ch12-routing-strategies.svg" alt="Provider Routing Strategies" />
+  <figcaption>Figure 12.1 — Provider Routing Strategies</figcaption>
+</figure>
+<div class="ascii-fallback">
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">┌──────────────────────────────────────────────┐
+│              Routing Decision                 │
+│                                              │
+│  Your message                                │
+│       │                                      │
+│       ▼                                      │
+│  ┌─────────────┐                             │
+│  │  Routing     │◄── Strategy (quality/      │
+│  │  Engine      │    speed/cost/balanced)     │
+│  └──────┬──────┘                             │
+│         │                                    │
+│         ├── Task complexity estimate          │
+│         ├── Provider availability             │
+│         ├── Current cost / budget             │
+│         ├── Context window needs              │
+│         └── Fallback chain                    │
+│         │                                    │
+│         ▼                                    │
+│  Selected: Anthropic (claude-sonnet)         │
+└──────────────────────────────────────────────┘</code></pre>
+</div>
+<p>The key factors:</p>
+<ol>
+<li><strong>Routing strategy</strong> — Your configured preference (see 12.4)</li>
+<li><strong>Task complexity</strong> — Simple questions may use a cheaper/faster model; complex tasks get the premium model</li>
+<li><strong>Availability</strong> — If a provider is down, NeamCode falls back automatically</li>
+<li><strong>Budget</strong> — If you're near your spending limit, NeamCode prefers cheaper providers</li>
+<li><strong>Context needs</strong> — Very large contexts may route to Gemini (1M+) or Anthropic (200K)</li>
+</ol>
+<hr />
+<h2 id="124-routing-strategies">12.4 Routing Strategies <a href="#124-routing-strategies" class="heading-anchor">#</a></h2>
+<p>NeamCode supports four routing strategies. Set yours in the config:</p>
+<div class="code-header"><span class="code-lang">yaml</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-yaml">routing:
+  strategy: &quot;balanced&quot;  # Options: quality, speed, cost, balanced</code></pre>
+<h3 id="quality-default">quality (default) <a href="#quality-default" class="heading-anchor">#</a></h3>
+<p>Always picks the most capable model available. Best for complex coding tasks.</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode $ /routing quality
+
+Routing strategy set to: quality
+  Priority: Claude Opus &gt; GPT-4o &gt; Claude Sonnet &gt; Gemini Pro</code></pre>
+<h3 id="speed">speed <a href="#speed" class="heading-anchor">#</a></h3>
+<p>Picks the fastest-responding model. Great for rapid iteration and quick questions.</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode $ /routing speed
+
+Routing strategy set to: speed
+  Priority: GPT-4o-mini &gt; Claude Haiku &gt; Gemini Flash &gt; local Ollama</code></pre>
+<h3 id="cost">cost <a href="#cost" class="heading-anchor">#</a></h3>
+<p>Minimizes spending. Uses local models first, then cheap cloud models.</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode $ /routing cost
+
+Routing strategy set to: cost
+  Priority: Ollama (free) &gt; DeepSeek &gt; GPT-4o-mini &gt; Claude Haiku</code></pre>
+<h3 id="balanced">balanced <a href="#balanced" class="heading-anchor">#</a></h3>
+<p>A mix of all three factors. The default for most users.</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode $ /routing balanced
+
+Routing strategy set to: balanced
+  Weighs quality (40%), speed (30%), cost (30%)</code></pre>
+<div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip:</strong> You can change your routing strategy at any time during a session with the <code>/routing</code> command. No restart needed.</p></div>
+<h3 id="fallback-chains">Fallback Chains <a href="#fallback-chains" class="heading-anchor">#</a></h3>
+<p>If your primary provider fails (API error, rate limit, outage), NeamCode automatically falls through to the next provider:</p>
+<div class="flow-steps">
+  <span class="flow-step">Primary (Anthropic)</span>
+  <span class="flow-arrow">fail →</span>
+  <span class="flow-step">Secondary (OpenAI)</span>
+  <span class="flow-arrow">fail →</span>
+  <span class="flow-step highlight">Tertiary (Ollama)</span>
+</div>
+<p>Configure fallbacks explicitly:</p>
+<div class="code-header"><span class="code-lang">yaml</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-yaml">routing:
+  strategy: &quot;balanced&quot;
+  fallback_chain:
+    - anthropic
+    - openai
+    - ollama</code></pre>
+<p>When a fallback triggers, you'll see it in the status bar:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode $ Refactor this function to use async/await
+
+⚠ Anthropic unavailable, routing to OpenAI (gpt-4o)...
+
+Sure, here&#x27;s the refactored function using async/await:
+...</code></pre>
+<hr />
+<h2 id="125-the-models-command">12.5 The /models Command <a href="#125-the-models-command" class="heading-anchor">#</a></h2>
+<p>The <code>/models</code> command shows every model available across your configured providers:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode $ /models
+
+Available Models:
+─────────────────────────────────────────────────────────
+ANTHROPIC
+  claude-opus          200K ctx   $15.00/1M in   Premium
+  claude-sonnet        200K ctx    $3.00/1M in   Standard
+  claude-haiku         200K ctx    $0.25/1M in   Fast
+
+OPENAI
+  gpt-4o              128K ctx    $5.00/1M in   Premium
+  gpt-4o-mini         128K ctx    $0.15/1M in   Fast
+
+GEMINI
+  gemini-pro            1M ctx    $3.50/1M in   Standard
+  gemini-flash          1M ctx    $0.35/1M in   Fast
+
+OLLAMA (local)
+  llama3.1:8b           8K ctx    free           Local
+  qwen2.5-coder:7b      8K ctx    free           Local
+  mistral                8K ctx    free           Local
+
+DEEPSEEK
+  deepseek-v3          64K ctx    $0.27/1M in   Budget
+
+Total: 11 models across 5 providers
+─────────────────────────────────────────────────────────</code></pre>
+<p>Filter by provider:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode $ /models anthropic
+
+ANTHROPIC
+  claude-opus          200K ctx   $15.00/1M in   Premium
+  claude-sonnet        200K ctx    $3.00/1M in   Standard
+  claude-haiku         200K ctx    $0.25/1M in   Fast</code></pre>
+<p>Filter by tier:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode $ /models --tier fast
+
+Fast Models:
+  claude-haiku         200K ctx    $0.25/1M in   Anthropic
+  gpt-4o-mini         128K ctx    $0.15/1M in   OpenAI
+  gemini-flash          1M ctx    $0.35/1M in   Gemini</code></pre>
+<hr />
+<h2 id="126-switching-providers-manually">12.6 Switching Providers Manually <a href="#126-switching-providers-manually" class="heading-anchor">#</a></h2>
+<p>Sometimes you want to force a specific provider for a task. Use the <code>/provider</code> command:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode $ /provider anthropic claude-opus
+
+Switched to: Anthropic (claude-opus)
+Routing: manual override (use /routing to restore auto)</code></pre>
+<p>This is useful when:</p>
+<ul>
+<li>You want the best possible answer for a critical task</li>
+<li>You're testing how different models handle the same prompt</li>
+<li>You need a specific context window size</li>
+</ul>
+<p>To return to automatic routing:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode $ /routing balanced
+
+Routing strategy restored: balanced
+Manual override cleared.</code></pre>
+<p><strong>Quick-switch examples:</strong></p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-"># Use the cheapest option for a quick question
+neamcode $ /provider ollama
+Switched to: Ollama (llama3.1:8b, local)
+
+# Use Gemini for a massive file analysis
+neamcode $ /provider gemini
+Switched to: Gemini (gemini-pro, 1M context)
+
+# Back to auto
+neamcode $ /routing quality
+Routing strategy restored: quality</code></pre>
+<hr />
+<h2 id="127-provider-configuration-in-yaml">12.7 Provider Configuration in YAML <a href="#127-provider-configuration-in-yaml" class="heading-anchor">#</a></h2>
+<p>Here's a comprehensive <code>neamcode.config.yml</code> with all provider options:</p>
+<div class="code-header"><span class="code-lang">yaml</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-yaml"># neamcode.config.yml — Full provider configuration
+
+providers:
+  # ── Cloud Providers ──────────────────────────────
+  anthropic:
+    api_key: &quot;${ANTHROPIC_API_KEY}&quot;    # env var reference
+    enabled: true
+    default_model: &quot;claude-sonnet&quot;
+    max_tokens: 8192
+    temperature: 0.7
+
+  openai:
+    api_key: &quot;${OPENAI_API_KEY}&quot;
+    enabled: true
+    default_model: &quot;gpt-4o&quot;
+    max_tokens: 4096
+
+  gemini:
+    api_key: &quot;${GEMINI_API_KEY}&quot;
+    enabled: true
+    default_model: &quot;gemini-pro&quot;
+
+  deepseek:
+    api_key: &quot;${DEEPSEEK_API_KEY}&quot;
+    enabled: true
+    default_model: &quot;deepseek-v3&quot;
+
+  mistral:
+    api_key: &quot;${MISTRAL_API_KEY}&quot;
+    enabled: false                      # disabled until needed
+
+  minimax:
+    api_key: &quot;${MINIMAX_API_KEY}&quot;
+    enabled: false
+
+  kimi:
+    api_key: &quot;${KIMI_API_KEY}&quot;
+    enabled: false
+
+  qwen:
+    api_key: &quot;${QWEN_API_KEY}&quot;
+    enabled: false
+
+  # ── OpenAI-Compatible (custom endpoint) ──────────
+  openai_compatible:
+    api_key: &quot;${CUSTOM_API_KEY}&quot;
+    endpoint: &quot;https://my-company-proxy.example.com/v1&quot;
+    enabled: false
+    default_model: &quot;custom-model-name&quot;
+
+  # ── Local Provider ───────────────────────────────
+  ollama:
+    endpoint: &quot;http://localhost:11434&quot;
+    enabled: true
+    default_model: &quot;llama3.1:8b&quot;
+
+  # ── Testing ──────────────────────────────────────
+  mock:
+    enabled: false                      # for testing only
+
+# ── Routing Configuration ──────────────────────────
+routing:
+  strategy: &quot;balanced&quot;
+  fallback_chain:
+    - anthropic
+    - openai
+    - ollama
+
+# ── Token Limits ───────────────────────────────────
+tokens:
+  max_input: 100000
+  max_output: 8192
+  warning_threshold: 0.8               # warn at 80% of limits</code></pre>
+<div class="callout callout-note"><div class="callout-title"><span class="callout-icon">&#128221;</span> Note</div><p>📝 <strong>Note:</strong> The <code>"${ENV_VAR}"</code> syntax lets you reference environment variables directly in the YAML file. This keeps secrets out of the config file while still being explicit about which variables are expected.</p></div>
+<hr />
+<h2 id="128-pro-tips">12.8 Pro Tips <a href="#128-pro-tips" class="heading-anchor">#</a></h2>
+<div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip: Start with two providers.</strong> Configure Anthropic (or OpenAI) for cloud quality and Ollama for free local work. This covers 90% of use cases and gives you a fallback chain.</p></div>
+<div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip: Use <code>/models --tier fast</code> for quick tasks.</strong> Don't burn premium tokens on "what's the syntax for a for loop?" questions. Let the routing engine handle this by using the <code>balanced</code> or <code>cost</code> strategy.</p></div>
+<div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip: The OpenAI-compatible provider is your escape hatch.</strong> If your company runs a proxy, or you want to use a provider not on the built-in list, the <code>openai_compatible</code> provider accepts any OpenAI-compatible API endpoint.</p></div>
+<div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip: Test your fallback chain.</strong> Temporarily disable your primary provider in the config and confirm that NeamCode gracefully falls back. Better to discover issues during testing than during a real outage.</p></div>
+<div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip: Gemini for giant contexts.</strong> If you need to analyze an entire repository or a massive log file, route to Gemini explicitly — its 1M+ token context window is unmatched.</p></div>
+<div class="callout callout-warning"><div class="callout-title"><span class="callout-icon">&#9888;&#65039;</span> Warning</div><p>⚠️ <strong>Warning:</strong> Each provider has different rate limits. If you're hitting rate limits frequently, add a second provider to your fallback chain rather than waiting for cooldowns.</p></div>
+<hr />
+<h2 id="exercises">Exercises <a href="#exercises" class="heading-anchor">#</a></h2>
+<div class="callout callout-try-it-yourself"><p>🎯 <strong>Exercise 12.1</strong> — Configure two providers (one cloud, one local) in your <code>neamcode.config.yml</code>. Verify both are connected with <code>/status</code>.</p></div>
+<div class="callout callout-try-it-yourself"><p>🎯 <strong>Exercise 12.2</strong> — Run <code>/models</code> and identify the cheapest cloud model and the most capable local model available to you.</p></div>
+<div class="callout callout-try-it-yourself"><p>🎯 <strong>Exercise 12.3</strong> — Set your routing strategy to <code>cost</code>, then ask NeamCode a simple question. Check which provider was used. Switch to <code>quality</code> and ask the same question. Did the provider change?</p></div>
+<div class="callout callout-try-it-yourself"><p>🎯 <strong>Exercise 12.4</strong> — Configure a fallback chain of three providers. Disable the first one (set <code>enabled: false</code>) and verify that NeamCode automatically routes to the second.</p></div>
+<div class="callout callout-try-it-yourself"><p>🎯 <strong>Exercise 12.5</strong> — Use <code>/provider</code> to manually switch between two different providers. Ask each the same coding question and compare the responses. Which did you prefer?</p></div>
+<hr />
+    <nav class="chapter-nav"><a href="11-auto-memory.html" class="nav-prev"><span class="nav-label">&larr; Previous</span><span class="nav-title">Auto Memory</span></a><a href="13-offline-mode.html" class="nav-next"><span class="nav-label">Next &rarr;</span><span class="nav-title">Offline Mode</span></a></nav>
+  </article>
+</main>
+
+<button class="back-to-top" id="back-to-top" aria-label="Back to top">&#8593;</button>
+
+<div class="search-overlay" id="search-overlay">
+  <div class="search-modal">
+    <div class="search-input-wrap">
+      <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6.5" cy="6.5" r="5"/><line x1="10.5" y1="10.5" x2="15" y2="15"/></svg>
+      <input type="text" class="search-input" id="search-input" placeholder="Search chapters, topics...">
+    </div>
+    <div class="search-results" id="search-results">
+      <div class="search-empty">Start typing to search...</div>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/script.js"></script>
+</body>
+</html>

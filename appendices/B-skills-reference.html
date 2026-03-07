@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Appendix B: All Skills Reference | Command the Future</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-base="../">
+
+<header class="topbar">
+  <div class="topbar-left">
+    <button class="hamburger" id="hamburger" aria-label="Toggle sidebar">&#9776;</button>
+    <a href="../index.html" class="topbar-title">Command the Future</a>
+  </div>
+  <div class="topbar-right">
+    <button class="topbar-btn search-btn" aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6.5" cy="6.5" r="5"/><line x1="10.5" y1="10.5" x2="15" y2="15"/></svg><kbd>Ctrl+K</kbd></button>
+    <button class="topbar-btn" id="theme-toggle" aria-label="Toggle theme"></button>
+  </div>
+</header>
+
+<div class="progress-bar"><div class="progress-fill"></div></div>
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+<aside class="sidebar" id="sidebar">
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Getting Started</div>
+  <div class="sidebar-chapters">
+    <a href="../chapters/00-preface.html" class="sidebar-link" title="Preface">Preface</a>
+    <a href="../chapters/01-meet-neamcode.html" class="sidebar-link" title="Meet NeamCode">Meet NeamCode</a>
+    <a href="../chapters/02-install-first-conversation.html" class="sidebar-link" title="Install & First Conversation">Install & First Conversation</a>
+    <a href="../chapters/03-art-of-prompting.html" class="sidebar-link" title="The Art of Prompting">The Art of Prompting</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Core Skills</div>
+  <div class="sidebar-chapters">
+    <a href="../chapters/04-working-with-files.html" class="sidebar-link" title="Working with Files">Working with Files</a>
+    <a href="../chapters/05-finding-things.html" class="sidebar-link" title="Finding Things in Code">Finding Things in Code</a>
+    <a href="../chapters/06-commands-and-git.html" class="sidebar-link" title="Running Commands & Git">Running Commands & Git</a>
+    <a href="../chapters/07-web-research.html" class="sidebar-link" title="Researching from the Terminal">Researching from the Terminal</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Workflow & Configuration</div>
+  <div class="sidebar-chapters">
+    <a href="../chapters/08-slash-commands.html" class="sidebar-link" title="Slash Commands">Slash Commands</a>
+    <a href="../chapters/09-modes.html" class="sidebar-link" title="Modes">Modes</a>
+    <a href="../chapters/10-sessions-context.html" class="sidebar-link" title="Sessions & Context">Sessions & Context</a>
+    <a href="../chapters/11-auto-memory.html" class="sidebar-link" title="Auto Memory">Auto Memory</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Providers & Cost</div>
+  <div class="sidebar-chapters">
+    <a href="../chapters/12-choosing-providers.html" class="sidebar-link" title="Choosing Your AI Provider">Choosing Your AI Provider</a>
+    <a href="../chapters/13-offline-mode.html" class="sidebar-link" title="Offline Mode">Offline Mode</a>
+    <a href="../chapters/14-zero-cost-setup.html" class="sidebar-link" title="The $0 AI Setup">The $0 AI Setup</a>
+    <a href="../chapters/15-budget-cost.html" class="sidebar-link" title="Budget & Cost Tracking">Budget & Cost Tracking</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Advanced Features</div>
+  <div class="sidebar-chapters">
+    <a href="../chapters/16-agents.html" class="sidebar-link" title="Agents & Delegation">Agents & Delegation</a>
+    <a href="../chapters/17-mcp-servers.html" class="sidebar-link" title="MCP Servers">MCP Servers</a>
+    <a href="../chapters/18-neam-language.html" class="sidebar-link" title="Neam Language Integration">Neam Language Integration</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Audience Guides</div>
+  <div class="sidebar-chapters">
+    <a href="../chapters/19-for-students.html" class="sidebar-link" title="For Students">For Students</a>
+    <a href="../chapters/20-for-researchers.html" class="sidebar-link" title="For Researchers">For Researchers</a>
+    <a href="../chapters/21-for-professionals.html" class="sidebar-link" title="For Professionals">For Professionals</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Walkthroughs</div>
+  <div class="sidebar-chapters">
+    <a href="../chapters/22-walkthrough-build-project.html" class="sidebar-link" title="Walkthrough: Build a Project">Walkthrough: Build a Project</a>
+    <a href="../chapters/23-walkthrough-fix-bug.html" class="sidebar-link" title="Walkthrough: Fix a Real Bug">Walkthrough: Fix a Real Bug</a>
+    <a href="../chapters/24-making-it-yours.html" class="sidebar-link" title="Making NeamCode Yours">Making NeamCode Yours</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Closing</div>
+  <div class="sidebar-chapters">
+    <a href="../chapters/25-road-ahead.html" class="sidebar-link" title="The Road Ahead">The Road Ahead</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Appendices</div>
+  <div class="sidebar-chapters">
+    <a href="A-slash-commands.html" class="sidebar-link" title="All Slash Commands">All Slash Commands</a>
+    <a href="B-skills-reference.html" class="sidebar-link active" title="All Skills Reference">All Skills Reference</a>
+    <a href="C-configuration.html" class="sidebar-link" title="Configuration Reference">Configuration Reference</a>
+    <a href="D-troubleshooting.html" class="sidebar-link" title="Troubleshooting & FAQ">Troubleshooting & FAQ</a>
+    <a href="E-glossary.html" class="sidebar-link" title="Glossary">Glossary</a>
+  </div>
+</div>
+</aside>
+
+<main class="main">
+  <article class="content">
+<h1 id="appendix-b-all-skills-reference">Appendix B: All Skills Reference <a href="#appendix-b-all-skills-reference" class="heading-anchor">#</a></h1>
+<p>📖 <strong>12 min read</strong></p>
+<p>A complete reference of every built-in skill (tool) available in NeamCode v0.3.5.</p>
+<blockquote><p><strong>📝 Note</strong> — You don't call skills directly. You describe what you want in natural language, and NeamCode chooses the right skills automatically. This reference helps you understand what NeamCode can do under the hood.</p></blockquote>
+<hr />
+<h2 id="file-operations">File Operations <a href="#file-operations" class="heading-anchor">#</a></h2>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Skill</th>
+<th>Permission</th>
+<th>What It Does</th>
+<th>When It's Used</th>
+</tr></thead><tbody>
+<tr>
+<td><code>file_read</code></td>
+<td>Read</td>
+<td>Reads file contents from disk</td>
+<td>When you ask about a file, or NeamCode needs to understand code</td>
+</tr>
+<tr>
+<td><code>file_write</code></td>
+<td>Write</td>
+<td>Creates or overwrites a file</td>
+<td>When you ask NeamCode to create a new file</td>
+</tr>
+<tr>
+<td><code>file_edit</code></td>
+<td>Write</td>
+<td>Replaces specific text in a file</td>
+<td>When you ask to change part of an existing file</td>
+</tr>
+</tbody></table></div>
+<h3 id="file_edit-details">file_edit Details <a href="#file_edit-details" class="heading-anchor">#</a></h3>
+<p>The <code>file_edit</code> skill uses <strong>precise string matching</strong>:</p>
+<ul>
+<li>You specify an <code>old_string</code> (the exact text to find)</li>
+<li>You specify a <code>new_string</code> (what to replace it with)</li>
+<li>The <code>old_string</code> must be unique in the file</li>
+<li>Whitespace and indentation must match exactly</li>
+</ul>
+<p>This is why NeamCode reads a file before editing it — it needs the exact text.</p>
+<hr />
+<h2 id="code-search">Code Search <a href="#code-search" class="heading-anchor">#</a></h2>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Skill</th>
+<th>Permission</th>
+<th>What It Does</th>
+<th>When It's Used</th>
+</tr></thead><tbody>
+<tr>
+<td><code>glob</code></td>
+<td>Read</td>
+<td>Finds files by name pattern</td>
+<td>"Find all TypeScript files", "Where is the config?"</td>
+</tr>
+<tr>
+<td><code>grep</code></td>
+<td>Read</td>
+<td>Searches file contents with regex</td>
+<td>"Find all uses of getUserById", "Where is TODO?"</td>
+</tr>
+<tr>
+<td><code>dir_tree</code></td>
+<td>Read</td>
+<td>Shows directory structure</td>
+<td>"Show me the project layout"</td>
+</tr>
+<tr>
+<td><code>code_structure</code></td>
+<td>Read</td>
+<td>Extracts classes, functions, exports</td>
+<td>"What functions are in this file?"</td>
+</tr>
+</tbody></table></div>
+<h3 id="glob-patterns">glob Patterns <a href="#glob-patterns" class="heading-anchor">#</a></h3>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Pattern</th>
+<th>Matches</th>
+</tr></thead><tbody>
+<tr>
+<td><code>*.ts</code></td>
+<td>All TypeScript files in current dir</td>
+</tr>
+<tr>
+<td><code>*<em>/</em>.ts</code></td>
+<td>All TypeScript files recursively</td>
+</tr>
+<tr>
+<td><code>src/*<em>/</em>.test.ts</code></td>
+<td>All test files under src/</td>
+</tr>
+<tr>
+<td><code>*.{js,ts}</code></td>
+<td>JavaScript and TypeScript files</td>
+</tr>
+<tr>
+<td><code>config.*</code></td>
+<td>Any file named config with any extension</td>
+</tr>
+</tbody></table></div>
+<h3 id="grep-parameters">grep Parameters <a href="#grep-parameters" class="heading-anchor">#</a></h3>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Parameter</th>
+<th>Description</th>
+<th>Example</th>
+</tr></thead><tbody>
+<tr>
+<td><code>pattern</code></td>
+<td>Regex to search for</td>
+<td>`"TODO\</td>
+<td>FIXME"`</td>
+</tr>
+<tr>
+<td><code>path</code></td>
+<td>Directory to search</td>
+<td><code>"src/"</code></td>
+</tr>
+<tr>
+<td><code>glob</code></td>
+<td>File pattern filter</td>
+<td><code>"*.ts"</code></td>
+</tr>
+<tr>
+<td><code>-i</code></td>
+<td>Case insensitive</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>-C</code></td>
+<td>Context lines</td>
+<td><code>3</code></td>
+</tr>
+<tr>
+<td><code>output_mode</code></td>
+<td><code>content</code>, <code>files_with_matches</code>, <code>count</code></td>
+<td><code>"content"</code></td>
+</tr>
+</tbody></table></div>
+<hr />
+<h2 id="shell-execution">Shell Execution <a href="#shell-execution" class="heading-anchor">#</a></h2>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Skill</th>
+<th>Permission</th>
+<th>What It Does</th>
+<th>When It's Used</th>
+</tr></thead><tbody>
+<tr>
+<td><code>bash</code></td>
+<td>Execute</td>
+<td>Runs a shell command</td>
+<td>"Run the tests", "Install express"</td>
+</tr>
+<tr>
+<td><code>background_shell</code></td>
+<td>Execute</td>
+<td>Runs a command in background</td>
+<td>"Start the dev server", long-running tasks</td>
+</tr>
+</tbody></table></div>
+<h3 id="bash-limits">bash Limits <a href="#bash-limits" class="heading-anchor">#</a></h3>
+<ul>
+<li>Default timeout: 2 minutes (120,000 ms)</li>
+<li>Maximum timeout: 10 minutes (600,000 ms)</li>
+<li>Interactive commands (<code>vim</code>, <code>nano</code>, <code>less</code>) are not supported</li>
+<li>Commands requiring <code>sudo</code> will prompt for your password</li>
+</ul>
+<hr />
+<h2 id="git-operations">Git Operations <a href="#git-operations" class="heading-anchor">#</a></h2>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Skill</th>
+<th>Permission</th>
+<th>What It Does</th>
+<th>When It's Used</th>
+</tr></thead><tbody>
+<tr>
+<td><code>git</code></td>
+<td>Execute</td>
+<td>Runs git commands (status, diff, log, add, commit, etc.)</td>
+<td>Any git operation</td>
+</tr>
+<tr>
+<td><code>git_pr</code></td>
+<td>Execute</td>
+<td>Creates pull requests via GitHub CLI</td>
+<td>"Create a PR for this branch"</td>
+</tr>
+</tbody></table></div>
+<h3 id="supported-git-operations">Supported Git Operations <a href="#supported-git-operations" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">status, diff, log, add, commit, push, pull,
+branch, checkout, merge, stash, rebase, tag,
+remote, fetch, reset, cherry-pick</code></pre>
+<blockquote><p><strong>⚠️ Warning</strong> — NeamCode will ask before running destructive git commands like <code>reset --hard</code>, <code>push --force</code>, or <code>branch -D</code>.</p></blockquote>
+<hr />
+<h2 id="web-intelligence">Web Intelligence <a href="#web-intelligence" class="heading-anchor">#</a></h2>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Skill</th>
+<th>Permission</th>
+<th>What It Does</th>
+<th>When It's Used</th>
+</tr></thead><tbody>
+<tr>
+<td><code>web_search</code></td>
+<td>Read</td>
+<td>Searches the web</td>
+<td>"Search for Express.js rate limiting best practices"</td>
+</tr>
+<tr>
+<td><code>web_fetch</code></td>
+<td>Read</td>
+<td>Fetches a URL and converts to markdown</td>
+<td>"Read the docs at this URL"</td>
+</tr>
+</tbody></table></div>
+<hr />
+<h2 id="memory">Memory <a href="#memory" class="heading-anchor">#</a></h2>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Skill</th>
+<th>Permission</th>
+<th>What It Does</th>
+<th>When It's Used</th>
+</tr></thead><tbody>
+<tr>
+<td><code>memory_save</code></td>
+<td>Write</td>
+<td>Saves an entry to memory</td>
+<td>"Remember that we use PostgreSQL"</td>
+</tr>
+<tr>
+<td><code>memory_list</code></td>
+<td>Read</td>
+<td>Lists memory entries</td>
+<td>"What do you remember about this project?"</td>
+</tr>
+</tbody></table></div>
+<hr />
+<h2 id="task-management">Task Management <a href="#task-management" class="heading-anchor">#</a></h2>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Skill</th>
+<th>Permission</th>
+<th>What It Does</th>
+<th>When It's Used</th>
+</tr></thead><tbody>
+<tr>
+<td><code>task_write</code></td>
+<td>Write</td>
+<td>Creates/updates a task</td>
+<td>Tracking multi-step work</td>
+</tr>
+<tr>
+<td><code>task_read</code></td>
+<td>Read</td>
+<td>Reads task details</td>
+<td>Checking task status</td>
+</tr>
+<tr>
+<td><code>task_list</code></td>
+<td>Read</td>
+<td>Lists all tasks</td>
+<td>Reviewing work items</td>
+</tr>
+</tbody></table></div>
+<hr />
+<h2 id="agent-delegation">Agent Delegation <a href="#agent-delegation" class="heading-anchor">#</a></h2>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Skill</th>
+<th>Permission</th>
+<th>What It Does</th>
+<th>When It's Used</th>
+</tr></thead><tbody>
+<tr>
+<td><code>delegate_to_agent</code></td>
+<td>Execute</td>
+<td>Spawns a sub-agent for a task</td>
+<td>Complex research, parallel work</td>
+</tr>
+</tbody></table></div>
+<h3 id="available-agents">Available Agents <a href="#available-agents" class="heading-anchor">#</a></h3>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Agent</th>
+<th>Purpose</th>
+</tr></thead><tbody>
+<tr>
+<td>Explore</td>
+<td>Deep codebase research</td>
+</tr>
+<tr>
+<td>Plan</td>
+<td>Implementation planning</td>
+</tr>
+<tr>
+<td>Review</td>
+<td>Code review</td>
+</tr>
+<tr>
+<td>Test</td>
+<td>Test writing and execution</td>
+</tr>
+</tbody></table></div>
+<hr />
+<h2 id="image-analysis">Image Analysis <a href="#image-analysis" class="heading-anchor">#</a></h2>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Skill</th>
+<th>Permission</th>
+<th>What It Does</th>
+<th>When It's Used</th>
+</tr></thead><tbody>
+<tr>
+<td><code>image_read</code></td>
+<td>Read</td>
+<td>Analyzes images and screenshots</td>
+<td>"What does this screenshot show?"</td>
+</tr>
+</tbody></table></div>
+<p>Supports: PNG, JPG, GIF, WebP, SVG</p>
+<hr />
+<h2 id="permission-levels-summary">Permission Levels Summary <a href="#permission-levels-summary" class="heading-anchor">#</a></h2>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">┌──────────────┬────────────────────────────────────────┐
+│ Permission   │ Skills                                 │
+├──────────────┼────────────────────────────────────────┤
+│ Read         │ file_read, glob, grep, dir_tree,       │
+│ (auto)       │ code_structure, web_search, web_fetch,  │
+│              │ memory_list, task_read, task_list,      │
+│              │ image_read                              │
+├──────────────┼────────────────────────────────────────┤
+│ Write        │ file_write, file_edit, memory_save,     │
+│ (ask/auto)   │ task_write                              │
+├──────────────┼────────────────────────────────────────┤
+│ Execute      │ bash, background_shell, git, git_pr,    │
+│ (ask/auto)   │ delegate_to_agent                       │
+├──────────────┼────────────────────────────────────────┤
+│ Destructive  │ git (reset --hard, push --force, etc.)  │
+│ (ask/deny)   │ bash (rm -rf, drop table, etc.)         │
+└──────────────┴────────────────────────────────────────┘</code></pre>
+<hr />
+<blockquote><p><strong>Previous:</strong> <a href="A-slash-commands.md">Appendix A — All Slash Commands</a><br><strong>Next:</strong> <a href="C-configuration.md">Appendix C — Configuration Reference</a></p></blockquote>
+    <nav class="chapter-nav"><a href="A-slash-commands.html" class="nav-prev"><span class="nav-label">&larr; Previous</span><span class="nav-title">All Slash Commands</span></a><a href="C-configuration.html" class="nav-next"><span class="nav-label">Next &rarr;</span><span class="nav-title">Configuration Reference</span></a></nav>
+  </article>
+</main>
+
+<button class="back-to-top" id="back-to-top" aria-label="Back to top">&#8593;</button>
+
+<div class="search-overlay" id="search-overlay">
+  <div class="search-modal">
+    <div class="search-input-wrap">
+      <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6.5" cy="6.5" r="5"/><line x1="10.5" y1="10.5" x2="15" y2="15"/></svg>
+      <input type="text" class="search-input" id="search-input" placeholder="Search chapters, topics...">
+    </div>
+    <div class="search-results" id="search-results">
+      <div class="search-empty">Start typing to search...</div>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/script.js"></script>
+</body>
+</html>

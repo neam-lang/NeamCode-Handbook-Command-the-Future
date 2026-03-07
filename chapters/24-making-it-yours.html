@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 24: Making NeamCode Yours | Command the Future</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-base="../">
+
+<header class="topbar">
+  <div class="topbar-left">
+    <button class="hamburger" id="hamburger" aria-label="Toggle sidebar">&#9776;</button>
+    <a href="../index.html" class="topbar-title">Command the Future</a>
+  </div>
+  <div class="topbar-right">
+    <button class="topbar-btn search-btn" aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6.5" cy="6.5" r="5"/><line x1="10.5" y1="10.5" x2="15" y2="15"/></svg><kbd>Ctrl+K</kbd></button>
+    <button class="topbar-btn" id="theme-toggle" aria-label="Toggle theme"></button>
+  </div>
+</header>
+
+<div class="progress-bar"><div class="progress-fill"></div></div>
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+<aside class="sidebar" id="sidebar">
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Getting Started</div>
+  <div class="sidebar-chapters">
+    <a href="00-preface.html" class="sidebar-link" title="Preface">Preface</a>
+    <a href="01-meet-neamcode.html" class="sidebar-link" title="Meet NeamCode">Meet NeamCode</a>
+    <a href="02-install-first-conversation.html" class="sidebar-link" title="Install & First Conversation">Install & First Conversation</a>
+    <a href="03-art-of-prompting.html" class="sidebar-link" title="The Art of Prompting">The Art of Prompting</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Core Skills</div>
+  <div class="sidebar-chapters">
+    <a href="04-working-with-files.html" class="sidebar-link" title="Working with Files">Working with Files</a>
+    <a href="05-finding-things.html" class="sidebar-link" title="Finding Things in Code">Finding Things in Code</a>
+    <a href="06-commands-and-git.html" class="sidebar-link" title="Running Commands & Git">Running Commands & Git</a>
+    <a href="07-web-research.html" class="sidebar-link" title="Researching from the Terminal">Researching from the Terminal</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Workflow & Configuration</div>
+  <div class="sidebar-chapters">
+    <a href="08-slash-commands.html" class="sidebar-link" title="Slash Commands">Slash Commands</a>
+    <a href="09-modes.html" class="sidebar-link" title="Modes">Modes</a>
+    <a href="10-sessions-context.html" class="sidebar-link" title="Sessions & Context">Sessions & Context</a>
+    <a href="11-auto-memory.html" class="sidebar-link" title="Auto Memory">Auto Memory</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Providers & Cost</div>
+  <div class="sidebar-chapters">
+    <a href="12-choosing-providers.html" class="sidebar-link" title="Choosing Your AI Provider">Choosing Your AI Provider</a>
+    <a href="13-offline-mode.html" class="sidebar-link" title="Offline Mode">Offline Mode</a>
+    <a href="14-zero-cost-setup.html" class="sidebar-link" title="The $0 AI Setup">The $0 AI Setup</a>
+    <a href="15-budget-cost.html" class="sidebar-link" title="Budget & Cost Tracking">Budget & Cost Tracking</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Advanced Features</div>
+  <div class="sidebar-chapters">
+    <a href="16-agents.html" class="sidebar-link" title="Agents & Delegation">Agents & Delegation</a>
+    <a href="17-mcp-servers.html" class="sidebar-link" title="MCP Servers">MCP Servers</a>
+    <a href="18-neam-language.html" class="sidebar-link" title="Neam Language Integration">Neam Language Integration</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Audience Guides</div>
+  <div class="sidebar-chapters">
+    <a href="19-for-students.html" class="sidebar-link" title="For Students">For Students</a>
+    <a href="20-for-researchers.html" class="sidebar-link" title="For Researchers">For Researchers</a>
+    <a href="21-for-professionals.html" class="sidebar-link" title="For Professionals">For Professionals</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Walkthroughs</div>
+  <div class="sidebar-chapters">
+    <a href="22-walkthrough-build-project.html" class="sidebar-link" title="Walkthrough: Build a Project">Walkthrough: Build a Project</a>
+    <a href="23-walkthrough-fix-bug.html" class="sidebar-link" title="Walkthrough: Fix a Real Bug">Walkthrough: Fix a Real Bug</a>
+    <a href="24-making-it-yours.html" class="sidebar-link active" title="Making NeamCode Yours">Making NeamCode Yours</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Closing</div>
+  <div class="sidebar-chapters">
+    <a href="25-road-ahead.html" class="sidebar-link" title="The Road Ahead">The Road Ahead</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Appendices</div>
+  <div class="sidebar-chapters">
+    <a href="../appendices/A-slash-commands.html" class="sidebar-link" title="All Slash Commands">All Slash Commands</a>
+    <a href="../appendices/B-skills-reference.html" class="sidebar-link" title="All Skills Reference">All Skills Reference</a>
+    <a href="../appendices/C-configuration.html" class="sidebar-link" title="Configuration Reference">Configuration Reference</a>
+    <a href="../appendices/D-troubleshooting.html" class="sidebar-link" title="Troubleshooting & FAQ">Troubleshooting & FAQ</a>
+    <a href="../appendices/E-glossary.html" class="sidebar-link" title="Glossary">Glossary</a>
+  </div>
+</div>
+</aside>
+
+<main class="main">
+  <article class="content">
+<h1 id="chapter-24-making-neamcode-yours">Chapter 24: Making NeamCode Yours <a href="#chapter-24-making-neamcode-yours" class="heading-anchor">#</a></h1>
+<blockquote><p>"A tool should feel like an extension of your hand, not an obstacle in your way."<br>— Anonymous craftsman</p></blockquote>
+<p>📖 <strong>Estimated read time:</strong> 18 minutes</p>
+<hr />
+<h2 id="what-youll-learn">What You'll Learn <a href="#what-youll-learn" class="heading-anchor">#</a></h2>
+<ul>
+<li>How to customize NeamCode's visual appearance with themes</li>
+<li>How to enable Vim keybindings for terminal efficiency</li>
+<li>How to create and modify custom keybindings</li>
+<li>How to personalize spinners, celebrations, and UX details</li>
+<li>How to set your preferred language (7 languages supported)</li>
+<li>How to write effective NEAMCODE.md context files</li>
+<li>How to tune permission modes for your workflow</li>
+<li>How to use NeamCode in CI/CD and headless environments</li>
+<li>How to follow security best practices</li>
+</ul>
+<hr />
+<h2 id="241-themes">24.1 Themes <a href="#241-themes" class="heading-anchor">#</a></h2>
+<p>NeamCode ships with several built-in themes that change colors, syntax highlighting, and overall visual feel. You spend hours in the terminal — it should look the way you want.</p>
+<h3 id="viewing-available-themes">Viewing Available Themes <a href="#viewing-available-themes" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">$ neamcode
+
+&gt; /theme list
+
+Available themes:
+  1. neam-dark       (default) Dark background, cyan accents
+  2. neam-light      Light background, dark text
+  3. dracula         Purple tones, popular with developers
+  4. monokai         Warm orange/yellow, classic editor feel
+  5. nord            Cool blue-gray, easy on the eyes
+  6. solarized-dark  Precise, scientifically-designed colors
+  7. solarized-light Light variant
+  8. gruvbox         Retro warm tones, brown/orange
+  9. catppuccin      Pastel tones, modern
+  10. high-contrast  Maximum readability, accessibility-focused
+
+Current theme: neam-dark</code></pre>
+<h3 id="switching-themes">Switching Themes <a href="#switching-themes" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">&gt; /theme dracula
+
+Theme switched to: dracula
+
+  ┌──────────────────────────────────────┐
+  │  Preview:                            │
+  │  ▓▓ Background: #282a36             │
+  │  ▓▓ Foreground: #f8f8f2             │
+  │  ▓▓ Accent:     #bd93f9 (purple)    │
+  │  ▓▓ Success:    #50fa7b (green)     │
+  │  ▓▓ Warning:    #f1fa8c (yellow)    │
+  │  ▓▓ Error:      #ff5555 (red)       │
+  └──────────────────────────────────────┘</code></pre>
+<h3 id="setting-a-persistent-theme">Setting a Persistent Theme <a href="#setting-a-persistent-theme" class="heading-anchor">#</a></h3>
+<p>Your theme choice is saved automatically and persists across sessions. You can also set it in your configuration file:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">&gt; /config set theme dracula
+
+Configuration updated:
+  theme: dracula (saved to ~/.neamcode/config.json)</code></pre>
+<div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip:</strong> If you work in different lighting conditions, set up a quick alias. For example, use <code>solarized-light</code> during the day and <code>dracula</code> at night. Some users create a shell alias: <code>alias ncday='neamcode --theme solarized-light'</code>.</p></div>
+<hr />
+<h2 id="242-vim-mode">24.2 Vim Mode <a href="#242-vim-mode" class="heading-anchor">#</a></h2>
+<p>For developers who think in Vim keybindings, NeamCode supports Vim mode for the input editor.</p>
+<h3 id="enabling-vim-mode">Enabling Vim Mode <a href="#enabling-vim-mode" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">&gt; /vim on
+
+Vim mode enabled.
+  - Normal mode: navigate and edit
+  - Insert mode: type text
+  - Visual mode: select text
+  - Press ESC to return to normal mode
+  - Press i to enter insert mode
+  - Use :w to submit your message (same as Enter in normal mode)
+
+Status bar now shows: [NORMAL] or [INSERT]</code></pre>
+<h3 id="supported-vim-commands">Supported Vim Commands <a href="#supported-vim-commands" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">Navigation:
+  h, j, k, l    Move cursor left, down, up, right
+  w, b           Move by word forward, backward
+  0, $           Move to start, end of line
+  gg, G          Move to start, end of input
+
+Editing:
+  i, a           Insert before/after cursor
+  I, A           Insert at start/end of line
+  o, O           New line below/above
+  x              Delete character
+  dd             Delete line
+  dw             Delete word
+  cc             Change line
+  cw             Change word
+  yy             Yank (copy) line
+  p              Paste
+  u              Undo
+  Ctrl+r         Redo
+
+Commands:
+  :w             Submit message (like Enter)
+  :q             Quit NeamCode
+  :wq            Submit and then quit
+  /pattern       Search in input</code></pre>
+<h3 id="disabling-vim-mode">Disabling Vim Mode <a href="#disabling-vim-mode" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">&gt; /vim off
+
+Vim mode disabled. Standard editing restored.</code></pre>
+<div class="callout callout-note"><div class="callout-title"><span class="callout-icon">&#128221;</span> Note</div><p>📝 <strong>Note:</strong> Vim mode only affects the input editor (where you type your messages). It does not change how you navigate NeamCode's output or menus. Slash commands still work normally in both modes.</p></div>
+<hr />
+<h2 id="243-custom-keybindings">24.3 Custom Keybindings <a href="#243-custom-keybindings" class="heading-anchor">#</a></h2>
+<p>You can remap keyboard shortcuts to match your workflow.</p>
+<h3 id="viewing-current-keybindings">Viewing Current Keybindings <a href="#viewing-current-keybindings" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">&gt; /keybindings list
+
+Current keybindings:
+  Ctrl+C         Cancel current operation
+  Ctrl+D         Exit NeamCode
+  Ctrl+L         Clear screen
+  Ctrl+R         Search command history
+  Ctrl+Z         Undo last edit
+  Tab            Accept autocomplete suggestion
+  Shift+Tab      Previous autocomplete suggestion
+  Up/Down        Navigate command history
+  Ctrl+Up        Scroll output up
+  Ctrl+Down      Scroll output down
+  Ctrl+S         Save current session
+  Ctrl+K         Toggle compact mode</code></pre>
+<h3 id="customizing-keybindings">Customizing Keybindings <a href="#customizing-keybindings" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">&gt; /keybindings set Ctrl+P &quot;/review&quot;
+
+Keybinding set:
+  Ctrl+P → runs /review command
+
+&gt; /keybindings set Ctrl+B &quot;/mode debug&quot;
+
+Keybinding set:
+  Ctrl+B → switches to debug mode</code></pre>
+<h3 id="removing-a-keybinding">Removing a Keybinding <a href="#removing-a-keybinding" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">&gt; /keybindings remove Ctrl+P
+
+Keybinding removed: Ctrl+P
+
+&gt; /keybindings reset
+
+All keybindings reset to defaults.</code></pre>
+<p>Custom keybindings are saved to <code>~/.neamcode/keybindings.json</code> and persist across sessions.</p>
+<hr />
+<h2 id="244-spinners-celebrations">24.4 Spinners &amp; Celebrations <a href="#244-spinners-celebrations" class="heading-anchor">#</a></h2>
+<p>NeamCode shows spinners while thinking and celebrations when tasks complete. You can customize both.</p>
+<h3 id="changing-the-spinner">Changing the Spinner <a href="#changing-the-spinner" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">&gt; /config set spinner dots
+
+Spinner changed to: dots
+  Preview: ⠋ ⠙ ⠹ ⠸ ⠼ ⠴ ⠦ ⠧ ⠇ ⠏
+
+Other spinner options:
+  dots      ⠋ ⠙ ⠹ ⠸ ⠼ ⠴ ⠦ ⠧ ⠇ ⠏
+  line      - \ | /
+  arrow     ← ↖ ↑ ↗ → ↘ ↓ ↙
+  bounce    ⠁ ⠂ ⠄ ⠂
+  pulse     ◜ ◠ ◝ ◞ ◡ ◟
+  classic   | / - \
+  none      (no spinner, just &quot;Thinking...&quot;)</code></pre>
+<h3 id="celebrations">Celebrations <a href="#celebrations" class="heading-anchor">#</a></h3>
+<p>When NeamCode completes a significant task (like finishing a code review or all tests passing), it can show a small celebration.</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">&gt; /config set celebrations on
+
+Celebrations enabled.
+  - Tests all passing: ✅ displayed
+  - Build successful: checkmark animation
+  - PR created: link displayed prominently
+
+&gt; /config set celebrations off
+
+Celebrations disabled. Plain text confirmations only.</code></pre>
+<div class="callout callout-warning"><div class="callout-title"><span class="callout-icon">&#9888;&#65039;</span> Warning</div><p>⚠️ <strong>Warning:</strong> If you are recording terminal sessions for presentations or documentation, consider turning celebrations off with <code>/config set celebrations off</code> to keep the output professional.</p></div>
+<hr />
+<h2 id="245-language-settings">24.5 Language Settings <a href="#245-language-settings" class="heading-anchor">#</a></h2>
+<p>NeamCode supports 7 languages for its user interface. All AI responses, documentation, and system messages adapt to your selected language.</p>
+<h3 id="supported-languages">Supported Languages <a href="#supported-languages" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">&gt; /language list
+
+Supported languages:
+  en    English (default)
+  zh    Chinese (Simplified) / 简体中文
+  ms    Malay / Bahasa Melayu
+  ta    Tamil / தமிழ்
+  hi    Hindi / हिन्दी
+  th    Thai / ไทย
+  ko    Korean / 한국어</code></pre>
+<h3 id="switching-languages">Switching Languages <a href="#switching-languages" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">&gt; /language zh
+
+语言已切换至：简体中文
+
+所有系统消息现在将以中文显示。
+AI 回复也将尽可能使用中文。
+
+&gt; /help
+
+可用命令：
+  /review    代码审查
+  /diff      查看 Git 变更
+  /mode      切换模式
+  /cost      查看费用
+  /session   管理会话
+  ...</code></pre>
+<h3 id="mixed-language-usage">Mixed Language Usage <a href="#mixed-language-usage" class="heading-anchor">#</a></h3>
+<p>You can write prompts in any language regardless of the UI language setting. NeamCode responds in the language you write in:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">&gt; /language en
+
+Language set to: English
+
+&gt; 이 코드에서 버그를 찾아주세요
+
+(NeamCode responds in Korean because the prompt was in Korean)
+
+이 코드에서 3가지 문제를 발견했습니다:
+
+1. 줄 15: null 체크가 누락되었습니다...</code></pre>
+<div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip:</strong> Set the UI language to your native language for system messages, but feel free to write prompts in any language. NeamCode handles multilingual input naturally.</p></div>
+<hr />
+<h2 id="246-neamcodemd-customization-patterns">24.6 NEAMCODE.md Customization Patterns <a href="#246-neamcodemd-customization-patterns" class="heading-anchor">#</a></h2>
+<p>The <code>NEAMCODE.md</code> file in your project root is the most powerful customization tool. It gives NeamCode persistent context about your project, preferences, and conventions.</p>
+<h3 id="basic-template">Basic Template <a href="#basic-template" class="heading-anchor">#</a></h3>
+<p>Create a file called <code>NEAMCODE.md</code> in your project root:</p>
+<div class="code-header"><span class="code-lang">markdown</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-markdown"># Project: My Application
+
+## Stack
+- Language: TypeScript 5.4
+- Framework: Next.js 14 (App Router)
+- Database: PostgreSQL 16
+- ORM: Drizzle
+- Testing: Vitest
+
+## Code Conventions
+- Use functional components, no classes
+- Prefer named exports over default exports
+- All functions must have JSDoc comments
+- Error handling: use Result&lt;T, E&gt; pattern
+- File naming: kebab-case (e.g., user-service.ts)
+
+## Architecture
+- src/app/ — Next.js app router pages
+- src/components/ — React components
+- src/lib/ — Shared utilities
+- src/server/ — Server-side code
+- src/db/ — Database schema and migrations
+
+## Testing Rules
+- Every new feature needs tests
+- Minimum 80% coverage on changed files
+- Use test factories, not raw fixtures
+- Mock external APIs, never hit real endpoints in tests</code></pre>
+<h3 id="advanced-patterns">Advanced Patterns <a href="#advanced-patterns" class="heading-anchor">#</a></h3>
+<p><strong>Per-directory context:</strong></p>
+<p>You can create <code>NEAMCODE.md</code> files in subdirectories for specific context:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">project/
+├── NEAMCODE.md              # Project-wide context
+├── src/
+│   └── auth/
+│       └── NEAMCODE.md      # Auth-specific context
+└── tests/
+    └── NEAMCODE.md          # Testing-specific context</code></pre>
+<div class="code-header"><span class="code-lang">markdown</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-markdown"># src/auth/NEAMCODE.md
+
+## Auth Module Context
+- We use Auth0 for authentication
+- JWTs are validated in middleware, not in handlers
+- User roles: admin, editor, viewer
+- Session tokens expire in 24 hours
+- NEVER store passwords — Auth0 handles this
+- All auth endpoints require HTTPS</code></pre>
+<p><strong>Personal preferences file:</strong></p>
+<p>Create <code>~/.neamcode/NEAMCODE.md</code> for global preferences that apply to all projects:</p>
+<div class="code-header"><span class="code-lang">markdown</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-markdown"># Personal NeamCode Preferences
+
+## Communication Style
+- Be concise — I prefer short explanations
+- Show code first, explain after
+- Use bullet points, not paragraphs
+- Don&#x27;t explain basic concepts I already know
+- When I ask &quot;why&quot;, give the technical reason, not a tutorial
+
+## Defaults
+- Always use TypeScript, never JavaScript
+- Prefer functional patterns over OOP
+- Use single quotes, not double quotes
+- 2-space indentation
+- Trailing commas in multi-line expressions</code></pre>
+<h3 id="neamcodemd-precedence">NEAMCODE.md Precedence <a href="#neamcodemd-precedence" class="heading-anchor">#</a></h3>
+<p>When multiple context files exist, NeamCode merges them with this priority:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">  Highest priority
+    ↓
+  1. Prompt-level instructions (what you type)
+  2. Directory-level NEAMCODE.md (closest to current file)
+  3. Project-root NEAMCODE.md
+  4. Global ~/.neamcode/NEAMCODE.md
+    ↓
+  Lowest priority</code></pre>
+<div class="callout callout-note"><div class="callout-title"><span class="callout-icon">&#128221;</span> Note</div><p>📝 <strong>Note:</strong> Keep NEAMCODE.md files focused and concise. A 2,000-line context file wastes tokens and slows responses. Aim for under 100 lines per file.</p></div>
+<hr />
+<h2 id="247-permission-tuning">24.7 Permission Tuning <a href="#247-permission-tuning" class="heading-anchor">#</a></h2>
+<p>NeamCode has four permission modes that control how much autonomy it has.</p>
+<h3 id="permission-modes-overview">Permission Modes Overview <a href="#permission-modes-overview" class="heading-anchor">#</a></h3>
+<div class="info-box">
+  <div class="info-box-header blue">Permission Modes</div>
+  <div class="info-box-body">
+    <div class="table-wrap"><table>
+    <thead><tr><th>Mode</th><th>Behavior</th></tr></thead>
+    <tbody>
+      <tr><td><strong>safe</strong></td><td>Read-only. Cannot modify files or run commands. Asks before everything.</td></tr>
+      <tr><td><strong>standard</strong></td><td>Can read files and run safe commands. Asks before writing files or running destructive commands. (DEFAULT)</td></tr>
+      <tr><td><strong>power</strong></td><td>Can read/write files and run most commands. Asks before git push, rm -rf, and network operations.</td></tr>
+      <tr><td><strong>yolo</strong></td><td>Full autonomy. No confirmations. Use only for throwaway/sandbox environments.</td></tr>
+    </tbody>
+    </table></div>
+  </div>
+</div>
+<h3 id="switching-permission-modes">Switching Permission Modes <a href="#switching-permission-modes" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">&gt; /permission safe
+
+Permission mode: safe
+  - File read: allowed
+  - File write: BLOCKED (will suggest changes without applying)
+  - Shell commands: BLOCKED
+  - Git operations: BLOCKED
+
+This mode is perfect for:
+  - Learning and exploring
+  - Reviewing code you don&#x27;t want accidentally changed
+  - Letting someone else use your machine with NeamCode</code></pre>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">&gt; /permission power
+
+Permission mode: power
+  - File read: auto-approved
+  - File write: auto-approved
+  - Shell commands (safe): auto-approved
+  - Shell commands (destructive): ask first
+  - Git operations: ask first
+  - Network requests: ask first
+
+This mode is perfect for:
+  - Active development on your own projects
+  - Refactoring sessions where you want speed
+  - Building new features</code></pre>
+<h3 id="per-project-permission-defaults">Per-Project Permission Defaults <a href="#per-project-permission-defaults" class="heading-anchor">#</a></h3>
+<p>Set permissions in your <code>NEAMCODE.md</code>:</p>
+<div class="code-header"><span class="code-lang">markdown</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-markdown">## Permissions
+- Default mode: power
+- Never delete files without asking
+- Never run npm publish
+- Never push to main branch</code></pre>
+<div class="callout callout-warning"><div class="callout-title"><span class="callout-icon">&#9888;&#65039;</span> Warning</div><p>⚠️ <strong>Warning:</strong> Never use <code>yolo</code> mode on production systems, shared machines, or repositories with sensitive data. It is designed exclusively for throwaway environments like Docker containers or temporary sandbox projects.</p></div>
+<hr />
+<h2 id="248-cicd-headless-mode">24.8 CI/CD &amp; Headless Mode <a href="#248-cicd-headless-mode" class="heading-anchor">#</a></h2>
+<p>NeamCode can run without a terminal UI, making it perfect for CI/CD pipelines, cron jobs, and automation scripts.</p>
+<h3 id="basic-headless-usage">Basic Headless Usage <a href="#basic-headless-usage" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">bash</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-bash"># Run a single prompt and get the result
+neamcode --prompt &quot;Review src/app.ts for security issues&quot; --output text
+
+# Get structured JSON output for parsing
+neamcode --prompt &quot;List all TODO comments in src/&quot; --output json
+
+# Set a cost limit for automated runs
+neamcode --prompt &quot;Analyze test coverage gaps&quot; --output json --max-cost 0.50</code></pre>
+<h3 id="cicd-integration-examples">CI/CD Integration Examples <a href="#cicd-integration-examples" class="heading-anchor">#</a></h3>
+<p><strong>GitHub Actions — Automated PR Review:</strong></p>
+<div class="code-header"><span class="code-lang">yaml</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-yaml">name: NeamCode Review
+on: [pull_request]
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install NeamCode
+        run: npm install -g neamcode
+
+      - name: Review PR
+        run: |
+          neamcode \
+            --prompt &quot;Review the git diff. Check for bugs, security issues, and style violations. Be concise.&quot; \
+            --output json \
+            --max-cost 0.25 \
+            &gt; review.json
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+
+      - name: Post Review Comment
+        run: |
+          # Parse review.json and post as PR comment
+          cat review.json | jq -r &#x27;.response&#x27; | gh pr comment ${{ github.event.number }} --body-file -
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}</code></pre>
+<p><strong>Pre-commit Hook:</strong></p>
+<div class="code-header"><span class="code-lang">bash</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-bash">#!/bin/bash
+# .git/hooks/pre-commit
+
+# Quick check for common issues before committing
+RESULT=$(neamcode \
+  --prompt &quot;Check staged files for console.log statements, hardcoded secrets, and TODO comments. Output only issues found.&quot; \
+  --output text \
+  --max-cost 0.05 \
+  2&gt;/dev/null)
+
+if [ -n &quot;$RESULT&quot; ]; then
+  echo &quot;NeamCode found potential issues:&quot;
+  echo &quot;$RESULT&quot;
+  echo &quot;&quot;
+  echo &quot;Commit anyway? (y/n)&quot;
+  read -r answer
+  if [ &quot;$answer&quot; != &quot;y&quot; ]; then
+    exit 1
+  fi
+fi</code></pre>
+<p><strong>Cron Job — Nightly Code Quality Report:</strong></p>
+<div class="code-header"><span class="code-lang">bash</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-bash">#!/bin/bash
+# Run nightly at 2 AM
+
+cd /var/app/my-project
+
+neamcode \
+  --prompt &quot;Generate a code quality report. Check for: unused imports, functions over 50 lines, files over 300 lines, missing error handling, and missing tests. Format as markdown.&quot; \
+  --output text \
+  --max-cost 1.00 \
+  &gt; /var/reports/quality-$(date +%Y%m%d).md
+
+# Email the report
+mail -s &quot;Daily Code Quality Report&quot; team@company.com &lt; /var/reports/quality-$(date +%Y%m%d).md</code></pre>
+<h3 id="headless-mode-options">Headless Mode Options <a href="#headless-mode-options" class="heading-anchor">#</a></h3>
+<div class="info-box">
+  <div class="info-box-header gray">Headless Mode Options</div>
+  <div class="info-box-body">
+    <div class="table-wrap"><table>
+    <thead><tr><th>Flag</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td><code>--prompt "..."</code></td><td>The instruction to execute</td></tr>
+      <tr><td><code>--output text</code></td><td>Plain text response</td></tr>
+      <tr><td><code>--output json</code></td><td>Structured JSON response</td></tr>
+      <tr><td><code>--output markdown</code></td><td>Formatted markdown response</td></tr>
+      <tr><td><code>--max-cost N.NN</code></td><td>Maximum dollar cost for this run</td></tr>
+      <tr><td><code>--provider name</code></td><td>AI provider to use</td></tr>
+      <tr><td><code>--model name</code></td><td>Specific model to use</td></tr>
+      <tr><td><code>--timeout N</code></td><td>Timeout in seconds</td></tr>
+      <tr><td><code>--context file</code></td><td>Additional context file to load</td></tr>
+      <tr><td><code>--permission mode</code></td><td>Permission level (safe recommended)</td></tr>
+    </tbody>
+    </table></div>
+  </div>
+</div>
+<div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip:</strong> In CI/CD, always set <code>--max-cost</code> to prevent runaway spending. A typical code review costs $0.05-0.20. Set a generous but bounded limit like $0.50.</p></div>
+<hr />
+<h2 id="249-security-best-practices">24.9 Security Best Practices <a href="#249-security-best-practices" class="heading-anchor">#</a></h2>
+<p>NeamCode has access to your files and can run commands. Here is how to use it safely.</p>
+<h3 id="api-key-management">API Key Management <a href="#api-key-management" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-"># GOOD: Use environment variables
+export OPENAI_API_KEY=&quot;sk-...&quot;
+
+# GOOD: Use a .env file (add to .gitignore!)
+echo &quot;OPENAI_API_KEY=sk-...&quot; &gt; .env
+echo &quot;.env&quot; &gt;&gt; .gitignore
+
+# BAD: Never hardcode keys in NEAMCODE.md or source code
+# BAD: Never commit .env files to git</code></pre>
+<h3 id="permission-mode-selection-guide">Permission Mode Selection Guide <a href="#permission-mode-selection-guide" class="heading-anchor">#</a></h3>
+<div class="info-box">
+  <div class="info-box-header amber">Permission Mode Selection Guide</div>
+  <div class="info-box-body">
+    <div class="table-wrap"><table>
+    <thead><tr><th>Situation</th><th>Mode</th></tr></thead>
+    <tbody>
+      <tr><td>Exploring unfamiliar codebase</td><td>safe</td></tr>
+      <tr><td>Client or shared project</td><td>standard</td></tr>
+      <tr><td>Your own active project</td><td>power</td></tr>
+      <tr><td>Learning / tutorials</td><td>safe</td></tr>
+      <tr><td>CI/CD automation</td><td>safe or std</td></tr>
+      <tr><td>Throwaway Docker container</td><td>yolo</td></tr>
+      <tr><td>Production server</td><td><strong>NEVER use</strong></td></tr>
+    </tbody>
+    </table></div>
+  </div>
+</div>
+<h3 id="what-neamcode-should-never-see">What NeamCode Should Never See <a href="#what-neamcode-should-never-see" class="heading-anchor">#</a></h3>
+<p>Add these to your <code>.gitignore</code> and keep them out of NeamCode's reach:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-"># Secrets
+.env
+.env.local
+.env.production
+*.pem
+*.key
+credentials.json
+service-account.json
+
+# Sensitive data
+*.sqlite (if it contains user data)
+backups/
+dumps/</code></pre>
+<h3 id="audit-trail">Audit Trail <a href="#audit-trail" class="heading-anchor">#</a></h3>
+<p>NeamCode logs all file modifications and commands it runs. Review these periodically:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">&gt; /history
+
+Recent actions this session:
+  10:23  READ   src/app.ts
+  10:24  READ   src/routes/users.ts
+  10:25  WRITE  src/routes/users.ts (added input validation)
+  10:26  RUN    npm test
+  10:27  READ   tests/users.test.ts
+  10:28  WRITE  tests/users.test.ts (added 3 test cases)
+  10:29  RUN    npm test</code></pre>
+<div class="callout callout-note"><div class="callout-title"><span class="callout-icon">&#128221;</span> Note</div><p>📝 <strong>Note:</strong> NeamCode never sends your source code to external servers beyond what is needed for AI inference. Your code goes to the AI provider you selected and nowhere else. When using Ollama, your code never leaves your machine.</p></div>
+<hr />
+<h2 id="2410-pro-tips">24.10 Pro Tips <a href="#2410-pro-tips" class="heading-anchor">#</a></h2>
+<h3 id="create-a-startup-configuration">Create a Startup Configuration <a href="#create-a-startup-configuration" class="heading-anchor">#</a></h3>
+<p>Set your preferences once in <code>~/.neamcode/config.json</code>:</p>
+<div class="code-header"><span class="code-lang">json</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-json">{
+  &quot;theme&quot;: &quot;dracula&quot;,
+  &quot;vim_mode&quot;: false,
+  &quot;spinner&quot;: &quot;dots&quot;,
+  &quot;celebrations&quot;: true,
+  &quot;language&quot;: &quot;en&quot;,
+  &quot;default_permission&quot;: &quot;standard&quot;,
+  &quot;default_provider&quot;: &quot;openai&quot;,
+  &quot;default_model&quot;: &quot;gpt-4o&quot;,
+  &quot;max_cost_per_session&quot;: 5.00,
+  &quot;auto_save_sessions&quot;: true,
+  &quot;compact_mode&quot;: false
+}</code></pre>
+<h3 id="shell-aliases-for-common-workflows">Shell Aliases for Common Workflows <a href="#shell-aliases-for-common-workflows" class="heading-anchor">#</a></h3>
+<p>Add these to your <code>.zshrc</code> or <code>.bashrc</code>:</p>
+<div class="code-header"><span class="code-lang">bash</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-bash"># Quick review current changes
+alias ncreview=&#x27;neamcode --prompt &quot;/diff &amp;&amp; /review --diff&quot; --output text&#x27;
+
+# Debug mode shortcut
+alias ncdebug=&#x27;neamcode --prompt &quot;/mode debug&quot;&#x27;
+
+# Cost-free local mode
+alias nclocal=&#x27;neamcode --provider ollama --model deepseek-coder-v2&#x27;
+
+# Explore a new codebase
+alias ncexplore=&#x27;neamcode --prompt &quot;/mode explore&quot; --permission safe&#x27;</code></pre>
+<h3 id="use-checkpoints-before-risky-changes">Use Checkpoints Before Risky Changes <a href="#use-checkpoints-before-risky-changes" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">&gt; /checkpoint before-major-refactor
+
+Checkpoint saved: before-major-refactor
+Files tracked: 47 modified
+
+... do risky refactoring ...
+
+&gt; /restore before-major-refactor
+
+Restored to checkpoint: before-major-refactor
+47 files reverted to previous state.</code></pre>
+<h3 id="combine-modes-for-complex-tasks">Combine Modes for Complex Tasks <a href="#combine-modes-for-complex-tasks" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-"># Start in analyze mode to understand the code
+&gt; /mode analyze
+&gt; Explain how the payment flow works
+
+# Switch to debug mode when you find an issue
+&gt; /mode debug
+&gt; There&#x27;s a race condition in the payment handler
+
+# Switch to test mode to write tests
+&gt; /mode test
+&gt; Write tests for the fixed payment handler</code></pre>
+<h3 id="track-your-productivity">Track Your Productivity <a href="#track-your-productivity" class="heading-anchor">#</a></h3>
+<p>Check your session stats periodically:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">&gt; /cost
+
+This session:
+  Duration: 2h 15m
+  Messages: 67
+  Files read: 23
+  Files modified: 8
+  Commands run: 12
+  Cost: $1.87
+  Provider: openai (gpt-4o)</code></pre>
+<p>Over time, you will learn which tasks benefit most from AI assistance and which are faster to do manually. This data helps you optimize your workflow.</p>
+<hr />
+<h2 id="exercises">Exercises <a href="#exercises" class="heading-anchor">#</a></h2>
+<p><strong>🎯 Exercise 24.1:</strong> Try three different themes and pick the one that feels most comfortable for extended use. Set it as your default.</p>
+<p><strong>🎯 Exercise 24.2:</strong> If you use Vim, enable Vim mode and spend 30 minutes working with it. Note which commands work and which you miss.</p>
+<p><strong>🎯 Exercise 24.3:</strong> Create a <code>NEAMCODE.md</code> file for your most active project. Include your tech stack, code conventions, and at least 5 specific preferences. Use NeamCode for a task and observe how it follows your conventions.</p>
+<p><strong>🎯 Exercise 24.4:</strong> Set up a headless NeamCode command in a shell script that does something useful for your workflow — a pre-commit check, a daily report, or a PR review helper.</p>
+<p><strong>🎯 Exercise 24.5:</strong> Try each permission mode for 10 minutes each. Notice how the interaction changes. Decide which mode you'll use as your daily default and configure it.</p>
+<p><strong>🎯 Exercise 24.6:</strong> If you speak one of the supported languages, switch the UI to that language and use NeamCode for a coding task. Note any areas where the translation helps or hinders your workflow.</p>
+<hr />
+    <nav class="chapter-nav"><a href="23-walkthrough-fix-bug.html" class="nav-prev"><span class="nav-label">&larr; Previous</span><span class="nav-title">Walkthrough: Fix a Real Bug</span></a><a href="25-road-ahead.html" class="nav-next"><span class="nav-label">Next &rarr;</span><span class="nav-title">The Road Ahead</span></a></nav>
+  </article>
+</main>
+
+<button class="back-to-top" id="back-to-top" aria-label="Back to top">&#8593;</button>
+
+<div class="search-overlay" id="search-overlay">
+  <div class="search-modal">
+    <div class="search-input-wrap">
+      <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6.5" cy="6.5" r="5"/><line x1="10.5" y1="10.5" x2="15" y2="15"/></svg>
+      <input type="text" class="search-input" id="search-input" placeholder="Search chapters, topics...">
+    </div>
+    <div class="search-results" id="search-results">
+      <div class="search-empty">Start typing to search...</div>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/script.js"></script>
+</body>
+</html>

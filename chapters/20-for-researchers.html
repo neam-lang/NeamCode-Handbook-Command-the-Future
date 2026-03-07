@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 20: For Researchers | Command the Future</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-base="../">
+
+<header class="topbar">
+  <div class="topbar-left">
+    <button class="hamburger" id="hamburger" aria-label="Toggle sidebar">&#9776;</button>
+    <a href="../index.html" class="topbar-title">Command the Future</a>
+  </div>
+  <div class="topbar-right">
+    <button class="topbar-btn search-btn" aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6.5" cy="6.5" r="5"/><line x1="10.5" y1="10.5" x2="15" y2="15"/></svg><kbd>Ctrl+K</kbd></button>
+    <button class="topbar-btn" id="theme-toggle" aria-label="Toggle theme"></button>
+  </div>
+</header>
+
+<div class="progress-bar"><div class="progress-fill"></div></div>
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+<aside class="sidebar" id="sidebar">
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Getting Started</div>
+  <div class="sidebar-chapters">
+    <a href="00-preface.html" class="sidebar-link" title="Preface">Preface</a>
+    <a href="01-meet-neamcode.html" class="sidebar-link" title="Meet NeamCode">Meet NeamCode</a>
+    <a href="02-install-first-conversation.html" class="sidebar-link" title="Install & First Conversation">Install & First Conversation</a>
+    <a href="03-art-of-prompting.html" class="sidebar-link" title="The Art of Prompting">The Art of Prompting</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Core Skills</div>
+  <div class="sidebar-chapters">
+    <a href="04-working-with-files.html" class="sidebar-link" title="Working with Files">Working with Files</a>
+    <a href="05-finding-things.html" class="sidebar-link" title="Finding Things in Code">Finding Things in Code</a>
+    <a href="06-commands-and-git.html" class="sidebar-link" title="Running Commands & Git">Running Commands & Git</a>
+    <a href="07-web-research.html" class="sidebar-link" title="Researching from the Terminal">Researching from the Terminal</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Workflow & Configuration</div>
+  <div class="sidebar-chapters">
+    <a href="08-slash-commands.html" class="sidebar-link" title="Slash Commands">Slash Commands</a>
+    <a href="09-modes.html" class="sidebar-link" title="Modes">Modes</a>
+    <a href="10-sessions-context.html" class="sidebar-link" title="Sessions & Context">Sessions & Context</a>
+    <a href="11-auto-memory.html" class="sidebar-link" title="Auto Memory">Auto Memory</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Providers & Cost</div>
+  <div class="sidebar-chapters">
+    <a href="12-choosing-providers.html" class="sidebar-link" title="Choosing Your AI Provider">Choosing Your AI Provider</a>
+    <a href="13-offline-mode.html" class="sidebar-link" title="Offline Mode">Offline Mode</a>
+    <a href="14-zero-cost-setup.html" class="sidebar-link" title="The $0 AI Setup">The $0 AI Setup</a>
+    <a href="15-budget-cost.html" class="sidebar-link" title="Budget & Cost Tracking">Budget & Cost Tracking</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Advanced Features</div>
+  <div class="sidebar-chapters">
+    <a href="16-agents.html" class="sidebar-link" title="Agents & Delegation">Agents & Delegation</a>
+    <a href="17-mcp-servers.html" class="sidebar-link" title="MCP Servers">MCP Servers</a>
+    <a href="18-neam-language.html" class="sidebar-link" title="Neam Language Integration">Neam Language Integration</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Audience Guides</div>
+  <div class="sidebar-chapters">
+    <a href="19-for-students.html" class="sidebar-link" title="For Students">For Students</a>
+    <a href="20-for-researchers.html" class="sidebar-link active" title="For Researchers">For Researchers</a>
+    <a href="21-for-professionals.html" class="sidebar-link" title="For Professionals">For Professionals</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Walkthroughs</div>
+  <div class="sidebar-chapters">
+    <a href="22-walkthrough-build-project.html" class="sidebar-link" title="Walkthrough: Build a Project">Walkthrough: Build a Project</a>
+    <a href="23-walkthrough-fix-bug.html" class="sidebar-link" title="Walkthrough: Fix a Real Bug">Walkthrough: Fix a Real Bug</a>
+    <a href="24-making-it-yours.html" class="sidebar-link" title="Making NeamCode Yours">Making NeamCode Yours</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Part: Closing</div>
+  <div class="sidebar-chapters">
+    <a href="25-road-ahead.html" class="sidebar-link" title="The Road Ahead">The Road Ahead</a>
+  </div>
+</div>
+<div class="sidebar-part">
+  <div class="sidebar-part-title">Appendices</div>
+  <div class="sidebar-chapters">
+    <a href="../appendices/A-slash-commands.html" class="sidebar-link" title="All Slash Commands">All Slash Commands</a>
+    <a href="../appendices/B-skills-reference.html" class="sidebar-link" title="All Skills Reference">All Skills Reference</a>
+    <a href="../appendices/C-configuration.html" class="sidebar-link" title="Configuration Reference">Configuration Reference</a>
+    <a href="../appendices/D-troubleshooting.html" class="sidebar-link" title="Troubleshooting & FAQ">Troubleshooting & FAQ</a>
+    <a href="../appendices/E-glossary.html" class="sidebar-link" title="Glossary">Glossary</a>
+  </div>
+</div>
+</aside>
+
+<main class="main">
+  <article class="content">
+<h1 id="chapter-20-for-researchers-from-data-to-discovery">Chapter 20: For Researchers — From Data to Discovery <a href="#chapter-20-for-researchers-from-data-to-discovery" class="heading-anchor">#</a></h1>
+<blockquote><p>"If we knew what it was we were doing, it would not be called research, would it?"<br>— Albert Einstein</p></blockquote>
+<p>📖 <strong>Estimated read time:</strong> 22 minutes</p>
+<hr />
+<h2 id="what-youll-learn">What You'll Learn <a href="#what-youll-learn" class="heading-anchor">#</a></h2>
+<ul>
+<li>How to build data analysis pipelines with NeamCode assistance</li>
+<li>How to accelerate literature reviews using web search from the terminal</li>
+<li>How to automate experiment workflows and parameter sweeps</li>
+<li>How to work with Jupyter notebooks from the command line</li>
+<li>How to create reproducible research environments</li>
+<li>How to use NeamCode for AI agent research with Neam language</li>
+</ul>
+<hr />
+<h2 id="201-building-data-analysis-pipelines">20.1 Building Data Analysis Pipelines <a href="#201-building-data-analysis-pipelines" class="heading-anchor">#</a></h2>
+<p>Research often starts with messy data that needs cleaning, transforming, and analyzing. NeamCode can help you build robust pipelines without leaving your terminal.</p>
+<h3 id="starting-a-data-analysis-project">Starting a Data Analysis Project <a href="#starting-a-data-analysis-project" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">$ cd ~/research/climate-study
+$ neamcode
+
+&gt; /mode analyze
+
+Mode switched to: Analyze
+Ready to analyze code structure and patterns.
+
+&gt; I have a CSV file with 10 years of daily temperature readings
+  from 50 weather stations. Columns: station_id, date, temp_min,
+  temp_max, temp_avg, precipitation, humidity. Some rows have
+  missing values. Help me build a cleaning and analysis pipeline.</code></pre>
+<p><strong>NeamCode responds:</strong></p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">I&#x27;ll help you build a robust pipeline. Let me first look at
+the data to understand what we&#x27;re working with.
+
+Looking at weather_data.csv...
+
+File summary:
+  - 182,500 rows (50 stations × 365 days × 10 years)
+  - 7 columns as described
+  - Missing values: temp_avg (2.3%), precipitation (5.1%),
+    humidity (1.8%)
+  - Date range: 2014-01-01 to 2023-12-31
+
+I&#x27;ll create a pipeline with these stages:
+
+  Raw CSV
+    │
+    ▼
+  1. Load &amp; Validate (check types, ranges)
+    │
+    ▼
+  2. Clean (handle missing, remove outliers)
+    │
+    ▼
+  3. Transform (add derived columns, resample)
+    │
+    ▼
+  4. Analyze (statistics, trends, correlations)
+    │
+    ▼
+  5. Export (cleaned CSV + summary stats)
+
+Created: pipeline.py
+
+Key decisions:
+  - Using pandas for data manipulation
+  - Missing temp_avg: interpolated from temp_min/temp_max
+  - Missing precipitation: forward-fill (weather patterns)
+  - Outlier detection: values beyond 3 standard deviations
+    flagged, not removed (you decide)</code></pre>
+<h3 id="iterating-on-analysis">Iterating on Analysis <a href="#iterating-on-analysis" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">&gt; The outlier detection is too aggressive. Station 23 is in Death Valley
+  — its high temps are legitimate, not outliers. How should I handle
+  geographic variation?
+
+Good catch. Per-station statistics would be better than global ones.
+
+Updated the outlier detection in pipeline.py:
+
+  Before (global):
+    mean = df[&#x27;temp_max&#x27;].mean()
+    std = df[&#x27;temp_max&#x27;].std()
+    outliers = df[abs(df[&#x27;temp_max&#x27;] - mean) &gt; 3 * std]
+
+  After (per-station):
+    station_stats = df.groupby(&#x27;station_id&#x27;)[&#x27;temp_max&#x27;].agg([&#x27;mean&#x27;, &#x27;std&#x27;])
+    df = df.merge(station_stats, on=&#x27;station_id&#x27;)
+    df[&#x27;is_outlier&#x27;] = abs(df[&#x27;temp_max&#x27;] - df[&#x27;mean&#x27;]) &gt; 3 * df[&#x27;std&#x27;]
+
+This way, Death Valley&#x27;s 54°C readings are normal for *that station*,
+while a 54°C reading in Alaska would still be flagged.
+
+Per-station outlier counts:
+  Station 23 (Death Valley): 2 outliers (down from 847)
+  Station 7 (Fairbanks): 5 outliers (unchanged)
+  ...</code></pre>
+<h3 id="generating-visualizations">Generating Visualizations <a href="#generating-visualizations" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">&gt; Create a publication-quality plot showing the 10-year temperature
+  trend for the top 5 stations with the most warming. Use a style
+  suitable for a Nature submission.
+
+Created: plots/warming_trend.py
+
+The script generates:
+  - plots/warming_trend.pdf (vector, publication-ready)
+  - plots/warming_trend.png (300 DPI for presentations)
+
+Style choices for Nature:
+  - Font: Helvetica, 8pt labels, 10pt title
+  - Colors: colorblind-safe palette (5 distinct colors)
+  - Grid: light gray, behind data
+  - Legend: outside plot area (right side)
+  - Line width: 1.5pt data, 0.5pt confidence interval
+  - Y-axis: Temperature anomaly (°C) relative to 1991-2020 mean
+  - Trend lines: linear regression with 95% CI shading
+
+Run with: python plots/warming_trend.py</code></pre>
+<div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip:</strong> Always specify the target journal or conference style when asking for publication plots. Each venue has specific formatting requirements.</p></div>
+<hr />
+<h2 id="202-literature-review-with-web-search">20.2 Literature Review with Web Search <a href="#202-literature-review-with-web-search" class="heading-anchor">#</a></h2>
+<p>NeamCode's web search and fetch capabilities let you do preliminary literature surveys without leaving the terminal.</p>
+<h3 id="searching-for-recent-papers">Searching for Recent Papers <a href="#searching-for-recent-papers" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">&gt; /web_search &quot;transformer attention mechanism efficiency 2024 2025 survey&quot;
+
+Found 8 relevant results:
+
+1. &quot;A Survey of Efficient Attention Mechanisms&quot; (2024)
+   arxiv.org/abs/2024.xxxxx
+   Key contribution: Taxonomy of 47 efficient attention variants
+
+2. &quot;FlashAttention-3: Fast Attention with Asymptotic Optimality&quot;
+   arxiv.org/abs/2024.yyyyy
+   Key contribution: IO-aware attention, 2x speedup over FA-2
+
+3. &quot;Linear Attention Revisited: Are We There Yet?&quot; (2025)
+   arxiv.org/abs/2025.zzzzz
+   Key contribution: Shows linear attention still trails quadratic
+   on long-range tasks
+
+...
+
+Want me to fetch and summarize any of these papers?</code></pre>
+<h3 id="fetching-and-summarizing-a-paper">Fetching and Summarizing a Paper <a href="#fetching-and-summarizing-a-paper" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">&gt; Fetch and summarize paper #1. Focus on their taxonomy — I want to
+  know how they categorize the different approaches.
+
+/fetch arxiv.org/abs/2024.xxxxx
+
+Summarizing &quot;A Survey of Efficient Attention Mechanisms&quot;...
+
+**Taxonomy of Efficient Attention (from Section 3):**
+
+  Efficient Attention
+  ├── Sparse Attention
+  │   ├── Fixed patterns (local window, strided)
+  │   ├── Learned patterns (routing, clustering)
+  │   └── Combined (BigBird, Longformer)
+  ├── Linear Attention
+  │   ├── Kernel methods (Performers, RFA)
+  │   ├── State-space models (Mamba, S4)
+  │   └── Hybrid (Hyena, RWKV)
+  ├── IO-Aware Attention
+  │   ├── Tiling-based (FlashAttention family)
+  │   └── Hardware-specific (ring attention)
+  └── Approximate Attention
+      ├── Low-rank (Linformer, Nyströmformer)
+      ├── Hashing (Reformer, SMYRF)
+      └── Sampling-based (Random Feature Attention)
+
+**Key finding:** No single approach dominates. Choice depends on:
+  - Sequence length (linear better for &gt;8K tokens)
+  - Hardware (IO-aware critical for GPU, less for TPU)
+  - Task type (sparse good for local tasks, linear for global)
+
+**Their recommendation:** FlashAttention for &lt;8K, Mamba for &gt;32K,
+hybrid approaches for 8-32K range.
+
+Relevant to your work? Want me to find papers in any specific branch?</code></pre>
+<h3 id="building-a-reference-collection">Building a Reference Collection <a href="#building-a-reference-collection" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">&gt; Save this as a literature note and add it to my references.
+  Use BibTeX format.
+
+Created: literature/efficient_attention_survey.md
+  - Summary, taxonomy diagram, key findings
+  - Your reading notes section (empty, fill in later)
+
+Added to references.bib:
+  @article{smith2024efficient,
+    title={A Survey of Efficient Attention Mechanisms},
+    author={Smith, J. and Chen, L. and ...},
+    journal={arXiv preprint arXiv:2024.xxxxx},
+    year={2024}
+  }
+
+Your references.bib now has 23 entries.</code></pre>
+<div class="callout callout-note"><div class="callout-title"><span class="callout-icon">&#128221;</span> Note</div><p>📝 <strong>Note:</strong> Web search gives you a starting point. Always verify paper details, read the full text, and check citation counts before including papers in your own work.</p></div>
+<hr />
+<h2 id="203-automating-experiments">20.3 Automating Experiments <a href="#203-automating-experiments" class="heading-anchor">#</a></h2>
+<p>Running the same experiment with different parameters, collecting results, and comparing them is tedious. NeamCode can help you automate the entire loop.</p>
+<h3 id="setting-up-an-experiment-framework">Setting Up an Experiment Framework <a href="#setting-up-an-experiment-framework" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">&gt; I need to run my neural network training with different
+  hyperparameters. I want to test:
+  - Learning rates: [0.001, 0.0005, 0.0001]
+  - Batch sizes: [32, 64, 128]
+  - Dropout: [0.1, 0.3, 0.5]
+  That&#x27;s 27 combinations. Help me set up a sweep.
+
+I&#x27;ll create an experiment runner that handles the full sweep.
+
+Created: experiments/sweep.py
+
+Features:
+  - Generates all 27 parameter combinations
+  - Runs each as a subprocess with timeout
+  - Logs results to experiments/results.jsonl
+  - Saves best model checkpoint automatically
+  - Resumes from where it left off if interrupted
+  - Estimated time: ~27 × [your training time per run]
+
+Configuration (experiments/sweep_config.yaml):
+
+  experiment_name: &quot;hyperparam_sweep_v1&quot;
+  base_command: &quot;python train.py&quot;
+  parameters:
+    learning_rate: [0.001, 0.0005, 0.0001]
+    batch_size: [32, 64, 128]
+    dropout: [0.1, 0.3, 0.5]
+  metrics:
+    primary: &quot;val_accuracy&quot;
+    secondary: [&quot;val_loss&quot;, &quot;train_loss&quot;]
+  resources:
+    gpu: 1
+    timeout_minutes: 30
+
+Run with: python experiments/sweep.py
+
+To monitor progress:
+  tail -f experiments/results.jsonl | python experiments/live_plot.py</code></pre>
+<h3 id="analyzing-experiment-results">Analyzing Experiment Results <a href="#analyzing-experiment-results" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">&gt; The sweep finished. Here are the results in results.jsonl.
+  Analyze them and tell me the best configuration and any
+  interesting patterns.
+
+Analyzing 27 experiment runs...
+
+**Best Configuration:**
+  Learning rate: 0.0005
+  Batch size: 64
+  Dropout: 0.3
+  Val accuracy: 94.2%  |  Val loss: 0.187
+
+**Top 5 Results:**
+  ┌────┬────────┬───────┬─────────┬──────────┬──────────┐
+  │ #  │   LR   │ Batch │ Dropout │ Val Acc  │ Val Loss │
+  ├────┼────────┼───────┼─────────┼──────────┼──────────┤
+  │ 1  │ 0.0005 │   64  │   0.3   │  94.2%   │  0.187   │
+  │ 2  │ 0.0005 │   64  │   0.1   │  93.8%   │  0.195   │
+  │ 3  │ 0.001  │   64  │   0.3   │  93.5%   │  0.201   │
+  │ 4  │ 0.0005 │   32  │   0.3   │  93.1%   │  0.211   │
+  │ 5  │ 0.0001 │   64  │   0.3   │  92.9%   │  0.218   │
+  └────┴────────┴───────┴─────────┴──────────┴──────────┘
+
+**Patterns observed:**
+
+  1. Batch size 64 dominates the top results (4 of top 5).
+     Batch 128 underperformed — likely too large for dataset size.
+
+  2. Learning rate sensitivity:
+     0.001: avg 91.3% (some runs unstable)
+     0.0005: avg 93.2% (consistent, best)
+     0.0001: avg 90.8% (underfitting, needs more epochs)
+
+  3. Dropout sweet spot at 0.3:
+     0.1: slight overfitting (train-val gap: 4.2%)
+     0.3: balanced (train-val gap: 1.8%)
+     0.5: underfitting (train acc also drops)
+
+  4. Three runs with LR=0.001 + batch=128 diverged (NaN loss).
+     This combination is unstable.
+
+**Recommendation:** Use LR=0.0005, batch=64, dropout=0.3.
+Consider a finer sweep around these values: LR [0.0003-0.0007],
+dropout [0.25-0.35].</code></pre>
+<hr />
+<h2 id="204-working-with-jupyter-notebooks">20.4 Working with Jupyter Notebooks <a href="#204-working-with-jupyter-notebooks" class="heading-anchor">#</a></h2>
+<p>Many researchers live in Jupyter notebooks. NeamCode can help you create, modify, and debug notebooks from the terminal.</p>
+<h3 id="creating-a-notebook-from-scratch">Creating a Notebook from Scratch <a href="#creating-a-notebook-from-scratch" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">&gt; Create a Jupyter notebook for analyzing the results from my
+  last experiment. Include:
+  1. Load data from results.jsonl
+  2. Summary statistics table
+  3. Learning rate vs accuracy scatter plot
+  4. Heatmap of batch_size × dropout (colored by accuracy)
+  5. Training curves for top 3 configurations
+
+Created: analysis/experiment_analysis.ipynb
+
+Notebook structure:
+  Cell 1: Imports (pandas, matplotlib, seaborn, json)
+  Cell 2: Load and parse results.jsonl
+  Cell 3: Summary statistics table
+  Cell 4: LR vs Accuracy scatter (with error bars)
+  Cell 5: Batch × Dropout heatmap (seaborn)
+  Cell 6: Training curves subplot (3 panels)
+  Cell 7: Statistical significance tests (Wilcoxon)
+
+Open with: jupyter notebook analysis/experiment_analysis.ipynb</code></pre>
+<h3 id="converting-notebook-to-script">Converting Notebook to Script <a href="#converting-notebook-to-script" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">&gt; My advisor wants a clean Python script, not a notebook.
+  Convert experiment_analysis.ipynb to a standalone script
+  that saves all figures to a figures/ directory.
+
+Created: analysis/experiment_analysis.py
+
+Changes from notebook version:
+  - Removed interactive display calls (plt.show → plt.savefig)
+  - Added argparse for input/output paths
+  - Added logging instead of print statements
+  - Figures saved to figures/ directory as PDF and PNG
+  - Added if __name__ == &#x27;__main__&#x27; guard
+
+Usage:
+  python analysis/experiment_analysis.py \
+    --input results.jsonl \
+    --output-dir figures/ \
+    --format pdf
+
+Generated files:
+  figures/lr_vs_accuracy.pdf
+  figures/batch_dropout_heatmap.pdf
+  figures/training_curves.pdf</code></pre>
+<div class="callout callout-note"><div class="callout-title"><span class="callout-icon">&#128221;</span> Note</div><p>💡 <strong>Tip:</strong> Keep your analysis in scripts (not just notebooks) for reproducibility. Notebooks are great for exploration, but scripts are better for your paper's supplementary materials.</p></div>
+<hr />
+<h2 id="205-reproducible-research-environments">20.5 Reproducible Research Environments <a href="#205-reproducible-research-environments" class="heading-anchor">#</a></h2>
+<p>The "it works on my machine" problem kills reproducibility. NeamCode helps you create environments that anyone can recreate.</p>
+<h3 id="creating-a-reproducible-setup">Creating a Reproducible Setup <a href="#creating-a-reproducible-setup" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">&gt; Help me make this project fully reproducible. Someone should be
+  able to clone my repo and reproduce all results from my paper.
+
+I&#x27;ll set up a complete reproducibility stack:
+
+Created/updated files:
+
+  1. environment.yml (Conda environment):
+     - Python 3.11.7 (exact version)
+     - All packages pinned to exact versions
+     - CUDA 11.8 for GPU support
+
+  2. Dockerfile:
+     - Based on nvidia/cuda:11.8.0-runtime-ubuntu22.04
+     - Installs exact conda environment
+     - Sets random seeds in entrypoint
+
+  3. Makefile:
+     - make setup     → create environment
+     - make data      → download/preprocess data
+     - make train     → run training
+     - make evaluate  → run evaluation
+     - make figures   → generate all paper figures
+     - make all       → full pipeline
+
+  4. reproduce.sh:
+     - One-command reproduction script
+     - Downloads data, trains, evaluates, generates figures
+     - Logs everything to reproduce.log
+     - Sets PYTHONHASHSEED, numpy seed, torch seed
+
+  5. data/README.md:
+     - Data sources with download URLs
+     - SHA256 checksums for verification
+     - Preprocessing steps documented
+
+  Reproducibility checklist:
+    ✅ Exact package versions (environment.yml)
+    ✅ Random seeds set everywhere (reproduce.sh)
+    ✅ Data checksums (data/README.md)
+    ✅ Hardware requirements documented (README.md)
+    ✅ One-command reproduction (make all)
+    ✅ Docker option for exact environment (Dockerfile)
+    ⬜ Pre-trained model checkpoint (upload to Zenodo?)</code></pre>
+<h3 id="documenting-hardware-requirements">Documenting Hardware Requirements <a href="#documenting-hardware-requirements" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">&gt; Add a section about hardware. My experiments need a GPU with at
+  least 16GB VRAM and take about 12 hours total on an A100.
+
+Updated README.md with hardware section:
+
+  ## Hardware Requirements
+
+  | Resource     | Minimum        | Recommended    | Used in Paper |
+  |------------- |--------------- |--------------- |-------------- |
+  | GPU          | 16GB VRAM      | 24GB VRAM      | A100 (40GB)   |
+  | RAM          | 32GB           | 64GB           | 128GB         |
+  | Disk         | 50GB           | 100GB          | 200GB         |
+  | Training     | ~18h (min GPU) | ~12h (A100)    | 11h 47m       |
+  | Evaluation   | ~30 min        | ~15 min        | 14 min        |
+
+  **Cloud cost estimate:**
+  - AWS p3.2xlarge (V100): ~$5.50/hr × 18h = ~$99
+  - AWS p4d.24xlarge (A100): ~$32.77/hr × 12h = ~$393
+  - Google Colab Pro+: $49.99/mo (may timeout for full sweep)
+
+  **Reduced experiment (for reviewers):**
+  Use `make train-small` to run with 10% of data and 3 hyperparameter
+  combinations. Takes ~1 hour on any 8GB GPU.</code></pre>
+<div class="callout callout-warning"><div class="callout-title"><span class="callout-icon">&#9888;&#65039;</span> Warning</div><p>⚠️ <strong>Warning:</strong> Always test your reproduction steps on a clean machine or in Docker before publishing. "It works on my machine with my custom paths" is not reproducible.</p></div>
+<hr />
+<h2 id="206-using-neam-for-agent-research">20.6 Using Neam for Agent Research <a href="#206-using-neam-for-agent-research" class="heading-anchor">#</a></h2>
+<p>If your research involves AI agents, the Neam programming language itself is a powerful tool for rapid prototyping of multi-agent systems.</p>
+<h3 id="prototyping-a-multi-agent-experiment">Prototyping a Multi-Agent Experiment <a href="#prototyping-a-multi-agent-experiment" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">&gt; I&#x27;m researching multi-agent debate for improving LLM reasoning.
+  I need two agents that debate a question and a judge agent that
+  evaluates their arguments. Can NeamCode help me prototype this
+  in the Neam language?
+
+Absolutely. Neam has first-class agent support. Here&#x27;s a prototype:
+
+Created: debate_experiment.neam
+
+  budget DebateBudget {
+      cost: 1.00,
+      tokens: 50000,
+      time: 120000
+  }
+
+  agent Debater_A {
+      provider: &quot;openai&quot;,
+      model: &quot;gpt-4o-mini&quot;,
+      system: &quot;You argue FOR the given position. Be concise
+               and logical. Cite evidence. Max 150 words.&quot;,
+      temperature: 0.7,
+      budget: DebateBudget
+  }
+
+  agent Debater_B {
+      provider: &quot;openai&quot;,
+      model: &quot;gpt-4o-mini&quot;,
+      system: &quot;You argue AGAINST the given position. Be concise
+               and logical. Cite evidence. Max 150 words.&quot;,
+      temperature: 0.7,
+      budget: DebateBudget
+  }
+
+  agent Judge {
+      provider: &quot;openai&quot;,
+      model: &quot;gpt-4o&quot;,
+      system: &quot;You are an impartial judge. Read both arguments.
+               Score each 1-10 on: logic, evidence, persuasion.
+               Declare a winner with reasoning.&quot;,
+      temperature: 0.3,
+      budget: DebateBudget
+  }
+
+  fun debate(question: str, rounds: int) {
+      var history = []
+      for round in 1..rounds {
+          let arg_a = ask Debater_A: question + &quot;\n\nPrevious:\n&quot; + history
+          let arg_b = ask Debater_B: question + &quot;\n\nPrevious:\n&quot; + history
+          history.append(&quot;Round {round}:\nFOR: {arg_a}\nAGAINST: {arg_b}&quot;)
+      }
+      let verdict = ask Judge: &quot;Question: {question}\n\n{history.join(&#x27;\n&#x27;)}&quot;
+      return verdict
+  }
+
+  // Run experiment
+  let result = debate(&quot;Should AI systems be open-sourced?&quot;, rounds: 3)
+  print(result)
+
+This gives you a working debate framework. You can:
+  - Vary the number of rounds
+  - Swap models to compare providers
+  - Log all arguments for analysis
+  - Run batch experiments with different questions</code></pre>
+<h3 id="running-batch-experiments-with-cost-tracking">Running Batch Experiments with Cost Tracking <a href="#running-batch-experiments-with-cost-tracking" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">&gt; I need to run this debate on 50 different questions and compare
+  results with 2 rounds vs 4 rounds. Track costs carefully.
+
+Updated: debate_experiment.neam with batch runner.
+
+  budget ExperimentBudget {
+      cost: 25.00,       // Total budget for all 100 runs
+      tokens: 2500000,
+      time: 600000
+  }
+
+  fun run_batch(questions: list, round_counts: list) {
+      var results = []
+      for q in questions {
+          for rounds in round_counts {
+              let result = debate(q, rounds)
+              results.append({
+                  question: q,
+                  rounds: rounds,
+                  verdict: result,
+                  cost: get_cost()  // Neam built-in cost tracking
+              })
+          }
+      }
+      save_json(&quot;results/debate_results.json&quot;, results)
+  }
+
+  let questions = load_json(&quot;questions.json&quot;)
+  run_batch(questions, [2, 4])
+
+Run with: neam debate_experiment.neam
+
+Cost tracking output:
+  Total: 100 debates
+  Budget used: $18.42 / $25.00
+  Average per debate: $0.18
+  2-round avg cost: $0.12  |  4-round avg cost: $0.24</code></pre>
+<div class="callout callout-note"><div class="callout-title"><span class="callout-icon">&#128221;</span> Note</div><p>📝 <strong>Note:</strong> Neam's built-in budget tracking is valuable for research. You can set hard limits to prevent runaway API costs during experimentation.</p></div>
+<hr />
+<h2 id="207-pro-tips-for-researchers">20.7 Pro Tips for Researchers <a href="#207-pro-tips-for-researchers" class="heading-anchor">#</a></h2>
+<h3 id="use-sessions-for-different-experiments">Use Sessions for Different Experiments <a href="#use-sessions-for-different-experiments" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">&gt; /session experiment-v3-dropout
+
+Session loaded: experiment-v3-dropout
+Context: investigating dropout impact on attention layers</code></pre>
+<p>Keep a separate session for each experiment thread. NeamCode remembers the full context.</p>
+<h3 id="automate-with-cicd-headless-mode">Automate with CI/CD Headless Mode <a href="#automate-with-cicd-headless-mode" class="heading-anchor">#</a></h3>
+<p>Run nightly experiments automatically:</p>
+<div class="code-header"><span class="code-lang">bash</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-bash"># In your cron job or CI pipeline:
+neamcode --prompt &quot;Run experiment sweep with config nightly.yaml, \
+  save results to results/$(date +%Y%m%d).jsonl&quot; \
+  --output json \
+  --max-cost 5.00</code></pre>
+<h3 id="cost-conscious-research">Cost-Conscious Research <a href="#cost-conscious-research" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">&gt; /cost
+
+Session cost: $0.87
+  Provider breakdown:
+    openai (gpt-4o): $0.72 (analysis queries)
+    ollama (local): $0.00 (code generation)</code></pre>
+<p>Strategy for budget-conscious research:</p>
+<ul>
+<li>Use Ollama (free) for code writing and debugging</li>
+<li>Use GPT-4o or Claude only for complex analysis</li>
+<li>Set budget limits per session to avoid surprises</li>
+</ul>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">&gt; /provider ollama
+&gt; /model deepseek-coder-v2
+
+Switched to free local model for code tasks.</code></pre>
+<h3 id="export-results-for-latex">Export Results for LaTeX <a href="#export-results-for-latex" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">&gt; Convert the results table to LaTeX format for my paper.
+  Use booktabs style.
+
+Generated LaTeX table:
+
+  \begin{table}[t]
+  \centering
+  \caption{Hyperparameter sweep results.}
+  \label{tab:sweep_results}
+  \begin{tabular}{@{}lccc@{}}
+  \toprule
+  Configuration &amp; Val Acc (\%) &amp; Val Loss &amp; Train Time (h) \\
+  \midrule
+  LR=5e-4, B=64, D=0.3 &amp; \textbf{94.2} &amp; \textbf{0.187} &amp; 11.8 \\
+  LR=5e-4, B=64, D=0.1 &amp; 93.8 &amp; 0.195 &amp; 11.6 \\
+  LR=1e-3, B=64, D=0.3 &amp; 93.5 &amp; 0.201 &amp; 11.7 \\
+  \bottomrule
+  \end{tabular}
+  \end{table}
+
+Saved to: tables/sweep_results.tex</code></pre>
+<h3 id="memory-for-long-running-projects">Memory for Long-Running Projects <a href="#memory-for-long-running-projects" class="heading-anchor">#</a></h3>
+<p>NeamCode's Auto Memory remembers project context across sessions:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">&gt; What were the key findings from last week&#x27;s experiment runs?
+
+From Auto Memory (session: experiment-v3-dropout):
+
+  Last week (Feb 28 - Mar 6) you ran:
+  - 27 hyperparameter combinations
+  - Best result: 94.2% val accuracy
+  - Key finding: dropout 0.3 optimal, batch 128 unstable with high LR
+  - You noted: &quot;investigate attention head pruning next&quot;
+  - Open question: why does LR=0.001 + batch=128 diverge?</code></pre>
+<hr />
+<h2 id="exercises">Exercises <a href="#exercises" class="heading-anchor">#</a></h2>
+<p><strong>🎯 Exercise 20.1:</strong> Take a dataset you're working with (or download one from Kaggle) and use NeamCode to build a complete cleaning pipeline. Include validation checks, outlier handling, and summary statistics.</p>
+<p><strong>🎯 Exercise 20.2:</strong> Use <code>/web_search</code> to find five recent papers in your research area. Create a structured literature notes file with key findings, methodology, and how each paper relates to your work.</p>
+<p><strong>🎯 Exercise 20.3:</strong> Set up a hyperparameter sweep for any ML project (even a simple one). Run at least 9 combinations and analyze the results with NeamCode's help. Generate a publication-quality results table.</p>
+<p><strong>🎯 Exercise 20.4:</strong> Make one of your existing projects fully reproducible. Create the environment file, Dockerfile, and Makefile. Test it in a clean Docker container.</p>
+<p><strong>🎯 Exercise 20.5:</strong> If you have access to the Neam language runtime, prototype a two-agent system for your research domain. Track the cost of running 10 experiments with different configurations.</p>
+<hr />
+    <nav class="chapter-nav"><a href="19-for-students.html" class="nav-prev"><span class="nav-label">&larr; Previous</span><span class="nav-title">For Students</span></a><a href="21-for-professionals.html" class="nav-next"><span class="nav-label">Next &rarr;</span><span class="nav-title">For Professionals</span></a></nav>
+  </article>
+</main>
+
+<button class="back-to-top" id="back-to-top" aria-label="Back to top">&#8593;</button>
+
+<div class="search-overlay" id="search-overlay">
+  <div class="search-modal">
+    <div class="search-input-wrap">
+      <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6.5" cy="6.5" r="5"/><line x1="10.5" y1="10.5" x2="15" y2="15"/></svg>
+      <input type="text" class="search-input" id="search-input" placeholder="Search chapters, topics...">
+    </div>
+    <div class="search-results" id="search-results">
+      <div class="search-empty">Start typing to search...</div>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/script.js"></script>
+</body>
+</html>

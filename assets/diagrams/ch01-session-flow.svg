@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 900 400">
+  <defs>
+    <marker id="arrow1" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#0060B6"/>
+    </marker>
+    <marker id="arrow1r" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#BE0027"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="450" y="35" text-anchor="middle" font-family="'Inter', Arial, sans-serif" font-size="20" font-weight="700" fill="#24292f">NeamCode Session Flow</text>
+
+  <!-- Step 1: Your Prompt -->
+  <rect x="30" y="80" width="150" height="60" rx="8" fill="#e8f4fd" stroke="#0060B6" stroke-width="2"/>
+  <text x="105" y="105" text-anchor="middle" font-family="'Inter', Arial, sans-serif" font-size="13" font-weight="600" fill="#0060B6">1</text>
+  <text x="105" y="123" text-anchor="middle" font-family="'Inter', Arial, sans-serif" font-size="14" fill="#24292f">Your Prompt</text>
+
+  <!-- Arrow 1→2 -->
+  <line x1="180" y1="110" x2="230" y2="110" stroke="#0060B6" stroke-width="2" marker-end="url(#arrow1)"/>
+
+  <!-- Step 2: AI Thinks -->
+  <rect x="240" y="80" width="150" height="60" rx="8" fill="#f0e6fa" stroke="#8250df" stroke-width="2"/>
+  <text x="315" y="105" text-anchor="middle" font-family="'Inter', Arial, sans-serif" font-size="13" font-weight="600" fill="#8250df">2</text>
+  <text x="315" y="123" text-anchor="middle" font-family="'Inter', Arial, sans-serif" font-size="14" fill="#24292f">AI Thinks</text>
+
+  <!-- Arrow 2→3 -->
+  <line x1="390" y1="110" x2="440" y2="110" stroke="#0060B6" stroke-width="2" marker-end="url(#arrow1)"/>
+
+  <!-- Step 3: Tool Calls -->
+  <rect x="450" y="65" width="180" height="90" rx="8" fill="#fff3e0" stroke="#9a6700" stroke-width="2"/>
+  <text x="540" y="90" text-anchor="middle" font-family="'Inter', Arial, sans-serif" font-size="13" font-weight="600" fill="#9a6700">3</text>
+  <text x="540" y="110" text-anchor="middle" font-family="'Inter', Arial, sans-serif" font-size="14" fill="#24292f">Tool Calls</text>
+  <text x="540" y="130" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="11" fill="#9a6700">read / write / bash</text>
+  <text x="540" y="147" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="11" fill="#9a6700">glob / grep / edit</text>
+
+  <!-- Arrow 3→4 -->
+  <line x1="630" y1="110" x2="680" y2="110" stroke="#0060B6" stroke-width="2" marker-end="url(#arrow1)"/>
+
+  <!-- Step 4: Results back to AI -->
+  <rect x="690" y="80" width="170" height="60" rx="8" fill="#f0e6fa" stroke="#8250df" stroke-width="2"/>
+  <text x="775" y="105" text-anchor="middle" font-family="'Inter', Arial, sans-serif" font-size="13" font-weight="600" fill="#8250df">4</text>
+  <text x="775" y="123" text-anchor="middle" font-family="'Inter', Arial, sans-serif" font-size="14" fill="#24292f">Results back to AI</text>
+
+  <!-- Curved arrow from Step 4 back to Step 2 (loop) -->
+  <path d="M 775 140 Q 775 200 540 200 Q 315 200 315 140" fill="none" stroke="#BE0027" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#arrow1r)"/>
+  <text x="540" y="220" text-anchor="middle" font-family="'Inter', Arial, sans-serif" font-size="12" font-style="italic" fill="#BE0027">Loop: AI may call more tools</text>
+
+  <!-- Step 5: Response to You -->
+  <rect x="340" y="270" width="220" height="60" rx="8" fill="#e6f4ea" stroke="#1a7f37" stroke-width="2"/>
+  <text x="450" y="295" text-anchor="middle" font-family="'Inter', Arial, sans-serif" font-size="13" font-weight="600" fill="#1a7f37">5</text>
+  <text x="450" y="313" text-anchor="middle" font-family="'Inter', Arial, sans-serif" font-size="14" fill="#24292f">Response to You</text>
+
+  <!-- Arrow from loop area down to Response -->
+  <line x1="450" y1="230" x2="450" y2="262" stroke="#1a7f37" stroke-width="2" marker-end="url(#arrow1)"/>
+  <text x="520" y="250" font-family="'Inter', Arial, sans-serif" font-size="11" fill="#1a7f37">Done</text>
+
+  <!-- Max turns badge -->
+  <rect x="620" y="275" width="160" height="40" rx="20" fill="#fde8ec" stroke="#BE0027" stroke-width="1.5"/>
+  <text x="700" y="300" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="600" fill="#BE0027">max 25 turns</text>
+
+  <!-- Orchestrator label -->
+  <rect x="200" y="350" width="500" height="35" rx="8" fill="none" stroke="#0060B6" stroke-width="1" stroke-dasharray="4,4"/>
+  <text x="450" y="373" text-anchor="middle" font-family="'Inter', Arial, sans-serif" font-size="13" fill="#0060B6">Orchestrator Loop</text>
+</svg>
