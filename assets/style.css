@@ -1154,7 +1154,7 @@ tbody tr:hover {
   text-align: center;
   padding: 0;
   background: #06060f;
-  min-height: 110vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1272,7 +1272,7 @@ tbody tr:hover {
 /* ── Front Cover ── */
 .book-front {
   width: 100%;
-  min-height: 680px;
+  min-height: auto;
   background: linear-gradient(170deg, #0d0d1a 0%, #0a0a14 40%, #08080f 100%);
   border: 1px solid rgba(255,45,85,0.15);
   border-radius: 2px 8px 8px 2px;
@@ -1422,39 +1422,39 @@ tbody tr:hover {
   border: none;
   padding: 0;
 }
-/* "NEAM" — first word, white */
+/* "NEAMCODE" — first word, white */
 .title-line-1 {
   font-family: 'Inter', Arial, sans-serif;
-  font-size: 4.2em;
+  font-size: 2.6em;
   font-weight: 900;
-  letter-spacing: -0.02em;
-  line-height: 0.95;
+  letter-spacing: -0.01em;
+  line-height: 1.0;
   color: #fff;
-  text-shadow: 0 0 50px rgba(255,45,85,0.25), 0 0 100px rgba(255,45,85,0.08);
+  text-shadow: 0 0 40px rgba(255,45,85,0.2), 0 0 80px rgba(255,45,85,0.06);
 }
 /* "HANDBOOK" — second word, neon gradient */
 .title-line-2 {
   font-family: 'Inter', Arial, sans-serif;
-  font-size: 4.2em;
+  font-size: 2.6em;
   font-weight: 900;
-  letter-spacing: -0.02em;
-  line-height: 1.0;
+  letter-spacing: -0.01em;
+  line-height: 1.05;
   background: linear-gradient(135deg, #ff2d55 0%, #ff6b8a 35%, #3d9eff 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  filter: drop-shadow(0 0 30px rgba(255,45,85,0.15));
+  filter: drop-shadow(0 0 20px rgba(255,45,85,0.12));
 }
 /* "Command the Future" — subtitle line */
 .title-the {
   font-family: Georgia, 'Times New Roman', serif;
-  font-size: 1.15em;
+  font-size: 1.0em;
   font-weight: 400;
   font-style: italic;
   letter-spacing: 0.04em;
   color: rgba(255,255,255,0.4);
   line-height: 1;
-  margin-top: 16px;
+  margin-top: 14px;
 }
 
 /* ── Neon Divider ── */
@@ -1667,15 +1667,15 @@ tbody tr:hover {
 @media (max-width: 768px) {
   .hero { min-height: 100vh; }
   .book-wrapper { width: 92%; }
-  .book-front { min-height: 560px; }
-  .title-line-1, .title-line-2 { font-size: 3.2em; }
+  .book-front { min-height: auto; }
+  .title-line-1, .title-line-2 { font-size: 2.2em; }
   .title-the { font-size: 1em; }
   .book-3d { transform: rotateY(-3deg) rotateX(1deg); }
 }
 @media (max-width: 480px) {
   .book-wrapper { width: 95%; }
-  .book-front { min-height: 480px; }
-  .title-line-1, .title-line-2 { font-size: 2.4em; }
+  .book-front { min-height: auto; }
+  .title-line-1, .title-line-2 { font-size: 1.8em; }
   .book-terminal { margin: 20px 20px 0; }
   .book-title-block { padding: 24px 20px 0; }
   .neon-divider { padding: 18px 20px; }
