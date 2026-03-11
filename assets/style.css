@@ -1403,7 +1403,7 @@ tbody tr:hover {
 /* ── Title Block ── */
 .book-title-block {
   padding: 36px 36px 0;
-  text-align: left;
+  text-align: center;
   flex: 0 0 auto;
 }
 .book-pre-title {
@@ -1413,10 +1413,12 @@ tbody tr:hover {
   color: rgba(61,158,255,0.5);
   letter-spacing: 4px;
   margin-bottom: 16px;
+  text-align: center;
 }
 .book-title {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 0;
   margin: 0;
   border: none;
@@ -1461,20 +1463,14 @@ tbody tr:hover {
 .neon-divider {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 24px 36px;
+  justify-content: center;
+  padding: 24px 60px;
 }
 .neon-line {
   flex: 1;
   height: 1px;
-  background: linear-gradient(90deg, rgba(255,45,85,0.4), rgba(61,158,255,0.2));
-  box-shadow: 0 0 6px rgba(255,45,85,0.3);
-}
-.neon-diamond {
-  width: 8px; height: 8px;
-  background: #ff2d55;
-  transform: rotate(45deg);
-  box-shadow: 0 0 8px rgba(255,45,85,0.6), 0 0 16px rgba(255,45,85,0.2);
+  background: linear-gradient(90deg, transparent, rgba(255,45,85,0.5), rgba(61,158,255,0.3), transparent);
+  box-shadow: 0 0 6px rgba(255,45,85,0.2);
 }
 
 /* ── Subtitle ── */
@@ -1485,7 +1481,7 @@ tbody tr:hover {
   color: rgba(255,255,255,0.35);
   line-height: 1.7;
   padding: 0 36px;
-  text-align: left;
+  text-align: center;
   margin: 0;
 }
 
@@ -1534,7 +1530,7 @@ tbody tr:hover {
   width: 40px;
   height: 2px;
   background: linear-gradient(90deg, rgba(255,45,85,0.5), transparent);
-  margin-bottom: 12px;
+  margin: 0 auto 12px;
 }
 .book-author {
   font-family: 'Inter', Arial, sans-serif;
@@ -1542,7 +1538,7 @@ tbody tr:hover {
   font-size: 0.8rem;
   color: rgba(255,255,255,0.5);
   letter-spacing: 3px;
-  text-align: left;
+  text-align: center;
 }
 
 /* ── CTA Below Book ── */
