@@ -357,21 +357,19 @@ def build_sidebar(active_file, is_appendix=False):
     for part_name, part_color in PARTS:
         if part_name not in parts_dict:
             continue
-        emoji = PART_EMOJIS.get(part_name, "")
         sidebar.append(f'<div class="sidebar-part">')
-        sidebar.append(f'  <div class="sidebar-part-title"><span class="sidebar-emoji">{emoji}</span> {part_name}</div>')
+        sidebar.append(f'  <div class="sidebar-part-title">{part_name}</div>')
         sidebar.append(f'  <div class="sidebar-chapters">')
         for fname, title in parts_dict[part_name]:
             active = ' active' if fname == active_file else ''
             ch_prefix = '../chapters/' if is_appendix else ''
-            ch_emoji = CHAPTER_EMOJIS.get(fname, "")
-            sidebar.append(f'    <a href="{ch_prefix}{fname}.html" class="sidebar-link{active}" title="{title}"><span class="sidebar-ch-emoji">{ch_emoji}</span> {title}</a>')
+            sidebar.append(f'    <a href="{ch_prefix}{fname}.html" class="sidebar-link{active}" title="{title}">{title}</a>')
         sidebar.append(f'  </div>')
         sidebar.append(f'</div>')
 
     # Appendices
     sidebar.append(f'<div class="sidebar-part">')
-    sidebar.append(f'  <div class="sidebar-part-title"><span class="sidebar-emoji">{PART_EMOJIS["Appendices"]}</span> Appendices</div>')
+    sidebar.append(f'  <div class="sidebar-part-title">Appendices</div>')
     sidebar.append(f'  <div class="sidebar-chapters">')
     for fname, title in APPENDICES:
         active = ' active' if fname == active_file else ''
@@ -380,8 +378,7 @@ def build_sidebar(active_file, is_appendix=False):
             prefix = ''
         else:
             prefix = '../appendices/'
-        app_emoji = APPENDIX_EMOJIS.get(fname, "")
-        sidebar.append(f'    <a href="{prefix}{fname}.html" class="sidebar-link{active}" title="{title}"><span class="sidebar-ch-emoji">{app_emoji}</span> {title}</a>')
+        sidebar.append(f'    <a href="{prefix}{fname}.html" class="sidebar-link{active}" title="{title}">{title}</a>')
     sidebar.append(f'  </div>')
     sidebar.append(f'</div>')
 
