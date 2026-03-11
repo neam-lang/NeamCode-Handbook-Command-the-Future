@@ -2008,3 +2008,474 @@ tbody tr:hover {
   color: var(--text-muted);
 }
 .decision-card ul li { margin: 2px 0; }
+
+/* ══════════════════════════════════════════════════════
+   PLAYFUL, SMOOTH & STORYTELLING ENHANCEMENTS
+   ══════════════════════════════════════════════════════ */
+
+/* ── Keyframe Animations ── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-18px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 8px rgba(0, 96, 182, 0.3); }
+  50%      { box-shadow: 0 0 20px rgba(0, 96, 182, 0.5); }
+}
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+@keyframes gentleFloat {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-4px); }
+}
+
+/* Content entrance animation */
+.content {
+  animation: fadeInUp 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* ── Topbar Glassmorphism ── */
+.topbar {
+  background: rgba(255, 255, 255, 0.88) !important;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(208, 215, 222, 0.6) !important;
+}
+[data-theme="dark"] .topbar {
+  background: rgba(13, 17, 23, 0.88) !important;
+  border-bottom: 1px solid rgba(48, 54, 61, 0.6) !important;
+}
+.topbar-btn:hover {
+  box-shadow: 0 0 12px rgba(0, 96, 182, 0.2);
+  transform: translateY(-1px);
+}
+
+/* ── Progress Bar — Thicker + Animated Gradient ── */
+.progress-bar {
+  height: 4px !important;
+}
+.progress-fill {
+  background: linear-gradient(90deg, var(--blue), #8250df, var(--red), #8250df, var(--blue)) !important;
+  background-size: 300% 100% !important;
+  animation: gradientShift 4s ease infinite;
+}
+
+/* ── Sidebar Emojis ── */
+.sidebar-emoji {
+  font-size: 14px;
+  margin-right: 3px;
+  display: inline-block;
+  transition: transform 0.25s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.sidebar-part-title:hover .sidebar-emoji {
+  transform: scale(1.3) rotate(5deg);
+}
+.sidebar-ch-emoji {
+  font-size: 13px;
+  margin-right: 4px;
+  display: inline-block;
+  min-width: 18px;
+  text-align: center;
+}
+
+/* ── Sidebar — Smoother + Active Glow ── */
+.sidebar {
+  transition: background var(--transition), transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), border-color var(--transition) !important;
+}
+.sidebar-chapters {
+  transition: max-height 0.45s cubic-bezier(0.23, 1, 0.32, 1) !important;
+}
+.sidebar-link {
+  transition: all 0.25s cubic-bezier(0.23, 1, 0.32, 1) !important;
+  border-radius: 6px !important;
+}
+.sidebar-link:hover {
+  transform: translateX(4px);
+  background: color-mix(in srgb, var(--blue) 8%, var(--bg)) !important;
+}
+.sidebar-link.active {
+  box-shadow: 0 0 12px rgba(0, 96, 182, 0.3);
+  position: relative;
+}
+.sidebar-link.active::after {
+  content: '';
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #fff;
+  opacity: 0.7;
+}
+
+/* ── Heading Enhancements — Gradient Underlines ── */
+h1 {
+  border-bottom: 3px solid transparent !important;
+  border-image: linear-gradient(90deg, var(--red), var(--blue)) 1 !important;
+  padding-bottom: 0.4em !important;
+}
+h2 {
+  border-bottom: 2px solid transparent !important;
+  border-image: linear-gradient(90deg, color-mix(in srgb, var(--blue) 60%, var(--border)), var(--border)) 1 !important;
+}
+h1 .heading-anchor, h2 .heading-anchor, h3 .heading-anchor {
+  transition: opacity 0.3s, color 0.3s;
+}
+h1:hover .heading-anchor { color: var(--red); }
+h2:hover .heading-anchor { color: var(--blue); }
+
+/* ── Table Enhancements ── */
+.table-wrap {
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  margin: 1.5em 0;
+}
+[data-theme="dark"] .table-wrap {
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+}
+tbody tr {
+  transition: background 0.25s ease, transform 0.2s ease;
+}
+tbody tr:hover {
+  background: color-mix(in srgb, var(--blue) 10%, var(--bg)) !important;
+}
+
+/* ── Code Block Enhancements ── */
+pre {
+  background: linear-gradient(135deg, var(--code-bg), color-mix(in srgb, var(--code-bg) 96%, var(--blue))) !important;
+  border-left: 3px solid var(--blue) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.3s ease;
+}
+pre:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+.code-header {
+  background: linear-gradient(90deg, var(--bg-secondary), color-mix(in srgb, var(--bg-secondary) 95%, var(--blue))) !important;
+}
+.code-header + pre {
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+}
+
+/* ── Callout Enhancements — Soft Shadow + Hover ── */
+.callout {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.3s ease, transform 0.3s ease, border-left-color 0.3s ease;
+}
+.callout:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transform: translateX(3px);
+}
+[data-theme="dark"] .callout {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+}
+[data-theme="dark"] .callout:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+}
+
+/* ── Navigation Cards — Storytelling Style ── */
+.chapter-nav {
+  border-top: 2px solid transparent !important;
+  border-image: linear-gradient(90deg, var(--red), var(--blue)) 1 !important;
+  padding-top: 2.5em !important;
+}
+.chapter-nav a {
+  background: var(--bg);
+  transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1) !important;
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px !important;
+  padding: 20px 24px !important;
+}
+.chapter-nav a::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: linear-gradient(180deg, var(--blue), var(--red));
+  opacity: 0;
+  transition: opacity 0.3s, width 0.3s;
+}
+.chapter-nav a:hover::before {
+  opacity: 1;
+  width: 5px;
+}
+.chapter-nav a:hover {
+  border-color: var(--blue) !important;
+  box-shadow: 0 6px 24px rgba(0, 96, 182, 0.15);
+  transform: translateY(-3px);
+}
+.chapter-nav .nav-label {
+  font-size: 13px !important;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+}
+.chapter-nav .nav-title {
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  margin-top: 6px !important;
+}
+.nav-next:hover .nav-title {
+  color: var(--blue);
+}
+.nav-prev:hover .nav-title {
+  color: var(--red);
+}
+
+/* ── Back to Top — Playful Rocket ── */
+.back-to-top {
+  font-size: 20px !important;
+  width: 46px !important;
+  height: 46px !important;
+  background: linear-gradient(135deg, var(--blue), #8250df) !important;
+  border-radius: 14px !important;
+  transition: opacity 0.3s, transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.3s !important;
+}
+.back-to-top.visible {
+  animation: pulseGlow 2.5s ease-in-out infinite;
+}
+.back-to-top:hover {
+  background: linear-gradient(135deg, var(--red), #e6003a) !important;
+  transform: translateY(-5px) scale(1.08) !important;
+  box-shadow: 0 8px 28px rgba(190, 0, 39, 0.35) !important;
+}
+
+/* ── Index Page — Chapter Cards Enhancement ── */
+.chapter-card {
+  transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1) !important;
+  border-left: 3px solid transparent !important;
+  border-radius: 10px !important;
+  position: relative;
+  overflow: hidden;
+}
+.chapter-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: linear-gradient(135deg, transparent 60%, rgba(0, 96, 182, 0.03));
+  pointer-events: none;
+  transition: opacity 0.3s;
+  opacity: 0;
+}
+.chapter-card:hover::after { opacity: 1; }
+.chapter-card:hover {
+  transform: translateY(-4px) scale(1.02) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1) !important;
+}
+.card-num {
+  font-size: 18px !important;
+  min-width: 32px !important;
+  transition: transform 0.3s ease;
+}
+.chapter-card:hover .card-num {
+  transform: scale(1.15);
+}
+
+/* Per-part colored left borders on cards */
+[data-part="Getting Started"] .chapter-card,
+.part-section[data-part="Getting Started"] .chapter-card { border-left-color: #BE0027 !important; }
+[data-part="Core Skills"] .chapter-card,
+.part-section[data-part="Core Skills"] .chapter-card { border-left-color: #0060B6 !important; }
+[data-part="Workflow & Configuration"] .chapter-card,
+.part-section[data-part="Workflow & Configuration"] .chapter-card { border-left-color: #1a7f37 !important; }
+[data-part="Providers & Cost"] .chapter-card,
+.part-section[data-part="Providers & Cost"] .chapter-card { border-left-color: #8250df !important; }
+[data-part="Advanced Features"] .chapter-card,
+.part-section[data-part="Advanced Features"] .chapter-card { border-left-color: #9a6700 !important; }
+[data-part="Audience Guides"] .chapter-card,
+.part-section[data-part="Audience Guides"] .chapter-card { border-left-color: #cf222e !important; }
+[data-part="Walkthroughs"] .chapter-card,
+.part-section[data-part="Walkthroughs"] .chapter-card { border-left-color: #3730a3 !important; }
+[data-part="Closing"] .chapter-card,
+.part-section[data-part="Closing"] .chapter-card { border-left-color: #0d6efd !important; }
+[data-part="Appendices"] .chapter-card,
+.part-section[data-part="Appendices"] .chapter-card { border-left-color: #656d76 !important; }
+
+/* ── Learning Path Enhancement ── */
+.path-dot {
+  font-size: 16px !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.path-node:hover .path-dot {
+  transform: scale(1.2);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+.path-label {
+  transition: color 0.2s;
+}
+.path-node:hover .path-label {
+  color: var(--text);
+}
+
+/* ── Part Section Headers — Storytelling Feel ── */
+.part-section h3 {
+  font-size: 1.2em !important;
+  letter-spacing: 0.02em;
+  position: relative;
+  padding-left: 8px !important;
+  transition: color 0.3s;
+}
+.part-section:hover h3 {
+  color: var(--text);
+}
+
+/* ── Blockquote — Storytelling Enhancement ── */
+blockquote {
+  border-left: 4px solid var(--red) !important;
+  background: linear-gradient(135deg, var(--bg-secondary), color-mix(in srgb, var(--bg-secondary) 95%, var(--red))) !important;
+  border-radius: 0 12px 12px 0 !important;
+  padding: 1em 1.5em !important;
+  position: relative;
+  font-style: italic;
+}
+blockquote::before {
+  content: '\201C';
+  position: absolute;
+  top: -8px; left: 12px;
+  font-size: 3em;
+  color: var(--red);
+  opacity: 0.15;
+  font-family: Georgia, serif;
+  line-height: 1;
+}
+
+/* ── HR Dividers — Gradient ── */
+hr {
+  border: none !important;
+  height: 2px !important;
+  background: linear-gradient(90deg, transparent, var(--border), transparent) !important;
+  margin: 2.5em 0 !important;
+}
+
+/* ── Links — Subtle Underline Animation ── */
+.content a:not(.heading-anchor):not(.nav-prev):not(.nav-next) {
+  text-decoration: none;
+  background-image: linear-gradient(var(--blue), var(--blue));
+  background-size: 0% 2px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.3s ease, color 0.3s ease;
+  padding-bottom: 1px;
+}
+.content a:not(.heading-anchor):not(.nav-prev):not(.nav-next):hover {
+  background-size: 100% 2px;
+  text-decoration: none !important;
+}
+
+/* ── Footer ── */
+.site-footer {
+  text-align: center;
+  padding: 28px 20px 36px;
+  margin-top: 3em;
+  border-top: 2px solid transparent;
+  border-image: linear-gradient(90deg, transparent, var(--border), transparent) 1;
+  font-family: Inter, Arial, sans-serif;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+.site-footer a {
+  color: var(--blue);
+  text-decoration: none;
+  font-weight: 500;
+}
+.site-footer a:hover {
+  text-decoration: underline;
+}
+
+/* ── Smooth hover for everything ── */
+a, button {
+  transition: all 0.25s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* ── Scroll-reveal elements (JS adds .revealed class) ── */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.55s ease-out, transform 0.55s ease-out;
+}
+.reveal-on-scroll.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Stagger delays for card animations ── */
+.chapter-card:nth-child(1)  { transition-delay: 0.00s; }
+.chapter-card:nth-child(2)  { transition-delay: 0.05s; }
+.chapter-card:nth-child(3)  { transition-delay: 0.10s; }
+.chapter-card:nth-child(4)  { transition-delay: 0.15s; }
+.chapter-card:nth-child(5)  { transition-delay: 0.20s; }
+.chapter-card:nth-child(6)  { transition-delay: 0.25s; }
+
+/* ── Inline code — subtle pill style ── */
+code {
+  border-radius: 5px !important;
+  padding: 2px 7px !important;
+  font-size: 0.87em !important;
+  transition: background 0.2s;
+}
+code:hover {
+  background: color-mix(in srgb, var(--code-bg) 85%, var(--blue));
+}
+
+/* ── List items — smoother ── */
+li {
+  transition: color 0.2s;
+}
+ul li::marker {
+  color: var(--blue);
+}
+ol li::marker {
+  color: var(--red);
+  font-weight: 600;
+}
+
+/* ── Image hover ── */
+img {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+img:hover {
+  transform: scale(1.01);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* ── Selection Color ── */
+::selection {
+  background: color-mix(in srgb, var(--blue) 25%, transparent);
+  color: var(--text);
+}
+
+/* ── Print-friendly: disable animations ── */
+@media print {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* ── Reduced motion preference ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

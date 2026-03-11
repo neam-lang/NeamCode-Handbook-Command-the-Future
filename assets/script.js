@@ -62,7 +62,9 @@
         if (title) title.classList.add('open');
         if (chapters) chapters.classList.add('open');
       }
-      activeLink.scrollIntoView({ block: 'center', behavior: 'instant' });
+      setTimeout(function() {
+        activeLink.scrollIntoView({ block: 'center', behavior: 'smooth' });
+      }, 300);
     }
   });
 
@@ -121,10 +123,11 @@
     });
   });
 
-  // ── Back to Top ──
+  // ── Back to Top (Rocket) ──
   document.addEventListener('DOMContentLoaded', function() {
     var btn = document.getElementById('back-to-top');
     if (!btn) return;
+    btn.innerHTML = '\uD83D\uDE80'; // rocket emoji
     window.addEventListener('scroll', function() {
       btn.classList.toggle('visible', window.scrollY > 300);
     }, { passive: true });
@@ -403,5 +406,70 @@
         });
       });
     });
+  });
+
+  // ── Scroll-Reveal Entrance Animations ──
+  document.addEventListener('DOMContentLoaded', function() {
+    if (!('IntersectionObserver' in window)) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var selectors = '.callout, .table-wrap, .code-header, .info-box, .box-diagram, .diagram-figure, blockquote';
+    var elements = document.querySelectorAll(selectors);
+
+    elements.forEach(function(el) {
+      el.classList.add('reveal-on-scroll');
+    });
+
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+    elements.forEach(function(el) { observer.observe(el); });
+  });
+
+  // ── Staggered Card Entrance on Index Page ──
+  document.addEventListener('DOMContentLoaded', function() {
+    if (!('IntersectionObserver' in window)) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var cards = document.querySelectorAll('.chapter-card');
+    if (cards.length === 0) return;
+
+    cards.forEach(function(card) {
+      card.classList.add('reveal-on-scroll');
+    });
+
+    var cardObserver = new IntersectionObserver(function(entries) {
+      var visible = entries.filter(function(e) { return e.isIntersecting; });
+      visible.forEach(function(entry, idx) {
+        setTimeout(function() {
+          entry.target.classList.add('revealed');
+        }, idx * 70);
+        cardObserver.unobserve(entry.target);
+      });
+    }, { threshold: 0.05 });
+
+    cards.forEach(function(card) { cardObserver.observe(card); });
+  });
+
+  // ── Reading Time Estimate ──
+  document.addEventListener('DOMContentLoaded', function() {
+    var content = document.querySelector('.content');
+    if (!content) return;
+    var text = content.textContent || '';
+    var words = text.trim().split(/\s+/).length;
+    var mins = Math.max(1, Math.ceil(words / 220));
+    var h1 = content.querySelector('h1');
+    if (h1) {
+      var badge = document.createElement('div');
+      badge.className = 'reading-time';
+      badge.innerHTML = '\u23F1\uFE0F ' + mins + ' min read &middot; ' + words.toLocaleString() + ' words';
+      h1.insertAdjacentElement('afterend', badge);
+    }
   });
 })();

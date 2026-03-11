@@ -62,6 +62,55 @@ PARTS = [
     ("Closing", "#0d6efd"),
 ]
 
+PART_EMOJIS = {
+    "Getting Started": "\U0001F680",
+    "Core Skills": "\U0001F527",
+    "Workflow & Configuration": "\u2699\ufe0f",
+    "Providers & Cost": "\U0001F4B0",
+    "Advanced Features": "\u2728",
+    "Audience Guides": "\U0001F465",
+    "Walkthroughs": "\U0001F6A7",
+    "Closing": "\U0001F3C1",
+    "Appendices": "\U0001F4DA",
+}
+
+CHAPTER_EMOJIS = {
+    "00-preface": "\U0001F4D6",
+    "01-meet-neamcode": "\U0001F44B",
+    "02-install-first-conversation": "\U0001F4E5",
+    "03-art-of-prompting": "\U0001F3A8",
+    "04-working-with-files": "\U0001F4C1",
+    "05-finding-things": "\U0001F50D",
+    "06-commands-and-git": "\U0001F4BB",
+    "07-web-research": "\U0001F310",
+    "08-slash-commands": "\u2328\ufe0f",
+    "09-modes": "\U0001F3AE",
+    "10-sessions-context": "\U0001F9E0",
+    "11-auto-memory": "\U0001F4BE",
+    "12-choosing-providers": "\U0001F500",
+    "13-offline-mode": "\U0001F4F4",
+    "14-zero-cost-setup": "\U0001F4B8",
+    "15-budget-cost": "\U0001F4CA",
+    "16-agents": "\U0001F916",
+    "17-mcp-servers": "\U0001F517",
+    "18-neam-language": "\U0001F4DD",
+    "19-for-students": "\U0001F393",
+    "20-for-researchers": "\U0001F52C",
+    "21-for-professionals": "\U0001F454",
+    "22-walkthrough-build-project": "\U0001F3D7\ufe0f",
+    "23-walkthrough-fix-bug": "\U0001F41B",
+    "24-making-it-yours": "\U0001F3A8",
+    "25-road-ahead": "\U0001F6E4\ufe0f",
+}
+
+APPENDIX_EMOJIS = {
+    "A-slash-commands": "\u2328\ufe0f",
+    "B-skills-reference": "\U0001F4DA",
+    "C-configuration": "\u2699\ufe0f",
+    "D-troubleshooting": "\U0001F6E0\ufe0f",
+    "E-glossary": "\U0001F4D6",
+}
+
 def make_id(text):
     """Convert heading text to a URL-safe id."""
     text = re.sub(r'[^\w\s-]', '', text.lower())
@@ -308,19 +357,21 @@ def build_sidebar(active_file, is_appendix=False):
     for part_name, part_color in PARTS:
         if part_name not in parts_dict:
             continue
+        emoji = PART_EMOJIS.get(part_name, "")
         sidebar.append(f'<div class="sidebar-part">')
-        sidebar.append(f'  <div class="sidebar-part-title">Part: {part_name}</div>')
+        sidebar.append(f'  <div class="sidebar-part-title"><span class="sidebar-emoji">{emoji}</span> {part_name}</div>')
         sidebar.append(f'  <div class="sidebar-chapters">')
         for fname, title in parts_dict[part_name]:
             active = ' active' if fname == active_file else ''
             ch_prefix = '../chapters/' if is_appendix else ''
-            sidebar.append(f'    <a href="{ch_prefix}{fname}.html" class="sidebar-link{active}" title="{title}">{title}</a>')
+            ch_emoji = CHAPTER_EMOJIS.get(fname, "")
+            sidebar.append(f'    <a href="{ch_prefix}{fname}.html" class="sidebar-link{active}" title="{title}"><span class="sidebar-ch-emoji">{ch_emoji}</span> {title}</a>')
         sidebar.append(f'  </div>')
         sidebar.append(f'</div>')
 
     # Appendices
     sidebar.append(f'<div class="sidebar-part">')
-    sidebar.append(f'  <div class="sidebar-part-title">Appendices</div>')
+    sidebar.append(f'  <div class="sidebar-part-title"><span class="sidebar-emoji">{PART_EMOJIS["Appendices"]}</span> Appendices</div>')
     sidebar.append(f'  <div class="sidebar-chapters">')
     for fname, title in APPENDICES:
         active = ' active' if fname == active_file else ''
@@ -329,7 +380,8 @@ def build_sidebar(active_file, is_appendix=False):
             prefix = ''
         else:
             prefix = '../appendices/'
-        sidebar.append(f'    <a href="{prefix}{fname}.html" class="sidebar-link{active}" title="{title}">{title}</a>')
+        app_emoji = APPENDIX_EMOJIS.get(fname, "")
+        sidebar.append(f'    <a href="{prefix}{fname}.html" class="sidebar-link{active}" title="{title}"><span class="sidebar-ch-emoji">{app_emoji}</span> {title}</a>')
     sidebar.append(f'  </div>')
     sidebar.append(f'</div>')
 
@@ -340,13 +392,13 @@ def get_nav(idx, items, is_appendix=False):
     nav = '<nav class="chapter-nav">'
     if idx > 0:
         prev_fname, prev_title = items[idx-1][0], items[idx-1][1]
-        nav += f'<a href="{prev_fname}.html" class="nav-prev"><span class="nav-label">&larr; Previous</span><span class="nav-title">{prev_title}</span></a>'
+        nav += f'<a href="{prev_fname}.html" class="nav-prev"><span class="nav-label">\U0001F448 Previous</span><span class="nav-title">{prev_title}</span></a>'
     if idx < len(items) - 1:
         next_fname, next_title = items[idx+1][0], items[idx+1][1]
-        nav += f'<a href="{next_fname}.html" class="nav-next"><span class="nav-label">Next &rarr;</span><span class="nav-title">{next_title}</span></a>'
+        nav += f'<a href="{next_fname}.html" class="nav-next"><span class="nav-label">Next \U0001F449</span><span class="nav-title">{next_title}</span></a>'
     elif not is_appendix and idx == len(items) - 1:
         # Last chapter links to first appendix
-        nav += f'<a href="../appendices/{APPENDICES[0][0]}.html" class="nav-next"><span class="nav-label">Next &rarr;</span><span class="nav-title">{APPENDICES[0][1]}</span></a>'
+        nav += f'<a href="../appendices/{APPENDICES[0][0]}.html" class="nav-next"><span class="nav-label">Next \U0001F449</span><span class="nav-title">{APPENDICES[0][1]}</span></a>'
     nav += '</nav>'
     return nav
 
@@ -387,6 +439,9 @@ def build_page(title, content_html, sidebar_html, nav_html, base_path, active_fi
 {content_html}
     {nav_html}
   </article>
+  <footer class="site-footer">
+    <p>Made with \u2764\ufe0f by <a href="https://github.com/neam-lang">Neam Lang</a> &middot; <a href="https://github.com/neam-lang/NeamCode-Handbook-Command-the-Future">Source on GitHub</a></p>
+  </footer>
 </main>
 
 <button class="back-to-top" id="back-to-top" aria-label="Back to top">&#8593;</button>
@@ -481,8 +536,9 @@ def build_index():
         cards = []
         for fname, title in parts_dict[part_name]:
             num = fname.split('-')[0]
-            cards.append(f'''<a href="chapters/{fname}.html" class="chapter-card">
-  <span class="card-num">{num}</span>
+            ch_emoji = CHAPTER_EMOJIS.get(fname, "")
+            cards.append(f'''<a href="chapters/{fname}.html" class="chapter-card" data-part="{part_name}">
+  <span class="card-num">{ch_emoji}</span>
   <div class="card-info">
     <div class="card-title">{html.escape(title)}</div>
     <div class="card-meta">Chapter {int(num)}</div>
@@ -490,8 +546,9 @@ def build_index():
   <span class="card-check">&#10003;</span>
 </a>''')
 
-        parts_html.append(f'''<div class="part-section">
-  <h3>Part {part_idx}: {part_name}</h3>
+        part_emoji = PART_EMOJIS.get(part_name, "")
+        parts_html.append(f'''<div class="part-section" data-part="{part_name}">
+  <h3>{part_emoji} Part {part_idx}: {part_name}</h3>
   <div class="cards-grid">{"".join(cards)}</div>
 </div>''')
 
@@ -499,8 +556,9 @@ def build_index():
     app_cards = []
     for fname, title in APPENDICES:
         letter = fname[0]
-        app_cards.append(f'''<a href="appendices/{fname}.html" class="chapter-card">
-  <span class="card-num">{letter}</span>
+        app_emoji = APPENDIX_EMOJIS.get(fname, "")
+        app_cards.append(f'''<a href="appendices/{fname}.html" class="chapter-card" data-part="Appendices">
+  <span class="card-num">{app_emoji}</span>
   <div class="card-info">
     <div class="card-title">{html.escape(title)}</div>
     <div class="card-meta">Appendix {letter}</div>
@@ -508,16 +566,17 @@ def build_index():
   <span class="card-check">&#10003;</span>
 </a>''')
 
-    parts_html.append(f'''<div class="part-section">
-  <h3>Appendices</h3>
+    parts_html.append(f'''<div class="part-section" data-part="Appendices">
+  <h3>{PART_EMOJIS["Appendices"]} Appendices</h3>
   <div class="cards-grid">{"".join(app_cards)}</div>
 </div>''')
 
     # Learning path nodes
     path_nodes = []
     for idx, (part_name, part_color) in enumerate(PARTS, 1):
+        path_emoji = PART_EMOJIS.get(part_name, "")
         path_nodes.append(f'''<div class="path-node">
-  <div class="path-dot" style="background:{part_color}">{idx}</div>
+  <div class="path-dot" style="background:{part_color}">{path_emoji}</div>
   <div class="path-label">{part_name}</div>
 </div>''')
 
@@ -577,6 +636,9 @@ def build_index():
   <section class="parts-grid">
     {"".join(parts_html)}
   </section>
+  <footer class="site-footer">
+    <p>Made with \u2764\ufe0f by <a href="https://github.com/neam-lang">Neam Lang</a> &middot; <a href="https://github.com/neam-lang/NeamCode-Handbook-Command-the-Future">Source on GitHub</a></p>
+  </footer>
 </main>
 
 <div class="search-overlay" id="search-overlay">
@@ -655,7 +717,9 @@ if __name__ == '__main__':
 
     print()
     print("Index & Search:")
-    build_index()
+    # NOTE: index.html has a custom 3D book cover — do NOT regenerate it.
+    # build_index()  # Skipped — custom hero section preserved
+    print("  ⊘ index.html (skipped — custom cover preserved)")
     build_search_index()
 
     print()
