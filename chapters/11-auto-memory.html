@@ -125,11 +125,6 @@
 <h2 id="111-what-gets-remembered">11.1 What Gets Remembered <a href="#111-what-gets-remembered" class="heading-anchor">#</a></h2>
 <p>NeamCode's Auto Memory (introduced in v0.3.5) observes your conversations and automatically stores important facts about your project. You don't need to configure anything — it learns as you work.</p>
 <p>Here's what Auto Memory captures:</p>
-<figure class="diagram-figure">
-  <img src="../assets/diagrams/ch11-memory-hierarchy.svg" alt="Memory Hierarchy" />
-  <figcaption>Figure 11.1 — Memory Hierarchy</figcaption>
-</figure>
-<div class="ascii-fallback">
 <div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
 <pre><code class="language-">┌──────────────────────────────────────────────────────┐
 │          WHAT AUTO MEMORY RECORDS                     │
@@ -159,7 +154,6 @@
 │    &quot;Remember that the admin panel is at /internal&quot;   │
 │                                                      │
 └──────────────────────────────────────────────────────┘</code></pre>
-</div>
 <p>Auto Memory works in the background. When NeamCode notices a fact that seems important and project-specific, it adds it to your MEMORY.md file. When you start a new session in the same project, those facts are loaded automatically.</p>
 <p>The result: NeamCode gets smarter about your project the more you use it.</p>
 <hr />
@@ -311,11 +305,6 @@ neamcode&gt; Wait, that&#x27;s wrong. Forget that.
 <h2 id="115-project-specific-memory">11.5 Project-Specific Memory <a href="#115-project-specific-memory" class="heading-anchor">#</a></h2>
 <p>One of Auto Memory's most important features is <strong>project isolation</strong>. NeamCode maintains completely separate memory for each project.</p>
 <h3 id="how-isolation-works">How Isolation Works <a href="#how-isolation-works" class="heading-anchor">#</a></h3>
-<figure class="diagram-figure">
-  <img src="../assets/diagrams/ch11-auto-memory-flow.svg" alt="Auto Memory Flow" />
-  <figcaption>Figure 11.2 — Auto Memory Flow</figcaption>
-</figure>
-<div class="ascii-fallback">
 <div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
 <pre><code class="language-">┌─────────────────────────────────────────────────────────┐
 │              PROJECT MEMORY ISOLATION                     │
@@ -336,7 +325,6 @@ neamcode&gt; Wait, that&#x27;s wrong. Forget that.
 │  No cross-contamination.                                │
 │                                                         │
 └─────────────────────────────────────────────────────────┘</code></pre>
-</div>
 <p>The isolation key is a <strong>SHA-256 hash</strong> of the project's absolute root path. This means:</p>
 <ul>
 <li><code>/Users/alice/projects/webapp</code> and <code>/Users/bob/projects/webapp</code> get different memory</li>
@@ -360,20 +348,9 @@ neamcode&gt; What database do we use?
 <h2 id="116-the-neamcodemd-file">11.6 The NEAMCODE.md File <a href="#116-the-neamcodemd-file" class="heading-anchor">#</a></h2>
 <p>While MEMORY.md stores facts NeamCode learns over time, <strong>NEAMCODE.md</strong> is where you write explicit, permanent instructions for how NeamCode should behave.</p>
 <p>Think of the difference this way:</p>
-<div class="comparison-grid">
-  <div class="info-box">
-    <div class="info-box-header blue">MEMORY.md</div>
-    <div class="info-box-body">
-      <p>"Things NeamCode learned" (automatic, editable)</p>
-    </div>
-  </div>
-  <div class="info-box">
-    <div class="info-box-header red">NEAMCODE.md</div>
-    <div class="info-box-body">
-      <p>"Rules you set" (manual, authoritative)</p>
-    </div>
-  </div>
-</div>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">MEMORY.md    = &quot;Things NeamCode learned&quot; (automatic, editable)
+NEAMCODE.md  = &quot;Rules you set&quot;          (manual, authoritative)</code></pre>
 <h3 id="what-goes-in-neamcodemd">What Goes in NEAMCODE.md <a href="#what-goes-in-neamcodemd" class="heading-anchor">#</a></h3>
 <div class="code-header"><span class="code-lang">markdown</span><button class="copy-btn">Copy</button></div>
 <pre><code class="language-markdown"># NEAMCODE.md
@@ -400,23 +377,16 @@ neamcode&gt; What database do we use?
 - Staging deploys automatically on PR merge to develop</code></pre>
 <h3 id="the-7-tier-hierarchy">The 7-Tier Hierarchy <a href="#the-7-tier-hierarchy" class="heading-anchor">#</a></h3>
 <p>NEAMCODE.md files can exist at multiple levels. NeamCode reads all of them and merges them together, with higher tiers taking priority.</p>
-<div class="info-box">
-  <div class="info-box-header purple">7-TIER NEAMCODE.md HIERARCHY</div>
-  <div class="info-box-body">
-    <div class="table-wrap"><table>
-      <thead><tr><th>Tier</th><th>Location</th><th>Priority</th></tr></thead>
-      <tbody>
-        <tr><td><strong>7</strong></td><td>CLI <code>--config</code> flag</td><td>Highest</td></tr>
-        <tr><td><strong>6</strong></td><td><code>./.neamcode/NEAMCODE.md</code> (local)</td><td>&uarr;</td></tr>
-        <tr><td><strong>5</strong></td><td><code>./subdir/NEAMCODE.md</code> (subdirectory)</td><td>&uarr;</td></tr>
-        <tr><td><strong>4</strong></td><td><code>./NEAMCODE.md</code> (project root)</td><td>&uarr;</td></tr>
-        <tr><td><strong>3</strong></td><td><code>../NEAMCODE.md</code> (ancestor directories)</td><td>&uarr;</td></tr>
-        <tr><td><strong>2</strong></td><td><code>~/.neamcode/NEAMCODE.md</code> (global)</td><td>&uarr;</td></tr>
-        <tr><td><strong>1</strong></td><td>Managed/default NEAMCODE.md</td><td>Lowest</td></tr>
-      </tbody>
-    </table></div>
-  </div>
-</div>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">TIER  LOCATION                              PRIORITY
+════  ══════════════════════════════════     ════════
+ 7    CLI --config flag                      Highest
+ 6    ./.neamcode/NEAMCODE.md (local)           ↑
+ 5    ./subdir/NEAMCODE.md (subdirectory)       │
+ 4    ./NEAMCODE.md (project root)              │
+ 3    ../NEAMCODE.md (ancestor directories)     │
+ 2    ~/.neamcode/NEAMCODE.md (global)          │
+ 1    Managed/default NEAMCODE.md           Lowest</code></pre>
 <p>Let's walk through each tier:</p>
 <p><strong>Tier 1: Managed (Lowest Priority)</strong></p>
 <p>The built-in defaults that ship with NeamCode. You never edit these.</p>
@@ -461,13 +431,11 @@ neamcode&gt; What database do we use?
 <pre><code class="language-bash">neamcode --config /path/to/custom-config.md</code></pre>
 <h3 id="how-merging-works">How Merging Works <a href="#how-merging-works" class="heading-anchor">#</a></h3>
 <p>Higher tiers override lower tiers. If your global config says "use 4-space indentation" but your project config says "use 2-space indentation," the project config wins.</p>
-<div class="flow-steps">
-  <span class="flow-step">Global (Tier 2): "Use 4-space indentation"</span>
-  <span class="flow-arrow">&rarr;</span>
-  <span class="flow-step">Project (Tier 4): "Use 2-space indentation"</span>
-  <span class="flow-arrow">&rarr;</span>
-  <span class="flow-step highlight">Result: "Use 2-space indentation" (Tier 4 wins)</span>
-</div>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">Global (Tier 2):    &quot;Use 4-space indentation&quot;
+Project (Tier 4):   &quot;Use 2-space indentation&quot;
+                     ↓
+Result:             &quot;Use 2-space indentation&quot; (Tier 4 wins)</code></pre>
 <p>Instructions that don't conflict are additive — NeamCode follows all of them.</p>
 <div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip:</strong> Put team conventions in the project-root NEAMCODE.md (Tier 4) and commit it to git. Put personal preferences in <code>~/.neamcode/NEAMCODE.md</code> (Tier 2). Put directory-specific rules in subdirectory files (Tier 5).</p></div>
 <hr />
@@ -584,18 +552,30 @@ paths:
 <p>When NeamCode compacts a long conversation, it summarizes old messages. Important project facts could be lost in that summary.</p>
 <h3 id="the-solution">The Solution <a href="#the-solution" class="heading-anchor">#</a></h3>
 <p>MEMORY.md entries and NEAMCODE.md rules are <strong>never</strong> part of the conversation that gets compacted. They exist outside the conversation context:</p>
-<div class="info-box">
-  <div class="info-box-header red">WHAT GETS COMPACTED</div>
-  <div class="info-box-body">
-    <ul>
-      <li><strong>Conversation messages</strong> &larr; <strong>COMPACTED</strong></li>
-      <li><strong>MEMORY.md</strong> &larr; NEVER</li>
-      <li><strong>NEAMCODE.md</strong> &larr; NEVER</li>
-      <li><strong>Rules (<code>.neamcode/rules</code>)</strong> &larr; NEVER</li>
-    </ul>
-    <p>Memory and rules are reloaded fresh every time, independent of conversation history.</p>
-  </div>
-</div>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">┌──────────────────────────────────────────────────────┐
+│              WHAT GETS COMPACTED                      │
+│                                                      │
+│  ┌─────────────────────────────────────────┐         │
+│  │   Conversation messages  ← COMPACTED    │         │
+│  └─────────────────────────────────────────┘         │
+│                                                      │
+│  ┌─────────────────────────────────────────┐         │
+│  │   MEMORY.md              ← NEVER        │         │
+│  └─────────────────────────────────────────┘         │
+│                                                      │
+│  ┌─────────────────────────────────────────┐         │
+│  │   NEAMCODE.md            ← NEVER        │         │
+│  └─────────────────────────────────────────┘         │
+│                                                      │
+│  ┌─────────────────────────────────────────┐         │
+│  │   Rules (.neamcode/rules) ← NEVER       │         │
+│  └─────────────────────────────────────────┘         │
+│                                                      │
+│  Memory and rules are reloaded fresh every time,     │
+│  independent of conversation history.                │
+│                                                      │
+└──────────────────────────────────────────────────────┘</code></pre>
 <p>This means:</p>
 <ul>
 <li>After compaction, NeamCode still knows your PostgreSQL version, your team conventions, and your deployment target</li>
@@ -737,92 +717,46 @@ neamcode&gt; How should I structure a new API endpoint?
   5. Write tests in a co-located .test.ts file
   ...</code></pre>
 <h3 id="memory-vs-rules-when-to-use-each">Memory vs. Rules: When to Use Each <a href="#memory-vs-rules-when-to-use-each" class="heading-anchor">#</a></h3>
-<div class="comparison-grid">
-  <div class="info-box">
-    <div class="info-box-header blue">MEMORY.md</div>
-    <div class="info-box-body">
-      <ul>
-        <li>Learned facts</li>
-        <li>Changes over time</li>
-        <li>Per-user</li>
-        <li>Auto-populated</li>
-        <li>"We use Postgres 15"</li>
-        <li>"Staging is on ECS"</li>
-      </ul>
-      <p><strong>Use MEMORY for:</strong></p>
-      <ul>
-        <li>Facts about the project</li>
-        <li>Recent discoveries</li>
-        <li>Environment details</li>
-        <li>Debug findings</li>
-      </ul>
-    </div>
-  </div>
-  <div class="info-box">
-    <div class="info-box-header red">NEAMCODE.md / Rules</div>
-    <div class="info-box-body">
-      <ul>
-        <li>Explicit instructions</li>
-        <li>Stable conventions</li>
-        <li>Per-team (in git)</li>
-        <li>Manually written</li>
-        <li>"Always validate input"</li>
-        <li>"Use 2-space indent"</li>
-      </ul>
-      <p><strong>Use NEAMCODE.md for:</strong></p>
-      <ul>
-        <li>Code style rules</li>
-        <li>Architecture patterns</li>
-        <li>Team conventions</li>
-        <li>Review checklists</li>
-      </ul>
-    </div>
-  </div>
-</div>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">┌─────────────────────────────────────────────────────────┐
+│           MEMORY vs. RULES DECISION GUIDE                │
+│                                                         │
+│  MEMORY.md                    NEAMCODE.md / Rules       │
+│  ─────────                    ──────────────────        │
+│  Learned facts                Explicit instructions     │
+│  Changes over time            Stable conventions        │
+│  Per-user                     Per-team (in git)         │
+│  Auto-populated               Manually written          │
+│  &quot;We use Postgres 15&quot;         &quot;Always validate input&quot;   │
+│  &quot;Staging is on ECS&quot;          &quot;Use 2-space indent&quot;      │
+│                                                         │
+│  Use MEMORY for:              Use NEAMCODE.md for:      │
+│  • Facts about the project    • Code style rules        │
+│  • Recent discoveries         • Architecture patterns   │
+│  • Environment details        • Team conventions        │
+│  • Debug findings             • Review checklists       │
+│                                                         │
+└─────────────────────────────────────────────────────────┘</code></pre>
 <h3 id="the-full-memory-architecture">The Full Memory Architecture <a href="#the-full-memory-architecture" class="heading-anchor">#</a></h3>
 <p>Here's how all the pieces fit together:</p>
-<div class="flow-steps">
-  <span class="flow-step highlight">NeamCode Agent</span>
-</div>
-<p style="text-align: center; margin: 0.5rem 0; color: var(--text-muted);">reads from &darr;</p>
-<div class="comparison-grid" style="grid-template-columns: repeat(3, 1fr);">
-  <div class="info-box">
-    <div class="info-box-header blue">MEMORY.md (learned)</div>
-    <div class="info-box-body">
-      <ul>
-        <li>Per-project</li>
-        <li>SHA-256 hash</li>
-        <li>200-line cap</li>
-        <li>Auto-populated</li>
-        <li>Topic overflow</li>
-      </ul>
-    </div>
-  </div>
-  <div class="info-box">
-    <div class="info-box-header red">NEAMCODE.md (7 tiers)</div>
-    <div class="info-box-body">
-      <ul>
-        <li>Hierarchical</li>
-        <li>Merged</li>
-        <li>@path imports</li>
-        <li>Manual</li>
-        <li>Git-committed</li>
-      </ul>
-    </div>
-  </div>
-  <div class="info-box">
-    <div class="info-box-header purple">Rules (.neamcode/)</div>
-    <div class="info-box-body">
-      <ul>
-        <li>Path-scoped</li>
-        <li>YAML frontmatter</li>
-        <li>Glob patterns</li>
-        <li>Manual</li>
-        <li>Git-committed</li>
-      </ul>
-    </div>
-  </div>
-</div>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">                    ┌──────────────────────┐
+                    │    NeamCode Agent     │
+                    └──────────┬───────────┘
+                               │ reads
+               ┌───────────────┼───────────────┐
+               │               │               │
+    ┌──────────▼──┐  ┌────────▼────┐  ┌───────▼──────┐
+    │  MEMORY.md   │  │ NEAMCODE.md │  │    Rules      │
+    │  (learned)   │  │ (7 tiers)   │  │ (.neamcode/) │
+    └──────────────┘  └─────────────┘  └──────────────┘
+    │                 │                │
+    │ Per-project     │ Hierarchical   │ Path-scoped
+    │ SHA-256 hash    │ Merged         │ YAML frontmatter
+    │ 200-line cap    │ @path imports  │ Glob patterns
+    │ Auto-populated  │ Manual         │ Manual
+    │ Topic overflow  │ Git-committed  │ Git-committed
+    └─────────────────┴────────────────┘</code></pre>
 <h3 id="debugging-memory-issues">Debugging Memory Issues <a href="#debugging-memory-issues" class="heading-anchor">#</a></h3>
 <p>If NeamCode seems to "forget" things or behaves unexpectedly:</p>
 <div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>

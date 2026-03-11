@@ -268,28 +268,20 @@ NeamCode:
 
   ✓ Test watcher stopped.</code></pre>
 <div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip:</strong> Use <code>background_shell</code> for anything that runs indefinitely: dev servers, file watchers, database instances, log tailing. Use regular <code>bash</code> for commands that complete and return output.</p></div>
-<div class="comparison-grid">
-  <div class="info-box">
-    <div class="info-box-header blue">bash</div>
-    <div class="info-box-body">
-      <ul>
-        <li>Runs command, waits for it to finish</li>
-        <li>Returns the output</li>
-        <li>Good for: builds, tests, scripts, git</li>
-      </ul>
-    </div>
-  </div>
-  <div class="info-box">
-    <div class="info-box-header green">background_shell</div>
-    <div class="info-box-body">
-      <ul>
-        <li>Starts command and returns immediately</li>
-        <li>Process runs in the background</li>
-        <li>Good for: dev servers, watchers, long tasks</li>
-      </ul>
-    </div>
-  </div>
-</div>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">┌──────────────────────────────────────────────────┐
+│          bash vs. background_shell               │
+│                                                  │
+│  bash:                                           │
+│  • Runs command, waits for it to finish          │
+│  • Returns the output                            │
+│  • Good for: builds, tests, scripts, git         │
+│                                                  │
+│  background_shell:                               │
+│  • Starts command and returns immediately         │
+│  • Process runs in the background                │
+│  • Good for: dev servers, watchers, long tasks   │
+└──────────────────────────────────────────────────┘</code></pre>
 <hr />
 <h2 id="63-git-basics">6.3 Git Basics <a href="#63-git-basics" class="heading-anchor">#</a></h2>
 <p>NeamCode speaks Git fluently. You can manage your entire Git workflow through natural language.</p>
@@ -517,34 +509,36 @@ NeamCode:
   [bash] git diff main...HEAD
   [file_read] (7 changed files)
 
+  ══════════════════════════════════════════════════
   Code Review: feature/payment-integration
-  Overall: Good — 2 suggestions, 1 issue</code></pre>
+  ══════════════════════════════════════════════════
 
-<div class="info-box">
-  <div class="info-box-header red">Issue — src/services/payment.ts:34</div>
-  <div class="info-box-body">
-    <p>The Stripe secret key is hardcoded. Move to environment variable.</p>
-    <pre><code>- const stripe = new Stripe('sk_test_xxx');
-+ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);</code></pre>
-  </div>
-</div>
+  Overall: ✅ Good — 2 suggestions, 1 issue
 
-<div class="info-box">
-  <div class="info-box-header amber">Suggestion — src/routes/payments.ts:18</div>
-  <div class="info-box-body">
-    <p>Consider adding request body validation with zod or joi before processing payment.</p>
-  </div>
-</div>
+  ┌─ 🔴 Issue ────────────────────────────────────┐
+  │ src/services/payment.ts:34                     │
+  │ The Stripe secret key is hardcoded.            │
+  │ Move to environment variable.                  │
+  │                                                │
+  │ - const stripe = new Stripe(&#x27;sk_test_xxx&#x27;);    │
+  │ + const stripe = new Stripe(process.env        │
+  │     .STRIPE_SECRET_KEY!);                      │
+  └────────────────────────────────────────────────┘
 
-<div class="info-box">
-  <div class="info-box-header amber">Suggestion — src/services/payment.ts:52</div>
-  <div class="info-box-body">
-    <p>The error handling catches all errors generically. Consider specific handling for StripeCardError vs StripeInvalidRequestError.</p>
-  </div>
-</div>
+  ┌─ 💡 Suggestion ───────────────────────────────┐
+  │ src/routes/payments.ts:18                      │
+  │ Consider adding request body validation        │
+  │ with zod or joi before processing payment.     │
+  └────────────────────────────────────────────────┘
 
-<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
-<pre><code class="language-">  Want me to fix any of these?</code></pre>
+  ┌─ 💡 Suggestion ───────────────────────────────┐
+  │ src/services/payment.ts:52                     │
+  │ The error handling catches all errors           │
+  │ generically. Consider specific handling for    │
+  │ StripeCardError vs StripeInvalidRequestError.  │
+  └────────────────────────────────────────────────┘
+
+  Want me to fix any of these?</code></pre>
 <h3 id="reviewing-specific-files">Reviewing Specific Files <a href="#reviewing-specific-files" class="heading-anchor">#</a></h3>
 <div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
 <pre><code class="language-">You: /review src/services/payment.ts
@@ -607,33 +601,26 @@ NeamCode:
 <hr />
 <h2 id="67-the-permission-system-in-practice">6.7 The Permission System in Practice <a href="#67-the-permission-system-in-practice" class="heading-anchor">#</a></h2>
 <p>Understanding the permission system is essential when running commands and Git operations. Here's how it works in practice:</p>
-<div class="comparison-grid">
-  <div class="info-box">
-    <div class="info-box-header green">AUTO-APPROVED (no prompt)</div>
-    <div class="info-box-body">
-      <ul>
-        <li><code>file_read</code> — Reading files is always safe</li>
-        <li><code>glob</code> — Searching filenames is safe</li>
-        <li><code>grep</code> — Searching file contents is safe</li>
-        <li><code>dir_tree</code> — Viewing structure is safe</li>
-        <li><code>code_structure</code> — Analyzing code is safe</li>
-      </ul>
-    </div>
-  </div>
-  <div class="info-box">
-    <div class="info-box-header red">REQUIRES APPROVAL (you see a prompt)</div>
-    <div class="info-box-body">
-      <ul>
-        <li><code>file_write</code> — Creating/overwriting files</li>
-        <li><code>file_edit</code> — Modifying existing files</li>
-        <li><code>bash</code> — Running ANY shell command</li>
-        <li><code>background_shell</code> — Starting background processes</li>
-        <li><code>git_pr</code> — Creating pull requests</li>
-      </ul>
-    </div>
-  </div>
-</div>
-<div class="callout callout-note"><div class="callout-title"><span class="callout-icon">&#128221;</span> Note</div><p><strong>The principle:</strong> READ freely, WRITE with permission.</p></div>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">┌──────────────────────────────────────────────────────────┐
+│              Permission Levels                           │
+│                                                          │
+│  AUTO-APPROVED (no prompt):                              │
+│  ├── file_read    — Reading files is always safe         │
+│  ├── glob         — Searching filenames is safe          │
+│  ├── grep         — Searching file contents is safe      │
+│  ├── dir_tree     — Viewing structure is safe            │
+│  └── code_structure — Analyzing code is safe             │
+│                                                          │
+│  REQUIRES APPROVAL (you see a prompt):                   │
+│  ├── file_write   — Creating/overwriting files           │
+│  ├── file_edit    — Modifying existing files             │
+│  ├── bash         — Running ANY shell command            │
+│  ├── background_shell — Starting background processes    │
+│  └── git_pr       — Creating pull requests               │
+│                                                          │
+│  The principle: READ freely, WRITE with permission.      │
+└──────────────────────────────────────────────────────────┘</code></pre>
 <h3 id="what-approval-looks-like">What Approval Looks Like <a href="#what-approval-looks-like" class="heading-anchor">#</a></h3>
 <p>Every time NeamCode wants to execute something that could change your system, you'll see:</p>
 <div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>

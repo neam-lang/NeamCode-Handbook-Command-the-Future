@@ -276,6 +276,52 @@ NeamCode:
   Published: December 5, 2024
   Release notes: (summary of changes)</code></pre>
 <div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip:</strong> <code>web_fetch</code> is great for pulling structured data from APIs. You can fetch JSON endpoints, parse the results, and use that data in your coding workflow.</p></div>
+<h3 id="reading-pdfs-from-the-web-v0353">Reading PDFs from the Web (v0.3.5.3) <a href="#reading-pdfs-from-the-web-v0353" class="heading-anchor">#</a></h3>
+<p>NeamCode can now fetch and extract text from <strong>PDF files</strong> directly from URLs. This is especially useful for reading research papers, technical specifications, and documentation distributed as PDFs.</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Read this paper: https://arxiv.org/pdf/2603.04448
+
+NeamCode:
+  [web_fetch] https://arxiv.org/pdf/2603.04448
+    → Redirected to https://arxiv.org/abs/2603.04448
+      (richer HTML abstract page)
+
+  **Title:** Language Model Agents as Digital Scientists
+  **Author:** Wang et al.
+  **Pages:** 42
+
+  The paper proposes a framework for using LLM-based agents
+  as automated scientific researchers. Key contributions:
+
+  1. A multi-agent architecture where agents collaborate on
+     hypothesis generation, experiment design, and analysis
+  2. Evaluation on 12 scientific benchmarks showing...
+  (continues with extracted content)</code></pre>
+<p><strong>How it works:</strong></p>
+<ul>
+<li><strong>arxiv smart redirect</strong> — URLs like <code>arxiv.org/pdf/XXXX</code> are automatically redirected to the abstract page (<code>arxiv.org/abs/XXXX</code>), which has richer structured content</li>
+<li><strong>Binary PDF extraction</strong> — If the URL serves a raw PDF, NeamCode downloads the binary and extracts text using <code>pdf-parse</code>, supporting up to 200 pages</li>
+<li><strong>Metadata extraction</strong> — Title, author, and page count are automatically pulled from PDF metadata</li>
+<li><strong>Fallback</strong> — If the redirect fails, NeamCode falls back to extracting text from the raw PDF</li>
+</ul>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Fetch this technical spec PDF and summarize the API changes
+     https://example.com/api-spec-v3.pdf
+
+NeamCode:
+  [web_fetch] https://example.com/api-spec-v3.pdf
+
+  **Pages:** 28
+
+  API Specification v3.0 — Summary of Changes:
+
+  1. Authentication: Migrated from API keys to OAuth 2.0
+  2. Rate limiting: New tiered limits (100/1000/10000 req/min)
+  3. Breaking changes:
+     - POST /users now requires &quot;email&quot; field
+     - GET /items response format changed to paginated
+  ...</code></pre>
+<div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip:</strong> For academic research, just paste the arxiv PDF URL. NeamCode handles the redirect and extraction automatically — no need to manually download the PDF first.</p></div>
 <hr />
 <h2 id="73-analyzing-screenshots">7.3 Analyzing Screenshots <a href="#73-analyzing-screenshots" class="heading-anchor">#</a></h2>
 <p>The <code>image_read</code> skill lets NeamCode look at screenshots, mockups, and visual references. This bridges the gap between design and code.</p>
@@ -505,13 +551,8 @@ NeamCode:
   (Detailed comparison with recommendation)</code></pre>
 <h3 id="5-let-research-flow-into-implementation">5. Let Research Flow Into Implementation <a href="#5-let-research-flow-into-implementation" class="heading-anchor">#</a></h3>
 <p>Don't separate research and coding into different sessions. The best workflow is:</p>
-<figure class="diagram-figure">
-  <img src="../assets/diagrams/ch07-research-code-loop.svg" alt="The Research-Code Loop" />
-  <figcaption>Figure 7.1 — The Research-Code Loop</figcaption>
-</figure>
-<div class="ascii-fallback">
-<div class="code-header ascii-fallback"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
-<pre class="ascii-fallback"><code class="language-">┌──────────────────────────────────────────────────┐
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">┌──────────────────────────────────────────────────┐
 │         The Research-Code Loop                   │
 │                                                  │
 │   ┌──────────┐                                   │
@@ -538,7 +579,6 @@ NeamCode:
 │                         │                        │
 │                    ✓ or loop back                 │
 └──────────────────────────────────────────────────┘</code></pre>
-</div>
 <p>All of this happens in a single NeamCode conversation. No tab-switching, no copy-pasting from browser to terminal.</p>
 <h3 id="6-research-before-refactoring">6. Research Before Refactoring <a href="#6-research-before-refactoring" class="heading-anchor">#</a></h3>
 <div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>

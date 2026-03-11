@@ -122,11 +122,6 @@
 <h2 id="91-what-are-modes">9.1 What Are Modes? <a href="#91-what-are-modes" class="heading-anchor">#</a></h2>
 <p>Modes are like different hats you put on NeamCode. When you switch modes, you change how NeamCode thinks, what it prioritizes, and what tools it reaches for first.</p>
 <p>Think of it this way:</p>
-<figure class="diagram-figure">
-  <img src="../assets/diagrams/ch09-six-modes.svg" alt="The Six NeamCode Modes" />
-  <figcaption>Figure 9.1 — The Six NeamCode Modes</figcaption>
-</figure>
-<div class="ascii-fallback">
 <div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
 <pre><code class="language-">┌─────────────────────────────────────────────────────┐
 │              Same NeamCode, Different Focus          │
@@ -141,7 +136,6 @@
 │                              and running&quot;            │
 │                                                     │
 └─────────────────────────────────────────────────────┘</code></pre>
-</div>
 <p>When you switch modes, NeamCode adjusts:</p>
 <ul>
 <li><strong>System prompt</strong> — Its underlying instructions shift to match the task</li>
@@ -567,30 +561,35 @@ neamcode&gt; We need to add real-time notifications to our app.
 <hr />
 <h2 id="98-when-to-use-which-mode">9.8 When to Use Which Mode <a href="#98-when-to-use-which-mode" class="heading-anchor">#</a></h2>
 <p>Here's a decision guide:</p>
-<div class="info-box">
-  <div class="info-box-header blue">MODE DECISION GUIDE</div>
-  <div class="info-box-body">
-    <ul>
-      <li>"I need to understand this code" &rarr; <code>/mode explore</code></li>
-      <li>"Something is broken" &rarr; <code>/mode debug</code></li>
-      <li>"I need tests for this" &rarr; <code>/mode test</code></li>
-      <li>"I'm working with data" &rarr; <code>/mode analyze</code></li>
-      <li>"I need to ship this" &rarr; <code>/mode deploy</code></li>
-      <li>"I'm not sure what to build yet" &rarr; <code>/mode ideate</code></li>
-    </ul>
-  </div>
-</div>
-<div class="info-box">
-  <div class="info-box-header gray">COMMON MODE FLOWS</div>
-  <div class="info-box-body">
-    <ul>
-      <li><strong>New feature:</strong> ideate &rarr; explore &rarr; (implement) &rarr; test &rarr; deploy</li>
-      <li><strong>Bug fix:</strong> debug &rarr; explore &rarr; (fix) &rarr; test</li>
-      <li><strong>New codebase:</strong> explore &rarr; explore &rarr; explore (take your time)</li>
-      <li><strong>Data migration:</strong> analyze &rarr; test &rarr; deploy</li>
-    </ul>
-  </div>
-</div>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">┌─────────────────────────────────────────────────────────────┐
+│                    MODE DECISION GUIDE                       │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│  &quot;I need to understand this code&quot;          → /mode explore  │
+│  &quot;Something is broken&quot;                     → /mode debug    │
+│  &quot;I need tests for this&quot;                   → /mode test     │
+│  &quot;I&#x27;m working with data&quot;                   → /mode analyze  │
+│  &quot;I need to ship this&quot;                     → /mode deploy   │
+│  &quot;I&#x27;m not sure what to build yet&quot;          → /mode ideate   │
+│                                                             │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│  COMMON MODE FLOWS                                          │
+│                                                             │
+│  New feature:                                               │
+│    ideate → explore → (implement) → test → deploy           │
+│                                                             │
+│  Bug fix:                                                   │
+│    debug → explore → (fix) → test                           │
+│                                                             │
+│  New codebase:                                              │
+│    explore → explore → explore (take your time)             │
+│                                                             │
+│  Data migration:                                            │
+│    analyze → test → deploy                                  │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘</code></pre>
 <h3 id="mode-transitions-in-a-real-session">Mode Transitions in a Real Session <a href="#mode-transitions-in-a-real-session" class="heading-anchor">#</a></h3>
 <p>You don't need to stick with one mode. Here's a realistic work session:</p>
 <div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
@@ -610,7 +609,112 @@ neamcode&gt; /mode deploy
 neamcode&gt; We need to deploy this fix to production with a rollback plan
   (... NeamCode generates deployment steps ...)</code></pre>
 <hr />
-<h2 id="99-pro-tips">9.9 Pro Tips <a href="#99-pro-tips" class="heading-anchor">#</a></h2>
+<h2 id="99-plan-mode-v0351">9.9 Plan Mode (v0.3.5.1) <a href="#99-plan-mode-v0351" class="heading-anchor">#</a></h2>
+<p>v0.3.5.1 introduces <strong>Plan Mode</strong> — a dedicated mode for designing implementation strategies before writing code. Unlike other modes that let NeamCode take action immediately, Plan Mode is <strong>read-only</strong>: it can read files and search code but cannot modify anything.</p>
+<h3 id="entering-plan-mode">Entering Plan Mode <a href="#entering-plan-mode" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; /plan Add rate limiting to all API endpoints
+
+  📋 Entering Plan Mode...
+
+  Analyzing codebase...
+  [file_read] src/api/routes/index.ts
+  [grep] &quot;router\.&quot; in src/api/
+  [find_symbol] rateLimit
+
+  Plan: API Rate Limiting
+  ═══════════════════════
+
+  Step 1: Install express-rate-limit package
+          Estimated: ~200 tokens
+
+  Step 2: Create rate limit config (src/config/rate-limit.ts)
+          - Default: 100 requests / 15 min per IP
+          - Auth endpoints: 10 requests / 15 min
+          - API endpoints: 60 requests / 1 min
+          Estimated: ~800 tokens
+
+  Step 3: Create rate limit middleware (src/middleware/rate-limit.ts)
+          - Apply default limiter globally
+          - Apply auth limiter to /auth/* routes
+          - Custom key generator for authenticated users
+          Estimated: ~1,200 tokens
+
+  Step 4: Add Redis store for distributed rate limiting
+          - Connect to existing Redis instance from config
+          Estimated: ~600 tokens
+
+  Step 5: Write tests (tests/rate-limit.test.ts)
+          - Test default limits
+          - Test auth endpoint limits
+          - Test authenticated user key generation
+          Estimated: ~1,500 tokens
+
+  ─────────────────────────────────────────
+  Total: 5 steps  |  ~4,300 tokens  |  ~$0.06
+  Dependencies: express-rate-limit, rate-limit-redis
+
+  [a]pprove  [e]dit  [c]ancel</code></pre>
+<h3 id="why-plan-mode-matters">Why Plan Mode Matters <a href="#why-plan-mode-matters" class="heading-anchor">#</a></h3>
+<ul>
+<li><strong>No accidental changes</strong> — Read-only mode prevents premature implementation</li>
+<li><strong>Cost estimation</strong> — See token and dollar costs before committing</li>
+<li><strong>Task decomposition</strong> — Complex tasks broken into clear, ordered steps with dependencies</li>
+<li><strong>Review before execution</strong> — You approve, edit, or cancel the plan before any code is written</li>
+</ul>
+<h3 id="reasoning-strategies-v0351">Reasoning Strategies (v0.3.5.1) <a href="#reasoning-strategies-v0351" class="heading-anchor">#</a></h3>
+<p>Plan Mode uses one of four reasoning strategies, selected automatically based on task complexity:</p>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Strategy</th>
+<th>Best For</th>
+<th>How It Works</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Chain of Thought</strong></td>
+<td>Simple, linear tasks</td>
+<td>Step-by-step reasoning (1 LLM call)</td>
+</tr>
+<tr>
+<td><strong>Plan and Execute</strong></td>
+<td>Multi-step implementations</td>
+<td>Decompose → plan → execute (N+2 calls)</td>
+</tr>
+<tr>
+<td><strong>Tree of Thought</strong></td>
+<td>Architecture decisions</td>
+<td>Explore multiple paths (2-3 calls)</td>
+</tr>
+<tr>
+<td><strong>Self Consistency</strong></td>
+<td>Critical/ambiguous tasks</td>
+<td>Multiple reasoning paths, majority vote (N+1 calls)</td>
+</tr>
+</tbody></table></div>
+<p>You can override the automatic selection:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; /think tot
+  Reasoning strategy set to: Tree of Thought
+
+neamcode&gt; /plan Should we use GraphQL or REST for the new API?
+
+  Branch A: GraphQL
+    Pros: Flexible queries, single endpoint, type safety
+    Cons: Complexity, caching difficulty, N+1 queries
+
+  Branch B: REST
+    Pros: Simple, cacheable, well-understood
+    Cons: Over/under-fetching, multiple endpoints
+
+  Branch C: Hybrid (REST + GraphQL for complex queries)
+    Pros: Best of both, incremental adoption
+    Cons: Two systems to maintain
+
+  Recommendation: Branch B (REST) based on your codebase patterns
+  and team experience. GraphQL adds complexity without sufficient
+  benefit for your 8-endpoint API.</code></pre>
+<hr />
+<h2 id="910-pro-tips">9.10 Pro Tips <a href="#910-pro-tips" class="heading-anchor">#</a></h2>
 <h3 id="mode-persistence">Mode Persistence <a href="#mode-persistence" class="heading-anchor">#</a></h3>
 <p>Modes persist within a session. If you <code>/resume</code> a session, you return to whatever mode you were last using:</p>
 <div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>

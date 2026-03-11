@@ -363,11 +363,6 @@ through both blocks without touching any of the variables.</code></pre>
 <div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
 <pre><code class="language-">You&gt; Good traces. Summarize the root causes clearly.</code></pre>
 <p><strong>NeamCode responds:</strong></p>
-<figure class="diagram-figure">
-  <img src="../assets/diagrams/ch23-debugging-flow.svg" alt="Debugging Workflow" />
-  <figcaption>Figure 23.1 — Debugging Workflow</figcaption>
-</figure>
-<div class="ascii-fallback">
 <div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
 <pre><code class="language-">Here are the two root causes:
 
@@ -413,7 +408,6 @@ all valid transitions as a complete state machine:
 The current code handles the forward arrows but not the
 backward arrow, and it doesn&#x27;t handle the case where both
 forward arrows fire on the same request.</code></pre>
-</div>
 <div class="callout callout-note"><div class="callout-title"><span class="callout-icon">&#128221;</span> Note</div><p>📝 <strong>Note:</strong> Drawing out the state machine makes the missing transitions obvious. When debugging state-related bugs, always map out the expected transitions and compare them to what the code actually implements.</p></div>
 <hr />
 <h2 id="236-implementing-the-fix">23.6 Implementing the Fix <a href="#236-implementing-the-fix" class="heading-anchor">#</a></h2>
@@ -791,11 +785,6 @@ Committed:
 <hr />
 <h2 id="what-we-learned">What We Learned <a href="#what-we-learned" class="heading-anchor">#</a></h2>
 <p>This debugging session followed a clean, repeatable workflow:</p>
-<figure class="diagram-figure">
-  <img src="../assets/diagrams/ch23-state-machine.svg" alt="Bug Investigation State Machine" />
-  <figcaption>Figure 23.2 — Bug Investigation State Machine</figcaption>
-</figure>
-<div class="ascii-fallback">
 <div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
 <pre><code class="language-">  ┌──────────────────────────────────────────────────────────┐
   │               Debugging Workflow                          │
@@ -831,7 +820,6 @@ Committed:
   │  10. Commit with context        Help future debuggers     │
   │                                                          │
   └──────────────────────────────────────────────────────────┘</code></pre>
-</div>
 <p>Key debugging principles demonstrated:</p>
 <p><strong>1. Reproduce before you theorize.</strong> We confirmed both bugs with curl commands before touching any code. If you cannot reproduce it, you cannot verify you fixed it.</p>
 <p><strong>2. Trace the code with concrete values.</strong> Walking through the handler with <code>current_page = 400</code> and <code>status = "want-to-read"</code> made the sequential if-block problem obvious. Abstract reasoning ("this looks right") is less reliable than concrete tracing ("at this line, status equals X").</p>

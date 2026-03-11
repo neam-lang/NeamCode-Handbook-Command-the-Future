@@ -712,22 +712,18 @@ Results:
 </ul>
 <h3 id="compile-fix-run-loop">Compile-Fix-Run Loop <a href="#compile-fix-run-loop" class="heading-anchor">#</a></h3>
 <p>The integration between compilation, error fixing, and running is seamless:</p>
-<div class="flow-steps">
-  <span class="flow-step">Write code</span>
-  <span class="flow-arrow">&rarr;</span>
-  <span class="flow-step">Compile (/neam compile)</span>
-  <span class="flow-arrow">&rarr;</span>
-  <span class="flow-step highlight">Run (/neam run)</span>
-</div>
-<div class="flow-steps" style="margin-top: 0.5rem;">
-  <span class="flow-step" style="opacity: 0; pointer-events: none;">Write code</span>
-  <span class="flow-arrow">&darr;</span>
-  <span class="flow-step">errors?</span>
-  <span class="flow-arrow">&rarr;</span>
-  <span class="flow-step highlight">AI Fix errors</span>
-  <span class="flow-arrow">&rarr;</span>
-  <span class="flow-step">recompile</span>
-</div>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">┌──────────┐     ┌───────────┐     ┌──────────┐
+│  Write   │────►│  Compile  │────►│   Run    │
+│  code    │     │  (/neam   │     │  (/neam  │
+│          │     │  compile) │     │   run)   │
+└──────────┘     └─────┬─────┘     └──────────┘
+                       │ errors?          ▲
+                       ▼                  │
+                 ┌───────────┐            │
+                 │  AI Fix   │────────────┘
+                 │  errors   │   recompile
+                 └───────────┘</code></pre>
 <p>No context switching. No copying error messages into a chat window. The loop stays tight.</p>
 <h3 id="end-to-end-agent-development">End-to-End Agent Development <a href="#end-to-end-agent-development" class="heading-anchor">#</a></h3>
 <p>With NeamCode, you can go from idea to running agent without ever leaving the terminal:</p>

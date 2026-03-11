@@ -121,19 +121,17 @@
 <hr />
 <h2 id="101-auto-save-sessions">10.1 Auto-Save Sessions <a href="#101-auto-save-sessions" class="heading-anchor">#</a></h2>
 <p>Every conversation you have with NeamCode is automatically saved. You don't need to do anything — it just happens.</p>
-<div class="info-box">
-  <div class="info-box-header blue">SESSION AUTO-SAVE</div>
-  <div class="info-box-body">
-    <div class="flow-steps">
-      <span class="flow-step">You type</span>
-      <span class="flow-arrow">&rarr;</span>
-      <span class="flow-step">NeamCode responds</span>
-      <span class="flow-arrow">&rarr;</span>
-      <span class="flow-step highlight">Saved to disk</span>
-    </div>
-    <p>Every message, every file read, every command is recorded. Close the terminal and come back tomorrow &mdash; your work is still there.</p>
-  </div>
-</div>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">┌──────────────────────────────────────────────────────┐
+│              SESSION AUTO-SAVE                        │
+│                                                      │
+│   You type ──→ NeamCode responds ──→ Saved to disk   │
+│                                                      │
+│   Every message, every file read, every command      │
+│   is recorded. Close the terminal and come back      │
+│   tomorrow — your work is still there.               │
+│                                                      │
+└──────────────────────────────────────────────────────┘</code></pre>
 <p>Sessions capture:</p>
 <ul>
 <li>The full conversation history (your messages and NeamCode's responses)</li>
@@ -239,20 +237,20 @@ Bad names:
 <h2 id="104-checkpoints-your-safety-net">10.4 Checkpoints — Your Safety Net <a href="#104-checkpoints-your-safety-net" class="heading-anchor">#</a></h2>
 <p>Checkpoints are snapshots of your project's state at a specific moment. NeamCode creates them automatically before any destructive operation.</p>
 <h3 id="when-checkpoints-are-created">When Checkpoints Are Created <a href="#when-checkpoints-are-created" class="heading-anchor">#</a></h3>
-<div class="info-box">
-  <div class="info-box-header green">AUTOMATIC CHECKPOINT TRIGGERS</div>
-  <div class="info-box-body">
-    <ul>
-      <li>Before editing a file</li>
-      <li>Before deleting a file</li>
-      <li>Before running git commands</li>
-      <li>Before running shell commands that modify files</li>
-      <li>Before <code>/clear</code></li>
-      <li>Before applying multi-file refactors</li>
-    </ul>
-    <p>You don't need to create checkpoints manually. NeamCode handles it.</p>
-  </div>
-</div>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">┌──────────────────────────────────────────────────────┐
+│           AUTOMATIC CHECKPOINT TRIGGERS               │
+│                                                      │
+│   ✓ Before editing a file                            │
+│   ✓ Before deleting a file                           │
+│   ✓ Before running git commands                      │
+│   ✓ Before running shell commands that modify files  │
+│   ✓ Before /clear                                    │
+│   ✓ Before applying multi-file refactors             │
+│                                                      │
+│   You don&#x27;t need to create checkpoints manually.     │
+│   NeamCode handles it.                               │
+└──────────────────────────────────────────────────────┘</code></pre>
 <h3 id="viewing-checkpoints">Viewing Checkpoints <a href="#viewing-checkpoints" class="heading-anchor">#</a></h3>
 <div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
 <pre><code class="language-">neamcode&gt; /rewind
@@ -350,11 +348,6 @@ neamcode&gt; /rewind 12
 <h2 id="106-context-compaction">10.6 Context Compaction <a href="#106-context-compaction" class="heading-anchor">#</a></h2>
 <p>Every message in your conversation uses tokens. As conversations grow long, you approach the model's context limit. Context compaction solves this.</p>
 <h3 id="how-compaction-works">How Compaction Works <a href="#how-compaction-works" class="heading-anchor">#</a></h3>
-<figure class="diagram-figure">
-  <img src="../assets/diagrams/ch10-context-compaction.svg" alt="Context Window Compaction" />
-  <figcaption>Figure 10.1 — Context Window Compaction</figcaption>
-</figure>
-<div class="ascii-fallback">
 <div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
 <pre><code class="language-">┌──────────────────────────────────────────────────────┐
 │              CONTEXT COMPACTION                       │
@@ -374,7 +367,6 @@ neamcode&gt; /rewind 12
 │  Recent messages → kept in full detail               │
 │                                                      │
 └──────────────────────────────────────────────────────┘</code></pre>
-</div>
 <h3 id="automatic-compaction">Automatic Compaction <a href="#automatic-compaction" class="heading-anchor">#</a></h3>
 <p>NeamCode triggers compaction automatically when token usage hits <strong>85%</strong> of the maximum context window:</p>
 <div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
@@ -415,6 +407,35 @@ neamcode&gt; /rewind 12
 <li>Code snippets shown but not saved to files</li>
 </ul>
 <div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip:</strong> If something is important enough to survive compaction, tell NeamCode to remember it: "Remember that we decided to use JWT for auth." This saves it to MEMORY.md, which is compaction-proof.</p></div>
+<h3 id="progressive-compaction-v0351">Progressive Compaction (v0.3.5.1) <a href="#progressive-compaction-v0351" class="heading-anchor">#</a></h3>
+<p>v0.3.5.1 upgraded compaction from a single-stage process to <strong>5-stage progressive compaction</strong>. Instead of one aggressive compression at 85%, the system now applies increasingly aggressive strategies as context fills up:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">┌─────────────────────────────────────────────────────┐
+│         5-Stage Progressive Compaction               │
+├──────┬──────────────────────────────────────────────┤
+│  60% │ Stage 1: Remove duplicates, compress verbose │
+│      │          tool outputs                         │
+├──────┼──────────────────────────────────────────────┤
+│  70% │ Stage 2: Summarize old tool results by type  │
+│      │          (file reads → key sections only)     │
+├──────┼──────────────────────────────────────────────┤
+│  80% │ Stage 3: Compress reasoning chains to        │
+│      │          conclusions only                     │
+├──────┼──────────────────────────────────────────────┤
+│  90% │ Stage 4: Keep system prompt + plan + last    │
+│      │          3 turns only                         │
+├──────┼──────────────────────────────────────────────┤
+│  95% │ Stage 5: Emergency — absolute minimum for    │
+│      │          continuation                         │
+└──────┴──────────────────────────────────────────────┘</code></pre>
+<p>This means you can work longer before losing context. Stage 1 at 60% is almost invisible — it just removes redundant information. By the time Stage 5 triggers at 95%, you've gotten far more useful work done than with the old single-stage approach.</p>
+<p><strong>What survives all 5 stages:</strong></p>
+<ul>
+<li>MEMORY.md entries (never compacted)</li>
+<li>NEAMCODE.md instructions (re-injected after compaction)</li>
+<li>The current plan (if Plan Mode was used)</li>
+<li>The most recent 3 messages</li>
+</ul>
 <hr />
 <h2 id="107-exporting-conversations">10.7 Exporting Conversations <a href="#107-exporting-conversations" class="heading-anchor">#</a></h2>
 <p>Sometimes you need to share a conversation or archive it outside NeamCode.</p>
@@ -530,34 +551,17 @@ Day 2:
 </ul>
 <h3 id="checkpoints-vs-git-commits">Checkpoints vs. Git Commits <a href="#checkpoints-vs-git-commits" class="heading-anchor">#</a></h3>
 <p>Use both, but know the difference:</p>
-<div class="comparison-grid">
-  <div class="info-box">
-    <div class="info-box-header blue">Checkpoints</div>
-    <div class="info-box-body">
-      <ul>
-        <li>Automatic</li>
-        <li>Per-file snapshots</li>
-        <li>Session-scoped</li>
-        <li>Undo via <code>/rewind</code></li>
-        <li>For quick undo</li>
-        <li>Internal to NeamCode</li>
-      </ul>
-    </div>
-  </div>
-  <div class="info-box">
-    <div class="info-box-header gray">Git Commits</div>
-    <div class="info-box-body">
-      <ul>
-        <li>Manual</li>
-        <li>Whole-repo snapshots</li>
-        <li>Permanent history</li>
-        <li>Undo via <code>git revert</code></li>
-        <li>For project milestones</li>
-        <li>Shared with team</li>
-      </ul>
-    </div>
-  </div>
-</div>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">┌────────────────────┬──────────────────────────────┐
+│    Checkpoints     │        Git Commits            │
+├────────────────────┼──────────────────────────────┤
+│ Automatic          │ Manual                        │
+│ Per-file snapshots │ Whole-repo snapshots          │
+│ Session-scoped     │ Permanent history             │
+│ Undo via /rewind   │ Undo via git revert           │
+│ For quick undo     │ For project milestones        │
+│ Internal to NC     │ Shared with team              │
+└────────────────────┴──────────────────────────────┘</code></pre>
 <p>Checkpoints are your quick-undo for "that last change was wrong." Git commits are your permanent record of "this change is done and tested."</p>
 <h3 id="the-export-archive-workflow">The Export-Archive Workflow <a href="#the-export-archive-workflow" class="heading-anchor">#</a></h3>
 <p>For important sessions you want to keep long-term:</p>

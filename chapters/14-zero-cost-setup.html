@@ -127,11 +127,6 @@
 <p><strong>Speed: No network round-trip.</strong> On capable hardware, local inference can match or beat cloud latency, especially when factoring in network overhead.</p>
 <p><strong>Availability: Always on.</strong> No outages, no rate limits, no API deprecations. Your AI assistant works on airplanes, in basements, and during cloud provider incidents.</p>
 <p><strong>The trade-off?</strong> Local models are smaller and less capable than frontier cloud models. A 7B parameter model running on your laptop won't match Claude Opus or GPT-4o on complex reasoning tasks. But for 80% of everyday coding tasks — completions, refactoring, test generation, explanations — local models are surprisingly capable.</p>
-<figure class="diagram-figure">
-  <img src="../assets/diagrams/ch14-hybrid-strategy.svg" alt="Hybrid Local/Cloud Strategy" />
-  <figcaption>Figure 14.1 — Hybrid Local/Cloud Strategy</figcaption>
-</figure>
-<div class="ascii-fallback">
 <div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
 <pre><code class="language-">┌─────────────────────────────────────────────────────────┐
 │           The Local AI Value Proposition                  │
@@ -150,7 +145,6 @@
 │  Cloud Budget     ████████                      Privacy  │
 │  Local (any)      ████████████████████████████  Privacy  │
 └─────────────────────────────────────────────────────────┘</code></pre>
-</div>
 <hr />
 <h2 id="142-installing-ollama">14.2 Installing Ollama <a href="#142-installing-ollama" class="heading-anchor">#</a></h2>
 <p>Ollama is the local AI runtime that NeamCode uses. Installation is straightforward.</p>
@@ -193,73 +187,61 @@ ollama run qwen2.5-coder:7b &quot;Write a Python hello world&quot;</code></pre>
 <h3 id="hardware-aware-model-selection">Hardware-Aware Model Selection <a href="#hardware-aware-model-selection" class="heading-anchor">#</a></h3>
 <p>NeamCode automatically selects the best model for your hardware, but understanding the recommendations helps you make informed choices.</p>
 <h4 id="8gb-ram-systems">8GB RAM Systems <a href="#8gb-ram-systems" class="heading-anchor">#</a></h4>
-<div class="info-box">
-  <div class="info-box-header amber">8GB RAM Recommendation</div>
-  <div class="info-box-body">
-    <table>
-      <thead>
-        <tr><th>Model</th><th>Size</th><th>Quality</th><th>Speed</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>Qwen3 1.7B</td><td>~1.2 GB</td><td>★★☆☆☆</td><td>Very Fast</td></tr>
-        <tr><td>phi3</td><td>~2.0 GB</td><td>★★★☆☆</td><td>Fast</td></tr>
-        <tr><td>llama3.2:3b</td><td>~2.0 GB</td><td>★★★☆☆</td><td>Fast</td></tr>
-        <tr><td>gemma</td><td>~5.0 GB</td><td>★★★☆☆</td><td>Moderate</td></tr>
-      </tbody>
-    </table>
-    <p><strong>Best pick:</strong> Qwen3 1.7B (fast, leaves RAM for your IDE and browser)<br />
-    <strong>Runner-up:</strong> phi3 (slightly better quality, still lightweight)</p>
-  </div>
-</div>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">┌───────────────────────────────────────────────────────────┐
+│  8GB RAM Recommendation                                    │
+├───────────────────┬───────────┬───────────┬───────────────┤
+│ Model             │ Size      │ Quality   │ Speed         │
+├───────────────────┼───────────┼───────────┼───────────────┤
+│ Qwen3 1.7B        │ ~1.2 GB   │ ★★☆☆☆    │ Very Fast     │
+│ phi3              │ ~2.0 GB   │ ★★★☆☆    │ Fast          │
+│ llama3.2:3b       │ ~2.0 GB   │ ★★★☆☆    │ Fast          │
+│ gemma             │ ~5.0 GB   │ ★★★☆☆    │ Moderate      │
+└───────────────────┴───────────┴───────────┴───────────────┘
+
+Best pick: Qwen3 1.7B (fast, leaves RAM for your IDE and browser)
+Runner-up: phi3 (slightly better quality, still lightweight)</code></pre>
 <div class="code-header"><span class="code-lang">bash</span><button class="copy-btn">Copy</button></div>
 <pre><code class="language-bash"># 8GB setup
 ollama pull qwen3:1.7b
 ollama pull phi3          # backup model</code></pre>
 <div class="callout callout-note"><div class="callout-title"><span class="callout-icon">&#128221;</span> Note</div><p>📝 <strong>Note:</strong> On 8GB machines, keep an eye on memory pressure. If your system starts swapping, close other applications or switch to the smaller model.</p></div>
 <h4 id="16gb-ram-systems">16GB RAM Systems <a href="#16gb-ram-systems" class="heading-anchor">#</a></h4>
-<div class="info-box">
-  <div class="info-box-header green">16GB RAM Recommendation</div>
-  <div class="info-box-body">
-    <table>
-      <thead>
-        <tr><th>Model</th><th>Size</th><th>Quality</th><th>Speed</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>qwen2.5-coder:7b</td><td>~4.0 GB</td><td>★★★★☆</td><td>Fast</td></tr>
-        <tr><td>llama3.1:8b</td><td>~5.0 GB</td><td>★★★★☆</td><td>Fast</td></tr>
-        <tr><td>mistral</td><td>~4.0 GB</td><td>★★★★☆</td><td>Fast</td></tr>
-        <tr><td>qwen2.5:7b</td><td>~4.0 GB</td><td>★★★★☆</td><td>Fast</td></tr>
-      </tbody>
-    </table>
-    <p><strong>Best pick:</strong> Qwen 2.5 Coder 7B (optimized for coding tasks)<br />
-    <strong>Runner-up:</strong> llama3.1:8b (strong general-purpose model)</p>
-  </div>
-</div>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">┌───────────────────────────────────────────────────────────┐
+│  16GB RAM Recommendation                                   │
+├───────────────────┬───────────┬───────────┬───────────────┤
+│ Model             │ Size      │ Quality   │ Speed         │
+├───────────────────┼───────────┼───────────┼───────────────┤
+│ qwen2.5-coder:7b  │ ~4.0 GB   │ ★★★★☆    │ Fast          │
+│ llama3.1:8b       │ ~5.0 GB   │ ★★★★☆    │ Fast          │
+│ mistral           │ ~4.0 GB   │ ★★★★☆    │ Fast          │
+│ qwen2.5:7b        │ ~4.0 GB   │ ★★★★☆    │ Fast          │
+└───────────────────┴───────────┴───────────┴───────────────┘
+
+Best pick: Qwen 2.5 Coder 7B (optimized for coding tasks)
+Runner-up: llama3.1:8b (strong general-purpose model)</code></pre>
 <div class="code-header"><span class="code-lang">bash</span><button class="copy-btn">Copy</button></div>
 <pre><code class="language-bash"># 16GB setup
 ollama pull qwen2.5-coder:7b
 ollama pull llama3.1:8b       # backup model</code></pre>
 <div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip:</strong> The <code>qwen2.5-coder:7b</code> model is specifically trained on code. For a coding assistant like NeamCode, it significantly outperforms general-purpose models of the same size.</p></div>
 <h4 id="32gb-ram-systems">32GB+ RAM Systems <a href="#32gb-ram-systems" class="heading-anchor">#</a></h4>
-<div class="info-box">
-  <div class="info-box-header blue">32GB+ RAM Recommendation</div>
-  <div class="info-box-body">
-    <table>
-      <thead>
-        <tr><th>Model</th><th>Size</th><th>Quality</th><th>Speed</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>llama3.1:70b</td><td>~40 GB</td><td>★★★★★</td><td>Slow</td></tr>
-        <tr><td>MoE models</td><td>Varies</td><td>★★★★★</td><td>Moderate</td></tr>
-        <tr><td>qwen2.5-coder:7b</td><td>~4.0 GB</td><td>★★★★☆</td><td>Very Fast</td></tr>
-        <tr><td>llama3.1:8b</td><td>~5.0 GB</td><td>★★★★☆</td><td>Very Fast</td></tr>
-      </tbody>
-    </table>
-    <p><strong>Best pick:</strong> MoE models (Mixture of Experts — best quality-to-speed ratio)<br />
-    <strong>Maximum quality:</strong> llama3.1:70b (closest to cloud quality, but slow)<br />
-    <strong>Daily driver:</strong> qwen2.5-coder:7b (fast enough for interactive use)</p>
-  </div>
-</div>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">┌───────────────────────────────────────────────────────────┐
+│  32GB+ RAM Recommendation                                  │
+├───────────────────┬───────────┬───────────┬───────────────┤
+│ Model             │ Size      │ Quality   │ Speed         │
+├───────────────────┼───────────┼───────────┼───────────────┤
+│ llama3.1:70b      │ ~40 GB    │ ★★★★★    │ Slow          │
+│ MoE models        │ Varies    │ ★★★★★    │ Moderate      │
+│ qwen2.5-coder:7b  │ ~4.0 GB   │ ★★★★☆    │ Very Fast     │
+│ llama3.1:8b       │ ~5.0 GB   │ ★★★★☆    │ Very Fast     │
+└───────────────────┴───────────┴───────────┴───────────────┘
+
+Best pick: MoE models (Mixture of Experts — best quality-to-speed ratio)
+Maximum quality: llama3.1:70b (closest to cloud quality, but slow)
+Daily driver: qwen2.5-coder:7b (fast enough for interactive use)</code></pre>
 <div class="code-header"><span class="code-lang">bash</span><button class="copy-btn">Copy</button></div>
 <pre><code class="language-bash"># 32GB setup
 ollama pull llama3.1:70b          # premium local model
@@ -329,30 +311,32 @@ def reverse_linked_list(head):
 <hr />
 <h2 id="145-the-hybrid-approach-80155">14.5 The Hybrid Approach (80/15/5) <a href="#145-the-hybrid-approach-80155" class="heading-anchor">#</a></h2>
 <p>Pure local is great for cost and privacy, but sometimes you need cloud-tier quality. The <strong>SLM (Small Language Model) Strategy</strong> gives you the best of both worlds:</p>
-<div class="info-box">
-  <div class="info-box-header red">The 80/15/5 Tri-Tier Strategy</div>
-  <div class="info-box-body">
-    <div class="info-box" style="margin-bottom: 0;">
-      <div class="info-box-header green">80% LOCAL (Ollama — free)</div>
-      <div class="info-box-body">
-        <p>Completions, refactoring, simple questions, test generation, docs</p>
-      </div>
-    </div>
-    <div class="info-box" style="margin-bottom: 0;">
-      <div class="info-box-header amber">15% SMALL CLOUD (Claude Haiku, GPT-4o-mini — cheap)</div>
-      <div class="info-box-body">
-        <p>Medium tasks, better reasoning</p>
-      </div>
-    </div>
-    <div class="info-box" style="margin-bottom: 0;">
-      <div class="info-box-header purple">5% PREMIUM CLOUD (Claude Opus, GPT-4o — expensive)</div>
-      <div class="info-box-body">
-        <p>Architecture, complex bugs, reviews</p>
-      </div>
-    </div>
-    <p><strong>Monthly cost estimate:</strong> $5-15 (vs. $50-200 all-cloud)</p>
-  </div>
-</div>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">┌─────────────────────────────────────────────────────────┐
+│              The 80/15/5 Tri-Tier Strategy                │
+│                                                         │
+│  ┌─────────────────────────────────────────────┐        │
+│  │                                             │        │
+│  │              80% LOCAL                      │        │
+│  │         (Ollama — free)                     │        │
+│  │                                             │        │
+│  │   Completions, refactoring, simple          │        │
+│  │   questions, test generation, docs          │        │
+│  │                                             │        │
+│  ├─────────────────────────────────────────────┤        │
+│  │         15% SMALL CLOUD                     │        │
+│  │   (Claude Haiku, GPT-4o-mini — cheap)       │        │
+│  │                                             │        │
+│  │   Medium tasks, better reasoning            │        │
+│  ├─────────────────────────────────────────────┤        │
+│  │    5% PREMIUM CLOUD                         │        │
+│  │   (Claude Opus, GPT-4o — expensive)         │        │
+│  │                                             │        │
+│  │   Architecture, complex bugs, reviews       │        │
+│  └─────────────────────────────────────────────┘        │
+│                                                         │
+│  Monthly cost estimate: $5–15 (vs. $50–200 all-cloud)   │
+└─────────────────────────────────────────────────────────┘</code></pre>
 <h3 id="configure-the-hybrid-setup">Configure the Hybrid Setup <a href="#configure-the-hybrid-setup" class="heading-anchor">#</a></h3>
 <div class="code-header"><span class="code-lang">yaml</span><button class="copy-btn">Copy</button></div>
 <pre><code class="language-yaml"># neamcode.config.yml — Hybrid 80/15/5 configuration
@@ -409,75 +393,53 @@ neamcode $ /routing balanced
 <h2 id="146-real-cost-comparisons">14.6 Real Cost Comparisons <a href="#146-real-cost-comparisons" class="heading-anchor">#</a></h2>
 <p>Let's compare monthly costs for a typical developer using NeamCode 4 hours per day, 22 working days per month.</p>
 <h3 id="scenario-full-time-developer">Scenario: Full-time Developer <a href="#scenario-full-time-developer" class="heading-anchor">#</a></h3>
-<div class="info-box">
-  <div class="info-box-header blue">Monthly Cost Comparison</div>
-  <div class="info-box-body">
-    <table>
-      <thead>
-        <tr><th>Setup</th><th>Monthly Cost</th><th>Quality</th><th>Privacy</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>All Cloud Premium (Claude Opus/GPT-4o)</td><td>$80 - $200</td><td>★★★★★</td><td>Low</td></tr>
-        <tr><td>All Cloud Budget (Haiku/GPT-4o-mini)</td><td>$15 - $40</td><td>★★★★☆</td><td>Low</td></tr>
-        <tr><td>Hybrid (80/15/5)</td><td>$5 - $15</td><td>★★★★☆ (★★★★★ when needed)</td><td>High (80% local)</td></tr>
-        <tr><td>All Local (Ollama only)</td><td>$0</td><td>★★★☆☆</td><td>Total</td></tr>
-      </tbody>
-    </table>
-  </div>
-</div>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">┌────────────────────────────────────────────────────────────────┐
+│              Monthly Cost Comparison                            │
+├─────────────────────┬──────────────┬──────────────┬────────────┤
+│ Setup               │ Monthly Cost │ Quality      │ Privacy    │
+├─────────────────────┼──────────────┼──────────────┼────────────┤
+│ All Cloud Premium   │ $80 – $200   │ ★★★★★        │ Low        │
+│ (Claude Opus/GPT-4o)│              │              │            │
+├─────────────────────┼──────────────┼──────────────┼────────────┤
+│ All Cloud Budget    │ $15 – $40    │ ★★★★☆        │ Low        │
+│ (Haiku/GPT-4o-mini) │              │              │            │
+├─────────────────────┼──────────────┼──────────────┼────────────┤
+│ Hybrid (80/15/5)    │ $5 – $15     │ ★★★★☆        │ High       │
+│                     │              │ (★★★★★ when  │ (80% local)│
+│                     │              │  needed)     │            │
+├─────────────────────┼──────────────┼──────────────┼────────────┤
+│ All Local           │ $0           │ ★★★☆☆        │ Total      │
+│ (Ollama only)       │              │              │            │
+└─────────────────────┴──────────────┴──────────────┴────────────┘</code></pre>
 <h3 id="breakdown-hybrid-setup-in-detail">Breakdown: Hybrid Setup in Detail <a href="#breakdown-hybrid-setup-in-detail" class="heading-anchor">#</a></h3>
 <p>Assuming 88 hours of use per month (~1,000 requests):</p>
-<div class="info-box">
-  <div class="info-box-header green">Hybrid Setup Breakdown</div>
-  <div class="info-box-body">
-    <table>
-      <thead>
-        <tr><th>Tier</th><th>Requests</th><th>Avg Cost/Request</th><th>Monthly Cost</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>Local</td><td>800</td><td>$0.000</td><td>$0.00</td></tr>
-        <tr><td>Small Cloud</td><td>150</td><td>$0.003</td><td>$0.45</td></tr>
-        <tr><td>Premium</td><td>50</td><td>$0.150</td><td>$7.50</td></tr>
-        <tr><td><strong>Total</strong></td><td><strong>1,000</strong></td><td></td><td><strong>$7.95</strong></td></tr>
-      </tbody>
-    </table>
-  </div>
-</div>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">Tier       Requests   Avg Cost/Request   Monthly Cost
+─────────────────────────────────────────────────────
+Local       800       $0.000             $0.00
+Small Cloud 150       $0.003             $0.45
+Premium      50       $0.150             $7.50
+─────────────────────────────────────────────────────
+Total      1,000                         $7.95</code></pre>
 <p>Compare to all-cloud premium:</p>
-<div class="info-box">
-  <div class="info-box-header red">All-Cloud Premium Breakdown</div>
-  <div class="info-box-body">
-    <table>
-      <thead>
-        <tr><th>Tier</th><th>Requests</th><th>Avg Cost/Request</th><th>Monthly Cost</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>Premium</td><td>1,000</td><td>$0.120</td><td>$120.00</td></tr>
-        <tr><td><strong>Total</strong></td><td><strong>1,000</strong></td><td></td><td><strong>$120.00</strong></td></tr>
-      </tbody>
-    </table>
-  </div>
-</div>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">Tier       Requests   Avg Cost/Request   Monthly Cost
+─────────────────────────────────────────────────────
+Premium    1,000      $0.120             $120.00
+─────────────────────────────────────────────────────
+Total      1,000                         $120.00</code></pre>
 <p>That's a <strong>93% reduction</strong> with the hybrid approach, while still having access to premium models for the tasks that truly need them.</p>
 <h3 id="cost-per-task-type">Cost Per Task Type <a href="#cost-per-task-type" class="heading-anchor">#</a></h3>
-<div class="info-box">
-  <div class="info-box-header gray">Cost Per Task Type</div>
-  <div class="info-box-body">
-    <table>
-      <thead>
-        <tr><th>Task</th><th>Local</th><th>Cloud Budget</th><th>Cloud Premium</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>"Fix this typo"</td><td>$0.000</td><td>$0.001</td><td>$0.02</td></tr>
-        <tr><td>"Write unit tests for this file"</td><td>$0.000</td><td>$0.005</td><td>$0.08</td></tr>
-        <tr><td>"Explain this error message"</td><td>$0.000</td><td>$0.002</td><td>$0.04</td></tr>
-        <tr><td>"Refactor to async/await"</td><td>$0.000</td><td>$0.008</td><td>$0.12</td></tr>
-        <tr><td>"Review security architecture"</td><td>$0.000</td><td>$0.015</td><td>$0.25</td></tr>
-        <tr><td>"Debug complex race condition"</td><td>$0.000</td><td>$0.020</td><td>$0.35</td></tr>
-      </tbody>
-    </table>
-  </div>
-</div>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">Task                              Local     Cloud Budget  Cloud Premium
+────────────────────────────────────────────────────────────────────────
+&quot;Fix this typo&quot;                   $0.000    $0.001        $0.02
+&quot;Write unit tests for this file&quot;  $0.000    $0.005        $0.08
+&quot;Explain this error message&quot;      $0.000    $0.002        $0.04
+&quot;Refactor to async/await&quot;         $0.000    $0.008        $0.12
+&quot;Review security architecture&quot;    $0.000    $0.015        $0.25
+&quot;Debug complex race condition&quot;    $0.000    $0.020        $0.35</code></pre>
 <div class="callout callout-note"><div class="callout-title"><span class="callout-icon">&#128221;</span> Note</div><p>📝 <strong>Note:</strong> These are approximate costs based on typical token usage per task. Actual costs vary with prompt length, response length, and specific model pricing.</p></div>
 <hr />
 <h2 id="147-quality-expectations">14.7 Quality Expectations <a href="#147-quality-expectations" class="heading-anchor">#</a></h2>
@@ -558,14 +520,12 @@ NeamCode: Yes, there&#x27;s a subtle race condition. While the mutex
   ✓ Cloud model caught the subtle issue the local model missed</code></pre>
 <h3 id="the-quality-gradient">The Quality Gradient <a href="#the-quality-gradient" class="heading-anchor">#</a></h3>
 <p>Think of it as a spectrum:</p>
-<div class="info-box">
-  <div class="info-box-header gray">Quality Gradient: Simple → Complex</div>
-  <div class="info-box-body">
-    <p><strong>Local 7B:</strong> <span style="display:inline-block; width:50%; background:linear-gradient(to right, var(--accent) 55%, var(--border) 55%); height:0.75em; border-radius:4px; vertical-align:middle;"></span> Good up to here</p>
-    <p><strong>Cloud Budget:</strong> <span style="display:inline-block; width:50%; background:linear-gradient(to right, var(--accent) 70%, var(--border) 70%); height:0.75em; border-radius:4px; vertical-align:middle;"></span> Good up to here</p>
-    <p><strong>Cloud Premium:</strong> <span style="display:inline-block; width:50%; background:var(--accent); height:0.75em; border-radius:4px; vertical-align:middle;"></span> Handles everything</p>
-  </div>
-</div>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">Task Complexity:   Simple ◄──────────────────────► Complex
+
+Local 7B:          ████████████████░░░░░░░░░░░░░░  Good up to here
+Cloud Budget:      ██████████████████████░░░░░░░░░  Good up to here
+Cloud Premium:     ████████████████████████████████  Handles everything</code></pre>
 <p>The hybrid approach lets you get the right quality level without overpaying for simple tasks.</p>
 <div class="callout callout-warning"><div class="callout-title"><span class="callout-icon">&#9888;&#65039;</span> Warning</div><p>⚠️ <strong>Warning:</strong> Don't blindly trust local model output on security-critical or architecturally significant decisions. Use cloud premium for high-stakes tasks. The cost difference is negligible compared to the cost of a security vulnerability in production.</p></div>
 <hr />

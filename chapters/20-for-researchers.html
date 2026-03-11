@@ -666,6 +666,52 @@ Session cost: $0.87
 &gt; /model deepseek-coder-v2
 
 Switched to free local model for code tasks.</code></pre>
+<h3 id="reading-research-papers-directly-v0353">Reading Research Papers Directly (v0.3.5.3) <a href="#reading-research-papers-directly-v0353" class="heading-anchor">#</a></h3>
+<p>NeamCode can now fetch and extract text from PDF papers directly from URLs like arxiv:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">&gt; Read https://arxiv.org/pdf/2603.04448 and summarize the methodology
+
+NeamCode:
+  [web_fetch] https://arxiv.org/pdf/2603.04448
+    → Smart redirect to https://arxiv.org/abs/2603.04448
+
+  Paper: &quot;Language Model Agents as Digital Scientists&quot;
+  Authors: Wang et al.  |  Pages: 42
+
+  Methodology Summary:
+  1. Multi-agent architecture with role specialization
+     (Hypothesis Agent, Experiment Agent, Analysis Agent)
+  2. Each agent has access to domain-specific tools:
+     - Hypothesis: literature search, knowledge graph
+     - Experiment: code execution, data collection
+     - Analysis: statistical testing, visualization
+  3. Evaluation on 12 scientific benchmarks across
+     3 domains (NLP, CV, Biology)
+  ...</code></pre>
+<p>This is particularly useful for:</p>
+<ul>
+<li><strong>Literature reviews</strong> — Fetch and summarize multiple papers in sequence</li>
+<li><strong>Comparing methodologies</strong> — Ask NeamCode to compare approaches across papers</li>
+<li><strong>Extracting formulas and tables</strong> — PDF text extraction captures structured content</li>
+<li><strong>Building annotated bibliographies</strong> — Combine <code>web_fetch</code> with memory to track readings</li>
+</ul>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">&gt; Fetch these three papers and create a comparison table:
+  https://arxiv.org/pdf/2603.04448
+  https://arxiv.org/pdf/2601.12345
+  https://arxiv.org/pdf/2602.67890
+
+NeamCode:
+  [web_fetch] (paper 1)
+  [web_fetch] (paper 2)
+  [web_fetch] (paper 3)
+
+  | Aspect        | Paper 1       | Paper 2       | Paper 3       |
+  |---------------|---------------|---------------|---------------|
+  | Architecture  | Multi-agent   | Single-agent  | Hierarchical  |
+  | Benchmark     | SWE-bench     | HumanEval     | MATH          |
+  | Key Result    | 72% accuracy  | 89% pass@1    | 64% solve     |
+  | Limitation    | Cost ($2/run) | Context limit | Domain-specific|</code></pre>
 <h3 id="export-results-for-latex">Export Results for LaTeX <a href="#export-results-for-latex" class="heading-anchor">#</a></h3>
 <div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
 <pre><code class="language-">&gt; Convert the results table to LaTeX format for my paper.

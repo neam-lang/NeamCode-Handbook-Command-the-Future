@@ -518,7 +518,8 @@ neamcode&gt; /neam run build/assistant.neamb
 neamcode&gt; /pkg install neam-rag-utils
 
   ✓ Installed neam-rag-utils@1.2.0</code></pre>
-<h3 id="skill-manage-skills">/skill — Manage Skills <a href="#skill-manage-skills" class="heading-anchor">#</a></h3>
+<h3 id="skill-manage-skills-v0352">/skill — Manage Skills (v0.3.5.2) <a href="#skill-manage-skills-v0352" class="heading-anchor">#</a></h3>
+<p>The <code>/skill</code> command gained powerful subcommands in v0.3.5.2 for the SKILL.md ecosystem:</p>
 <div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
 <pre><code class="language-">neamcode&gt; /skill list
 
@@ -527,7 +528,82 @@ neamcode&gt; /pkg install neam-rag-utils
   calculator      Built-in    Arithmetic operations
   web-search      Built-in    Search the web
   file-reader     MCP         Read files via MCP
-  db-query        Custom      Query PostgreSQL</code></pre>
+  db-query        Custom      Query PostgreSQL
+  docker-deploy   SKILL.md    Deploy via Docker        ★4.5
+  test-gen        SKILL.md    Generate test suites      ★4.2</code></pre>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; /skill search &quot;deploy kubernetes&quot;
+
+  Search Results (keyword + semantic)
+  ════════════════════════════════════
+  1. docker-deploy      Score: 0.92   Deploy via Docker/K8s
+  2. k8s-rollback       Score: 0.85   Kubernetes rollback
+  3. helm-chart-gen     Score: 0.71   Generate Helm charts</code></pre>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; /skill create prompt
+  Describe your skill: Generate API documentation from route files
+
+  ✓ Created: api-doc-gen.skill.md
+  ✓ Evaluation: Safety ★5  Completeness ★4  Executability ★4</code></pre>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; /skill graph docker-deploy
+
+  docker-deploy
+  ├── [depend_on] → docker-build
+  ├── [compose_with] → k8s-deploy
+  ├── [similar_to] ⇄ podman-deploy
+  └── [belong_to] → deployment-pipeline</code></pre>
+<p>Additional <code>/skill</code> subcommands: <code>info</code>, <code>evaluate</code>, <code>install</code>, <code>uninstall</code>, <code>export</code>, <code>compose</code>, <code>update</code>.</p>
+<h3 id="plan-plan-mode-v0351">/plan — Plan Mode (v0.3.5.1) <a href="#plan-plan-mode-v0351" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; /plan Add OAuth2 login with Google and GitHub providers
+
+  📋 Plan: OAuth2 Login Implementation
+  ═════════════════════════════════════
+  Step 1: Install dependencies (passport, passport-google-oauth20,
+          passport-github2)                        ~500 tokens
+  Step 2: Create auth config (src/config/auth.ts)  ~800 tokens
+  Step 3: Implement Google strategy                ~1200 tokens
+  Step 4: Implement GitHub strategy                ~1000 tokens
+  Step 5: Add callback routes                      ~600 tokens
+  Step 6: Write tests                              ~1500 tokens
+  ─────────────────────────────────────────────────
+  Total estimated: ~5,600 tokens  |  Cost: ~$0.08
+
+  [a]pprove  [e]dit  [c]ancel</code></pre>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; /plan show
+
+  (displays the current plan with status indicators)
+
+neamcode&gt; /plan approve
+
+  ✓ Executing plan...
+  Step 1/6: ◉ Installing dependencies...</code></pre>
+<h3 id="diagnostics-system-dashboard-v0353">/diagnostics — System Dashboard (v0.3.5.3) <a href="#diagnostics-system-dashboard-v0353" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; /diagnostics
+
+  ╔══════════════════════════════════════════╗
+  ║           NEAMCODE DIAGNOSTICS           ║
+  ╠══════════════════════════════════════════╣
+  ║ System Health                            ║
+  ║   Uptime: 2h 15m  |  Memory: 148 MB     ║
+  ║   Active processes: 2                    ║
+  ║                                          ║
+  ║ Providers                                ║
+  ║   ◉ openai     Online   45ms   $1.23    ║
+  ║   ◉ ollama     Online   12ms   $0.00    ║
+  ║   ○ anthropic  Idle     —      —        ║
+  ║                                          ║
+  ║ Skill Ecosystem                          ║
+  ║   Skills: 31  |  Evaluated: 8  |  ★4.3  ║
+  ║   Graph: 31 nodes, 47 edges             ║
+  ║                                          ║
+  ║ Recent Errors (last 20)                  ║
+  ║   E-NET-003  Provider timeout  (resolved)║
+  ║   E-BUDG-001 Budget warning    (active)  ║
+  ╚══════════════════════════════════════════╝</code></pre>
 <hr />
 <h2 id="88-ui-preferences">8.8 UI &amp; Preferences <a href="#88-ui-preferences" class="heading-anchor">#</a></h2>
 <h3 id="theme-change-the-look">/theme — Change the Look <a href="#theme-change-the-look" class="heading-anchor">#</a></h3>
@@ -555,85 +631,76 @@ neamcode&gt; /theme dracula
 <h2 id="89-pro-tips">8.9 Pro Tips <a href="#89-pro-tips" class="heading-anchor">#</a></h2>
 <h3 id="the-complete-command-reference">The Complete Command Reference <a href="#the-complete-command-reference" class="heading-anchor">#</a></h3>
 <p>Here is every slash command organized by category:</p>
-<div class="info-box">
-  <div class="info-box-header red">NEAMCODE SLASH COMMANDS</div>
-  <div class="info-box-body">
-    <h4>Help &amp; Status</h4>
-    <div class="table-wrap"><table>
-      <tbody>
-        <tr><td><code>/help</code></td><td>Show all commands or help on one</td></tr>
-        <tr><td><code>/doctor</code></td><td>Diagnose environment issues</td></tr>
-        <tr><td><code>/status</code></td><td>Show system status summary</td></tr>
-      </tbody>
-    </table></div>
-    <h4>Session Management</h4>
-    <div class="table-wrap"><table>
-      <tbody>
-        <tr><td><code>/sessions</code></td><td>List saved sessions</td></tr>
-        <tr><td><code>/resume</code></td><td>Resume a previous session</td></tr>
-        <tr><td><code>/rename</code></td><td>Rename the current session</td></tr>
-        <tr><td><code>/clear</code></td><td>Clear the conversation</td></tr>
-        <tr><td><code>/export</code></td><td>Export conversation to file</td></tr>
-      </tbody>
-    </table></div>
-    <h4>Context &amp; Memory</h4>
-    <div class="table-wrap"><table>
-      <tbody>
-        <tr><td><code>/context</code></td><td>Show context token usage</td></tr>
-        <tr><td><code>/compact</code></td><td>Compress context to save tokens</td></tr>
-        <tr><td><code>/memory</code></td><td>Manage auto memory (MEMORY.md)</td></tr>
-        <tr><td><code>/cost</code></td><td>Show token and cost usage</td></tr>
-        <tr><td><code>/rewind</code></td><td>Revert to a previous checkpoint</td></tr>
-      </tbody>
-    </table></div>
-    <h4>Modes</h4>
-    <div class="table-wrap"><table>
-      <tbody>
-        <tr><td><code>/mode</code></td><td>Show or switch operating mode</td></tr>
-        <tr><td><code>/mode explore</code></td><td>Understand codebases</td></tr>
-        <tr><td><code>/mode debug</code></td><td>Find and fix bugs</td></tr>
-        <tr><td><code>/mode test</code></td><td>Write and run tests</td></tr>
-        <tr><td><code>/mode analyze</code></td><td>Data analysis work</td></tr>
-        <tr><td><code>/mode deploy</code></td><td>Infrastructure &amp; deployment</td></tr>
-        <tr><td><code>/mode ideate</code></td><td>Brainstorm and design</td></tr>
-      </tbody>
-    </table></div>
-    <h4>Code &amp; Git</h4>
-    <div class="table-wrap"><table>
-      <tbody>
-        <tr><td><code>/review</code></td><td>Code review current changes</td></tr>
-        <tr><td><code>/diff</code></td><td>Show git diff</td></tr>
-        <tr><td><code>/eval</code></td><td>Evaluate a Neam expression</td></tr>
-        <tr><td><code>/debug-neam</code></td><td>Debug a Neam program</td></tr>
-        <tr><td><code>/tasks</code></td><td>View background tasks</td></tr>
-      </tbody>
-    </table></div>
-    <h4>Providers &amp; Models</h4>
-    <div class="table-wrap"><table>
-      <tbody>
-        <tr><td><code>/models</code></td><td>List or switch AI models</td></tr>
-        <tr><td><code>/online</code></td><td>Switch to online (cloud) mode</td></tr>
-        <tr><td><code>/offline</code></td><td>Switch to offline (local) mode</td></tr>
-      </tbody>
-    </table></div>
-    <h4>MCP &amp; Neam Tools</h4>
-    <div class="table-wrap"><table>
-      <tbody>
-        <tr><td><code>/mcp</code></td><td>Manage MCP servers</td></tr>
-        <tr><td><code>/neam</code></td><td>Run Neam compiler commands</td></tr>
-        <tr><td><code>/pkg</code></td><td>Manage Neam packages</td></tr>
-        <tr><td><code>/skill</code></td><td>Manage skills</td></tr>
-      </tbody>
-    </table></div>
-    <h4>UI &amp; Preferences</h4>
-    <div class="table-wrap"><table>
-      <tbody>
-        <tr><td><code>/theme</code></td><td>Change UI theme</td></tr>
-        <tr><td><code>/copy</code></td><td>Copy last response to clipboard</td></tr>
-      </tbody>
-    </table></div>
-  </div>
-</div>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">┌──────────────────────────────────────────────────────────────┐
+│                 NEAMCODE SLASH COMMANDS                       │
+├──────────────────────────────────────────────────────────────┤
+│                                                              │
+│  HELP &amp; STATUS                                               │
+│  ────────────                                                │
+│  /help           Show all commands or help on one            │
+│  /doctor         Diagnose environment issues                 │
+│  /status         Show system status summary                  │
+│                                                              │
+│  SESSION MANAGEMENT                                          │
+│  ──────────────────                                          │
+│  /sessions       List saved sessions                         │
+│  /resume         Resume a previous session                   │
+│  /rename         Rename the current session                  │
+│  /clear          Clear the conversation                      │
+│  /export         Export conversation to file                 │
+│                                                              │
+│  CONTEXT &amp; MEMORY                                            │
+│  ────────────────                                            │
+│  /context        Show context token usage                    │
+│  /compact        Compress context to save tokens             │
+│  /memory         Manage auto memory (MEMORY.md)              │
+│  /cost           Show token and cost usage                   │
+│  /rewind         Revert to a previous checkpoint             │
+│                                                              │
+│  MODES                                                       │
+│  ─────                                                       │
+│  /mode           Show or switch operating mode               │
+│  /mode explore   Understand codebases                        │
+│  /mode debug     Find and fix bugs                           │
+│  /mode test      Write and run tests                         │
+│  /mode analyze   Data analysis work                          │
+│  /mode deploy    Infrastructure &amp; deployment                 │
+│  /mode ideate    Brainstorm and design                       │
+│                                                              │
+│  CODE &amp; GIT                                                  │
+│  ──────────                                                  │
+│  /review         Code review current changes                 │
+│  /diff           Show git diff                               │
+│  /eval           Evaluate a Neam expression                  │
+│  /debug-neam     Debug a Neam program                        │
+│  /tasks          View background tasks                       │
+│                                                              │
+│  PROVIDERS &amp; MODELS                                          │
+│  ──────────────────                                          │
+│  /models         List or switch AI models                    │
+│  /online         Switch to online (cloud) mode               │
+│  /offline        Switch to offline (local) mode              │
+│                                                              │
+│  PLANNING &amp; THINKING (v0.3.5.1)                              │
+│  ──────────────────────────────                              │
+│  /plan           Create/show/approve execution plans         │
+│  /think          Select reasoning strategy (cot/tot/poe/sc)  │
+│                                                              │
+│  MCP &amp; NEAM TOOLS                                            │
+│  ────────────────                                            │
+│  /mcp            Manage MCP servers                          │
+│  /neam           Run Neam compiler commands                  │
+│  /pkg            Manage Neam packages                        │
+│  /skill          Manage skills (list/search/create/graph)    │
+│                                                              │
+│  UI &amp; DIAGNOSTICS                                            │
+│  ────────────────                                            │
+│  /theme          Change UI theme                             │
+│  /copy           Copy last response to clipboard             │
+│  /diagnostics    System health dashboard (v0.3.5.3)          │
+│                                                              │
+└──────────────────────────────────────────────────────────────┘</code></pre>
 <h3 id="command-shortcuts">Command Shortcuts <a href="#command-shortcuts" class="heading-anchor">#</a></h3>
 <p>Many commands accept arguments directly, saving you an interactive menu:</p>
 <div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>

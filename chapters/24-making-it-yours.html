@@ -425,20 +425,26 @@ Language set to: English
 <h2 id="247-permission-tuning">24.7 Permission Tuning <a href="#247-permission-tuning" class="heading-anchor">#</a></h2>
 <p>NeamCode has four permission modes that control how much autonomy it has.</p>
 <h3 id="permission-modes-overview">Permission Modes Overview <a href="#permission-modes-overview" class="heading-anchor">#</a></h3>
-<div class="info-box">
-  <div class="info-box-header blue">Permission Modes</div>
-  <div class="info-box-body">
-    <div class="table-wrap"><table>
-    <thead><tr><th>Mode</th><th>Behavior</th></tr></thead>
-    <tbody>
-      <tr><td><strong>safe</strong></td><td>Read-only. Cannot modify files or run commands. Asks before everything.</td></tr>
-      <tr><td><strong>standard</strong></td><td>Can read files and run safe commands. Asks before writing files or running destructive commands. (DEFAULT)</td></tr>
-      <tr><td><strong>power</strong></td><td>Can read/write files and run most commands. Asks before git push, rm -rf, and network operations.</td></tr>
-      <tr><td><strong>yolo</strong></td><td>Full autonomy. No confirmations. Use only for throwaway/sandbox environments.</td></tr>
-    </tbody>
-    </table></div>
-  </div>
-</div>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">  ┌──────────────────────────────────────────────────────────┐
+  │                 Permission Modes                          │
+  ├───────────┬───────────────────────────────────────────────┤
+  │   Mode    │ Behavior                                     │
+  ├───────────┼───────────────────────────────────────────────┤
+  │ safe      │ Read-only. Cannot modify files or run        │
+  │           │ commands. Asks before everything.             │
+  ├───────────┼───────────────────────────────────────────────┤
+  │ standard  │ Can read files and run safe commands.         │
+  │           │ Asks before writing files or running          │
+  │           │ destructive commands. (DEFAULT)               │
+  ├───────────┼───────────────────────────────────────────────┤
+  │ power     │ Can read/write files and run most commands.   │
+  │           │ Asks before git push, rm -rf, and network     │
+  │           │ operations.                                   │
+  ├───────────┼───────────────────────────────────────────────┤
+  │ yolo      │ Full autonomy. No confirmations. Use only    │
+  │           │ for throwaway/sandbox environments.           │
+  └───────────┴───────────────────────────────────────────────┘</code></pre>
 <h3 id="switching-permission-modes">Switching Permission Modes <a href="#switching-permission-modes" class="heading-anchor">#</a></h3>
 <div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
 <pre><code class="language-">&gt; /permission safe
@@ -561,26 +567,21 @@ neamcode \
 # Email the report
 mail -s &quot;Daily Code Quality Report&quot; team@company.com &lt; /var/reports/quality-$(date +%Y%m%d).md</code></pre>
 <h3 id="headless-mode-options">Headless Mode Options <a href="#headless-mode-options" class="heading-anchor">#</a></h3>
-<div class="info-box">
-  <div class="info-box-header gray">Headless Mode Options</div>
-  <div class="info-box-body">
-    <div class="table-wrap"><table>
-    <thead><tr><th>Flag</th><th>Description</th></tr></thead>
-    <tbody>
-      <tr><td><code>--prompt "..."</code></td><td>The instruction to execute</td></tr>
-      <tr><td><code>--output text</code></td><td>Plain text response</td></tr>
-      <tr><td><code>--output json</code></td><td>Structured JSON response</td></tr>
-      <tr><td><code>--output markdown</code></td><td>Formatted markdown response</td></tr>
-      <tr><td><code>--max-cost N.NN</code></td><td>Maximum dollar cost for this run</td></tr>
-      <tr><td><code>--provider name</code></td><td>AI provider to use</td></tr>
-      <tr><td><code>--model name</code></td><td>Specific model to use</td></tr>
-      <tr><td><code>--timeout N</code></td><td>Timeout in seconds</td></tr>
-      <tr><td><code>--context file</code></td><td>Additional context file to load</td></tr>
-      <tr><td><code>--permission mode</code></td><td>Permission level (safe recommended)</td></tr>
-    </tbody>
-    </table></div>
-  </div>
-</div>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">  ┌───────────────────┬────────────────────────────────────┐
+  │ Flag              │ Description                        │
+  ├───────────────────┼────────────────────────────────────┤
+  │ --prompt &quot;...&quot;    │ The instruction to execute         │
+  │ --output text     │ Plain text response                │
+  │ --output json     │ Structured JSON response           │
+  │ --output markdown │ Formatted markdown response        │
+  │ --max-cost N.NN   │ Maximum dollar cost for this run   │
+  │ --provider name   │ AI provider to use                 │
+  │ --model name      │ Specific model to use              │
+  │ --timeout N       │ Timeout in seconds                 │
+  │ --context file    │ Additional context file to load    │
+  │ --permission mode │ Permission level (safe recommended)│
+  └───────────────────┴────────────────────────────────────┘</code></pre>
 <div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip:</strong> In CI/CD, always set <code>--max-cost</code> to prevent runaway spending. A typical code review costs $0.05-0.20. Set a generous but bounded limit like $0.50.</p></div>
 <hr />
 <h2 id="249-security-best-practices">24.9 Security Best Practices <a href="#249-security-best-practices" class="heading-anchor">#</a></h2>
@@ -597,23 +598,18 @@ echo &quot;.env&quot; &gt;&gt; .gitignore
 # BAD: Never hardcode keys in NEAMCODE.md or source code
 # BAD: Never commit .env files to git</code></pre>
 <h3 id="permission-mode-selection-guide">Permission Mode Selection Guide <a href="#permission-mode-selection-guide" class="heading-anchor">#</a></h3>
-<div class="info-box">
-  <div class="info-box-header amber">Permission Mode Selection Guide</div>
-  <div class="info-box-body">
-    <div class="table-wrap"><table>
-    <thead><tr><th>Situation</th><th>Mode</th></tr></thead>
-    <tbody>
-      <tr><td>Exploring unfamiliar codebase</td><td>safe</td></tr>
-      <tr><td>Client or shared project</td><td>standard</td></tr>
-      <tr><td>Your own active project</td><td>power</td></tr>
-      <tr><td>Learning / tutorials</td><td>safe</td></tr>
-      <tr><td>CI/CD automation</td><td>safe or std</td></tr>
-      <tr><td>Throwaway Docker container</td><td>yolo</td></tr>
-      <tr><td>Production server</td><td><strong>NEVER use</strong></td></tr>
-    </tbody>
-    </table></div>
-  </div>
-</div>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">  ┌─────────────────────────────────┬──────────────┐
+  │ Situation                       │ Mode         │
+  ├─────────────────────────────────┼──────────────┤
+  │ Exploring unfamiliar codebase   │ safe         │
+  │ Client or shared project        │ standard     │
+  │ Your own active project         │ power        │
+  │ Learning / tutorials            │ safe         │
+  │ CI/CD automation                │ safe or std  │
+  │ Throwaway Docker container      │ yolo         │
+  │ Production server               │ NEVER use    │
+  └─────────────────────────────────┴──────────────┘</code></pre>
 <h3 id="what-neamcode-should-never-see">What NeamCode Should Never See <a href="#what-neamcode-should-never-see" class="heading-anchor">#</a></h3>
 <p>Add these to your <code>.gitignore</code> and keep them out of NeamCode's reach:</p>
 <div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
@@ -645,7 +641,135 @@ Recent actions this session:
   10:29  RUN    npm test</code></pre>
 <div class="callout callout-note"><div class="callout-title"><span class="callout-icon">&#128221;</span> Note</div><p>📝 <strong>Note:</strong> NeamCode never sends your source code to external servers beyond what is needed for AI inference. Your code goes to the AI provider you selected and nowhere else. When using Ollama, your code never leaves your machine.</p></div>
 <hr />
-<h2 id="2410-pro-tips">24.10 Pro Tips <a href="#2410-pro-tips" class="heading-anchor">#</a></h2>
+<h2 id="2410-visual-identity-spinners-v0353">24.10 Visual Identity &amp; Spinners (v0.3.5.3) <a href="#2410-visual-identity-spinners-v0353" class="heading-anchor">#</a></h2>
+<p>v0.3.5.3 introduces NeamCode's <strong>native color identity</strong> and new spinner animations that give the terminal a distinctive, purposeful look.</p>
+<h3 id="neam-color-palette">Neam Color Palette <a href="#neam-color-palette" class="heading-anchor">#</a></h3>
+<p>Every color in the interface has a semantic meaning:</p>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Color</th>
+<th>Hex</th>
+<th>Meaning</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Teal</strong></td>
+<td><code>#20B2AA</code></td>
+<td>Primary — AI output, active processes, Neam identity</td>
+</tr>
+<tr>
+<td><strong>Amber</strong></td>
+<td><code>#FFB020</code></td>
+<td>Attention — user input, permissions, warnings</td>
+</tr>
+<tr>
+<td><strong>Violet</strong></td>
+<td><code>#9B59B6</code></td>
+<td>Depth — plan mode, debug mode, accents</td>
+</tr>
+<tr>
+<td><strong>Emerald</strong></td>
+<td><code>#2ECC71</code></td>
+<td>Success — completed tasks, health checks, passed gates</td>
+</tr>
+<tr>
+<td><strong>Coral</strong></td>
+<td><code>#FF6B6B</code></td>
+<td>Caution — soft errors, warnings</td>
+</tr>
+<tr>
+<td><strong>Crimson</strong></td>
+<td><code>#E74C3C</code></td>
+<td>Critical — errors, blocking failures</td>
+</tr>
+<tr>
+<td><strong>Slate</strong></td>
+<td><code>#95A5A6</code></td>
+<td>Neutral — past info, structure, pending</td>
+</tr>
+<tr>
+<td><strong>Deep Navy</strong></td>
+<td><code>#1A1A2E</code></td>
+<td>Background (dark theme)</td>
+</tr>
+</tbody></table></div>
+<p>Permission modes are color-coded in the status bar:</p>
+<ul>
+<li><code>safe</code> → emerald</li>
+<li><code>standard</code> → teal</li>
+<li><code>power</code> → amber</li>
+<li><code>yolo</code> → coral</li>
+</ul>
+<h3 id="new-spinner-animations">New Spinner Animations <a href="#new-spinner-animations" class="heading-anchor">#</a></h3>
+<p>v0.3.5.3 adds 6 new spinners tailored to specific operations:</p>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Spinner</th>
+<th>Animation</th>
+<th>Used For</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>neural</strong></td>
+<td>Braille patterns</td>
+<td>Graph analysis, neural processing</td>
+</tr>
+<tr>
+<td><strong>orbit</strong></td>
+<td>◜◝◞◟</td>
+<td>Skill execution</td>
+</tr>
+<tr>
+<td><strong>flow</strong></td>
+<td>▸ ping-pong</td>
+<td>DAG progress</td>
+</tr>
+<tr>
+<td><strong>ripple</strong></td>
+<td>◎◉●◉</td>
+<td>Graph traversal</td>
+</tr>
+<tr>
+<td><strong>meter</strong></td>
+<td>░→█ fill</td>
+<td>Quality evaluation</td>
+</tr>
+<tr>
+<td><strong>scan</strong></td>
+<td>▏▎▍…▉</td>
+<td>Search operations</td>
+</tr>
+</tbody></table></div>
+<p>NeamCode automatically selects the appropriate spinner based on what it's doing — you'll see <code>orbit</code> during skill execution, <code>scan</code> during searches, and <code>meter</code> during quality evaluation.</p>
+<h3 id="error-severity-tiers">Error Severity Tiers <a href="#error-severity-tiers" class="heading-anchor">#</a></h3>
+<p>Errors now display differently based on severity:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">T0 FATAL:  ══ ✖ Double-bordered crimson box, terminal bell
+T1 ERROR:  ── ✗ Single-bordered coral box, 10s auto-dismiss
+T2 WARNING: ⚠  Rounded amber box, 5s auto-dismiss
+T3 NOTICE:  ℹ  Teal slide-in, 3s auto-dismiss
+T4 INFO:    ◉  Inline, 2s fade
+T5 DEBUG:   ·  Log only (visible with --verbose)</code></pre>
+<p>Serious errors (T0/T1) include structured information:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">╔══════════════════════════════════════════════╗
+║  ✖ E-NET-003  NETWORK                        ║
+║                                              ║
+║  What:   Provider connection timeout         ║
+║  Cause:  OpenAI API not responding (&gt;30s)    ║
+║  Impact: Current request failed              ║
+║  Action: Falling back to ollama/llama3.1     ║
+║                                              ║
+║  [r]etry  [s]kip  [o]ffline                  ║
+╚══════════════════════════════════════════════╝</code></pre>
+<h3 id="warning-badges">Warning Badges <a href="#warning-badges" class="heading-anchor">#</a></h3>
+<p>The status bar shows persistent warning badges when issues need attention:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">  ⚠💰82%        Budget at 82%
+  ⚡HALF_OPEN    Circuit breaker probing
+  ⚠📊85%        Context near compaction
+  🔒BLOCKED      Security block active</code></pre>
+<p>Multiple warnings stack and collapse — press <code>[w]</code> to expand, <code>[x]</code> to dismiss all.</p>
+<hr />
+<h2 id="2411-pro-tips">24.11 Pro Tips <a href="#2411-pro-tips" class="heading-anchor">#</a></h2>
 <h3 id="create-a-startup-configuration">Create a Startup Configuration <a href="#create-a-startup-configuration" class="heading-anchor">#</a></h3>
 <p>Set your preferences once in <code>~/.neamcode/config.json</code>:</p>
 <div class="code-header"><span class="code-lang">json</span><button class="copy-btn">Copy</button></div>

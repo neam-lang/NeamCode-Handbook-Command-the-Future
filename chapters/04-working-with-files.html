@@ -250,28 +250,22 @@ NeamCode:
 <p>This is where NeamCode's approach really shines — and where understanding the underlying model pays off.</p>
 <h3 id="the-old_string-new_string-model">The old_string → new_string Model <a href="#the-old_string-new_string-model" class="heading-anchor">#</a></h3>
 <p>NeamCode's <code>file_edit</code> skill works by <strong>precise text matching</strong>. It finds an exact string in your file and replaces it with a new string. This is fundamentally different from line-number-based editing.</p>
-<div class="info-box">
-  <div class="info-box-header blue">How file_edit Works</div>
-  <div class="info-box-body">
-    <ol>
-      <li>NeamCode reads the current file</li>
-      <li>It identifies the EXACT text to change</li>
-      <li>It specifies:
-        <ul>
-          <li><strong>old_string:</strong> the text to find</li>
-          <li><strong>new_string:</strong> the text to replace it with</li>
-        </ul>
-      </li>
-      <li>The match must be UNIQUE in the file</li>
-      <li>You approve → change applied</li>
-    </ol>
-    <div class="flow-steps">
-      <span class="flow-step">old_string<br><small>(must exist exactly once)</small></span>
-      <span class="flow-arrow">→</span>
-      <span class="flow-step highlight">new_string<br><small>(replaces in place)</small></span>
-    </div>
-  </div>
-</div>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">┌──────────────────────────────────────────────────┐
+│              How file_edit Works                 │
+│                                                  │
+│   1. NeamCode reads the current file             │
+│   2. It identifies the EXACT text to change      │
+│   3. It specifies:                               │
+│      • old_string: the text to find              │
+│      • new_string: the text to replace it with   │
+│   4. The match must be UNIQUE in the file         │
+│   5. You approve → change applied                │
+│                                                  │
+│   old_string ──────► new_string                  │
+│   (must exist         (replaces                  │
+│    exactly once)       in place)                 │
+└──────────────────────────────────────────────────┘</code></pre>
 <h3 id="basic-edit-example">Basic Edit Example <a href="#basic-edit-example" class="heading-anchor">#</a></h3>
 <div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
 <pre><code class="language-">You: Change the port from 3000 to 8080 in server.js

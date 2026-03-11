@@ -122,11 +122,6 @@
 <h2 id="131-how-offline-recovery-works">13.1 How Offline Recovery Works <a href="#131-how-offline-recovery-works" class="heading-anchor">#</a></h2>
 <p>Starting with v0.3.4, NeamCode includes <strong>zero-config offline auto-recovery</strong>. This means you don't have to do anything — if your internet drops, NeamCode detects it and switches to local models automatically.</p>
 <p>Here's what happens behind the scenes:</p>
-<figure class="diagram-figure">
-  <img src="../assets/diagrams/ch13-offline-pipeline.svg" alt="Offline Mode Pipeline showing TCP health probing, flap protection, and automatic switching between cloud and local Ollama providers" />
-  <figcaption>Figure 13.1 — Offline Mode Pipeline</figcaption>
-</figure>
-<div class="ascii-fallback">
 <div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
 <pre><code class="language-">┌─────────────────────────────────────────────────────────────┐
 │                  Offline Recovery Pipeline                    │
@@ -159,7 +154,6 @@
 │     └─────────────────┘                          │           │
 │                                                             │
 └─────────────────────────────────────────────────────────────┘</code></pre>
-</div>
 <h3 id="key-concepts">Key Concepts <a href="#key-concepts" class="heading-anchor">#</a></h3>
 <p><strong>TCP Health Probing</strong> — Every 30 seconds, NeamCode sends a lightweight TCP probe to your configured cloud provider. This is not a full API call — it costs nothing and adds no latency to your work.</p>
 <p><strong>Flap Protection</strong> — Networks can be unstable. A single failed probe doesn't trigger offline mode. NeamCode requires <strong>2 consecutive failures</strong> before switching offline. Similarly, it requires <strong>3 consecutive successes plus 60 seconds of stable connectivity</strong> before switching back online. This prevents rapid back-and-forth switching (flapping) on unstable connections.</p>
@@ -195,46 +189,25 @@ Offline Recovery: enabled
 <hr />
 <h2 id="133-what-changes-when-youre-offline">13.3 What Changes When You're Offline <a href="#133-what-changes-when-youre-offline" class="heading-anchor">#</a></h2>
 <p>When NeamCode switches to offline mode, most things work the same. Here's what changes and what doesn't:</p>
-<div class="comparison-grid">
-  <div class="info-box">
-    <div class="info-box-header green">Online</div>
-    <div class="info-box-body">
-      <ul>
-        <li>Code generation: Yes</li>
-        <li>Code explanation: Yes</li>
-        <li>File editing: Yes</li>
-        <li>Terminal commands: Yes</li>
-        <li>Git operations: Yes</li>
-        <li>Context window: 128K-1M+</li>
-        <li>Response quality: Premium</li>
-        <li>Response speed: Depends</li>
-        <li>Cost: Per-token</li>
-        <li>Privacy: Data sent to provider</li>
-        <li>Web search: Yes</li>
-        <li>External APIs: Yes</li>
-      </ul>
-    </div>
-  </div>
-  <div class="info-box">
-    <div class="info-box-header blue">Offline</div>
-    <div class="info-box-body">
-      <ul>
-        <li>Code generation: Yes (local model)</li>
-        <li>Code explanation: Yes</li>
-        <li>File editing: Yes</li>
-        <li>Terminal commands: Yes</li>
-        <li>Git operations: Yes</li>
-        <li>Context window: 4K-32K (varies)</li>
-        <li>Response quality: Good</li>
-        <li>Response speed: Depends on HW</li>
-        <li>Cost: Free</li>
-        <li>Privacy: Fully local</li>
-        <li>Web search: No</li>
-        <li>External APIs: No</li>
-      </ul>
-    </div>
-  </div>
-</div>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">┌──────────────────────────────────────────────────────────┐
+│                 Online vs. Offline                        │
+├──────────────────────┬──────────────┬────────────────────┤
+│ Feature              │ Online       │ Offline            │
+├──────────────────────┼──────────────┼────────────────────┤
+│ Code generation      │ ✓            │ ✓ (local model)    │
+│ Code explanation     │ ✓            │ ✓                  │
+│ File editing         │ ✓            │ ✓                  │
+│ Terminal commands    │ ✓            │ ✓                  │
+│ Git operations       │ ✓            │ ✓                  │
+│ Context window       │ 128K–1M+     │ 4K–32K (varies)   │
+│ Response quality     │ Premium      │ Good               │
+│ Response speed       │ Depends      │ Depends on HW      │
+│ Cost                 │ Per-token    │ Free               │
+│ Privacy              │ Data sent    │ Fully local        │
+│ Web search           │ ✓            │ ✗                  │
+│ External APIs        │ ✓            │ ✗                  │
+└──────────────────────┴──────────────┴────────────────────┘</code></pre>
 <h3 id="what-gets-better-offline">What Gets Better Offline <a href="#what-gets-better-offline" class="heading-anchor">#</a></h3>
 <ul>
 <li><strong>Cost:</strong> Zero. Every token is free.</li>
@@ -251,14 +224,14 @@ Offline Recovery: enabled
 <hr />
 <h2 id="134-the-status-bar">13.4 The Status Bar <a href="#134-the-status-bar" class="heading-anchor">#</a></h2>
 <p>The status bar at the bottom of your NeamCode terminal shows your connectivity state at a glance:</p>
-<div class="info-box">
-  <div class="info-box-header gray">Terminal Layout</div>
-  <div class="info-box-body">
-    <p style="text-align:center; padding: 1.5em 0; opacity: 0.6;">(your working area)</p>
-    <hr />
-    <p><strong>Status bar:</strong> <code>● claude-sonnet │ tokens: 1.2K/200K │ cost: $0.04 │ ↑</code></p>
-  </div>
-</div>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">┌─────────────────────────────────────────────────────────┐
+│                                                         │
+│  (your working area)                                    │
+│                                                         │
+├─────────────────────────────────────────────────────────┤
+│ ● claude-sonnet │ tokens: 1.2K/200K │ cost: $0.04 │ ↑ │
+└─────────────────────────────────────────────────────────┘</code></pre>
 <h3 id="status-indicator-colors">Status Indicator Colors <a href="#status-indicator-colors" class="heading-anchor">#</a></h3>
 <p><strong>● Green (Online)</strong> — Connected to cloud provider. Everything working normally.</p>
 <div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>

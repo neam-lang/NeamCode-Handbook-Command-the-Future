@@ -128,11 +128,6 @@
 <li>Can be invoked <strong>manually by you</strong> or <strong>automatically by NeamCode</strong></li>
 </ul>
 <p>Think of it like this:</p>
-<figure class="diagram-figure">
-  <img src="../assets/diagrams/ch16-agent-delegation.svg" alt="Agent Delegation Architecture" />
-  <figcaption>Figure 16.1 — Agent Delegation Architecture</figcaption>
-</figure>
-<div class="ascii-fallback">
 <div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
 <pre><code class="language-">┌─────────────────────────────────────┐
 │         Your Main Session           │
@@ -155,7 +150,6 @@
 │               Writes &amp; runs tests   │
 │               Reports back          │
 └─────────────────────────────────────┘</code></pre>
-</div>
 <p>The key insight: each agent gets a <strong>fresh context window</strong>. This means an Explore agent can read dozens of files without cluttering your main conversation. When it finishes, only the summary comes back — keeping your session clean and focused.</p>
 <hr />
 <h2 id="162-the-explore-agent">16.2 The Explore Agent <a href="#162-the-explore-agent" class="heading-anchor">#</a></h2>
@@ -388,31 +382,33 @@ Running tests...
 <hr />
 <h2 id="166-how-delegation-works">16.6 How Delegation Works <a href="#166-how-delegation-works" class="heading-anchor">#</a></h2>
 <p>When NeamCode delegates to an agent, here's what happens under the hood:</p>
-<div class="info-box">
-  <div class="info-box-header blue">How Delegation Works</div>
-  <div class="info-box-body">
-    <ol>
-      <li>You ask a question or give a task</li>
-      <li>NeamCode decides delegation is needed</li>
-      <li>Calls <code>delegate_to_agent(agent: "explore", task: "Find all API routes")</code></li>
-    </ol>
-    <div class="flow-steps">
-      <span class="flow-step">Main Session</span>
-      <span class="flow-arrow">&rarr;</span>
-      <span class="flow-step highlight">Agent Sub-Session</span>
-      <span class="flow-arrow">&rarr;</span>
-      <span class="flow-step">Summary Returned</span>
-    </div>
-    <p style="margin-top: 0.75rem;"><strong>Agent Sub-Session capabilities:</strong></p>
-    <ul>
-      <li>Fresh context window</li>
-      <li>Full tool access</li>
-      <li>Reads files, runs commands</li>
-      <li>Builds a summary</li>
-    </ul>
-    <p>4. Summary returned to main session<br>5. Main session continues with the findings</p>
-  </div>
-</div>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">┌───────────────────────────────────────────────┐
+│                Main Session                   │
+│                                               │
+│  1. You ask a question or give a task         │
+│  2. NeamCode decides delegation is needed     │
+│  3. Calls delegate_to_agent skill             │
+│     ┌─────────────────────────────────┐       │
+│     │  delegate_to_agent(             │       │
+│     │    agent: &quot;explore&quot;,            │       │
+│     │    task: &quot;Find all API routes&quot;  │       │
+│     │  )                              │       │
+│     └──────────┬──────────────────────┘       │
+│                │                              │
+│                ▼                              │
+│     ┌─────────────────────────────────┐       │
+│     │      Agent Sub-Session          │       │
+│     │  • Fresh context window         │       │
+│     │  • Full tool access             │       │
+│     │  • Reads files, runs commands   │       │
+│     │  • Builds a summary             │       │
+│     └──────────┬──────────────────────┘       │
+│                │                              │
+│                ▼                              │
+│  4. Summary returned to main session          │
+│  5. Main session continues with the findings  │
+└───────────────────────────────────────────────┘</code></pre>
 <h3 id="the-delegate_to_agent-skill">The <code>delegate_to_agent</code> Skill <a href="#the-delegate_to_agent-skill" class="heading-anchor">#</a></h3>
 <p>Under the hood, NeamCode uses a built-in skill called <code>delegate_to_agent</code>. This skill:</p>
 <ol>
@@ -475,7 +471,47 @@ Running tests...
    Explore agent completed. Integrating findings.</code></pre>
 <div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip:</strong> If you want NeamCode to always use a specific agent workflow, tell it explicitly: "Always run a review before committing" or "Plan first before implementing any feature."</p></div>
 <hr />
-<h2 id="168-pro-tips">16.8 Pro Tips <a href="#168-pro-tips" class="heading-anchor">#</a></h2>
+<h2 id="168-multi-agent-pulse-grid-v0353">16.8 Multi-Agent Pulse Grid (v0.3.5.3) <a href="#168-multi-agent-pulse-grid-v0353" class="heading-anchor">#</a></h2>
+<p>When multiple agents run concurrently, v0.3.5.3 displays a <strong>Pulse Grid</strong> — a live visualization of every running process:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; Analyze, plan, and implement error handling standardization
+
+  Multi-Agent Execution
+  ═════════════════════
+  ◉ explore ·················· DONE      Codebase analysis     (4.2s)
+  ◎ plan ····················· RUNNING   Implementation plan   (2.1s)
+  ○ implement ················ WAITING   Code changes
+  ○ test ····················· WAITING   Write tests
+  ○ review ··················· WAITING   Final review</code></pre>
+<p><strong>Status indicators:</strong></p>
+<ul>
+<li><code>○</code> Waiting (static, gray)</li>
+<li><code>◎</code> Running (pulsing teal animation)</li>
+<li><code>◉</code> Completed (solid green)</li>
+<li><code>◈</code> Failed (blinking red)</li>
+<li><code>◍</code> Skipped</li>
+</ul>
+<p>The pulse rate adapts to activity — rapid pulsing during high throughput, slow breathing during idle waits. Press <code>Ctrl+G</code> to toggle between compact and expanded views.</p>
+<h3 id="inline-error-display">Inline Error Display <a href="#inline-error-display" class="heading-anchor">#</a></h3>
+<p>When an agent fails, you see the error inline with actionable shortcuts:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">  ◈ test ····················· FAILED    ✗ exit code 1 (3.2s)
+  │  └─ 3 tests failed: auth.test.ts, api.test.ts, db.test.ts
+  │     Press [d] for details, [r] to re-run</code></pre>
+<h3 id="enhanced-status-bar-v0353">Enhanced Status Bar (v0.3.5.3) <a href="#enhanced-status-bar-v0353" class="heading-anchor">#</a></h3>
+<p>The bottom status bar now shows real-time badges:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">  openai/gpt-4o │ power │ ◉3 skills │ ██░ DAG 2/4 │ ★4.2 │ 12.4k tokens │ $0.42</code></pre>
+<p>New v0.3.5.3 badges:</p>
+<ul>
+<li><strong>Active skills count</strong> — <code>◉3 skills</code> (pulsing when executing)</li>
+<li><strong>DAG progress</strong> — <code>██░ DAG 2/4</code> (plan execution progress)</li>
+<li><strong>Quality score</strong> — <code>★4.2</code> (average skill quality rating)</li>
+<li><strong>Error count</strong> — Appears when errors are active</li>
+<li><strong>Connectivity pulse</strong> — The status dot pulses based on connection health</li>
+</ul>
+<hr />
+<h2 id="169-pro-tips">16.9 Pro Tips <a href="#169-pro-tips" class="heading-anchor">#</a></h2>
 <h3 id="chain-agents-for-complex-workflows">Chain Agents for Complex Workflows <a href="#chain-agents-for-complex-workflows" class="heading-anchor">#</a></h3>
 <p>You can invoke agents in sequence for thorough results:</p>
 <div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>

@@ -123,29 +123,36 @@
 <h2 id="121-available-providers">12.1 Available Providers <a href="#121-available-providers" class="heading-anchor">#</a></h2>
 <p>NeamCode ships with built-in support for <strong>11 AI providers</strong>. You don't need to use all of them — most users start with one or two and expand as needed.</p>
 <p>Here's the full lineup:</p>
-<div class="info-box">
-  <div class="info-box-header purple">NeamCode Provider Ecosystem</div>
-  <div class="info-box-body">
-    <table>
-      <thead>
-        <tr><th>Provider</th><th>Models</th><th>Context</th><th>Type</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>Anthropic</td><td>Claude Opus/Sonnet/Haiku</td><td>200K</td><td>Cloud</td></tr>
-        <tr><td>OpenAI</td><td>GPT-4o / GPT-4o-mini</td><td>128K</td><td>Cloud</td></tr>
-        <tr><td>Gemini</td><td>Pro / Flash</td><td>1M+</td><td>Cloud</td></tr>
-        <tr><td>Ollama</td><td>Llama, Qwen, Mistral, Phi, Gemma, etc.</td><td>Varies</td><td>Local</td></tr>
-        <tr><td>DeepSeek</td><td>V3</td><td>64K</td><td>Cloud</td></tr>
-        <tr><td>Mistral</td><td>Large / Small</td><td>128K</td><td>Cloud</td></tr>
-        <tr><td>MiniMax</td><td>MiniMax</td><td>128K</td><td>Cloud</td></tr>
-        <tr><td>Kimi</td><td>Kimi</td><td>128K</td><td>Cloud</td></tr>
-        <tr><td>Qwen</td><td>Qwen</td><td>128K</td><td>Cloud</td></tr>
-        <tr><td>OpenAI-compatible</td><td>Any compatible API</td><td>Varies</td><td>Cloud/Local</td></tr>
-        <tr><td>Mock</td><td>Mock (testing only)</td><td>N/A</td><td>Local</td></tr>
-      </tbody>
-    </table>
-  </div>
-</div>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">┌─────────────────────────────────────────────────────────────────────┐
+│                    NeamCode Provider Ecosystem                      │
+├──────────────────┬──────────────────────┬───────────┬──────────────┤
+│ Provider         │ Models               │ Context   │ Type         │
+├──────────────────┼──────────────────────┼───────────┼──────────────┤
+│ Anthropic        │ Claude Opus/Sonnet/  │ 200K      │ Cloud        │
+│                  │ Haiku                │           │              │
+├──────────────────┼──────────────────────┼───────────┼──────────────┤
+│ OpenAI           │ GPT-4o / GPT-4o-mini │ 128K      │ Cloud        │
+├──────────────────┼──────────────────────┼───────────┼──────────────┤
+│ Gemini           │ Pro / Flash          │ 1M+       │ Cloud        │
+├──────────────────┼──────────────────────┼───────────┼──────────────┤
+│ Ollama           │ Llama, Qwen, Mistral │ Varies    │ Local        │
+│                  │ Phi, Gemma, etc.     │           │              │
+├──────────────────┼──────────────────────┼───────────┼──────────────┤
+│ DeepSeek         │ V3                   │ 64K       │ Cloud        │
+├──────────────────┼──────────────────────┼───────────┼──────────────┤
+│ Mistral          │ Large / Small        │ 128K      │ Cloud        │
+├──────────────────┼──────────────────────┼───────────┼──────────────┤
+│ MiniMax          │ MiniMax              │ 128K      │ Cloud        │
+├──────────────────┼──────────────────────┼───────────┼──────────────┤
+│ Kimi             │ Kimi                 │ 128K      │ Cloud        │
+├──────────────────┼──────────────────────┼───────────┼──────────────┤
+│ Qwen             │ Qwen                 │ 128K      │ Cloud        │
+├──────────────────┼──────────────────────┼───────────┼──────────────┤
+│ OpenAI-compatible│ Any compatible API   │ Varies    │ Cloud/Local  │
+├──────────────────┼──────────────────────┼───────────┼──────────────┤
+│ Mock             │ Mock (testing only)  │ N/A       │ Local        │
+└──────────────────┴──────────────────────┴───────────┴──────────────┘</code></pre>
 <p><strong>Which should you start with?</strong></p>
 <ul>
 <li><strong>Anthropic (Claude)</strong> — Best for nuanced coding tasks, long-context analysis, and careful reasoning. The 200K context window is excellent for working with large codebases.</li>
@@ -199,11 +206,6 @@ Provider Status:
 <hr />
 <h2 id="123-how-neamcode-chooses-a-provider">12.3 How NeamCode Chooses a Provider <a href="#123-how-neamcode-chooses-a-provider" class="heading-anchor">#</a></h2>
 <p>When you send a message, NeamCode doesn't just blindly forward it to one provider. It runs a <strong>routing decision</strong> based on:</p>
-<figure class="diagram-figure">
-  <img src="../assets/diagrams/ch12-routing-strategies.svg" alt="Provider Routing Strategies" />
-  <figcaption>Figure 12.1 — Provider Routing Strategies</figcaption>
-</figure>
-<div class="ascii-fallback">
 <div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
 <pre><code class="language-">┌──────────────────────────────────────────────┐
 │              Routing Decision                 │
@@ -225,7 +227,6 @@ Provider Status:
 │         ▼                                    │
 │  Selected: Anthropic (claude-sonnet)         │
 └──────────────────────────────────────────────┘</code></pre>
-</div>
 <p>The key factors:</p>
 <ol>
 <li><strong>Routing strategy</strong> — Your configured preference (see 12.4)</li>
@@ -271,13 +272,8 @@ Routing strategy set to: balanced
 <div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip:</strong> You can change your routing strategy at any time during a session with the <code>/routing</code> command. No restart needed.</p></div>
 <h3 id="fallback-chains">Fallback Chains <a href="#fallback-chains" class="heading-anchor">#</a></h3>
 <p>If your primary provider fails (API error, rate limit, outage), NeamCode automatically falls through to the next provider:</p>
-<div class="flow-steps">
-  <span class="flow-step">Primary (Anthropic)</span>
-  <span class="flow-arrow">fail →</span>
-  <span class="flow-step">Secondary (OpenAI)</span>
-  <span class="flow-arrow">fail →</span>
-  <span class="flow-step highlight">Tertiary (Ollama)</span>
-</div>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">Primary (Anthropic) ──fail──▶ Secondary (OpenAI) ──fail──▶ Tertiary (Ollama)</code></pre>
 <p>Configure fallbacks explicitly:</p>
 <div class="code-header"><span class="code-lang">yaml</span><button class="copy-btn">Copy</button></div>
 <pre><code class="language-yaml">routing:
@@ -453,7 +449,64 @@ tokens:
   warning_threshold: 0.8               # warn at 80% of limits</code></pre>
 <div class="callout callout-note"><div class="callout-title"><span class="callout-icon">&#128221;</span> Note</div><p>📝 <strong>Note:</strong> The <code>"${ENV_VAR}"</code> syntax lets you reference environment variables directly in the YAML file. This keeps secrets out of the config file while still being explicit about which variables are expected.</p></div>
 <hr />
-<h2 id="128-pro-tips">12.8 Pro Tips <a href="#128-pro-tips" class="heading-anchor">#</a></h2>
+<h2 id="128-compound-ai-multiple-model-roles-v0351">12.8 Compound AI — Multiple Model Roles (v0.3.5.1) <a href="#128-compound-ai-multiple-model-roles-v0351" class="heading-anchor">#</a></h2>
+<p>v0.3.5.1 introduces a <strong>compound AI model system</strong> where different models serve different roles within a single session. Instead of one model doing everything, NeamCode assigns the right model to the right task:</p>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Role</th>
+<th>Purpose</th>
+<th>Default Model</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Normal</strong></td>
+<td>Standard reasoning and coding</td>
+<td>Your primary provider</td>
+</tr>
+<tr>
+<td><strong>Thinking</strong></td>
+<td>Extended thinking with deep reasoning</td>
+<td>Same as Normal (with thinking budget)</td>
+</tr>
+<tr>
+<td><strong>Critique</strong></td>
+<td>Quality evaluation and plan review</td>
+<td>A fast, capable model</td>
+</tr>
+<tr>
+<td><strong>Fast</strong></td>
+<td>Quick decisions (continue/complete/escalate)</td>
+<td>Smallest capable model</td>
+</tr>
+<tr>
+<td><strong>VLM</strong></td>
+<td>Vision and multimodal tasks</td>
+<td>Multimodal-capable model</td>
+</tr>
+</tbody></table></div>
+<h3 id="how-it-works-in-practice">How It Works in Practice <a href="#how-it-works-in-practice" class="heading-anchor">#</a></h3>
+<p>You don't need to configure this manually — NeamCode handles role assignment automatically:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Refactor the payment module to use the Strategy pattern
+
+NeamCode internally:
+  [Fast model]    → Classify task complexity: &quot;multi-step refactor&quot;
+  [Thinking model] → Deep reasoning about Strategy pattern design
+  [Critique model] → Evaluate the proposed approach
+  [Normal model]   → Generate the refactored code
+  [Fast model]    → Decide: continue to tests or complete?</code></pre>
+<h3 id="fallback-chains-per-role">Fallback Chains per Role <a href="#fallback-chains-per-role" class="heading-anchor">#</a></h3>
+<p>Each role has its own fallback chain. If your Thinking model is unavailable, it falls back independently without affecting other roles:</p>
+<div class="code-header"><span class="code-lang">yaml</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-yaml"># In neamcode.config.yml (optional — defaults are smart)
+routing:
+  strategy: &quot;balanced&quot;
+  fallback_chain:
+    - openai
+    - anthropic
+    - ollama</code></pre>
+<div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip:</strong> The compound AI system is why v0.3.5.1 achieves better results on complex tasks — it uses the right model for each sub-task rather than forcing one model to do everything. You don't need to configure it; just set up multiple providers and NeamCode optimizes automatically.</p></div>
+<hr />
+<h2 id="129-pro-tips">12.9 Pro Tips <a href="#129-pro-tips" class="heading-anchor">#</a></h2>
 <div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip: Start with two providers.</strong> Configure Anthropic (or OpenAI) for cloud quality and Ollama for free local work. This covers 90% of use cases and gives you a fallback chain.</p></div>
 <div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip: Use <code>/models --tier fast</code> for quick tasks.</strong> Don't burn premium tokens on "what's the syntax for a for loop?" questions. Let the routing engine handle this by using the <code>balanced</code> or <code>cost</code> strategy.</p></div>
 <div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip: The OpenAI-compatible provider is your escape hatch.</strong> If your company runs a proxy, or you want to use a provider not on the built-in list, the <code>openai_compatible</code> provider accepts any OpenAI-compatible API endpoint.</p></div>

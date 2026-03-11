@@ -121,11 +121,6 @@
 <hr />
 <h2 id="171-what-is-mcp">17.1 What Is MCP? <a href="#171-what-is-mcp" class="heading-anchor">#</a></h2>
 <p>The <strong>Model Context Protocol (MCP)</strong> is an open standard that lets AI assistants connect to external tools and services through a unified interface. Think of it as a USB port for AI — any tool that speaks MCP can plug into any AI assistant that supports it.</p>
-<figure class="diagram-figure">
-  <img src="../assets/diagrams/ch17-mcp-architecture.svg" alt="MCP Server Architecture" />
-  <figcaption>Figure 17.1 — MCP Server Architecture</figcaption>
-</figure>
-<div class="ascii-fallback">
 <div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
 <pre><code class="language-">┌──────────────┐       MCP        ┌──────────────────┐
 │   NeamCode   │◄────────────────►│  Notion Server   │
@@ -139,7 +134,6 @@
 │              │       MCP        ┌──────────────────┐
 │              │◄────────────────►│  Database Server │
 └──────────────┘                  └──────────────────┘</code></pre>
-</div>
 <p>Without MCP, you'd need custom integrations for every tool. With MCP, any server that implements the protocol automatically works with NeamCode.</p>
 <h3 id="what-mcp-servers-provide">What MCP Servers Provide <a href="#what-mcp-servers-provide" class="heading-anchor">#</a></h3>
 <p>An MCP server can expose:</p>
@@ -335,52 +329,25 @@ You: Now list the /tmp directory
 </ul>
 <h3 id="use-case-ide-integration">Use Case: IDE Integration <a href="#use-case-ide-integration" class="heading-anchor">#</a></h3>
 <p>Your IDE can connect to NeamCode as an MCP server:</p>
-<div class="comparison-grid">
-  <div class="info-box">
-    <div class="info-box-header blue">Your IDE (client)</div>
-    <div class="info-box-body">
-      <p>"Explain this code"</p>
-      <p>Receives: explanation response</p>
-    </div>
-  </div>
-  <div class="info-box">
-    <div class="info-box-header green">NeamCode (MCP server)</div>
-    <div class="info-box-body">
-      <p>Analyzes code, returns answer</p>
-    </div>
-  </div>
-</div>
-<div class="flow-steps">
-  <span class="flow-step">Your IDE</span>
-  <span class="flow-arrow">&harr;</span>
-  <span class="flow-step highlight">MCP</span>
-  <span class="flow-arrow">&harr;</span>
-  <span class="flow-step">NeamCode</span>
-</div>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">┌──────────────┐       MCP        ┌──────────────────┐
+│   Your IDE   │────────────────►│  NeamCode         │
+│   (client)   │                 │  (MCP server)     │
+│              │◄────────────────│                    │
+│  &quot;Explain    │  Response:      │  Analyzes code,   │
+│   this code&quot; │  explanation    │  returns answer    │
+└──────────────┘                  └──────────────────┘</code></pre>
 <h3 id="use-case-chaining-ai-assistants">Use Case: Chaining AI Assistants <a href="#use-case-chaining-ai-assistants" class="heading-anchor">#</a></h3>
 <p>Another AI assistant can delegate coding tasks to NeamCode:</p>
-<div class="comparison-grid">
-  <div class="info-box">
-    <div class="info-box-header purple">Other AI Assistant</div>
-    <div class="info-box-body">
-      <p>"Implement feature X"</p>
-      <p>Receives: result (done)</p>
-    </div>
-  </div>
-  <div class="info-box">
-    <div class="info-box-header green">NeamCode (MCP server)</div>
-    <div class="info-box-body">
-      <p>Writes code, runs tests, returns result</p>
-    </div>
-  </div>
-</div>
-<div class="flow-steps">
-  <span class="flow-step">Other AI</span>
-  <span class="flow-arrow">&harr;</span>
-  <span class="flow-step highlight">MCP</span>
-  <span class="flow-arrow">&harr;</span>
-  <span class="flow-step">NeamCode</span>
-</div>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">┌──────────────┐       MCP        ┌──────────────────┐
+│  Other AI    │────────────────►│  NeamCode         │
+│  Assistant   │                 │  (MCP server)     │
+│              │                 │                    │
+│  &quot;Implement  │                 │  Writes code,     │
+│   feature X&quot; │◄────────────────│  runs tests,      │
+│              │  Result: done   │  returns result    │
+└──────────────┘                  └──────────────────┘</code></pre>
 <h3 id="configuration-for-mcp-server-mode">Configuration for MCP Server Mode <a href="#configuration-for-mcp-server-mode" class="heading-anchor">#</a></h3>
 <p>You can customize what NeamCode exposes:</p>
 <div class="code-header"><span class="code-lang">json</span><button class="copy-btn">Copy</button></div>

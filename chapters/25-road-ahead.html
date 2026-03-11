@@ -136,6 +136,43 @@
 <hr />
 <h2 id="252-whats-coming-next">25.2 What's Coming Next <a href="#252-whats-coming-next" class="heading-anchor">#</a></h2>
 <p>NeamCode is actively developed. Here's a preview of what's on the roadmap:</p>
+<h3 id="v0351-extended-thinking-cognitive-reasoning">v0.3.5.1 — Extended Thinking &amp; Cognitive Reasoning <a href="#v0351-extended-thinking-cognitive-reasoning" class="heading-anchor">#</a></h3>
+<p>Released with these major enhancements:</p>
+<ul>
+<li><strong>6-Phase Extended ReAct Loop</strong> — Think → Critique → Act → Observe → Post-Process → Decide (replacing the 3-phase loop)</li>
+<li><strong>Plan Mode</strong> — Read-only mode for designing implementation strategies with cost estimates before writing code</li>
+<li><strong>LSP Integration</strong> — Semantic code analysis (find symbol, find references, rename) for 8+ languages</li>
+<li><strong>4 Reasoning Strategies</strong> — Chain of Thought, Plan and Execute, Tree of Thought, Self Consistency (auto-selected or manual)</li>
+<li><strong>5-Stage Progressive Compaction</strong> — Gradual context compression at 60%, 70%, 80%, 90%, 95% thresholds</li>
+<li><strong>Compound AI Model System</strong> — 5 model roles (Normal, Thinking, Critique, Fast, VLM) with independent fallback chains</li>
+<li><strong>Defense-in-Depth Safety</strong> — 5-layer security (prompt guardrails, schema restrictions, runtime approval, tool validation, lifecycle hooks)</li>
+</ul>
+<h3 id="v0352-skill-ecosystem-skillmd">v0.3.5.2 — Skill Ecosystem (SKILL.md) <a href="#v0352-skill-ecosystem-skillmd" class="heading-anchor">#</a></h3>
+<p>The portable skill platform:</p>
+<ul>
+<li><strong>SKILL.md Format</strong> — Portable skill definitions with YAML metadata, typed inputs/outputs, and Markdown procedures</li>
+<li><strong>4 Creation Pipelines</strong> — Create skills from execution traces, GitHub repos, documents, or natural language prompts</li>
+<li><strong>5-Dimension Quality Evaluation</strong> — Safety, Completeness, Executability, Maintainability, Cost Awareness scoring</li>
+<li><strong>Skill Relationship Graph</strong> — 4 relation types (depend_on, similar_to, compose_with, belong_to) with visualization</li>
+<li><strong>Hybrid Search</strong> — Keyword + semantic vector search for skill discovery</li>
+<li><strong>DAG Composer</strong> — Auto-build execution pipelines from skill graphs with parallel group detection</li>
+<li><strong>12 /skill Subcommands</strong> — list, info, search, create, evaluate, install, uninstall, export, graph, compose, update</li>
+</ul>
+<h3 id="v0353-user-interactiveness-web-intelligence">v0.3.5.3 — User Interactiveness &amp; Web Intelligence <a href="#v0353-user-interactiveness-web-intelligence" class="heading-anchor">#</a></h3>
+<p>The visual and feedback layer:</p>
+<ul>
+<li><strong>Neam Color Identity</strong> — 8 semantic colors (teal, amber, violet, emerald, coral, crimson, slate, deep navy) with mode-specific accents</li>
+<li><strong>Multi-Agent Pulse Grid</strong> — Live visualization of concurrent agent execution with adaptive pulse rate</li>
+<li><strong>PDF Extraction</strong> — Fetch and read PDFs from URLs (arxiv smart redirect, pdf-parse extraction, up to 200 pages)</li>
+<li><strong>Enhanced Status Bar</strong> — Connectivity pulse, active skills badge, DAG progress, quality score, error count</li>
+<li><strong>6-Tier Error System</strong> — From T0 FATAL to T5 DEBUG, with structured error codes (98 codes across 20 subsystems)</li>
+<li><strong>12 Warning Categories</strong> — Budget, token limit, provider health, circuit breaker, security, skill quality, and more</li>
+<li><strong>Markdown Streaming</strong> — Rich terminal rendering with bold, italic, code blocks, and headers</li>
+<li><strong>6 New Spinners</strong> — neural, orbit, flow, ripple, meter, scan (activity-matched)</li>
+<li><strong>/diagnostics Dashboard</strong> — Unified system health, provider status, skill ecosystem, and error history</li>
+<li><strong>Internet Enabled by Default</strong> — <code>allowInternet: true</code> for immediate web research capability</li>
+<li><strong>Cross-Platform Release</strong> — macOS arm64/x64, Linux x64/arm64, Windows x64 with automated evaluation suite</li>
+</ul>
 <h3 id="v04-voice-mode">v0.4 — Voice Mode <a href="#v04-voice-mode" class="heading-anchor">#</a></h3>
 <p>The next major release brings <strong>voice interaction</strong> to the terminal:</p>
 <ul>
@@ -157,11 +194,6 @@
 <hr />
 <h2 id="253-the-neam-ecosystem">25.3 The Neam Ecosystem <a href="#253-the-neam-ecosystem" class="heading-anchor">#</a></h2>
 <p>NeamCode is one part of a larger ecosystem built around the <a href="https://github.com/neam-lang/Neam">Neam programming language</a>:</p>
-<figure class="diagram-figure">
-  <img src="../assets/diagrams/ch25-neam-ecosystem.svg" alt="The Neam Ecosystem" />
-  <figcaption>Figure 25.1 — The Neam Ecosystem</figcaption>
-</figure>
-<div class="ascii-fallback">
 <div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
 <pre><code class="language-">The Neam Ecosystem
 ══════════════════
@@ -190,7 +222,7 @@
 │                                             │
 ├─────────────────────────────────────────────┤
 │                                             │
-│  NeamCode (v0.3.5) ← You are here          │
+│  NeamCode (v0.3.5.3) ← You are here        │
 │  The agentic AI terminal client             │
 │                                             │
 ├─────────────────────────────────────────────┤
@@ -200,7 +232,6 @@
 │  • Command the Future (this book!)          │
 │                                             │
 └─────────────────────────────────────────────┘</code></pre>
-</div>
 <h3 id="learning-more-about-neam">Learning More About Neam <a href="#learning-more-about-neam" class="heading-anchor">#</a></h3>
 <p>If you want to learn the Neam programming language itself, the companion ebook is available at:</p>
 <p><strong><a href="https://neam-lang.github.io/Neam-The-AI-Native-Programming-Language/">Programming Neam: The AI-Native Programming Language</a></strong></p>
@@ -223,14 +254,22 @@ $ curl -fsSL https://neamcode.com/install.sh | sh</code></pre>
 <hr />
 <h2 id="255-your-learning-path-from-here">25.5 Your Learning Path From Here <a href="#255-your-learning-path-from-here" class="heading-anchor">#</a></h2>
 <p>You have finished the book, but the real learning starts now. Depending on your goals, here are three paths forward. Pick one, or mix and match as your curiosity leads you.</p>
-<div class="flow-steps">
-  <span class="flow-step highlight">You Are Here (Book Complete!)</span>
-</div>
-<div class="flow-steps" style="margin-top: 0.75rem;">
-  <span class="flow-step">Path A: Deepen NeamCode Mastery</span>
-  <span class="flow-step">Path B: Learn the Neam Language</span>
-  <span class="flow-step">Path C: Contribute to the Ecosystem</span>
-</div>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">                    ┌──────────────────────┐
+                    │    You Are Here       │
+                    │  (Book Complete!)     │
+                    └─────────┬────────────┘
+                              │
+              ┌───────────────┼───────────────┐
+              │               │               │
+              v               v               v
+     ┌────────────┐  ┌────────────┐  ┌────────────┐
+     │  Path A    │  │  Path B    │  │  Path C    │
+     │            │  │            │  │            │
+     │  Deepen    │  │  Learn the │  │ Contribute │
+     │  NeamCode  │  │  Neam      │  │ to the     │
+     │  Mastery   │  │  Language  │  │ Ecosystem  │
+     └────────────┘  └────────────┘  └────────────┘</code></pre>
 <h3 id="path-a-deepen-your-neamcode-mastery">Path A: Deepen Your NeamCode Mastery <a href="#path-a-deepen-your-neamcode-mastery" class="heading-anchor">#</a></h3>
 <p>If you want to become truly fluent in NeamCode, go back and practice deliberately:</p>
 <ol>

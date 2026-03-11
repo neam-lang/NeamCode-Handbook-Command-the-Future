@@ -142,23 +142,20 @@ NeamCode:
   src/middleware/validation.ts
   ... (35 more)</code></pre>
 <h3 id="common-glob-patterns">Common Glob Patterns <a href="#common-glob-patterns" class="heading-anchor">#</a></h3>
-<div class="info-box">
-  <div class="info-box-header blue">Glob Pattern Quick Reference</div>
-  <div class="info-box-body">
-    <div class="table-wrap"><table>
-      <thead><tr><th>Pattern</th><th>Matches</th></tr></thead>
-      <tbody>
-        <tr><td><code>*.ts</code></td><td>TypeScript files (current dir)</td></tr>
-        <tr><td><code>**/*.ts</code></td><td>TypeScript files (all dirs)</td></tr>
-        <tr><td><code>src/**/*.test.ts</code></td><td>Test files under src/</td></tr>
-        <tr><td><code>**/config.*</code></td><td>Any config file, any extension</td></tr>
-        <tr><td><code>**/*.{ts,tsx}</code></td><td>Both .ts and .tsx files</td></tr>
-        <tr><td><code>**/README*</code></td><td>All README files</td></tr>
-        <tr><td><code>src/models/*.ts</code></td><td>Models only (no subdirectories)</td></tr>
-      </tbody>
-    </table></div>
-  </div>
-</div>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">┌───────────────────────────────────────────────────────┐
+│              Glob Pattern Quick Reference             │
+│                                                       │
+│  Pattern          │ Matches                           │
+│  ─────────────────┼─────────────────────────────────  │
+│  *.ts             │ TypeScript files (current dir)    │
+│  **/*.ts          │ TypeScript files (all dirs)       │
+│  src/**/*.test.ts │ Test files under src/             │
+│  **/config.*      │ Any config file, any extension    │
+│  **/*.{ts,tsx}    │ Both .ts and .tsx files            │
+│  **/README*       │ All README files                  │
+│  src/models/*.ts  │ Models only (no subdirectories)   │
+└───────────────────────────────────────────────────────┘</code></pre>
 <h3 id="practical-examples">Practical Examples <a href="#practical-examples" class="heading-anchor">#</a></h3>
 <p><strong>Finding config files:</strong></p>
 <div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
@@ -525,26 +522,19 @@ NeamCode:
      c. Creates an Order record (status: &quot;pending&quot;)
      d. Returns the client secret for Stripe confirmation
   5. Frontend confirms payment with Stripe
-  6. Stripe webhook updates order status to &quot;paid&quot;</code></pre>
-<div class="flow-steps">
-  <span class="flow-step">Checkout Page</span>
-  <span class="flow-arrow">→</span>
-  <span class="flow-step">API Route<br><small>/api/order</small></span>
-  <span class="flow-arrow">→</span>
-  <span class="flow-step">Stripe Payment</span>
-  <span class="flow-arrow">→</span>
-  <span class="flow-step highlight">Webhook Update</span>
-</div>
-<div class="comparison-grid">
-  <div class="info-box">
-    <div class="info-box-header gray">Prisma Create Order</div>
-    <div class="info-box-body"><p>Created during API route processing</p></div>
-  </div>
-  <div class="info-box">
-    <div class="info-box-header green">Order Status → "paid"</div>
-    <div class="info-box-body"><p>Updated by Stripe webhook callback</p></div>
-  </div>
-</div>
+  6. Stripe webhook updates order status to &quot;paid&quot;
+
+  ┌─────────┐    ┌──────────┐    ┌─────────┐    ┌────────┐
+  │ Checkout │───▶│ API Route│───▶│ Stripe  │───▶│ Webhook│
+  │  Page    │    │/api/order│    │ Payment │    │ Update │
+  └─────────┘    └──────────┘    └─────────┘    └────────┘
+       │               │                              │
+       │               ▼                              ▼
+       │          ┌─────────┐                   ┌─────────┐
+       │          │  Prisma │                   │  Order   │
+       │          │  Create │                   │ Status → │
+       │          │  Order  │                   │  &quot;paid&quot;  │
+       │          └─────────┘                   └─────────┘</code></pre>
 <h3 id="step-5-find-potential-issues">Step 5: Find Potential Issues <a href="#step-5-find-potential-issues" class="heading-anchor">#</a></h3>
 <div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
 <pre><code class="language-">You: Are there any obvious issues or code smells?
@@ -564,7 +554,64 @@ NeamCode:
   5. **Stock check is not atomic** — race condition possible
      during concurrent checkouts (src/app/api/orders/route.ts:34)</code></pre>
 <hr />
-<h2 id="56-pro-tips">5.6 Pro Tips <a href="#56-pro-tips" class="heading-anchor">#</a></h2>
+<h2 id="56-semantic-code-analysis-with-lsp-v0351">5.6 Semantic Code Analysis with LSP (v0.3.5.1) <a href="#56-semantic-code-analysis-with-lsp-v0351" class="heading-anchor">#</a></h2>
+<p>Starting with v0.3.5.1, NeamCode can use <strong>Language Server Protocol (LSP)</strong> servers for semantic code analysis. This goes beyond text search — it understands your code's meaning.</p>
+<h3 id="finding-symbol-definitions">Finding Symbol Definitions <a href="#finding-symbol-definitions" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Where is the PaymentProcessor class defined?
+
+NeamCode:
+  [find_symbol] PaymentProcessor
+
+  PaymentProcessor is defined in:
+    src/services/payment-processor.ts:14
+
+  It&#x27;s a class with 8 methods:
+    - constructor(config: PaymentConfig)
+    - async processPayment(order: Order): Promise&lt;Receipt&gt;
+    - async refund(receiptId: string): Promise&lt;void&gt;
+    - private validateCard(card: CardDetails): boolean
+    ...</code></pre>
+<h3 id="finding-all-references">Finding All References <a href="#finding-all-references" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Who calls the sendNotification function?
+
+NeamCode:
+  [find_references] sendNotification
+
+  sendNotification is called in 5 locations:
+    src/services/order-service.ts:89     — after order completion
+    src/services/auth-service.ts:34      — on password reset
+    src/services/auth-service.ts:67      — on login from new device
+    src/workers/reminder-worker.ts:22    — scheduled reminders
+    src/api/webhooks/stripe.ts:45        — payment confirmation
+
+  All callers pass (userId: string, message: string).</code></pre>
+<h3 id="semantic-rename">Semantic Rename <a href="#semantic-rename" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">You: Rename the &quot;getData&quot; function to &quot;fetchUserProfile&quot; everywhere
+
+NeamCode:
+  [rename_symbol] getData → fetchUserProfile
+
+  Renamed in 12 locations across 7 files:
+    src/services/user-service.ts:23     — definition
+    src/api/routes/users.ts:15          — import
+    src/api/routes/users.ts:34          — call site
+    src/api/routes/profile.ts:18        — import
+    src/api/routes/profile.ts:42        — call site
+    tests/user-service.test.ts:8        — import
+    tests/user-service.test.ts:19,34,51 — call sites</code></pre>
+<p>Unlike text-based find-and-replace, LSP-based rename understands scope — it won't accidentally rename a different function with the same name in another module.</p>
+<h3 id="supported-languages">Supported Languages <a href="#supported-languages" class="heading-anchor">#</a></h3>
+<p>LSP analysis works with 8+ languages out of the box:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">TypeScript/JavaScript  •  Python  •  Rust  •  Go
+Java  •  C/C++  •  C#  •  Ruby</code></pre>
+<p>NeamCode manages LSP servers automatically — they start when needed and run in the background for fast responses.</p>
+<div class="callout callout-tip"><div class="callout-title"><span class="callout-icon">&#128161;</span> Tip</div><p>💡 <strong>Tip:</strong> Combine LSP analysis with <code>grep</code> for the best results. Use <code>find_symbol</code> to locate definitions, <code>find_references</code> to trace usage, and <code>grep</code> for patterns that aren't symbols (like string literals or comments).</p></div>
+<hr />
+<h2 id="57-pro-tips">5.7 Pro Tips <a href="#57-pro-tips" class="heading-anchor">#</a></h2>
 <h3 id="1-combine-search-skills">1. Combine Search Skills <a href="#1-combine-search-skills" class="heading-anchor">#</a></h3>
 <p>The most powerful searches combine multiple skills:</p>
 <div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>

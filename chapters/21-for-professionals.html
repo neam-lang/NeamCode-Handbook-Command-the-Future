@@ -706,26 +706,122 @@ Switch back to cloud for:
   🌐 Code review with full context
   🌐 Web search and research</code></pre>
 <p>Strategy that cuts costs by 60-70%:</p>
-<div class="info-box">
-  <div class="info-box-header green">Daily Cost Optimization</div>
-  <div class="info-box-body">
-    <div class="table-wrap"><table>
-    <thead><tr><th>Task</th><th>Provider</th></tr></thead>
-    <tbody>
-      <tr><td>Writing code</td><td>Ollama (free)</td></tr>
-      <tr><td>Simple refactoring</td><td>Ollama (free)</td></tr>
-      <tr><td>Writing tests</td><td>Ollama (free)</td></tr>
-      <tr><td>Complex debugging</td><td>Claude/GPT-4o ($)</td></tr>
-      <tr><td>Code review</td><td>Claude/GPT-4o ($)</td></tr>
-      <tr><td>Architecture</td><td>Claude/GPT-4o ($)</td></tr>
-      <tr><td>Web research</td><td>Claude/GPT-4o ($)</td></tr>
-    </tbody>
-    </table></div>
-    <p><strong>Before optimization:</strong> ~$50/month<br><strong>After optimization:</strong> ~$15-20/month</p>
-  </div>
-</div>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">  ┌─────────────────────────────────────────────────┐
+  │              Daily Cost Optimization              │
+  ├────────────────────┬──────────────────────────────┤
+  │ Task               │ Provider                     │
+  ├────────────────────┼──────────────────────────────┤
+  │ Writing code       │ Ollama (free)                │
+  │ Simple refactoring │ Ollama (free)                │
+  │ Writing tests      │ Ollama (free)                │
+  │ Complex debugging  │ Claude/GPT-4o ($)            │
+  │ Code review        │ Claude/GPT-4o ($)            │
+  │ Architecture       │ Claude/GPT-4o ($)            │
+  │ Web research       │ Claude/GPT-4o ($)            │
+  └────────────────────┴──────────────────────────────┘
+
+  Before optimization: ~$50/month
+  After optimization:  ~$15-20/month</code></pre>
 <hr />
-<h2 id="219-pro-tips-for-professionals">21.9 Pro Tips for Professionals <a href="#219-pro-tips-for-professionals" class="heading-anchor">#</a></h2>
+<h2 id="219-custom-skills-for-your-team-v0352">21.9 Custom Skills for Your Team (v0.3.5.2) <a href="#219-custom-skills-for-your-team-v0352" class="heading-anchor">#</a></h2>
+<p>v0.3.5.2 introduces the <strong>SKILL.md ecosystem</strong> — a way to package reusable workflows as portable, shareable skills. For professional teams, this means standardizing common operations.</p>
+<h3 id="creating-a-skill-from-your-workflow">Creating a Skill from Your Workflow <a href="#creating-a-skill-from-your-workflow" class="heading-anchor">#</a></h3>
+<p>When NeamCode detects a repeatable pattern (3+ similar steps across sessions), it offers to create a skill:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">NeamCode:
+  I noticed you&#x27;ve done &quot;create migration → apply → seed → verify&quot;
+  three times this week. Want me to package this as a reusable skill?
+
+You: Yes, create it
+
+NeamCode:
+  ✓ Created: db-migration-flow.skill.md
+
+  Metadata:
+    Name: db-migration-flow
+    Category: devops
+    Triggers: &quot;run migration&quot;, &quot;migrate database&quot;
+    Quality: ★4.5 (Safety: ★5, Completeness: ★4, Executability: ★5)</code></pre>
+<p>You can also create skills explicitly:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; /skill create prompt
+  Describe: Deploy to staging with smoke tests and rollback on failure
+
+  ✓ Created: staging-deploy.skill.md
+  ✓ Evaluated: Safety ★5  Completeness ★4  Executability ★4</code></pre>
+<h3 id="skillmd-format">SKILL.md Format <a href="#skillmd-format" class="heading-anchor">#</a></h3>
+<p>Skills are portable Markdown files with YAML frontmatter:</p>
+<div class="code-header"><span class="code-lang">yaml</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-yaml">---
+name: staging-deploy
+version: 1.0.0
+category: devops
+tags: [deploy, staging, docker, smoke-test]
+triggers:
+  - &quot;deploy to staging&quot;
+  - &quot;push to staging&quot;
+inputs:
+  branch: { type: string, required: true }
+  run_smoke: { type: boolean, default: true }
+dependencies:
+  tools: [bash, file_read]
+  external: [docker, kubectl]
+---
+
+## Procedure
+
+1. Build Docker image from {{ branch }}
+2. Push to staging registry
+3. Apply Kubernetes deployment
+4. {{ if run_smoke }}Run smoke test suite{{ endif }}
+5. On failure: rollback to previous deployment</code></pre>
+<h3 id="skill-graph-understanding-relationships">Skill Graph — Understanding Relationships <a href="#skill-graph-understanding-relationships" class="heading-anchor">#</a></h3>
+<p>Skills automatically form a <strong>relationship graph</strong> that NeamCode uses for intelligent composition:</p>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; /skill graph
+
+  staging-deploy
+  ├── [depend_on] → docker-build
+  ├── [compose_with] → smoke-test-suite
+  ├── [similar_to] ⇄ production-deploy
+  └── [belong_to] → release-pipeline
+
+  db-migration-flow
+  ├── [depend_on] → db-backup
+  ├── [compose_with] → db-seed
+  └── [similar_to] ⇄ schema-sync</code></pre>
+<h3 id="composing-skills-into-pipelines">Composing Skills into Pipelines <a href="#composing-skills-into-pipelines" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-">neamcode&gt; /skill compose &quot;Full release to production&quot;
+
+  DAG: Full Release Pipeline
+  ═══════════════════════════
+  ┌──────────┐   ┌──────────┐
+  │ db-backup│──▶│db-migrate│──┐
+  └──────────┘   └──────────┘  │  ┌─────────────┐   ┌────────────┐
+                                ├─▶│staging-deploy│──▶│smoke-tests │
+  ┌──────────┐                 │  └─────────────┘   └──────┬─────┘
+  │ lint+test│─────────────────┘                           │
+  └──────────┘                                     ┌───────▼──────┐
+                                                   │prod-deploy   │
+                                                   └──────────────┘
+
+  5 steps  |  2 parallel groups  |  Est: ~8,500 tokens
+
+  [a]pprove  [e]dit  [c]ancel</code></pre>
+<h3 id="sharing-skills-across-the-team">Sharing Skills Across the Team <a href="#sharing-skills-across-the-team" class="heading-anchor">#</a></h3>
+<div class="code-header"><span class="code-lang">bash</span><button class="copy-btn">Copy</button></div>
+<pre><code class="language-bash"># Export a skill as a package
+neamcode&gt; /skill export staging-deploy
+  ✓ Exported: staging-deploy-1.0.0.tar.gz
+
+# Install on another machine
+neamcode&gt; /skill install ./staging-deploy-1.0.0.tar.gz
+  ✓ Installed: staging-deploy@1.0.0</code></pre>
+<p>Store SKILL.md files in your project repository so every team member gets them automatically.</p>
+<hr />
+<h2 id="2110-pro-tips-for-professionals">21.10 Pro Tips for Professionals <a href="#2110-pro-tips-for-professionals" class="heading-anchor">#</a></h2>
 <h3 id="use-permission-modes-strategically">Use Permission Modes Strategically <a href="#use-permission-modes-strategically" class="heading-anchor">#</a></h3>
 <div class="code-header"><span class="code-lang">text</span><button class="copy-btn">Copy</button></div>
 <pre><code class="language-">&gt; /permission power
